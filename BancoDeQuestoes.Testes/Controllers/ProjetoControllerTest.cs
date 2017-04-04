@@ -16,13 +16,12 @@ namespace BancoDeQuestoes.Testes.Controllers
 		public void Setup()
 		{
 			_projetoRepoMock = new Mock<IProjetoRepository>();
+			_projetoController = new ProjetoController(_projetoRepoMock.Object);
 		}
 
 		[Test]
 		public void Index()
 		{
-			_projetoController = new ProjetoController(_projetoRepoMock.Object);
-
 			_projetoRepoMock.Setup(m=>m.List()).Verifiable();
 
 			_projetoController.Index();
@@ -33,11 +32,12 @@ namespace BancoDeQuestoes.Testes.Controllers
 		[Test]
 		public void Details()
 		{
-			_projetoController = new ProjetoController(_projetoRepoMock.Object);
+			var id = 1;
 
-			_projetoRepoMock.Setup(m=>m.Find(1)).Returns(It.IsAny<INSCR_BQ_PROJETO>()).Verifiable();
+			INSCR_BQ_PROJETO INSCR_BQ_PROJETO = null;
+			_projetoRepoMock.Setup(m=>m.Find(id)).Returns(INSCR_BQ_PROJETO).Verifiable();
+			_projetoController.Details(id);
 
-			_projetoController.Details(1);
 
 			_projetoRepoMock.Verify();
 		}
@@ -45,8 +45,6 @@ namespace BancoDeQuestoes.Testes.Controllers
 		[Test]
 		public void CallCreatePage()
 		{
-			_projetoController = new ProjetoController(_projetoRepoMock.Object);
-
 			_projetoController.Create();
 
 			_projetoRepoMock.Verify();
@@ -55,8 +53,6 @@ namespace BancoDeQuestoes.Testes.Controllers
 		[Test]
 		public void InserirCreate()
 		{
-			_projetoController = new ProjetoController(_projetoRepoMock.Object);
-
 			var dados = new INSCR_BQ_PROJETO()
 			{
 				DESC_ATIVO = "S",
@@ -67,15 +63,11 @@ namespace BancoDeQuestoes.Testes.Controllers
 			_projetoRepoMock.Setup(m => m.Add(dados)).Verifiable();
 
 			_projetoController.Create();
-
-			
 		}
 
 		[Test]
 		public void Edit()
 		{
-			_projetoController = new ProjetoController(_projetoRepoMock.Object);
-
 			_projetoRepoMock.Setup(m => m.Find(1)).Returns(It.IsAny<INSCR_BQ_PROJETO>()).Verifiable();
 
 			_projetoController.Edit(1);
@@ -86,8 +78,6 @@ namespace BancoDeQuestoes.Testes.Controllers
 		[Test]
 		public void SalvarEdit()
 		{
-			_projetoController = new ProjetoController(_projetoRepoMock.Object);
-
 			var dados = new INSCR_BQ_PROJETO()
 			{
 				DESC_ATIVO = "S",
@@ -97,15 +87,11 @@ namespace BancoDeQuestoes.Testes.Controllers
 			_projetoRepoMock.Setup(m => m.Update(dados)).Verifiable();
 
 			_projetoController.Edit(1);
-
-			
 		}
 
 		[Test]
 		public void Delete()
 		{
-			_projetoController = new ProjetoController(_projetoRepoMock.Object);
-
 			_projetoRepoMock.Setup(m => m.Find(1)).Returns(It.IsAny<INSCR_BQ_PROJETO>()).Verifiable();
 
 			_projetoController.Edit(1);
@@ -116,27 +102,19 @@ namespace BancoDeQuestoes.Testes.Controllers
 		[Test]
 		public void ConfirmDelete()
 		{
-			_projetoController = new ProjetoController(_projetoRepoMock.Object);
-
 			var dados = new INSCR_BQ_PROJETO();
 
 			_projetoRepoMock.Setup(m => m.Remove(dados)).Verifiable();
 
 			_projetoController.Edit(1);
-
-			
 		}
 
 		[Test]
 		public void Dispose()
 		{
-			_projetoController = new ProjetoController(_projetoRepoMock.Object);
-
 			_projetoRepoMock.Setup(m => m.Dispose()).Verifiable();
 
 			_projetoController.Edit(1);
-
-			
 		}
 	}
 	
