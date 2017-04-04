@@ -1,4 +1,5 @@
-﻿using BancoDeQuestoes.Controllers;
+﻿using System.Web.Mvc;
+using BancoDeQuestoes.Controllers;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
 using Moq;
@@ -11,11 +12,13 @@ namespace BancoDeQuestoes.Testes.Controllers
 	{
 		private ProjetoController _projetoController;
 		private Mock<IProjetoRepository> _projetoRepoMock;
+		private MockRepository _repository;
 
 		[SetUp]
 		public void Setup()
 		{
-			_projetoRepoMock = new Mock<IProjetoRepository>();
+			_repository = new MockRepository(MockBehavior.Strict);
+			_projetoRepoMock = _repository.Create<IProjetoRepository>();
 			_projetoController = new ProjetoController(_projetoRepoMock.Object);
 		}
 
@@ -32,14 +35,10 @@ namespace BancoDeQuestoes.Testes.Controllers
 		[Test]
 		public void Details()
 		{
-			var id = 1;
-
-			INSCR_BQ_PROJETO INSCR_BQ_PROJETO = null;
-			_projetoRepoMock.Setup(m=>m.Find(id)).Returns(INSCR_BQ_PROJETO).Verifiable();
+			int? id = 1;
+			_projetoRepoMock.Setup(m => m.Find(id)).Returns(It.IsAny<INSCR_BQ_PROJETO>()).Verifiable();
 			_projetoController.Details(id);
-
-
-			_projetoRepoMock.Verify();
+			_repository.VerifyAll();
 		}
 
 		[Test]
@@ -117,5 +116,7 @@ namespace BancoDeQuestoes.Testes.Controllers
 			_projetoController.Edit(1);
 		}
 	}
+
+	
 	
 }

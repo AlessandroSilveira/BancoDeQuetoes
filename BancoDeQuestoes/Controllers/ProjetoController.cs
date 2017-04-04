@@ -7,7 +7,7 @@ namespace BancoDeQuestoes.Controllers
 {
     public class ProjetoController : Controller
     {
-        private IProjetoRepository ProjetoRepository { get; set; }
+        private IProjetoRepository ProjetoRepository { get; }
 		
         public ProjetoController(IProjetoRepository projetoRepository)
         {
@@ -26,7 +26,7 @@ namespace BancoDeQuestoes.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var iNscrBqProjeto = ProjetoRepository.Find(id);
-            if (iNscrBqProjeto == null)
+            if (ProjetoRepository.Find(id) == null)
             {
                 return HttpNotFound();
             }
