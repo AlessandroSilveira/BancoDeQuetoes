@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_DISCIPLINA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Áreas</h2>
+
+<p>
+    @Html.ActionLink("Nova Área", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_DISCIPLINA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_CONH_ESPEC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_ATIVO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_DISCIPLINA)
+        </td>
+        <td>
+            @{var tipo = item.TIPO_CONH_ESPEC == "S" ? "Sim" : "Não";
+			}
+			@tipo
+
+        </td>
+        <td>
+            @{var ativo = item.DESC_ATIVO == "S" ? "Sim" : "Não";
+			}
+			@ativo
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_DISCIPLINA }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ID_DISCIPLINA }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.ID_DISCIPLINA })
+        </td>
+    </tr>
+}
+
+</table>

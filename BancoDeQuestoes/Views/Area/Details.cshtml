@@ -1,0 +1,47 @@
+﻿@model BancoDeQuestoes.Models.INSCR_BQ_DISCIPLINA
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Área</h2>
+
+<div>
+    <h4>Detalhes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_DISCIPLINA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_DISCIPLINA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_CONH_ESPEC)
+        </dt>
+
+        <dd>
+           
+			@{ var conhecimento = Model.TIPO_CONH_ESPEC == "S" ? "Sim" : "Não";}
+			@conhecimento
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_ATIVO)
+        </dt>
+
+        <dd>
+           
+	        @{ var ativo = Model.DESC_ATIVO == "S" ? "Sim" : "Não";}
+			@ativo
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_DISCIPLINA }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

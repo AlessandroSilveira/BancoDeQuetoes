@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_TOPICO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Disciplina</h2>
+
+<p>
+	@Html.ActionLink("Nova Disciplina", "Create")
+</p>
+
+@Html.Partial("PesquisaDisciplina")
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.INSCR_BQ_CARGO_CBO.DESC_CARGO)*@
+			ID
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INSCR_BQ_DISCIPLINA.DESC_DISCIPLINA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_TITULO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_TOPICO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_BIBLIOGRAFIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_ATIVO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_NIVEL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_DISCIPLINA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INSCR_BQ_DISCIPLINA.DESC_DISCIPLINA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_TITULO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_TOPICO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_BIBLIOGRAFIA)
+        </td>
+        <td>
+            
+	        @{ var ativo = item.DESC_ATIVO == "S" ? "Sim" : "Não";}
+			@ativo
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_NIVEL)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_TOPICO }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ID_TOPICO }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.ID_TOPICO })
+        </td>
+    </tr>
+}
+
+</table>

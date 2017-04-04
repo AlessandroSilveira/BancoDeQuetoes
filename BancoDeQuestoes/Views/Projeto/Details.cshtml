@@ -1,0 +1,44 @@
+﻿@model BancoDeQuestoes.Models.INSCR_BQ_PROJETO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Projetos</h2>
+
+<div>
+    <h4>Detalhes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.COD_PROJETO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COD_PROJETO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_PROJETO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_PROJETO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_ATIVO)
+        </dt>
+
+        <dd>
+			@{ var ativo = Model.DESC_ATIVO == "S" ? "Sim" : "Não";}
+			@ativo
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_PROJETO }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

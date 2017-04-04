@@ -1,0 +1,56 @@
+﻿
+
+<form class="form-horizontal">
+	<fieldset>
+		<legend>Pesquisar</legend>
+		<div class="form-group">
+			<label for="Area" class="col-lg-2 control-label">Área</label>
+			<div class="col-lg-4">
+				<select class="form-control" id="Area" name="Area">
+					<option value="">Selecione</option>
+					@foreach (var itens in ViewBag.ListaDisciplinas)
+					 {
+						 <option value="@itens.ID_DISCIPLINA">@itens.DESC_DISCIPLINA</option>
+					 }
+				</select>
+				
+			</div>
+			<label for="Nivel" class="col-lg-2 control-label">Nível</label>
+			<div class="col-lg-4">
+			@Html.DropDownList("Nivel", new SelectList(new List<Object>
+					{
+			   new { value = "" , text = "Selecione"  },
+					new { value = "Alta Complexidade" , text = "Alta Complexidade"  },
+					new { value = "Média Complexidade" , text = "Média Complexidade" },
+					new { value = "Baixa Complexidade" , text = "Baixa Complexidade" }
+					}, "value", "text", new { @class = "form-control" }))
+				@Html.ValidationMessage("Nivel", "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="Disciplina" class="col-lg-2 control-label">Disciplina</label>
+			<div class="col-lg-4">
+				<input type="text" class="form-control" id="Disciplina" name="Disciplina" placeholder="Disciplina">
+			</div>
+			<label for="Descricao" class="col-lg-2 control-label">Descrição</label>
+			<div class="col-lg-4">
+				<input type="text" class="form-control" id="Descricao" name="Descricao" placeholder="Descrição">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="Biblioteca" class="col-lg-2 control-label">Bibliografia</label>
+			<div class="col-lg-4">
+				<input type="text" class="form-control" id="Biblioteca" name="Biblioteca" placeholder="Biblioteca">
+			</div>
+			<label for="TotalPagina" class="col-lg-2 control-label">Total de itens por página</label>
+			<div class="col-lg-4">
+				<input type="text" class="form-control" id="TotalPagina" name="TotalPagina" placeholder="Total de Páginas">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-lg-4 col-lg-offset-4">
+				<button type="submit" class="btn btn-primary">Enviar</button>
+			</div>
+		</div>
+	</fieldset>
+</form>

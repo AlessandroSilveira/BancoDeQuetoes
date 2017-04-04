@@ -1,0 +1,77 @@
+﻿@model BancoDeQuestoes.Models.INSCR_BQ_TOPICO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Disciplina</h2>
+
+<div>
+    <h4>Detalhes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.INSCR_BQ_CARGO_CBO.DESC_CARGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSCR_BQ_CARGO_CBO.DESC_CARGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INSCR_BQ_DISCIPLINA.DESC_DISCIPLINA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSCR_BQ_DISCIPLINA.DESC_DISCIPLINA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_TITULO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_TITULO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_TOPICO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_TOPICO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_BIBLIOGRAFIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_BIBLIOGRAFIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_ATIVO)
+        </dt>
+
+        <dd>
+            
+	        @{ var ativo = Model.DESC_ATIVO == "S" ? "Sim" : "Não";}
+			@ativo
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_NIVEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_NIVEL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_TOPICO }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>
