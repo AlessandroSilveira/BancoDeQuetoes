@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BancoDeQuestoes</RootNamespace>
     <AssemblyName>BancoDeQuestoes</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,10 +51,24 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -61,11 +76,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -106,6 +118,11 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -191,7 +208,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
-    <Compile Include="App_Start\IOCConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -208,16 +225,13 @@
     <Compile Include="Interfaces\IBancaMestreRepository.cs" />
     <Compile Include="Interfaces\IDisciplinaRepository.cs" />
     <Compile Include="Interfaces\IProjetoRepository.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\C__MigrationHistory.cs" />
-    <Compile Include="Models\DADOS_CONTATO.cs" />
-    <Compile Include="Models\DADOS_ESTAGIO.cs" />
-    <Compile Include="Models\DADOS_PESSOAIS.cs" />
     <Compile Include="Models\db.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\INSCR_ADMIN.cs" />
     <Compile Include="Models\INSCR_ADMIN_PERFIL.cs" />
-    <Compile Include="Models\INSCR_BANCO_BAIXA.cs" />
     <Compile Include="Models\INSCR_BQ_BANCA.cs" />
     <Compile Include="Models\INSCR_BQ_CARGO_CBO.cs" />
     <Compile Include="Models\INSCR_BQ_CONVITE_MESTRE.cs" />
@@ -241,105 +255,7 @@
     <Compile Include="Models\INSCR_BQ_TOPICO.cs" />
     <Compile Include="Models\INSCR_BQ_TOPICO_ATRIBUIDO.cs" />
     <Compile Include="Models\INSCR_BQ_TOP_DISC_CARGO.cs" />
-    <Compile Include="Models\INSCR_CAD.cs" />
-    <Compile Include="Models\INSCR_CAD_COMP.cs" />
-    <Compile Include="Models\INSCR_CAD_DOCUMENTO.cs" />
-    <Compile Include="Models\INSCR_CAD_HISTORICO.cs" />
-    <Compile Include="Models\INSCR_CANDIDATO_SEBRAE.cs" />
-    <Compile Include="Models\INSCR_CARGO.cs" />
-    <Compile Include="Models\INSCR_CHAT_INTERACAO.cs" />
-    <Compile Include="Models\INSCR_CID.cs" />
-    <Compile Include="Models\INSCR_CIDADE.cs" />
-    <Compile Include="Models\INSCR_CONCURSO.cs" />
-    <Compile Include="Models\INSCR_CONVITE_REVISAO_MESTRE.cs" />
-    <Compile Include="Models\INSCR_COORDENADOR.cs" />
-    <Compile Include="Models\INSCR_COORDENADOR_ACESSO.cs" />
-    <Compile Include="Models\INSCR_COORDENADOR_ESCOLA.cs" />
-    <Compile Include="Models\INSCR_CRONOGRAMA.cs" />
-    <Compile Include="Models\INSCR_CURSO.cs" />
-    <Compile Include="Models\INSCR_DEFICIENCIA.cs" />
-    <Compile Include="Models\INSCR_DOCUMENTO.cs" />
-    <Compile Include="Models\INSCR_ESCOLA.cs" />
-    <Compile Include="Models\INSCR_ESCOLA_SALA.cs" />
-    <Compile Include="Models\INSCR_ESTADO.cs" />
-    <Compile Include="Models\INSCR_EV.cs" />
-    <Compile Include="Models\INSCR_IDERH_BANNER.cs" />
-    <Compile Include="Models\INSCR_IDERH_CADASTRO.cs" />
-    <Compile Include="Models\INSCR_IDERH_CAD_PROJETO.cs" />
-    <Compile Include="Models\INSCR_IDERH_DEPOIMENTO.cs" />
-    <Compile Include="Models\INSCR_IDERH_DICAS.cs" />
-    <Compile Include="Models\INSCR_IDERH_EMPRESA.cs" />
-    <Compile Include="Models\INSCR_IDERH_NOTICIA.cs" />
-    <Compile Include="Models\INSCR_IDERH_PROJETOS.cs" />
-    <Compile Include="Models\INSCR_IDERH_TIPO_MEDIA.cs" />
-    <Compile Include="Models\INSCR_IDIOMA.cs" />
-    <Compile Include="Models\INSCR_INFORMATICA.cs" />
-    <Compile Include="Models\INSCR_INSTBOLETO.cs" />
-    <Compile Include="Models\INSCR_LISTA1.cs" />
-    <Compile Include="Models\INSCR_LOCAL.cs" />
-    <Compile Include="Models\INSCR_LOCAL_CARGO.cs" />
-    <Compile Include="Models\INSCR_MODULO.cs" />
-    <Compile Include="Models\INSCR_MUNICIPIOS_IBGE.cs" />
-    <Compile Include="Models\INSCR_NACIONALIDADE.cs" />
-    <Compile Include="Models\INSCR_NIVEL.cs" />
-    <Compile Include="Models\INSCR_NIVEL_ESCOLAR.cs" />
-    <Compile Include="Models\INSCR_OCORRENCIA.cs" />
-    <Compile Include="Models\INSCR_PAGAMENTO.cs" />
-    <Compile Include="Models\INSCR_PERFIL.cs" />
-    <Compile Include="Models\INSCR_PERFIL_MODULO.cs" />
-    <Compile Include="Models\INSCR_PESSOA.cs" />
-    <Compile Include="Models\INSCR_PESSOA_CONCURSO.cs" />
-    <Compile Include="Models\INSCR_PESSOA_CONVOCACAO.cs" />
-    <Compile Include="Models\INSCR_PESSOA_CURSO.cs" />
-    <Compile Include="Models\INSCR_PESSOA_DEPENDENTE.cs" />
-    <Compile Include="Models\INSCR_PESSOA_EXPERIENCIA.cs" />
-    <Compile Include="Models\INSCR_PESSOA_FORMACAO.cs" />
-    <Compile Include="Models\INSCR_PESSOA_IDIOMA.cs" />
-    <Compile Include="Models\INSCR_PESSOA_INFORMATICA.cs" />
-    <Compile Include="Models\INSCR_PESSOA_MINICURRICULO.cs" />
-    <Compile Include="Models\INSCR_PESSOA_PAGAMENTO.cs" />
-    <Compile Include="Models\INSCR_PESSOA_RESPOSTA_ISENCAO.cs" />
-    <Compile Include="Models\INSCR_PESSOA_RESULTADO.cs" />
-    <Compile Include="Models\INSCR_PESSOA_RESULTADO_OFICIAL.cs" />
-    <Compile Include="Models\INSCR_PESSOA_TELEFONE.cs" />
-    <Compile Include="Models\INSCR_PROVA.cs" />
-    <Compile Include="Models\INSCR_PROVA_CAD.cs" />
-    <Compile Include="Models\INSCR_PROVA_CIDADE.cs" />
-    <Compile Include="Models\INSCR_PROVA_CONFIG.cs" />
-    <Compile Include="Models\INSCR_PROVA_CONFIG_VALOR.cs" />
-    <Compile Include="Models\INSCR_PROVA_ESCOLA.cs" />
-    <Compile Include="Models\INSCR_PROVA_ESCOLA_MAPA.cs" />
-    <Compile Include="Models\INSCR_PROVA_ESCOLA_RH.cs" />
-    <Compile Include="Models\INSCR_PROVA_LOCAL.cs" />
-    <Compile Include="Models\INSCR_PROVA_LOCAL_SALA.cs" />
-    <Compile Include="Models\INSCR_PROVA_PAGAMENTO.cs" />
-    <Compile Include="Models\INSCR_PROVA_PROCESSO.cs" />
-    <Compile Include="Models\INSCR_PROVA_PROCESSO_CARGO.cs" />
-    <Compile Include="Models\INSCR_PROVA_PROCESSO_LOCAL.cs" />
-    <Compile Include="Models\INSCR_PROVA_PROCESSO_LOCAL_SALA.cs" />
-    <Compile Include="Models\INSCR_PUBLICACAO.cs" />
-    <Compile Include="Models\INSCR_REMUNERACAO.cs" />
-    <Compile Include="Models\INSCR_RESULTADO.cs" />
-    <Compile Include="Models\INSCR_RESULTADO_CAD.cs" />
-    <Compile Include="Models\INSCR_RESULTADO_CAD_ADMIN.cs" />
-    <Compile Include="Models\INSCR_RESULTADO_CAD_HISTORICO.cs" />
-    <Compile Include="Models\INSCR_RESULTADO_COLUNA.cs" />
-    <Compile Include="Models\INSCR_RESULTADO_COLUNA1.cs" />
-    <Compile Include="Models\INSCR_RG_CAD.cs" />
-    <Compile Include="Models\INSCR_SEQUENCE.cs" />
-    <Compile Include="Models\INSCR_TEMA_REDACAO.cs" />
-    <Compile Include="Models\INSCR_TIPO_TELEFONE.cs" />
-    <Compile Include="Models\INSCR_USUARIO.cs" />
-    <Compile Include="Models\INSCR_VINCULO.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\SISREC_CARGOS.cs" />
-    <Compile Include="Models\SISREC_DADOS_COMPLEMENTARES.cs" />
-    <Compile Include="Models\SISREC_DEPARTAMENTO.cs" />
-    <Compile Include="Models\SISREC_ORGAO.cs" />
-    <Compile Include="Models\SISREC_PESSOA.cs" />
-    <Compile Include="Models\SISREC_SETOR_SERVICO.cs" />
-    <Compile Include="Models\SISREC_USUARIO.cs" />
-    <Compile Include="Models\TELEFONES.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AreaRepository.cs" />
     <Compile Include="Repositories\BancaMestreRepository.cs" />

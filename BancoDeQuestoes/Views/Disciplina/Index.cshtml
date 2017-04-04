@@ -1,4 +1,6 @@
-﻿@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_TOPICO>
+﻿@using System.Web.Mvc.Html
+@using BancoDeQuestoes.Models
+@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_TOPICO>
 
 @{
     ViewBag.Title = "Index";
@@ -11,7 +13,7 @@
 	@Html.ActionLink("Nova Disciplina", "Create")
 </p>
 
-@Html.Partial("PesquisaDisciplina")
+@Html.Partial("PesquisaDisciplina", typeof(INSCR_BQ_TOPICO))
 <table class="table">
     <tr>
         <th>

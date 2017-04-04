@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Web.Mvc;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
@@ -10,110 +8,96 @@ namespace BancoDeQuestoes.Controllers
     public class ProjetoController : Controller
     {
         private IProjetoRepository ProjetoRepository { get; set; }
-
-        
-
+		
         public ProjetoController(IProjetoRepository projetoRepository)
         {
             ProjetoRepository = projetoRepository;
         }
-
-        // GET: Projeto
+      
         public ActionResult Index()
         {
             return View(ProjetoRepository.List());
         }
-
-        // GET: Projeto/Details/5
+       
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            INSCR_BQ_PROJETO iNSCR_BQ_PROJETO = ProjetoRepository.Find(id);
-            if (iNSCR_BQ_PROJETO == null)
+            var iNscrBqProjeto = ProjetoRepository.Find(id);
+            if (iNscrBqProjeto == null)
             {
                 return HttpNotFound();
             }
-            return View(iNSCR_BQ_PROJETO);
+            return View(iNscrBqProjeto);
         }
-
-        // GET: Projeto/Create
+        
         public ActionResult Create()
         {
             return View();
         }
-
-        // POST: Projeto/Create
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
+		
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_PROJETO,COD_PROJETO,DESC_PROJETO,DESC_ATIVO")] INSCR_BQ_PROJETO iNSCR_BQ_PROJETO)
+        public ActionResult Create([Bind(Include = "ID_PROJETO,COD_PROJETO,DESC_PROJETO,DESC_ATIVO")] INSCR_BQ_PROJETO iNscrBqProjeto)
         {
             if (ModelState.IsValid)
             {
-                ProjetoRepository.Add(iNSCR_BQ_PROJETO);
+                ProjetoRepository.Add(iNscrBqProjeto);
                 ProjetoRepository.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(iNSCR_BQ_PROJETO);
+            return View(iNscrBqProjeto);
         }
-
-        // GET: Projeto/Edit/5
+		
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            INSCR_BQ_PROJETO iNSCR_BQ_PROJETO = ProjetoRepository.Find(id);
-            if (iNSCR_BQ_PROJETO == null)
+            var iNscrBqProjeto = ProjetoRepository.Find(id);
+            if (iNscrBqProjeto == null)
             {
                 return HttpNotFound();
             }
            
-            return View(iNSCR_BQ_PROJETO);
+            return View(iNscrBqProjeto);
         }
 
-        // POST: Projeto/Edit/5
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+		[HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_PROJETO,COD_PROJETO,DESC_PROJETO,DESC_ATIVO")] INSCR_BQ_PROJETO iNSCR_BQ_PROJETO)
+        public ActionResult Edit([Bind(Include = "ID_PROJETO,COD_PROJETO,DESC_PROJETO,DESC_ATIVO")] INSCR_BQ_PROJETO iNscrBqProjeto)
         {
-            if (!ModelState.IsValid) return View(iNSCR_BQ_PROJETO);
-
-            ProjetoRepository.Entry(iNSCR_BQ_PROJETO).State = EntityState.Modified;
+            if (!ModelState.IsValid) return View(iNscrBqProjeto);
+           
+			ProjetoRepository.Update(iNscrBqProjeto);
             ProjetoRepository.SaveChanges();
 
             return RedirectToAction("Index");
         }
-
-        // GET: Projeto/Delete/5
+        
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            INSCR_BQ_PROJETO iNSCR_BQ_PROJETO = ProjetoRepository.Find(id);
-            if (iNSCR_BQ_PROJETO == null)
+            var iNscrBqProjeto = ProjetoRepository.Find(id);
+            if (iNscrBqProjeto == null)
             {
                 return HttpNotFound();
             }
-            return View(iNSCR_BQ_PROJETO);
+            return View(iNscrBqProjeto);
         }
-
-        // POST: Projeto/Delete/5
+		
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            INSCR_BQ_PROJETO iNSCR_BQ_PROJETO = ProjetoRepository.Find(id);
-            ProjetoRepository.Remove(iNSCR_BQ_PROJETO);
+            var iNscrBqProjeto = ProjetoRepository.Find(id);
+            ProjetoRepository.Remove(iNscrBqProjeto);
             ProjetoRepository.SaveChanges();
             
             return RedirectToAction("Index");
@@ -128,7 +112,5 @@ namespace BancoDeQuestoes.Controllers
             }
             base.Dispose(disposing);
         }
-
-       
     }
 }
