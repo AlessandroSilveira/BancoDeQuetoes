@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
+using System.Data.Entity;
 using System.Linq;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
@@ -27,12 +27,7 @@ namespace BancoDeQuestoes.Repositories
         {
             _db.SaveChanges();
         }
-
-        DbEntityEntry<INSCR_BQ_PROJETO> IProjetoRepository.Entry(INSCR_BQ_PROJETO iNscrBqProjeto)
-        {
-           return _db.Entry(iNscrBqProjeto);
-        }
-
+		
         public void Remove(INSCR_BQ_PROJETO iNscrBqProjeto)
         {
             _db.INSCR_BQ_PROJETO.Remove(iNscrBqProjeto);
@@ -42,5 +37,10 @@ namespace BancoDeQuestoes.Repositories
         {
             _db.Dispose();
         }
-    }
+
+	    public void Update(INSCR_BQ_PROJETO iNscrBqProjeto)
+	    {
+			 _db.Entry(iNscrBqProjeto).State = EntityState.Modified;
+		}
+	}
 }

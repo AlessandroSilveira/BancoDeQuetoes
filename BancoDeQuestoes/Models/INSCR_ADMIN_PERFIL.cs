@@ -22,9 +22,8 @@ namespace BancoDeQuestoes.Models
         public string DESC_VARIAVEL { get; set; }
 
         public virtual INSCR_ADMIN INSCR_ADMIN { get; set; }
+        
 
-        public virtual INSCR_CONCURSO INSCR_CONCURSO { get; set; }
-
-        public virtual INSCR_PERFIL INSCR_PERFIL { get; set; }
+        //public virtual INSCR_PERFIL INSCR_PERFIL { get; set; }
     }
 }

@@ -12,13 +12,7 @@ namespace BancoDeQuestoes.Models
         public INSCR_ADMIN()
         {
             INSCR_ADMIN_PERFIL = new HashSet<INSCR_ADMIN_PERFIL>();
-            INSCR_CAD_DOCUMENTO = new HashSet<INSCR_CAD_DOCUMENTO>();
-            INSCR_DOCUMENTO = new HashSet<INSCR_DOCUMENTO>();
-            INSCR_OCORRENCIA = new HashSet<INSCR_OCORRENCIA>();
-            INSCR_PROVA_LOCAL = new HashSet<INSCR_PROVA_LOCAL>();
-            INSCR_PROVA_PROCESSO = new HashSet<INSCR_PROVA_PROCESSO>();
-            INSCR_RESULTADO_CAD_ADMIN = new HashSet<INSCR_RESULTADO_CAD_ADMIN>();
-            INSCR_RESULTADO_CAD_HISTORICO = new HashSet<INSCR_RESULTADO_CAD_HISTORICO>();
+            
         }
 
         [Key]
@@ -49,25 +43,6 @@ namespace BancoDeQuestoes.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSCR_ADMIN_PERFIL> INSCR_ADMIN_PERFIL { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCR_CAD_DOCUMENTO> INSCR_CAD_DOCUMENTO { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCR_DOCUMENTO> INSCR_DOCUMENTO { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCR_OCORRENCIA> INSCR_OCORRENCIA { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCR_PROVA_LOCAL> INSCR_PROVA_LOCAL { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCR_PROVA_PROCESSO> INSCR_PROVA_PROCESSO { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCR_RESULTADO_CAD_ADMIN> INSCR_RESULTADO_CAD_ADMIN { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCR_RESULTADO_CAD_HISTORICO> INSCR_RESULTADO_CAD_HISTORICO { get; set; }
+      
     }
 }

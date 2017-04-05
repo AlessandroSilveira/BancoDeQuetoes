@@ -37,9 +37,10 @@
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.DESC_ATIVO, new SelectList(new List<Object>
 					{
-			   new { value = "" , text = "Selecione"  },
-					new { value = "S" , text = "Sim"  },
-					new { value = "N" , text = "Não" }
+					new { value = "" , text = "Selecione"  },
+					new { value = "Alta Complexidade" , text = "Alta Complexidade"  },
+					new { value = "Média Complexidade" , text = "Média Complexidade" },
+					new { value = "Baixa Complexidade" , text = "Baixa Complexidade" }
 					}, "value", "text", new { @class = "form-control" }))
 				@Html.ValidationMessageFor(model => model.DESC_ATIVO, "", new { @class = "text-danger" })
                

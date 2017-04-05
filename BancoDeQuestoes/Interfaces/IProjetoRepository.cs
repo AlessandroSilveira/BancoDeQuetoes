@@ -11,7 +11,8 @@ namespace BancoDeQuestoes.Interfaces
         INSCR_BQ_PROJETO Find(int? id);
         void Add(INSCR_BQ_PROJETO iNscrBqProjeto);
         void SaveChanges();
-        DbEntityEntry<INSCR_BQ_PROJETO> Entry(INSCR_BQ_PROJETO iNscrBqProjeto);
+	    void Update(INSCR_BQ_PROJETO iNscrBqProjeto);
+        //DbEntityEntry<INSCR_BQ_PROJETO> Entry(INSCR_BQ_PROJETO iNscrBqProjeto);
         void Remove(INSCR_BQ_PROJETO iNscrBqProjeto);
         void Dispose();
     }

@@ -18,11 +18,11 @@ namespace BancoDeQuestoes.Models
         [DisplayName("ID Tópico")]
         public int ID_TOPICO { get; set; }
 
-        
-        public int ID_DISCIPLINA { get; set; }
+		[DisplayName("Área")]
+		public int ID_DISCIPLINA { get; set; }
 
-        [DisplayName("Cargo")]
-        public int? ID_CARGO { get; set; }
+	    [ScaffoldColumn(false), DisplayName("Cargo")]
+	    public int? ID_CARGO { get; set; }
 
         [StringLength(250)]
         [DisplayName("Titulo do Tópico")]
