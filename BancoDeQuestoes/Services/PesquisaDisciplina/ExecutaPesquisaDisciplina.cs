@@ -3,7 +3,7 @@ using System.Linq;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
 
-namespace BancoDeQuestoes.Services
+namespace BancoDeQuestoes.Services.PesquisaDisciplina
 {
 	public class ExecutaPesquisaDisciplina
 	{

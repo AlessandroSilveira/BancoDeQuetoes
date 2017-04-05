@@ -4,6 +4,7 @@ using System.Linq;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
 using BancoDeQuestoes.Services;
+using BancoDeQuestoes.Services.PesquisaDisciplina;
 
 namespace BancoDeQuestoes.Repositories
 {

@@ -3,7 +3,7 @@ using System.Linq;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
 
-namespace BancoDeQuestoes.Services
+namespace BancoDeQuestoes.Services.PesquisaDisciplina
 {
 	internal class DescNivel : IItensPesquisaDisciplina
 	{
