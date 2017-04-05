@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
+using BancoDeQuestoes.Services;
 
 namespace BancoDeQuestoes.Controllers
 {
@@ -18,15 +20,19 @@ namespace BancoDeQuestoes.Controllers
         }
 
         // GET: Disciplina
-        public ActionResult Index()
+        public ActionResult Index(IEnumerable<INSCR_BQ_TOPICO> iNscrBqTopico)
         {
 	        ViewBag.ListaDisciplinas = DisciplinaRepository.Area();
-			var iNscrBqTopico = DisciplinaRepository.GetAll();
+	        if (iNscrBqTopico == null)
+	        {
+				iNscrBqTopico = DisciplinaRepository.GetAll();
+			}
             return View(iNscrBqTopico.ToList());
         }
 
-        // GET: Disciplina/Details/5
-        public ActionResult Details(int? id)
+	
+		// GET: Disciplina/Details/5
+		public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -140,5 +146,14 @@ namespace BancoDeQuestoes.Controllers
             }
             base.Dispose(disposing);
         }
-    }
+
+		[HttpPost]
+	    public ActionResult Search(INSCR_BQ_TOPICO form)
+	    {
+			ViewBag.ListaDisciplinas = DisciplinaRepository.Area();
+			var iNscrBqTopico = DisciplinaRepository.GetAll(form);
+		    return View(iNscrBqTopico);
+	    }
+
+	}
 }

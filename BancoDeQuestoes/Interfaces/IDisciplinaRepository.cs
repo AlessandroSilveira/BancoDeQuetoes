@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using BancoDeQuestoes.Models;
+using BancoDeQuestoes.Services;
 
 namespace BancoDeQuestoes.Interfaces
 {
@@ -7,6 +8,6 @@ namespace BancoDeQuestoes.Interfaces
     {
 	    IEnumerable Cargo();
 	    IEnumerable Area();
-		
-    }
+		IEnumerable GetAll(INSCR_BQ_TOPICO form);
+	}
 }

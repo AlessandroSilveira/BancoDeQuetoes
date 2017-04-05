@@ -225,6 +225,7 @@
     <Compile Include="Interfaces\IBancaMestreRepository.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IDisciplinaRepository.cs" />
+    <Compile Include="Interfaces\IItensPesquisaDisciplina.cs" />
     <Compile Include="Interfaces\IProjetoRepository.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -263,7 +264,13 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\DisciplinaRepository.cs" />
     <Compile Include="Repositories\ProjetoRepository.cs" />
-    <Compile Include="Services\PesquisarDisciplinas.cs" />
+    <Compile Include="Services\PesquisaDisciplina\DescBibliografia.cs" />
+    <Compile Include="Services\PesquisaDisciplina\DescNivel.cs" />
+    <Compile Include="Services\PesquisaDisciplina\DescTitulo.cs" />
+    <Compile Include="Services\PesquisaDisciplina\DescTopico.cs" />
+    <Compile Include="Services\PesquisaDisciplina\ExecutaPesquisaDisciplina.cs" />
+    <Compile Include="Services\PesquisaDisciplina\IdDisciplina.cs" />
+    <Compile Include="Services\PesquisaDisciplina\ItensPesquisaDusciplina.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -344,6 +351,7 @@
     <Content Include="Views\BancaMestre\Edit.cshtml" />
     <Content Include="Views\BancaMestre\Index.cshtml" />
     <Content Include="Views\Shared\PesquisaDisciplina.cshtml" />
+    <Content Include="Views\Disciplina\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
