@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -19,8 +20,8 @@ namespace BancoDeQuestoes.Controllers
         // GET: Disciplina
         public ActionResult Index()
         {
-            ViewBag.ListaDisciplinas = DisciplinaRepository.ListaArea();
-            var iNscrBqTopico = DisciplinaRepository.List();
+	        ViewBag.ListaDisciplinas = DisciplinaRepository.Area();
+			var iNscrBqTopico = DisciplinaRepository.GetAll();
             return View(iNscrBqTopico.ToList());
         }
 
@@ -32,8 +33,9 @@ namespace BancoDeQuestoes.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var iNscrBqTopico = DisciplinaRepository.Find(id);
-            if (iNscrBqTopico == null)
+	        var iNscrBqTopico = DisciplinaRepository.GetById(Convert.ToInt32(id));
+
+			if (iNscrBqTopico == null)
             {
                 return HttpNotFound();
             }
@@ -61,8 +63,6 @@ namespace BancoDeQuestoes.Controllers
             if (ModelState.IsValid)
             {
                 DisciplinaRepository.Add(iNscrBqTopico);
-                DisciplinaRepository.SaveChanges();
-
                 return RedirectToAction("Index");
             }
 
@@ -80,8 +80,9 @@ namespace BancoDeQuestoes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var iNscrBqTopico = DisciplinaRepository.Find(id);
-            if (iNscrBqTopico == null)
+	        var iNscrBqTopico = DisciplinaRepository.GetById(Convert.ToInt32(id));
+
+			if (iNscrBqTopico == null)
             {
                 return HttpNotFound();
             }
@@ -92,14 +93,11 @@ namespace BancoDeQuestoes.Controllers
             return View(iNscrBqTopico);
         }
 
-        // POST: Disciplina/Edit/5
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
-        [Bind(
-            Include = "ID_TOPICO,ID_DISCIPLINA,ID_CARGO,DESC_TITULO,DESC_TOPICO,DESC_BIBLIOGRAFIA,DESC_ATIVO,DESC_NIVEL"
+        [Bind(Include = "ID_TOPICO,ID_DISCIPLINA,ID_CARGO,DESC_TITULO,DESC_TOPICO,DESC_BIBLIOGRAFIA,DESC_ATIVO,DESC_NIVEL"
         )] INSCR_BQ_TOPICO iNscrBqTopico)
         {
             if (!ModelState.IsValid)
@@ -110,30 +108,27 @@ namespace BancoDeQuestoes.Controllers
                     iNscrBqTopico.ID_DISCIPLINA);
                 return View(iNscrBqTopico);
             }
-            DisciplinaRepository.Entry(iNscrBqTopico).State = EntityState.Modified;
-            DisciplinaRepository.SaveChanges();
+            DisciplinaRepository.Update(iNscrBqTopico);
+           
             return RedirectToAction("Index");
         }
-
-        // GET: Disciplina/Delete/5
+       
         public ActionResult Delete(int? id)
         {
             if (id != null)
             {
-                var iNscrBqTopico = DisciplinaRepository.Find(id);
-                return iNscrBqTopico == null ? (ActionResult) HttpNotFound() : View(iNscrBqTopico);
+	            var iNscrBqTopico = DisciplinaRepository.GetById(Convert.ToInt32(id));
+				return iNscrBqTopico == null ? (ActionResult) HttpNotFound() : View(iNscrBqTopico);
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
-        // POST: Disciplina/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var iNscrBqTopico = DisciplinaRepository.Find(id);
+	        var iNscrBqTopico = DisciplinaRepository.GetById(Convert.ToInt32(id));
             DisciplinaRepository.Remove(iNscrBqTopico);
-            DisciplinaRepository.SaveChanges();
             return RedirectToAction("Index");
         }
 

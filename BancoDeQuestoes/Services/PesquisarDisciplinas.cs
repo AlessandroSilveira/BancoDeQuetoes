@@ -1,12 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using BancoDeQuestoes.Models;
-using BancoDeQuestoes.Repositories;
-
-namespace BancoDeQuestoes.Services
+﻿namespace BancoDeQuestoes.Services
 {
-    public class PesquisarDisciplinas :BaseRepository
+    public class PesquisarDisciplinas 
     {
         public string Area { get; set; }
         public string Nivel { get; set; }
@@ -16,9 +10,9 @@ namespace BancoDeQuestoes.Services
         public int TotalPagina { get; set; }
 
 
-        public List<INSCR_BQ_DISCIPLINA> ListaDisciplinas()
-        {
-            return _db.INSCR_BQ_DISCIPLINA.ToList();
-        }
+        //public List<INSCR_BQ_DISCIPLINA> ListaDisciplinas()
+        //{
+        //    return _db.INSCR_BQ_DISCIPLINA.ToList();
+        //}
     }
 }

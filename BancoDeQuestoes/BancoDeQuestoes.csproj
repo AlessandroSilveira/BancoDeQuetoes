@@ -223,6 +223,7 @@
     </Compile>
     <Compile Include="Interfaces\IAreaRepository.cs" />
     <Compile Include="Interfaces\IBancaMestreRepository.cs" />
+    <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IDisciplinaRepository.cs" />
     <Compile Include="Interfaces\IProjetoRepository.cs" />
     <Compile Include="Migrations\Configuration.cs" />
