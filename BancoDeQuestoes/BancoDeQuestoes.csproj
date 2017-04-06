@@ -217,6 +217,7 @@
     <Compile Include="Controllers\DisciplinaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MestreController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\RevisorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,6 +228,7 @@
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IDisciplinaRepository.cs" />
     <Compile Include="Interfaces\IItensPesquisaDisciplina.cs" />
+    <Compile Include="Interfaces\IMestreRepository.cs" />
     <Compile Include="Interfaces\IProjetoRepository.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -266,6 +268,7 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\DisciplinaRepository.cs" />
     <Compile Include="Interfaces\IRevisorRepository.cs" />
+    <Compile Include="Repositories\MestreRepository.cs" />
     <Compile Include="Repositories\ProjetoRepository.cs" />
     <Compile Include="Repositories\RevisorRepository.cs" />
     <Compile Include="Services\PesquisaDisciplina\DescBibliografia.cs" />
@@ -362,6 +365,11 @@
     <Content Include="Views\Revisor\Details.cshtml" />
     <Content Include="Views\Revisor\Edit.cshtml" />
     <Content Include="Views\Revisor\Index.cshtml" />
+    <Content Include="Views\Mestre\Create.cshtml" />
+    <Content Include="Views\Mestre\Delete.cshtml" />
+    <Content Include="Views\Mestre\Details.cshtml" />
+    <Content Include="Views\Mestre\Edit.cshtml" />
+    <Content Include="Views\Mestre\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
