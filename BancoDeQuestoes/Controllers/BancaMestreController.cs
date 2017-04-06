@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -19,7 +20,7 @@ namespace BancoDeQuestoes.Controllers
         // GET: BancaMestre
         public ActionResult Index()
         {
-            return View(BancaMestreRepository.List());
+            return View(BancaMestreRepository.GetAll());
         }
 
         // GET: BancaMestre/Details/5
@@ -27,7 +28,7 @@ namespace BancoDeQuestoes.Controllers
         {
             if (id != null)
             {
-                var iNscrBqBanca = BancaMestreRepository.Find(id);
+                var iNscrBqBanca = BancaMestreRepository.GetById(Convert.ToInt32(id));
                 return iNscrBqBanca == null ? (ActionResult) HttpNotFound() : View(iNscrBqBanca);
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -48,7 +49,6 @@ namespace BancoDeQuestoes.Controllers
         {
             if (!ModelState.IsValid) return View(iNSCR_BQ_BANCA);
             BancaMestreRepository.Add(iNSCR_BQ_BANCA);
-            BancaMestreRepository.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -57,7 +57,7 @@ namespace BancoDeQuestoes.Controllers
         {
             if (id != null)
             {
-                var iNscrBqBanca = BancaMestreRepository.Find(id);
+                var iNscrBqBanca = BancaMestreRepository.GetById(Convert.ToInt32(id));
                 if (iNscrBqBanca == null)
                 {
                     return HttpNotFound();
@@ -76,8 +76,7 @@ namespace BancoDeQuestoes.Controllers
         {
             if (ModelState.IsValid)
             {
-                BancaMestreRepository.Entry(iNSCR_BQ_BANCA).State = EntityState.Modified;
-                BancaMestreRepository.SaveChanges();
+                BancaMestreRepository.Update(iNSCR_BQ_BANCA);
                 return RedirectToAction("Index");
             }
             return View(iNSCR_BQ_BANCA);
@@ -90,8 +89,9 @@ namespace BancoDeQuestoes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var iNscrBqBanca = BancaMestreRepository.Find(id);
-            if (iNscrBqBanca == null)
+	        var iNscrBqBanca = BancaMestreRepository.GetById(Convert.ToInt32(id));
+
+			if (iNscrBqBanca == null)
             {
                 return HttpNotFound();
             }
@@ -103,9 +103,8 @@ namespace BancoDeQuestoes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var iNscrBqBanca = BancaMestreRepository.Find(id);
-            BancaMestreRepository.Remove(iNscrBqBanca);
-            BancaMestreRepository.SaveChanges();
+	        var iNscrBqBanca = BancaMestreRepository.GetById(Convert.ToInt32(id));
+			BancaMestreRepository.Remove(iNscrBqBanca);
             return RedirectToAction("Index");
         }
 

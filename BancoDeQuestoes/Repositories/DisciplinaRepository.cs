@@ -1,63 +1,71 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
+using BancoDeQuestoes.Services;
+using BancoDeQuestoes.Services.PesquisaDisciplina;
 
 namespace BancoDeQuestoes.Repositories
 {
-    public class DisciplinaRepository : BaseRepository, IDisciplinaRepository
-    {
-        public IQueryable<INSCR_BQ_TOPICO> List()
-        {
-            return _db.INSCR_BQ_TOPICO.Include(i => i.INSCR_BQ_CARGO_CBO).Include(i => i.INSCR_BQ_DISCIPLINA);
-        }
+	public class DisciplinaRepository : BaseRepository<INSCR_BQ_TOPICO>, IDisciplinaRepository
+	{
+		public IEnumerable Cargo()
+		{
+			return Db.INSCR_BQ_CARGO_CBO.ToList();
+		}
 
-        public INSCR_BQ_TOPICO Find(int? id)
-        {
-            return _db.INSCR_BQ_TOPICO.Find(id);
-        }
+		public IEnumerable Area()
+		{
+			return Db.INSCR_BQ_DISCIPLINA.ToList();
+		}
 
-        public IEnumerable Cargo()
-        {
-            return _db.INSCR_BQ_CARGO_CBO;
-        }
+		public IEnumerable GetAll(INSCR_BQ_TOPICO form)
+		{
+			var sql = Db.INSCR_BQ_TOPICO.ToList();
 
-        public IEnumerable Area()
-        {
-            return _db.INSCR_BQ_DISCIPLINA;
-        }
+			var itensPesquisa = new ItensPesquisaDusciplina();
+			IList<IItensPesquisaDisciplina> itensPesquisaDisciplinas = new List<IItensPesquisaDisciplina>()
+			{
+				itensPesquisa.Pega("DESC_TOPICO"),
+				itensPesquisa.Pega("ID_DISCIPLINA"),
+				itensPesquisa.Pega("DESC_TOPICO"),
+				itensPesquisa.Pega("DESC_BIBLIOGRAFIA"),
+				itensPesquisa.Pega("DESC_TOPICO"),
+				itensPesquisa.Pega("DESC_NIVEL")
+			};
 
-        public void Add(INSCR_BQ_TOPICO iNscrBqTopico)
-        {
-            _db.INSCR_BQ_TOPICO.Add(iNscrBqTopico);
-        }
+			var executa = new ExecutaPesquisaDisciplina();
 
-        public void SaveChanges()
-        {
-            _db.SaveChanges();
-        }
+			sql = executa.Executa(itensPesquisaDisciplinas, sql, form);
 
-        public DbEntityEntry<INSCR_BQ_TOPICO> Entry(INSCR_BQ_TOPICO iNscrBqTopico)
-        {
-            return _db.Entry(iNscrBqTopico);
-        }
+			return sql.ToList();
 
-        public void Remove(INSCR_BQ_TOPICO iNscrBqTopico)
-        {
-            _db.INSCR_BQ_TOPICO.Remove(iNscrBqTopico);
-        }
 
-        public void Dispose()
-        {
-            _db.Dispose();
-        }
+			//if (!string.IsNullOrEmpty(form.DESC_TITULO))
+			//{
+			//	sql = sql.Where(a => a.DESC_TITULO == form.DESC_TITULO).ToList();
+			//}
+			//   if (!string.IsNullOrEmpty(form.ID_DISCIPLINA.ToString()))
+			//   {
+			//    sql = sql.Where(a => a.ID_DISCIPLINA == form.ID_DISCIPLINA).ToList();
+			//   }
+			//   if (!string.IsNullOrEmpty(form.DESC_BIBLIOGRAFIA))
+			//{
+			//	sql = sql.Where(a => a.DESC_BIBLIOGRAFIA == form.DESC_BIBLIOGRAFIA).ToList();
+			//}
+			//if (!string.IsNullOrEmpty(form.DESC_TOPICO))
+			//{
+			//	sql = sql.Where(a => a.DESC_TOPICO == form.DESC_TOPICO).ToList();
+			//}
+			//if (!string.IsNullOrEmpty(form.DESC_NIVEL))
+			//{
+			//	sql = sql.Where(a => a.DESC_NIVEL == form.DESC_NIVEL).ToList();
+			//}
 
-        public List<INSCR_BQ_DISCIPLINA> ListaArea()
-        {
-            return _db.INSCR_BQ_DISCIPLINA.Where(a => a.DESC_ATIVO == "S").ToList();
-        }
-    }
+
+
+
+		}
+	}
 }

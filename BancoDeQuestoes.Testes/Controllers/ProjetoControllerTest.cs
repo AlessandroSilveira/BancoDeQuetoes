@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 using BancoDeQuestoes.Controllers;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
@@ -13,6 +15,7 @@ namespace BancoDeQuestoes.Testes.Controllers
 		private ProjetoController _projetoController;
 		private Mock<IProjetoRepository> _projetoRepoMock;
 		private MockRepository _repository;
+		//private Mock<IBaseRepository<INSCR_BQ_PROJETO>>  _baseRepositoryMock;
 
 		[SetUp]
 		public void Setup()
@@ -20,24 +23,28 @@ namespace BancoDeQuestoes.Testes.Controllers
 			_repository = new MockRepository(MockBehavior.Strict);
 			_projetoRepoMock = _repository.Create<IProjetoRepository>();
 			_projetoController = new ProjetoController(_projetoRepoMock.Object);
+			//_baseRepositoryMock = _repository.Create<IBaseRepository<INSCR_BQ_PROJETO>>();
 		}
 
 		[Test]
 		public void Index()
 		{
-			_projetoRepoMock.Setup(m=>m.List()).Verifiable();
+			_projetoRepoMock.Setup(m=>m.GetAll()).Returns(It.IsAny<IEnumerable<INSCR_BQ_PROJETO>>()).Verifiable();
+
+			//_baseRepositoryMock.Setup(m=>m.GetAll()).Returns(It).Verifiable();
 
 			_projetoController.Index();
 
-			_projetoRepoMock.Verify();
+			_projetoRepoMock.VerifyAll();
 		}
 
 		[Test]
 		public void Details()
 		{
-			int? id = 1;
-			_projetoRepoMock.Setup(m => m.Find(id)).Returns(It.IsAny<INSCR_BQ_PROJETO>()).Verifiable();
-			_projetoController.Details(id);
+			_projetoRepoMock.Setup(m => m.GetById(1)).Returns(It.IsAny<INSCR_BQ_PROJETO>()).Verifiable();
+
+			_projetoController.Details(1);
+
 			_repository.VerifyAll();
 		}
 
@@ -67,7 +74,7 @@ namespace BancoDeQuestoes.Testes.Controllers
 		[Test]
 		public void Edit()
 		{
-			_projetoRepoMock.Setup(m => m.Find(1)).Returns(It.IsAny<INSCR_BQ_PROJETO>()).Verifiable();
+			_projetoRepoMock.Setup(m => m.GetById(It.IsAny<int>())).Returns(It.IsAny<INSCR_BQ_PROJETO>()).Verifiable();
 
 			_projetoController.Edit(1);
 
@@ -91,7 +98,7 @@ namespace BancoDeQuestoes.Testes.Controllers
 		[Test]
 		public void Delete()
 		{
-			_projetoRepoMock.Setup(m => m.Find(1)).Returns(It.IsAny<INSCR_BQ_PROJETO>()).Verifiable();
+			_projetoRepoMock.Setup(m => m.GetById(1)).Returns(It.IsAny<INSCR_BQ_PROJETO>()).Verifiable();
 
 			_projetoController.Edit(1);
 

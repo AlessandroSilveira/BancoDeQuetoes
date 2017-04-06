@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -20,7 +21,7 @@ namespace BancoDeQuestoes.Controllers
         public ActionResult Index()
         {
 
-            return View(AreaRepository.List());
+            return View(AreaRepository.GetAll());
         }
 
         // GET: Disciplina/Details/5
@@ -31,7 +32,7 @@ namespace BancoDeQuestoes.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             
-            var iNscrBqDisciplina = AreaRepository.Find(id);
+            var iNscrBqDisciplina = AreaRepository.GetById(Convert.ToInt32(id));
             return iNscrBqDisciplina == null ? (ActionResult)HttpNotFound() : View(iNscrBqDisciplina);
         }
 
@@ -50,8 +51,6 @@ namespace BancoDeQuestoes.Controllers
         {
             if (!ModelState.IsValid) return View(iNSCR_BQ_DISCIPLINA);
             AreaRepository.Add(iNSCR_BQ_DISCIPLINA);
-            AreaRepository.SaveChanges();
-
             return RedirectToAction("Index");
         }
 
@@ -62,7 +61,7 @@ namespace BancoDeQuestoes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var iNscrBqDisciplina = AreaRepository.Find(id);
+            var iNscrBqDisciplina = AreaRepository.GetById(Convert.ToInt32(id));
             return iNscrBqDisciplina == null ? (ActionResult)HttpNotFound() : View(iNscrBqDisciplina);
         }
 
@@ -74,8 +73,7 @@ namespace BancoDeQuestoes.Controllers
         public ActionResult Edit([Bind(Include = "ID_DISCIPLINA,DESC_DISCIPLINA,TIPO_CONH_ESPEC,DESC_ATIVO")] INSCR_BQ_DISCIPLINA iNSCR_BQ_DISCIPLINA)
         {
             if (!ModelState.IsValid) return View(iNSCR_BQ_DISCIPLINA);
-            AreaRepository.Entry(iNSCR_BQ_DISCIPLINA).State = EntityState.Modified;
-            AreaRepository.SaveChanges();
+            AreaRepository.Update(iNSCR_BQ_DISCIPLINA);
             return RedirectToAction("Index");
         }
 
@@ -86,7 +84,7 @@ namespace BancoDeQuestoes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var iNscrBqDisciplina = AreaRepository.Find(id);
+            var iNscrBqDisciplina = AreaRepository.GetById(Convert.ToInt32(id));
             if (iNscrBqDisciplina == null)
             {
                 return HttpNotFound();
@@ -99,12 +97,8 @@ namespace BancoDeQuestoes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var iNscrBqDisciplina = AreaRepository.Find(id);
-
+            var iNscrBqDisciplina = AreaRepository.GetById(Convert.ToInt32(id));
             AreaRepository.Remove(iNscrBqDisciplina);
-
-            //db.INSCR_BQ_DISCIPLINA.Remove(iNscrBqDisciplina);
-            AreaRepository.SaveChanges();
             return RedirectToAction("Index");
         }
 

@@ -1,65 +1,59 @@
 ﻿
-
-	@{
-		using (Html.BeginForm("PesquisarDisciplinas", "Disciplina", FormMethod.Post, new {@id = "form"}))
-		{
-			<form class="form-horizontal">
-				<fieldset>
-					<legend>Pesquisar</legend>
-					<div class="form-group">
-						<label for="Area" class="col-lg-2 control-label">Área</label>
-						<div class="col-lg-4">
-							<select class="form-control" id="Area" name="Area">
-								<option value="">Selecione</option>
-								@foreach (var itens in ViewBag.ListaDisciplinas)
-								{
-									<option value="@itens.ID_DISCIPLINA">@itens.DESC_DISCIPLINA</option>
-								}
-							</select>
-
-						</div>
-						<label for="Nivel" class="col-lg-2 control-label">Nível</label>
-						<div class="col-lg-4">
-							@Html.DropDownList("DESC_NIVEL", new SelectList(new List<Object>
+@{
+	using (Html.BeginForm("Search", "Disciplina", FormMethod.Post))
+	{
+		<form class="form-horizontal">
+			<fieldset>
+				<legend>Pesquisar</legend>
+				<div class="form-group">
+					<label for="Area" class="col-lg-2 control-label">Área</label>
+					<div class="col-lg-4">
+						<select class="form-control" id="ID_DISCIPLINA" name="ID_DISCIPLINA">
+							<option value="">Selecione</option>
+							@foreach (var itens in ViewBag.ListaDisciplinas)
 							{
-								new {value = "", text = "Selecione"},
-								new {value = "Alta Complexidade", text = "Alta Complexidade"},
-								new {value = "Média Complexidade", text = "Média Complexidade"},
-								new {value = "Baixa Complexidade", text = "Baixa Complexidade"}
-							}, "value", "text", new {@class = "form-control !important"}))
-							@Html.ValidationMessage("DESC_NIVEL", new {@class = "text-danger"})
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="Disciplina" class="col-lg-2 control-label">Disciplina</label>
-						<div class="col-lg-4">
+								<option value="@itens.ID_DISCIPLINA">@itens.DESC_DISCIPLINA</option>
+							}
+						</select>
 
-							@Html.Editor("DESC_TITULO", new {htmlAttributes = new {@class = "form-control"}})
-
-						</div>
-						<label for="Descricao" class="col-lg-2 control-label">Descrição</label>
-						<div class="col-lg-4">
-
-							@Html.Editor("DESC_TOPICO", new {htmlAttributes = new {@class = "form-control"}})
-						</div>
 					</div>
-					<div class="form-group">
-						<label for="Biblioteca" class="col-lg-2 control-label">Bibliografia</label>
-						<div class="col-lg-4">
+					<label for="Nivel" class="col-lg-2 control-label">Nível</label>
+					<div class="col-lg-4">
 
-							@Html.Editor("DESC_BIBLIOGRAFIA", new {htmlAttributes = new {@class = "form-control"}})
-						</div>
-						<label for="TotalPagina" class="col-lg-2 control-label">Total de itens por página</label>
-						<div class="col-lg-4">
-							@Html.Editor("TotalItens", new {htmlAttributes = new {@class = "form-control"}})
-						</div>
+						<select class="form-control" id="DESC_NIVEL" name="DESC_NIVEL">
+							<option value="">Selecione</option>
+							<option value="Alta Complexidade">Alta Complexidade</option>
+							<option value="Média Complexidade">Média Complexidade</option>
+							<option value="Baixa Complexidade">Baixa Complexidade</option>
+						</select>
 					</div>
-					<div class="form-group">
-						<div class="col-lg-4 col-lg-offset-4">
-							<button type="submit" class="btn btn-primary">Enviar</button>
-						</div>
+				</div>
+				<div class="form-group">
+					<label for="Disciplina" class="col-lg-2 control-label">Disciplina</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="DESC_TITULO" name="DESC_TITULO" placeholder="Disciplina">
 					</div>
-				</fieldset>
-			</form>
-		}
+					<label for="Descricao" class="col-lg-2 control-label">Descrição</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="DESC_TOPICO" name="DESC_TOPICO" placeholder="Descrição">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="Biblioteca" class="col-lg-2 control-label">Bibliografia</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="DESC_BIBLIOGRAFIA" name="DESC_BIBLIOGRAFIA" placeholder="Biblioteca">
+					</div>
+					<label for="TotalPagina" class="col-lg-2 control-label">Total de itens por página</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="TotalPagina" name="TotalPagina" placeholder="Total de Páginas">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-4 col-lg-offset-4">
+						<button type="submit" class="btn btn-primary">Enviar</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
 	}
+}
