@@ -34,7 +34,7 @@
          <div class="form-group">
             @Html.LabelFor(model => model.DESC_CEP, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DESC_CEP, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DESC_CEP, new { htmlAttributes = new { @style="width:100px", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DESC_CEP, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -236,34 +236,33 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.DESC_DDD, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DESC_DDD, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DESC_DDD, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.DESC_TELEFONE, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DESC_TELEFONE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DESC_TELEFONE, "", new { @class = "text-danger" })
+				@Html.EditorFor(model => model.DESC_DDD, new { htmlAttributes = new { @style = "float:left;width:50px !important", @class = "form-control" } })  @Html.EditorFor(model => model.DESC_TELEFONE, new { htmlAttributes = new { @style = "float:left;width:150px !important;margin-left:20px", @class = "form-control" } }) @Html.ValidationMessageFor(model => model.DESC_TELEFONE, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.DESC_DDD_CEL, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DESC_DDD_CEL, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DESC_DDD_CEL, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.DESC_CELULAR, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DESC_CELULAR, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.EditorFor(model => model.DESC_DDD_CEL, new { htmlAttributes = new {@style="float:left;width:50px !important", @class = "form-control" } })  @Html.EditorFor(model => model.DESC_CELULAR, new { htmlAttributes = new { @style = "float:left;width:150px !important;margin-left:20px", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DESC_CELULAR, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -287,7 +286,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DESC_ATIVO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DESC_ATIVO, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="DESC_ATIVO" id="DESC_ATIVO" class="form-control">
+					<option value="">Selecione</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
                 @Html.ValidationMessageFor(model => model.DESC_ATIVO, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -311,7 +314,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DESC_TIPO_CONTA, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DESC_TIPO_CONTA, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="DESC_TIPO_CONTA" id="DESC_TIPO_CONTA" class="form-control">
+					<option value="">Selecione</option>
+					<option value="Conta Corrente">Conta Corrente</option>
+					<option value="Conta Poupança">Conta Poupança</option>
+				</select>
                 @Html.ValidationMessageFor(model => model.DESC_TIPO_CONTA, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -439,15 +446,24 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ENTREGOU_COPIA_DIPLOMA_GRADUACAO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ENTREGOU_COPIA_DIPLOMA_GRADUACAO, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ENTREGOU_COPIA_DIPLOMA_GRADUACAO, "", new { @class = "text-danger" })
-            </div>
+               
+				<select name="ENTREGOU_COPIA_DIPLOMA_GRADUACAO" id="ENTREGOU_COPIA_DIPLOMA_GRADUACAO" class="form-control">
+					<option value="">Selecione</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
+					@Html.ValidationMessageFor(model => model.ENTREGOU_COPIA_DIPLOMA_GRADUACAO, "", new { @class = "text-danger" })
+</div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.DIPLOMA_GRADUACAO_AUTENTICADO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DIPLOMA_GRADUACAO_AUTENTICADO, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="DIPLOMA_GRADUACAO_AUTENTICADO" id="DIPLOMA_GRADUACAO_AUTENTICADO" class="form-control">
+					<option value="">Selecione</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
                 @Html.ValidationMessageFor(model => model.DIPLOMA_GRADUACAO_AUTENTICADO, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -463,7 +479,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ENTREGOU_COPIA_DIPLOMA_POSGRADUACAO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ENTREGOU_COPIA_DIPLOMA_POSGRADUACAO, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="ENTREGOU_COPIA_DIPLOMA_POSGRADUACAO" id="ENTREGOU_COPIA_DIPLOMA_POSGRADUACAO" class="form-control">
+					<option value="">Selecione</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
                 @Html.ValidationMessageFor(model => model.ENTREGOU_COPIA_DIPLOMA_POSGRADUACAO, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -471,7 +491,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DIPLOMA_POSGRADUACAO_AUTENTICADO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DIPLOMA_POSGRADUACAO_AUTENTICADO, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="DIPLOMA_POSGRADUACAO_AUTENTICADO" id="DIPLOMA_POSGRADUACAO_AUTENTICADO" class="form-control">
+					<option value="">Selecione</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
                 @Html.ValidationMessageFor(model => model.DIPLOMA_POSGRADUACAO_AUTENTICADO, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -487,7 +511,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ENTREGOU_COPIA_DIPLOMA_MESTRADO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ENTREGOU_COPIA_DIPLOMA_MESTRADO, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="ENTREGOU_COPIA_DIPLOMA_MESTRADO" id="ENTREGOU_COPIA_DIPLOMA_MESTRADO" class="form-control">
+					<option value="">Selecione</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
                 @Html.ValidationMessageFor(model => model.ENTREGOU_COPIA_DIPLOMA_MESTRADO, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -495,7 +523,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DIPLOMA_MESTRADO_AUTENTICADO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DIPLOMA_MESTRADO_AUTENTICADO, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="DIPLOMA_MESTRADO_AUTENTICADO" id="DIPLOMA_MESTRADO_AUTENTICADO" class="form-control">
+					<option value="">Selecione</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
                 @Html.ValidationMessageFor(model => model.DIPLOMA_MESTRADO_AUTENTICADO, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -511,7 +543,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ENTREGOU_COPIA_DIPLOMA_DOUTORADO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ENTREGOU_COPIA_DIPLOMA_DOUTORADO, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="ENTREGOU_COPIA_DIPLOMA_DOUTORADO" id="ENTREGOU_COPIA_DIPLOMA_DOUTORADO" class="form-control">
+					<option value="">Selecione</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
                 @Html.ValidationMessageFor(model => model.ENTREGOU_COPIA_DIPLOMA_DOUTORADO, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -519,7 +555,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DIPLOMA_DOUTORADO_AUTENTICADO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DIPLOMA_DOUTORADO_AUTENTICADO, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="DIPLOMA_DOUTORADO_AUTENTICADO" id="DIPLOMA_DOUTORADO_AUTENTICADO" class="form-control">
+					<option value="">Selecione</option>
+					<option value="S">Sim</option>
+					<option value="N">Não</option>
+				</select>
                 @Html.ValidationMessageFor(model => model.DIPLOMA_DOUTORADO_AUTENTICADO, "", new { @class = "text-danger" })
             </div>
         </div>
