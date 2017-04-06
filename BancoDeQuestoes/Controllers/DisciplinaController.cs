@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
+using BancoDeQuestoes.Repositories;
 
 namespace BancoDeQuestoes.Controllers
 {
@@ -136,6 +137,14 @@ namespace BancoDeQuestoes.Controllers
             DisciplinaRepository.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult PesquisarDisciplinas(PesquisaDisciplinas form) { }
+        {
+           var iNscrBqTopico = DisciplinaRepository.ObterPesquisaDisciplina(form);
+            return RedirectToAction("Index");
+        }
+    
 
         protected override void Dispose(bool disposing)
         {

@@ -18,5 +18,6 @@ namespace BancoDeQuestoes.Interfaces
         void Remove(INSCR_BQ_TOPICO iNscrBqTopico);
         void Dispose();
         List<INSCR_BQ_DISCIPLINA> ListaArea();
+        object ObterPesquisaDisciplina(object form);
     }
 }
