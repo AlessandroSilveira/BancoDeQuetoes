@@ -68,6 +68,7 @@ namespace BancoDeQuestoes.App_Start
 			kernel.Bind<IAreaRepository>().To<AreaRepository>();
 			kernel.Bind<IDisciplinaRepository>().To<DisciplinaRepository>();
 			kernel.Bind<IBancaMestreRepository>().To<BancaMestreRepository>();
-		}        
+            kernel.Bind<IRevisorRepository>().To<RevisorRepository>();
+        }        
     }
 }

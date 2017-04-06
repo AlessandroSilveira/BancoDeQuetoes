@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_REVISOR>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Revisor</h2>
+
+<p>
+    @Html.ActionLink("Novo Revisor", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_NOME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_ENDERECO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_CIDADE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_ESTADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_TELEFONE)
+        </th>
+        <th>
+           @Html.DisplayNameFor(model => model.DESC_CELULAR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_SENHA)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_ATIVO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_NOME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_ENDERECO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_CIDADE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_ESTADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_EMAIL)
+        </td>
+        <td>
+			@Html.DisplayFor(modelItem => item.DESC_DDD)-@Html.DisplayFor(modelItem => item.DESC_TELEFONE)
+        </td>
+        <td>
+			@Html.DisplayFor(modelItem => item.DESC_DDD_CEL)-@Html.DisplayFor(modelItem => item.DESC_CELULAR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_SENHA)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_ATIVO)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_REVISOR }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ID_REVISOR }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.ID_REVISOR })
+        </td>
+    </tr>
+}
+
+</table>

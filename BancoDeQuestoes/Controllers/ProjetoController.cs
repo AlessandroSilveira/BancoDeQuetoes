@@ -43,27 +43,16 @@ namespace BancoDeQuestoes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_PROJETO,COD_PROJETO,DESC_PROJETO,DESC_ATIVO")] INSCR_BQ_PROJETO iNscrBqProjeto)
         {
-            if (ModelState.IsValid)
-            {
-                ProjetoRepository.Add(iNscrBqProjeto);
-                return RedirectToAction("Index");
-            }
-            return View(iNscrBqProjeto);
+            if (!ModelState.IsValid) return View(iNscrBqProjeto);
+            ProjetoRepository.Add(iNscrBqProjeto);
+            return RedirectToAction("Index");
         }
 		
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var iNscrBqProjeto = ProjetoRepository.GetById(Convert.ToInt32(id));
-			if (iNscrBqProjeto == null)
-            {
-                return HttpNotFound();
-            }
-           
-            return View(iNscrBqProjeto);
+            return iNscrBqProjeto == null ? (ActionResult) HttpNotFound() : View(iNscrBqProjeto);
         }
 
 		[HttpPost]
@@ -77,16 +66,12 @@ namespace BancoDeQuestoes.Controllers
         
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (id != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var iNscrBqProjeto = ProjetoRepository.GetById(Convert.ToInt32(id));
+                return iNscrBqProjeto == null ? (ActionResult) HttpNotFound() : View(iNscrBqProjeto);
             }
-            var iNscrBqProjeto = ProjetoRepository.GetById(Convert.ToInt32(id));
-			if (iNscrBqProjeto == null)
-            {
-                return HttpNotFound();
-            }
-            return View(iNscrBqProjeto);
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 		
         [HttpPost, ActionName("Delete")]

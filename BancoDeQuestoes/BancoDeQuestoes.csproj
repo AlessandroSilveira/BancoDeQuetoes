@@ -218,6 +218,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
+    <Compile Include="Controllers\RevisorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -264,7 +265,9 @@
     <Compile Include="Repositories\BancaMestreRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\DisciplinaRepository.cs" />
+    <Compile Include="Interfaces\IRevisorRepository.cs" />
     <Compile Include="Repositories\ProjetoRepository.cs" />
+    <Compile Include="Repositories\RevisorRepository.cs" />
     <Compile Include="Services\PesquisaDisciplina\DescBibliografia.cs" />
     <Compile Include="Services\PesquisaDisciplina\DescNivel.cs" />
     <Compile Include="Services\PesquisaDisciplina\DescTitulo.cs" />
@@ -353,6 +356,11 @@
     <Content Include="Views\BancaMestre\Index.cshtml" />
     <Content Include="Views\Shared\PesquisaDisciplina.cshtml" />
     <Content Include="Views\Disciplina\Search.cshtml" />
+    <Content Include="Views\Revisor\Create.cshtml" />
+    <Content Include="Views\Revisor\Delete.cshtml" />
+    <Content Include="Views\Revisor\Details.cshtml" />
+    <Content Include="Views\Revisor\Edit.cshtml" />
+    <Content Include="Views\Revisor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

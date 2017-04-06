@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
-using BancoDeQuestoes.Services;
 
 namespace BancoDeQuestoes.Controllers
 {
@@ -18,8 +16,7 @@ namespace BancoDeQuestoes.Controllers
         {
             DisciplinaRepository = disciplinaRepository;
         }
-
-        // GET: Disciplina
+       
         public ActionResult Index(IEnumerable<INSCR_BQ_TOPICO> iNscrBqTopico)
         {
 	        ViewBag.ListaDisciplinas = DisciplinaRepository.Area();
@@ -29,9 +26,7 @@ namespace BancoDeQuestoes.Controllers
 			}
             return View(iNscrBqTopico.ToList());
         }
-
-	
-		// GET: Disciplina/Details/5
+		
 		public ActionResult Details(int? id)
         {
             if (id == null)
@@ -47,18 +42,14 @@ namespace BancoDeQuestoes.Controllers
             }
             return View(iNscrBqTopico);
         }
-
-        // GET: Disciplina/Create
+      
         public ActionResult Create()
         {
             ViewBag.ID_CARGO = new SelectList(DisciplinaRepository.Cargo(), "ID_CARGO_CBO", "DESC_CARGO");
             ViewBag.ID_DISCIPLINA = new SelectList(DisciplinaRepository.Area(), "ID_DISCIPLINA", "DESC_DISCIPLINA");
             return View();
         }
-
-        // POST: Disciplina/Create
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(
@@ -79,7 +70,7 @@ namespace BancoDeQuestoes.Controllers
             return View(iNscrBqTopico);
         }
 
-        // GET: Disciplina/Edit/5
+        
         public ActionResult Edit(int? id)
         {
             if (id == null)

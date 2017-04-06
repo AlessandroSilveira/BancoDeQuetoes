@@ -40,32 +40,7 @@ namespace BancoDeQuestoes.Repositories
 			sql = executa.Executa(itensPesquisaDisciplinas, sql, form);
 
 			return sql.ToList();
-
-
-			//if (!string.IsNullOrEmpty(form.DESC_TITULO))
-			//{
-			//	sql = sql.Where(a => a.DESC_TITULO == form.DESC_TITULO).ToList();
-			//}
-			//   if (!string.IsNullOrEmpty(form.ID_DISCIPLINA.ToString()))
-			//   {
-			//    sql = sql.Where(a => a.ID_DISCIPLINA == form.ID_DISCIPLINA).ToList();
-			//   }
-			//   if (!string.IsNullOrEmpty(form.DESC_BIBLIOGRAFIA))
-			//{
-			//	sql = sql.Where(a => a.DESC_BIBLIOGRAFIA == form.DESC_BIBLIOGRAFIA).ToList();
-			//}
-			//if (!string.IsNullOrEmpty(form.DESC_TOPICO))
-			//{
-			//	sql = sql.Where(a => a.DESC_TOPICO == form.DESC_TOPICO).ToList();
-			//}
-			//if (!string.IsNullOrEmpty(form.DESC_NIVEL))
-			//{
-			//	sql = sql.Where(a => a.DESC_NIVEL == form.DESC_NIVEL).ToList();
-			//}
-
-
-
-
+            
 		}
 	}
 }

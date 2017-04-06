@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using BancoDeQuestoes.Interfaces;
+﻿using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
 
 namespace BancoDeQuestoes.Repositories

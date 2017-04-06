@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using BancoDeQuestoes.Interfaces;
@@ -16,33 +14,24 @@ namespace BancoDeQuestoes.Controllers
         }
 
         private IBancaMestreRepository BancaMestreRepository { get; set; }
-
-        // GET: BancaMestre
+       
         public ActionResult Index()
         {
             return View(BancaMestreRepository.GetAll());
         }
-
-        // GET: BancaMestre/Details/5
+        
         public ActionResult Details(int? id)
         {
-            if (id != null)
-            {
-                var iNscrBqBanca = BancaMestreRepository.GetById(Convert.ToInt32(id));
-                return iNscrBqBanca == null ? (ActionResult) HttpNotFound() : View(iNscrBqBanca);
-            }
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var iNscrBqBanca = BancaMestreRepository.GetById(Convert.ToInt32(id));
+            return iNscrBqBanca == null ? (ActionResult) HttpNotFound() : View(iNscrBqBanca);
         }
-
-        // GET: BancaMestre/Create
+        
         public ActionResult Create()
         {
             return View();
         }
-
-        // POST: BancaMestre/Create
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_BANCA,DESC_BANCA,DESC_STATUS,DESC_VALOR_PORCENTAGEM")] INSCR_BQ_BANCA iNSCR_BQ_BANCA)
@@ -51,54 +40,31 @@ namespace BancoDeQuestoes.Controllers
             BancaMestreRepository.Add(iNSCR_BQ_BANCA);
             return RedirectToAction("Index");
         }
-
-        // GET: BancaMestre/Edit/5
+       
         public ActionResult Edit(int? id)
         {
-            if (id != null)
-            {
-                var iNscrBqBanca = BancaMestreRepository.GetById(Convert.ToInt32(id));
-                if (iNscrBqBanca == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(iNscrBqBanca);
-            }
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var iNscrBqBanca = BancaMestreRepository.GetById(Convert.ToInt32(id));
+            return iNscrBqBanca == null ? (ActionResult) HttpNotFound() : View(iNscrBqBanca);
         }
-
-        // POST: BancaMestre/Edit/5
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID_BANCA,DESC_BANCA,DESC_STATUS,DESC_VALOR_PORCENTAGEM")] INSCR_BQ_BANCA iNSCR_BQ_BANCA)
         {
-            if (ModelState.IsValid)
-            {
-                BancaMestreRepository.Update(iNSCR_BQ_BANCA);
-                return RedirectToAction("Index");
-            }
-            return View(iNSCR_BQ_BANCA);
+            if (!ModelState.IsValid) return View(iNSCR_BQ_BANCA);
+            BancaMestreRepository.Update(iNSCR_BQ_BANCA);
+            return RedirectToAction("Index");
         }
-
-        // GET: BancaMestre/Delete/5
+        
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-	        var iNscrBqBanca = BancaMestreRepository.GetById(Convert.ToInt32(id));
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var iNscrBqBanca = BancaMestreRepository.GetById(Convert.ToInt32(id));
 
-			if (iNscrBqBanca == null)
-            {
-                return HttpNotFound();
-            }
-            return View(iNscrBqBanca);
+            return iNscrBqBanca == null ? (ActionResult) HttpNotFound() : View(iNscrBqBanca);
         }
-
-        // POST: BancaMestre/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
