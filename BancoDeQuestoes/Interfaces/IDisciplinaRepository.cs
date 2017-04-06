@@ -8,6 +8,6 @@ namespace BancoDeQuestoes.Interfaces
     {
 	    IEnumerable Cargo();
 	    IEnumerable Area();
-		IEnumerable GetAll(INSCR_BQ_TOPICO form);
+		IEnumerable ResultadoPesquisaDisciplina(INSCR_BQ_TOPICO form);
 	}
 }

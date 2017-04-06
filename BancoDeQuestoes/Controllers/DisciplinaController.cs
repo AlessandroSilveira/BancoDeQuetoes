@@ -151,7 +151,7 @@ namespace BancoDeQuestoes.Controllers
 	    public ActionResult Search(INSCR_BQ_TOPICO form)
 	    {
 			ViewBag.ListaDisciplinas = DisciplinaRepository.Area();
-			var iNscrBqTopico = DisciplinaRepository.GetAll(form);
+			var iNscrBqTopico = DisciplinaRepository.ResultadoPesquisaDisciplina(form);
 		    return View(iNscrBqTopico);
 	    }
 

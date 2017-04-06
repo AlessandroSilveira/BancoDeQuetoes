@@ -20,10 +20,22 @@ namespace BancoDeQuestoes.Repositories
 			return Db.INSCR_BQ_DISCIPLINA.ToList();
 		}
 
-		public IEnumerable GetAll(INSCR_BQ_TOPICO form)
+		public IEnumerable ResultadoPesquisaDisciplina(INSCR_BQ_TOPICO form)
 		{
 			var sql = Db.INSCR_BQ_TOPICO.ToList();
 
+			return ExecutadorDePesquisa(form, sql).ToList();
+		}
+
+		private static List<INSCR_BQ_TOPICO> ExecutadorDePesquisa(INSCR_BQ_TOPICO form, List<INSCR_BQ_TOPICO> sql)
+		{
+			var executaPesquisa = new ExecutaPesquisaDisciplina();
+
+			return executaPesquisa.Executa(ItensPesquisaDisciplinas(), sql, form);
+		}
+
+		private static IList<IItensPesquisaDisciplina> ItensPesquisaDisciplinas()
+		{
 			var itensPesquisa = new ItensPesquisaDusciplina();
 			IList<IItensPesquisaDisciplina> itensPesquisaDisciplinas = new List<IItensPesquisaDisciplina>()
 			{
@@ -34,38 +46,7 @@ namespace BancoDeQuestoes.Repositories
 				itensPesquisa.Pega("DESC_TOPICO"),
 				itensPesquisa.Pega("DESC_NIVEL")
 			};
-
-			var executa = new ExecutaPesquisaDisciplina();
-
-			sql = executa.Executa(itensPesquisaDisciplinas, sql, form);
-
-			return sql.ToList();
-
-
-			//if (!string.IsNullOrEmpty(form.DESC_TITULO))
-			//{
-			//	sql = sql.Where(a => a.DESC_TITULO == form.DESC_TITULO).ToList();
-			//}
-			//   if (!string.IsNullOrEmpty(form.ID_DISCIPLINA.ToString()))
-			//   {
-			//    sql = sql.Where(a => a.ID_DISCIPLINA == form.ID_DISCIPLINA).ToList();
-			//   }
-			//   if (!string.IsNullOrEmpty(form.DESC_BIBLIOGRAFIA))
-			//{
-			//	sql = sql.Where(a => a.DESC_BIBLIOGRAFIA == form.DESC_BIBLIOGRAFIA).ToList();
-			//}
-			//if (!string.IsNullOrEmpty(form.DESC_TOPICO))
-			//{
-			//	sql = sql.Where(a => a.DESC_TOPICO == form.DESC_TOPICO).ToList();
-			//}
-			//if (!string.IsNullOrEmpty(form.DESC_NIVEL))
-			//{
-			//	sql = sql.Where(a => a.DESC_NIVEL == form.DESC_NIVEL).ToList();
-			//}
-
-
-
-
+			return itensPesquisaDisciplinas;
 		}
 	}
 }
