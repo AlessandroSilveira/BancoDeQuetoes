@@ -47,6 +47,7 @@ namespace BancoDeQuestoes.Repositories
 				itensPesquisa.Pega("DESC_NIVEL")
 			};
 			return itensPesquisaDisciplinas;
+            
 		}
 	}
 }
