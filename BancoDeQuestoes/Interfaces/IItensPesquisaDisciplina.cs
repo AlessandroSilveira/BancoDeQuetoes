@@ -6,5 +6,6 @@ namespace BancoDeQuestoes.Interfaces
 	public interface IItensPesquisaDisciplina
 	{
 		List<INSCR_BQ_TOPICO> Pesquisa(INSCR_BQ_TOPICO form, List<INSCR_BQ_TOPICO> sql);
+		IItensPesquisaDisciplina Proximo { get; set; }
 	}
 }

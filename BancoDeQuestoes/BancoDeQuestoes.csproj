@@ -276,6 +276,7 @@
     <Compile Include="Services\PesquisaDisciplina\DescTitulo.cs" />
     <Compile Include="Services\PesquisaDisciplina\DescTopico.cs" />
     <Compile Include="Services\PesquisaDisciplina\ExecutaPesquisaDisciplina.cs" />
+    <Compile Include="Services\PesquisaDisciplina\FimPesquisa.cs" />
     <Compile Include="Services\PesquisaDisciplina\IdDisciplina.cs" />
     <Compile Include="Services\PesquisaDisciplina\ItensPesquisaDusciplina.cs" />
     <Compile Include="Startup.cs" />

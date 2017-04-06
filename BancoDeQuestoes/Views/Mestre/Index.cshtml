@@ -1,400 +1,98 @@
 ﻿@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_MESTRE>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Mestre</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	@Html.ActionLink("Novo Mestre", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.INSCR_BQ_BANCA.DESC_BANCA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_NOME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_CEP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_ENDERECO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_COMPLEMENTO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_NUMERO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_BAIRRO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_CIDADE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_ESTADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_FORMACAO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GRAU_FORMACAO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_INSTITUICAO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_FORMACAO_2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GRAU_FORMACAO_2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_INSTITUICAO_2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_FORMACAO_3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GRAU_FORMACAO_3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_INSTITUICAO_3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_FORMACAO_4)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GRAU_FORMACAO_4)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_INSTITUICAO_4)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_CPF)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_EMAIL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_EMAIL_2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_DDD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_TELEFONE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_DDD_CEL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_CELULAR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_SENHA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_DISCIPLINA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_ATIVO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_BANCO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_AGENCIA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_TIPO_CONTA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_CONTA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_FILHOS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_PIS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_NOME_DEPENDENTE1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_DOCUMENTO_DEPENDENTE1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_DATA_NASCIMENTO_DEPENDENTE1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_NOME_DEPENDENTE2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_DOCUMENTO_DEPENDENTE2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_DATA_NASCIMENTO_DEPENDENTE2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_NOME_DEPENDENTE3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_DOCUMENTO_DEPENDENTE3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_DATA_NASCIMENTO_DEPENDENTE3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CURRICULO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DIPLOMA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DESC_ACEITE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ENTREGOU_COPIA_DIPLOMA_GRADUACAO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DIPLOMA_GRADUACAO_AUTENTICADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NUMERO_COPIAS_DIPLOMA_AUTENTICADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ENTREGOU_COPIA_DIPLOMA_POSGRADUACAO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DIPLOMA_POSGRADUACAO_AUTENTICADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NUMERO_COPIAS_DIPLOMA_POSGRADUACAO_AUTENTICADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ENTREGOU_COPIA_DIPLOMA_MESTRADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DIPLOMA_MESTRADO_AUTENTICADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NUMERO_COPIAS_DIPLOMA_MESTRADO_AUTENTICADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ENTREGOU_COPIA_DIPLOMA_DOUTORADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DIPLOMA_DOUTORADO_AUTENTICADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NUMERO_COPIAS_DIPLOMA_DOUTORADO_AUTENTICADO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MINICURRICULO)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.DESC_NOME)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DESC_SENHA)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.INSCR_BQ_BANCA.DESC_BANCA)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DESC_TELEFONE)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DESC_CELULAR)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DESC_EMAIL)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DESC_FORMACAO)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DESC_FORMACAO_2)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DESC_FORMACAO_3)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DESC_FORMACAO_4)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DESC_ATIVO)
+		</th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.INSCR_BQ_BANCA.DESC_BANCA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_NOME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_CEP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_ENDERECO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_COMPLEMENTO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_NUMERO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_BAIRRO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_CIDADE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_ESTADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_FORMACAO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GRAU_FORMACAO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_INSTITUICAO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_FORMACAO_2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GRAU_FORMACAO_2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_INSTITUICAO_2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_FORMACAO_3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GRAU_FORMACAO_3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_INSTITUICAO_3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_FORMACAO_4)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GRAU_FORMACAO_4)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_INSTITUICAO_4)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_CPF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_EMAIL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_EMAIL_2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_DDD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_TELEFONE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_DDD_CEL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_CELULAR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_SENHA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_DISCIPLINA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_ATIVO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_BANCO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_AGENCIA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_TIPO_CONTA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_CONTA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_FILHOS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_PIS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_NOME_DEPENDENTE1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_DOCUMENTO_DEPENDENTE1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_DATA_NASCIMENTO_DEPENDENTE1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_NOME_DEPENDENTE2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_DOCUMENTO_DEPENDENTE2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_DATA_NASCIMENTO_DEPENDENTE2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_NOME_DEPENDENTE3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_DOCUMENTO_DEPENDENTE3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_DATA_NASCIMENTO_DEPENDENTE3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CURRICULO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DIPLOMA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DESC_ACEITE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ENTREGOU_COPIA_DIPLOMA_GRADUACAO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DIPLOMA_GRADUACAO_AUTENTICADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NUMERO_COPIAS_DIPLOMA_AUTENTICADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ENTREGOU_COPIA_DIPLOMA_POSGRADUACAO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DIPLOMA_POSGRADUACAO_AUTENTICADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NUMERO_COPIAS_DIPLOMA_POSGRADUACAO_AUTENTICADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ENTREGOU_COPIA_DIPLOMA_MESTRADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DIPLOMA_MESTRADO_AUTENTICADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NUMERO_COPIAS_DIPLOMA_MESTRADO_AUTENTICADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ENTREGOU_COPIA_DIPLOMA_DOUTORADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DIPLOMA_DOUTORADO_AUTENTICADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NUMERO_COPIAS_DIPLOMA_DOUTORADO_AUTENTICADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MINICURRICULO)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_MESTRE }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_MESTRE }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_MESTRE })
-        </td>
-    </tr>
-}
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.DESC_NOME)
+			</td>
+			
+			<td>
+				@Html.DisplayFor(modelItem => item.DESC_SENHA)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.INSCR_BQ_BANCA.DESC_BANCA)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DESC_DDD) - @Html.DisplayFor(modelItem => item.DESC_TELEFONE)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DESC_DDD_CEL) - @Html.DisplayFor(modelItem => item.DESC_CELULAR)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DESC_EMAIL)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DESC_FORMACAO)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DESC_FORMACAO_2)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DESC_FORMACAO_3)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DESC_FORMACAO_3)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DESC_ATIVO)
+			</td>
+			
+			<td>
+				@Html.ActionLink("Editar", "Edit", new { id = item.ID_MESTRE }) |
+				@Html.ActionLink("Details", "Details", new { id = item.ID_MESTRE }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.ID_MESTRE })
+			</td>
+		</tr>
+	}
 
 </table>

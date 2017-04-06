@@ -25,10 +25,10 @@ namespace BancoDeQuestoes.Models
 	    public int? ID_CARGO { get; set; }
 
         [StringLength(250)]
-        [DisplayName("Titulo do Tópico")]
+        [DisplayName("Titulo da Disciplina")]
         public string DESC_TITULO { get; set; }
 
-        [DisplayName("Descrição do Tópico")]
+        [DisplayName("Descrição da Disciplina")]
         public string DESC_TOPICO { get; set; }
 
         [DisplayName("Bibliografia")]

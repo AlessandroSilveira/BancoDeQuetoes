@@ -1,12 +1,11 @@
+using System.ComponentModel;
+
 namespace BancoDeQuestoes.Models
 {
-    using System;
-    using System.Collections.Generic;
+	using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
-    public partial class INSCR_BQ_MESTRE
+	public partial class INSCR_BQ_MESTRE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public INSCR_BQ_MESTRE()
@@ -17,187 +16,273 @@ namespace BancoDeQuestoes.Models
         }
 
         [Key]
+		[Required]
         public int ID_MESTRE { get; set; }
 
-        public int? ID_BANCA { get; set; }
+		[Required]
+		[DisplayName("Banca")]
+		public int? ID_BANCA { get; set; }
 
         [StringLength(500)]
-        public string DESC_NOME { get; set; }
+		[Required]
+		[DisplayName("Nome")]
+		public string DESC_NOME { get; set; }
 
         [StringLength(8)]
-        public string DESC_CEP { get; set; }
-
-        public string DESC_ENDERECO { get; set; }
+		[Required]
+		[DisplayName("CEP")]
+		public string DESC_CEP { get; set; }
+		[Required]
+		[DisplayName("Endereço")]
+		public string DESC_ENDERECO { get; set; }
 
         [StringLength(100)]
-        public string DESC_COMPLEMENTO { get; set; }
+		[DisplayName("Complemento")]
+		public string DESC_COMPLEMENTO { get; set; }
 
         [StringLength(5)]
-        public string DESC_NUMERO { get; set; }
+		[Required]
+		[DisplayName("Número")]
+		public string DESC_NUMERO { get; set; }
 
         [StringLength(100)]
-        public string DESC_BAIRRO { get; set; }
+		[Required]
+		[DisplayName("Bairro")]
+		public string DESC_BAIRRO { get; set; }
 
         [StringLength(50)]
-        public string DESC_CIDADE { get; set; }
+		[Required]
+		[DisplayName("Cidade")]
+		public string DESC_CIDADE { get; set; }
 
         [StringLength(2)]
-        public string DESC_ESTADO { get; set; }
+		[Required]
+		[DisplayName("UF")]
+		public string DESC_ESTADO { get; set; }
 
-        public string DESC_FORMACAO { get; set; }
-
-        [StringLength(50)]
-        public string GRAU_FORMACAO { get; set; }
-
-        [StringLength(50)]
-        public string DESC_INSTITUICAO { get; set; }
-
-        public string DESC_FORMACAO_2 { get; set; }
+		[Required]
+		[DisplayName("Formação")]
+		public string DESC_FORMACAO { get; set; }
 
         [StringLength(50)]
-        public string GRAU_FORMACAO_2 { get; set; }
+		[Required]
+		[DisplayName("Grau de Formação")]
+		public string GRAU_FORMACAO { get; set; }
 
         [StringLength(50)]
-        public string DESC_INSTITUICAO_2 { get; set; }
+		[Required]
+		[DisplayName("Instituição")]
+		public string DESC_INSTITUICAO { get; set; }
 
-        public string DESC_FORMACAO_3 { get; set; }
-
-        [StringLength(50)]
-        public string GRAU_FORMACAO_3 { get; set; }
-
-        [StringLength(50)]
-        public string DESC_INSTITUICAO_3 { get; set; }
+		[DisplayName("Segunda Formação")]
+		public string DESC_FORMACAO_2 { get; set; }
 
         [StringLength(50)]
-        public string DESC_FORMACAO_4 { get; set; }
+		[DisplayName("Grau de Formação")]
+		public string GRAU_FORMACAO_2 { get; set; }
 
         [StringLength(50)]
-        public string GRAU_FORMACAO_4 { get; set; }
+		[DisplayName("Instituição")]
+		public string DESC_INSTITUICAO_2 { get; set; }
+
+		[DisplayName("Terceira Formação")]
+		public string DESC_FORMACAO_3 { get; set; }
 
         [StringLength(50)]
-        public string DESC_INSTITUICAO_4 { get; set; }
+		[DisplayName("Grau de Formação")]
+		public string GRAU_FORMACAO_3 { get; set; }
+
+        [StringLength(50)]
+		[DisplayName("Instituição")]
+		public string DESC_INSTITUICAO_3 { get; set; }
+
+        [StringLength(50)]
+		[DisplayName("Quarta Formação")]
+		public string DESC_FORMACAO_4 { get; set; }
+
+        [StringLength(50)]
+		[DisplayName("Grau de Formação")]
+		public string GRAU_FORMACAO_4 { get; set; }
+
+        [StringLength(50)]
+		[DisplayName("Instituição")]
+		public string DESC_INSTITUICAO_4 { get; set; }
 
         [StringLength(11)]
-        public string DESC_CPF { get; set; }
+		[DisplayName("CPF")]
+		[Required]
+		public string DESC_CPF { get; set; }
 
         [StringLength(150)]
-        public string DESC_EMAIL { get; set; }
+		[DisplayName("Email")]
+		[Required]
+		public string DESC_EMAIL { get; set; }
 
-        [StringLength(150)]
+		[StringLength(150)]
+		[DisplayName("Email alternativo")]
+		[Required]
         public string DESC_EMAIL_2 { get; set; }
 
         [StringLength(2)]
-        public string DESC_DDD { get; set; }
+		[DisplayName("DDD")]
+		[Required]
+		public string DESC_DDD { get; set; }
 
         [StringLength(8)]
-        public string DESC_TELEFONE { get; set; }
+		[DisplayName("Telefone")]
+		[Required]
+		public string DESC_TELEFONE { get; set; }
 
-        [StringLength(2)]
-        public string DESC_DDD_CEL { get; set; }
+        
+		[StringLength(2)]
+		[DisplayName("DDD")]
+		[Required]
+		public string DESC_DDD_CEL { get; set; }
 
         [StringLength(9)]
-        public string DESC_CELULAR { get; set; }
+		[DisplayName("Celular")]
+		[Required]
+		public string DESC_CELULAR { get; set; }
 
         [StringLength(8)]
-        public string DESC_SENHA { get; set; }
+		[DisplayName("Senha")]
+		[Required]
+		public string DESC_SENHA { get; set; }
 
         [StringLength(50)]
-        public string DESC_DISCIPLINA { get; set; }
+		[DisplayName("Área")]
+		public string DESC_DISCIPLINA { get; set; }
 
         [StringLength(1)]
-        public string DESC_ATIVO { get; set; }
+		[DisplayName("Ativo")]
+		public string DESC_ATIVO { get; set; }
 
         [StringLength(50)]
-        public string DESC_BANCO { get; set; }
+		[DisplayName("Banco")]
+		[Required]
+		public string DESC_BANCO { get; set; }
 
         [StringLength(50)]
-        public string DESC_AGENCIA { get; set; }
+		[DisplayName("Agência")]
+		[Required]
+		public string DESC_AGENCIA { get; set; }
 
         [StringLength(50)]
-        public string DESC_TIPO_CONTA { get; set; }
+		[DisplayName("Tipo de Conta")]
+		[Required]
+		public string DESC_TIPO_CONTA { get; set; }
 
         [StringLength(50)]
-        public string DESC_CONTA { get; set; }
+		[DisplayName("Conta")]
+		[Required]
+		public string DESC_CONTA { get; set; }
 
         [StringLength(2)]
-        public string DESC_FILHOS { get; set; }
+		[DisplayName("Filhos")]
+		public string DESC_FILHOS { get; set; }
 
         [StringLength(50)]
-        public string DESC_PIS { get; set; }
+		[DisplayName("PIS")]
+		public string DESC_PIS { get; set; }
 
         [StringLength(250)]
-        public string DESC_NOME_DEPENDENTE1 { get; set; }
+		[DisplayName("Nome Dependente")]
+		public string DESC_NOME_DEPENDENTE1 { get; set; }
 
         [StringLength(15)]
-        public string DESC_DOCUMENTO_DEPENDENTE1 { get; set; }
+		[DisplayName("Documento")]
+		public string DESC_DOCUMENTO_DEPENDENTE1 { get; set; }
 
         [StringLength(10)]
-        public string DESC_DATA_NASCIMENTO_DEPENDENTE1 { get; set; }
+		[DisplayName("Data de Nascimento do Dependente")]
+		public string DESC_DATA_NASCIMENTO_DEPENDENTE1 { get; set; }
 
         [StringLength(250)]
-        public string DESC_NOME_DEPENDENTE2 { get; set; }
+		[DisplayName("Nome Dependente")]
+		public string DESC_NOME_DEPENDENTE2 { get; set; }
 
         [StringLength(15)]
-        public string DESC_DOCUMENTO_DEPENDENTE2 { get; set; }
+		[DisplayName("Documento")]
+		public string DESC_DOCUMENTO_DEPENDENTE2 { get; set; }
 
         [StringLength(10)]
-        public string DESC_DATA_NASCIMENTO_DEPENDENTE2 { get; set; }
+		[DisplayName("Data de Nascimento do Dependente")]
+		public string DESC_DATA_NASCIMENTO_DEPENDENTE2 { get; set; }
 
         [StringLength(15)]
-        public string DESC_NOME_DEPENDENTE3 { get; set; }
+		[DisplayName("Nome Dependente")]
+		public string DESC_NOME_DEPENDENTE3 { get; set; }
 
         [StringLength(15)]
-        public string DESC_DOCUMENTO_DEPENDENTE3 { get; set; }
+		[DisplayName("Documento")]
+		public string DESC_DOCUMENTO_DEPENDENTE3 { get; set; }
 
         [StringLength(10)]
-        public string DESC_DATA_NASCIMENTO_DEPENDENTE3 { get; set; }
+		[DisplayName("Data de Nascimento do Dependente")]
+		public string DESC_DATA_NASCIMENTO_DEPENDENTE3 { get; set; }
 
         [StringLength(3)]
-        public string CURRICULO { get; set; }
+		[DisplayName("Currículo")]
+		public string CURRICULO { get; set; }
 
         [StringLength(3)]
-        public string DIPLOMA { get; set; }
+		[DisplayName("Diploma")]
+		public string DIPLOMA { get; set; }
 
         [StringLength(1)]
-        public string DESC_ACEITE { get; set; }
+		[DisplayName("Aceite")]
+		public string DESC_ACEITE { get; set; }
 
         [StringLength(50)]
-        public string ENTREGOU_COPIA_DIPLOMA_GRADUACAO { get; set; }
+		[DisplayName("Entregou a cópia do diploma de graduação")]
+		public string ENTREGOU_COPIA_DIPLOMA_GRADUACAO { get; set; }
 
         [StringLength(50)]
-        public string DIPLOMA_GRADUACAO_AUTENTICADO { get; set; }
+		[DisplayName("Diploma está Autenticado?")]
+		public string DIPLOMA_GRADUACAO_AUTENTICADO { get; set; }
 
         [StringLength(50)]
+		[DisplayName("Número de Cópias Autenticadas:")]
         public string NUMERO_COPIAS_DIPLOMA_AUTENTICADO { get; set; }
 
         [StringLength(50)]
-        public string ENTREGOU_COPIA_DIPLOMA_POSGRADUACAO { get; set; }
+		[DisplayName("Entregou a cópia do diploma de Pós-graduação")]
+		public string ENTREGOU_COPIA_DIPLOMA_POSGRADUACAO { get; set; }
 
         [StringLength(50)]
-        public string DIPLOMA_POSGRADUACAO_AUTENTICADO { get; set; }
+		[DisplayName("Diploma está Autenticado?")]
+		public string DIPLOMA_POSGRADUACAO_AUTENTICADO { get; set; }
 
         [StringLength(50)]
-        public string NUMERO_COPIAS_DIPLOMA_POSGRADUACAO_AUTENTICADO { get; set; }
+		[DisplayName("Número de Cópias Autenticadas:")]
+		public string NUMERO_COPIAS_DIPLOMA_POSGRADUACAO_AUTENTICADO { get; set; }
 
         [StringLength(50)]
-        public string ENTREGOU_COPIA_DIPLOMA_MESTRADO { get; set; }
+		[DisplayName("Entregou a cópia do diploma de Mestrado")]
+		public string ENTREGOU_COPIA_DIPLOMA_MESTRADO { get; set; }
 
         [StringLength(50)]
-        public string DIPLOMA_MESTRADO_AUTENTICADO { get; set; }
+		[DisplayName("Diploma está Autenticado?")]
+		public string DIPLOMA_MESTRADO_AUTENTICADO { get; set; }
 
         [StringLength(50)]
-        public string NUMERO_COPIAS_DIPLOMA_MESTRADO_AUTENTICADO { get; set; }
+		[DisplayName("Número de Cópias Autenticadas:")]
+		public string NUMERO_COPIAS_DIPLOMA_MESTRADO_AUTENTICADO { get; set; }
 
         [StringLength(50)]
-        public string ENTREGOU_COPIA_DIPLOMA_DOUTORADO { get; set; }
+		[DisplayName("Entregou a cópia do diploma de Mestrado")]
+		public string ENTREGOU_COPIA_DIPLOMA_DOUTORADO { get; set; }
 
         [StringLength(50)]
-        public string DIPLOMA_DOUTORADO_AUTENTICADO { get; set; }
+		[DisplayName("Diploma está Autenticado?")]
+		public string DIPLOMA_DOUTORADO_AUTENTICADO { get; set; }
 
         [StringLength(50)]
-        public string NUMERO_COPIAS_DIPLOMA_DOUTORADO_AUTENTICADO { get; set; }
+		[DisplayName("Número de Cópias Autenticadas:")]
+		public string NUMERO_COPIAS_DIPLOMA_DOUTORADO_AUTENTICADO { get; set; }
 
-        public string MINICURRICULO { get; set; }
+		[DisplayName("Mini-currículo")]
+		public string MINICURRICULO { get; set; }
 
         public virtual INSCR_BQ_BANCA INSCR_BQ_BANCA { get; set; }
 

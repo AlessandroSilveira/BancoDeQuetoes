@@ -7,6 +7,7 @@ namespace BancoDeQuestoes.Services
 {
 	internal class IdDisciplina : IItensPesquisaDisciplina
 	{
+		public IItensPesquisaDisciplina Proximo { get; set; }
 		public List<INSCR_BQ_TOPICO> Pesquisa(INSCR_BQ_TOPICO form, List<INSCR_BQ_TOPICO> sql)
 		{
 			if (form.ID_DISCIPLINA>0)
@@ -14,7 +15,9 @@ namespace BancoDeQuestoes.Services
 				sql = sql.Where(a => a.ID_DISCIPLINA == form.ID_DISCIPLINA).ToList();
 			}
 
-			return sql.ToList();
+			return Proximo.Pesquisa(form, sql);
 		}
+
+		
 	}
 }

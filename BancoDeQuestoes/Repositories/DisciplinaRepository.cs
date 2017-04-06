@@ -27,27 +27,24 @@ namespace BancoDeQuestoes.Repositories
 			return ExecutadorDePesquisa(form, sql).ToList();
 		}
 
-		private static List<INSCR_BQ_TOPICO> ExecutadorDePesquisa(INSCR_BQ_TOPICO form, List<INSCR_BQ_TOPICO> sql)
+		private static IEnumerable<INSCR_BQ_TOPICO> ExecutadorDePesquisa(INSCR_BQ_TOPICO form, List<INSCR_BQ_TOPICO> sql)
 		{
-			var executaPesquisa = new ExecutaPesquisaDisciplina();
+			var filtroDescTopico = new DescTopico();
+			var filtroIdDisciplina = new IdDisciplina();
+			var filtroDescTitulo = new DescTitulo();
+			var filtroDescBibliografia = new DescBibliografia();
+			var filtroDescNivel = new DescNivel();
+			var filtroFimPesquisa = new FimPesquisa();
 
-			return executaPesquisa.Executa(ItensPesquisaDisciplinas(), sql, form);
-		}
+			filtroDescTopico.Proximo = filtroIdDisciplina;
+			filtroIdDisciplina.Proximo = filtroDescTitulo;
+			filtroDescTitulo.Proximo = filtroDescBibliografia;
+			filtroDescBibliografia.Proximo = filtroDescNivel;
 
-		private static IList<IItensPesquisaDisciplina> ItensPesquisaDisciplinas()
-		{
-			var itensPesquisa = new ItensPesquisaDusciplina();
-			IList<IItensPesquisaDisciplina> itensPesquisaDisciplinas = new List<IItensPesquisaDisciplina>()
-			{
-				itensPesquisa.Pega("DESC_TOPICO"),
-				itensPesquisa.Pega("ID_DISCIPLINA"),
-				itensPesquisa.Pega("DESC_TOPICO"),
-				itensPesquisa.Pega("DESC_BIBLIOGRAFIA"),
-				itensPesquisa.Pega("DESC_TOPICO"),
-				itensPesquisa.Pega("DESC_NIVEL")
-			};
-			return itensPesquisaDisciplinas;
-            
+			//Deixar a classe FimPesquisa sempre por ultimo, ela é que finaliza e retorna a consulta, sem ela dárá um erro
+			filtroDescNivel.Proximo = filtroFimPesquisa;
+
+			return filtroDescTopico.Pesquisa(form, sql);
 		}
 	}
 }

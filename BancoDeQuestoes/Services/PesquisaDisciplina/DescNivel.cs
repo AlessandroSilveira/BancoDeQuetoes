@@ -14,7 +14,9 @@ namespace BancoDeQuestoes.Services.PesquisaDisciplina
 				sql = sql.Where(a => a.DESC_NIVEL == form.DESC_NIVEL).ToList();
 			}
 
-			return sql.ToList();
+			return Proximo.Pesquisa(form, sql);
 		}
+
+		public IItensPesquisaDisciplina Proximo { get; set; }
 	}
 }
