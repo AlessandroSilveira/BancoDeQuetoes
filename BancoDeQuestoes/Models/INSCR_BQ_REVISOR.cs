@@ -91,10 +91,12 @@ namespace BancoDeQuestoes.Models
 
         [StringLength(150)]
         [DisplayName("Email")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string DESC_EMAIL { get; set; }
 
         [StringLength(150)]
         [DisplayName("Email Secundário")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string DESC_EMAIL_2 { get; set; }
 
         [StringLength(2)]
