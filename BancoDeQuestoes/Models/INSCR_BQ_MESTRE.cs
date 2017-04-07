@@ -14,7 +14,9 @@ namespace BancoDeQuestoes.Models
             INSCR_BQ_CONVITE_REVISAO_MESTRE = new HashSet<INSCR_BQ_CONVITE_REVISAO_MESTRE>();
             INSCR_BQ_TOPICO_ATRIBUIDO = new HashSet<INSCR_BQ_TOPICO_ATRIBUIDO>();
             INSCR_BQ_MESTRE_FORMACAO = new List<INSCR_BQ_MESTRE_FORMACAO>();
-        }
+			MestreDependente = new List<MestreDependente>();
+
+		}
 
         [Key]
 		[Required]
@@ -299,5 +301,8 @@ namespace BancoDeQuestoes.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSCR_BQ_MESTRE_FORMACAO>  INSCR_BQ_MESTRE_FORMACAO { get; set; }
 
-    }
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+		public virtual ICollection<MestreDependente> MestreDependente { get; set; }
+
+	}
 }

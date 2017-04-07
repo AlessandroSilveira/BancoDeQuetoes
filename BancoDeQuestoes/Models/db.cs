@@ -38,12 +38,13 @@ namespace BancoDeQuestoes.Models
         public virtual DbSet<INSCR_BQ_TOPICO> INSCR_BQ_TOPICO { get; set; }
         public virtual DbSet<INSCR_BQ_TOPICO_ATRIBUIDO> INSCR_BQ_TOPICO_ATRIBUIDO { get; set; }
         public virtual DbSet<INSCR_BQ_MESTRE_FORMACAO> INSCR_BQ_MESTRE_FORMACAO { get; set; }
+		public virtual DbSet<MestreDependente> MestreDependente { get; set; }
 
 
 
 
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<INSCR_ADMIN>()
                 .HasMany(e => e.INSCR_ADMIN_PERFIL)
@@ -94,9 +95,11 @@ namespace BancoDeQuestoes.Models
 
 
             modelBuilder.Entity<INSCR_BQ_MESTRE_FORMACAO>();
-                
 
-            modelBuilder.Entity<INSCR_BQ_MESTRE>()
+			modelBuilder.Entity<MestreDependente>();
+
+
+			modelBuilder.Entity<INSCR_BQ_MESTRE>()
                 .HasMany(e => e.INSCR_BQ_CONVITE_REVISAO_MESTRE)
                 .WithRequired(e => e.INSCR_BQ_MESTRE)
                 .WillCascadeOnDelete(false);
