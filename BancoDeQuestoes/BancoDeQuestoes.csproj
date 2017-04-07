@@ -230,6 +230,7 @@
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IDisciplinaRepository.cs" />
     <Compile Include="Interfaces\IItensPesquisaDisciplina.cs" />
+    <Compile Include="Interfaces\IItensPesquisaMestre.cs" />
     <Compile Include="Interfaces\IMestreFormacaoRepository.cs" />
     <Compile Include="Interfaces\IMestreRepository.cs" />
     <Compile Include="Interfaces\IProjetoRepository.cs" />
@@ -290,11 +291,14 @@
     <Compile Include="Repositories\DisciplinaRepository.cs" />
     <Compile Include="Interfaces\IRevisorRepository.cs" />
     <Compile Include="Interfaces\IMestreDependentesRepository.cs" />
+    <Compile Include="Repositories\FimPesquisaMestre.cs" />
     <Compile Include="Repositories\MestreDependentesRepository.cs" />
     <Compile Include="Repositories\MestreFormacaoRepository.cs" />
     <Compile Include="Repositories\MestreRepository.cs" />
+    <Compile Include="Repositories\NomeMestre.cs" />
     <Compile Include="Repositories\ProjetoRepository.cs" />
     <Compile Include="Repositories\RevisorRepository.cs" />
+    <Compile Include="Repositories\StatusMestre.cs" />
     <Compile Include="Services\PesquisaDisciplina\DescBibliografia.cs" />
     <Compile Include="Services\PesquisaDisciplina\DescNivel.cs" />
     <Compile Include="Services\PesquisaDisciplina\DescTitulo.cs" />
@@ -399,6 +403,8 @@
     <Content Include="Views\MestreDependentes\Details.cshtml" />
     <Content Include="Views\MestreDependentes\Edit.cshtml" />
     <Content Include="Views\MestreDependentes\Index.cshtml" />
+    <Content Include="Views\Shared\PesquisaMestres.cshtml" />
+    <Content Include="Views\Mestre\Search.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -408,6 +414,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Services\PesquisaMestre\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

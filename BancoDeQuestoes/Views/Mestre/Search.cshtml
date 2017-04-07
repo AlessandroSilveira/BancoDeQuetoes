@@ -17,7 +17,7 @@
 		<th>
 			@Html.DisplayNameFor(model => model.DESC_NOME)
 		</th>
-		
+
 		<th>
 			@Html.DisplayNameFor(model => model.INSCR_BQ_BANCA.DESC_BANCA)
 		</th>
@@ -46,8 +46,8 @@
 			<td>
 				@Html.DisplayFor(modelItem => item.DESC_NOME)
 			</td>
-			
-			
+
+
 			<td>
 				@Html.DisplayFor(modelItem => item.INSCR_BQ_BANCA.DESC_BANCA)
 			</td>
@@ -69,15 +69,15 @@
 				}
 				@ativo
 			</td>
-			
+
 			<td>
 				@Html.ActionLink("Editar", "Edit", new { id = item.ID_MESTRE }) |
 				@Html.ActionLink("Detalhes", "Details", new { id = item.ID_MESTRE }) |
-				@Html.ActionLink("Adicionar Formação", "Index","MestreFormacao", new { id = item.ID_MESTRE },null) |
-				@Html.ActionLink("Adicionar Dependentes", "Index","MestreDependentes", new { id = item.ID_MESTRE },null) |
+				@Html.ActionLink("Adicionar Formação", "Index", "MestreFormacao", new { id = item.ID_MESTRE }, null) |
+				@Html.ActionLink("Adicionar Dependentes", "Index", "MestreDependentes", new { id = item.ID_MESTRE }, null) |
 				@Html.ActionLink("Excluir", "Delete", new { id = item.ID_MESTRE })
 			</td>
 		</tr>
-	}
+					}
 
 </table>

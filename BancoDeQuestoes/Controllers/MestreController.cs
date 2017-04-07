@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
+using BancoDeQuestoes.Repositories;
 
 namespace BancoDeQuestoes.Controllers
 {
@@ -92,7 +93,17 @@ namespace BancoDeQuestoes.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+
+		[HttpPost]
+		public ActionResult Search(INSCR_BQ_MESTRE form)
+		{
+			
+			var iNscrBqTopico = MestreRepository.ResultadoPesquisaMestre(form);
+			return View(iNscrBqTopico);
+		}
+
+
+		protected override void Dispose(bool disposing)
         {
             if (disposing)
             {

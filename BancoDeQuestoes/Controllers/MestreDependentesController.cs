@@ -45,7 +45,11 @@ namespace BancoDeQuestoes.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create([Bind(Include = "IdMestreDependente,IDMestre,Nome,Documento,DataDeNascimento")] MestreDependente mestreDependente)
 		{
-			if (!ModelState.IsValid) return View(mestreDependente);
+			if (!ModelState.IsValid)
+			{
+				ViewBag.DadosMestre = MestreRepository.GetById(mestreDependente.IDMestre);
+				return View(mestreDependente);
+			}
 			MestreDependenteRepository.Add(mestreDependente);
 			ViewBag.DadosMestre = MestreRepository.GetById(mestreDependente.IDMestre);
 			return RedirectToAction("Index", new { id = ViewBag.DadosMestre.ID_MESTRE });

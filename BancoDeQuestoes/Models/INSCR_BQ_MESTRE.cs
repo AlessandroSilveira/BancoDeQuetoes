@@ -63,17 +63,17 @@ namespace BancoDeQuestoes.Models
 		[DisplayName("UF")]
 		public string DESC_ESTADO { get; set; }
 
-		[Required]
+		
 		[DisplayName("Formação")]
 		public string DESC_FORMACAO { get; set; }
 
         [StringLength(50)]
-		[Required]
+		
 		[DisplayName("Grau de Formação")]
 		public string GRAU_FORMACAO { get; set; }
 
         [StringLength(50)]
-		[Required]
+		
 		[DisplayName("Instituição")]
 		public string DESC_INSTITUICAO { get; set; }
 
