@@ -5,7 +5,7 @@ namespace BancoDeQuestoes.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BancoDeQuestoes.Models.db>
+    internal sealed class Configuration : DbMigrationsConfiguration<Models.db>
     {
         public Configuration()
         {
@@ -14,20 +14,20 @@ namespace BancoDeQuestoes.Migrations
 
         }
 
-        protected override void Seed(BancoDeQuestoes.Models.db context)
+        protected override void Seed(Models.db context)
         {
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            //context.inscr.AddOrUpdate(
+            //  p => p.FullName,
+            //  new Person { FullName = "Andrew Peters" },
+            //  new Person { FullName = "Brice Lambson" },
+            //  new Person { FullName = "Rowan Miller" }
+            //);
+
         }
     }
 }

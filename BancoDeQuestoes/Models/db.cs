@@ -40,25 +40,14 @@ namespace BancoDeQuestoes.Models
         public virtual DbSet<INSCR_BQ_TOP_DISC_CARGO> INSCR_BQ_TOP_DISC_CARGO { get; set; }
         public virtual DbSet<INSCR_BQ_TOPICO> INSCR_BQ_TOPICO { get; set; }
         public virtual DbSet<INSCR_BQ_TOPICO_ATRIBUIDO> INSCR_BQ_TOPICO_ATRIBUIDO { get; set; }
-      
-      
-      
-       
-       
+        public virtual DbSet<INSCR_BQ_MESTRE_FORMACAO> INSCR_BQ_MESTRE_FORMACAO { get; set; }
+
+
+
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-           
-
-           
-
-          
-
-            
-
-           
-
-            
-
             modelBuilder.Entity<INSCR_ADMIN>()
                 .HasMany(e => e.INSCR_ADMIN_PERFIL)
                 .WithRequired(e => e.INSCR_ADMIN)
@@ -99,6 +88,11 @@ namespace BancoDeQuestoes.Models
             modelBuilder.Entity<INSCR_BQ_MESTRE>()
                 .HasMany(e => e.INSCR_BQ_CONVITE_MESTRE)
                 .WithRequired(e => e.INSCR_BQ_MESTRE)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<INSCR_BQ_MESTRE_FORMACAO>()
+                .HasMany(e=>e.INSCR_BQ_MESTRE)
+                .WithRequired(e => e.INSCR_BQ_MESTRE_FORMACAO)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<INSCR_BQ_MESTRE>()

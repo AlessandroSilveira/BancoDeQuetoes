@@ -361,3 +361,7 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes\obj\Debug\BancoDeQuestoes.csproj.GenerateResource.Cache
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes\obj\Debug\BancoDeQuestoes.Migrations.inscr_bq_mestre_formacao.resources
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes\obj\Debug\BancoDeQuestoes.Migrations.PostMigration.resources
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes\obj\Debug\BancoDeQuestoes.Migrations.Initial.resources
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes\obj\Debug\BancoDeQuestoes.Migrations.inscr_bq_mestre_formacao.resources
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes\obj\Debug\BancoDeQuestoes.Migrations.PostMigration.resources
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes\obj\Debug\BancoDeQuestoes.csproj.GenerateResource.Cache

@@ -3,7 +3,7 @@ namespace BancoDeQuestoes.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class inscr_bq_mestre_formacao : DbMigration
+    public partial class INSCR_BQ_MESTRE_FORMACAO : DbMigration
     {
         public override void Up()
         {
@@ -15,7 +15,9 @@ namespace BancoDeQuestoes.Migrations
 			AddColumn("dbo.INSCR_BQ_MESTRE_FORMACAO", "DESC_COPIA_DIPLOMA", c => c.Boolean());
 			AddColumn("dbo.INSCR_BQ_MESTRE_FORMACAO", "DESC_DIPLOMA_AUTENTICADO", c => c.Boolean());
 			AddColumn("dbo.INSCR_BQ_MESTRE_FORMACAO", "DESC_NUMERO_COPIAS", c => c.Int());
-		}
+            CreateIndex("dbo.INSCR_BQ_MESTRE_FORMACAO", "ID_MESTRE_FORMACAO");
+            AddForeignKey("dbo.INSCR_BQ_MESTRE_FORMACAO", "ID_MESTRE_FORMACAO", "dbo.INSCR_BQ_MESTRE", "ID_MESTRE");
+        }
         
         public override void Down()
         {

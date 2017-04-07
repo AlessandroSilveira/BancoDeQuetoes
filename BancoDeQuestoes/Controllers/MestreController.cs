@@ -22,8 +22,8 @@ namespace BancoDeQuestoes.Controllers
         public ActionResult Index()
         {
             //var iNSCR_BQ_MESTRE = db.INSCR_BQ_MESTRE.Include(i => i.INSCR_BQ_BANCA);
-           var iNSCR_BQ_MESTRE = MestreRepository.Include();
-            return View(iNSCR_BQ_MESTRE.ToList());
+           var iNscrBqMestre = MestreRepository.Include();
+            return View(iNscrBqMestre.ToList());
         }
 
         // GET: Mestre/Details/5
@@ -94,10 +94,7 @@ namespace BancoDeQuestoes.Controllers
         // GET: Mestre/Delete/5
         public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+           
             var iNscrBqMestre = MestreRepository.GetById(id);
             if (iNscrBqMestre == null)
             {

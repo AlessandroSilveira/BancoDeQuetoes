@@ -1,24 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;z
 
 namespace BancoDeQuestoes.Models
 {
 	public class INSCR_BQ_MESTRE_FORMACAO
 	{
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-		public INSCR_BQ_MESTRE_FORMACAO()
-		{
-			var INSCR_BQ_MESTRE = new HashSet<INSCR_BQ_MESTRE>();
-		}
-
-		[Key]
+        [Key]
 		[Required]
 		public int ID_MESTRE_FORMACAO { get; set; }
-
-		[StringLength(3)]
+		
 		[Required]
-		[DisplayName("Id Mestre")]
 		public int ID_MESTRE { get; set; }
 
 		[StringLength(100)]
@@ -35,22 +27,21 @@ namespace BancoDeQuestoes.Models
 		[Required]
 		[DisplayName("Instituição")]
 		public string DESC_INSTITUICAO { get; set; }
-
-		[StringLength(1)]
+		
 		[Required]
 		[DisplayName("Entregou Cópia do Diploma?")]
 		public bool DESC_COPIA_DIPLOMA { get; set; }
-
-		[StringLength(1)]
+		
 		[Required]
 		[DisplayName("Diploma está Autenticado?")]
 		public bool DESC_DIPLOMA_AUTENTICADO { get; set; }
-
-		[StringLength(3)]
+		
 		[Required]
 		[DisplayName("Número de Cópias Autenticadas:")]
 		public int DESC_NUMERO_COPIAS { get; set; }
 
-		public virtual INSCR_BQ_MESTRE INSCR_BQ_MESTRE { get; set; }
-	}
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INSCR_BQ_MESTRE> INSCR_BQ_MESTRE { get; set; }
+        
+    }
 }
