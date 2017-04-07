@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;z
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BancoDeQuestoes.Models
 {
 	public class INSCR_BQ_MESTRE_FORMACAO
 	{
+	   
+
         [Key]
 		[Required]
 		public int ID_MESTRE_FORMACAO { get; set; }
@@ -40,8 +43,9 @@ namespace BancoDeQuestoes.Models
 		[DisplayName("Número de Cópias Autenticadas:")]
 		public int DESC_NUMERO_COPIAS { get; set; }
 
+	   
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCR_BQ_MESTRE> INSCR_BQ_MESTRE { get; set; }
+        public virtual INSCR_BQ_MESTRE INSCR_BQ_MESTRE { get; set; }
         
     }
 }

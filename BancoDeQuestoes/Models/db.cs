@@ -1,9 +1,6 @@
 namespace BancoDeQuestoes.Models
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public partial class db : DbContext
     {
@@ -90,10 +87,14 @@ namespace BancoDeQuestoes.Models
                 .WithRequired(e => e.INSCR_BQ_MESTRE)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<INSCR_BQ_MESTRE_FORMACAO>()
-                .HasMany(e=>e.INSCR_BQ_MESTRE)
-                .WithRequired(e => e.INSCR_BQ_MESTRE_FORMACAO)
+            modelBuilder.Entity<INSCR_BQ_MESTRE>()
+                .HasMany(e => e.INSCR_BQ_MESTRE_FORMACAO)
+                .WithRequired(e => e.INSCR_BQ_MESTRE)
                 .WillCascadeOnDelete(false);
+
+
+            modelBuilder.Entity<INSCR_BQ_MESTRE_FORMACAO>();
+                
 
             modelBuilder.Entity<INSCR_BQ_MESTRE>()
                 .HasMany(e => e.INSCR_BQ_CONVITE_REVISAO_MESTRE)

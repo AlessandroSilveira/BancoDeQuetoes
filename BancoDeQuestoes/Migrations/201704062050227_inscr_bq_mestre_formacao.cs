@@ -16,7 +16,7 @@ namespace BancoDeQuestoes.Migrations
 			AddColumn("dbo.INSCR_BQ_MESTRE_FORMACAO", "DESC_DIPLOMA_AUTENTICADO", c => c.Boolean());
 			AddColumn("dbo.INSCR_BQ_MESTRE_FORMACAO", "DESC_NUMERO_COPIAS", c => c.Int());
             CreateIndex("dbo.INSCR_BQ_MESTRE_FORMACAO", "ID_MESTRE_FORMACAO");
-            AddForeignKey("dbo.INSCR_BQ_MESTRE_FORMACAO", "ID_MESTRE_FORMACAO", "dbo.INSCR_BQ_MESTRE", "ID_MESTRE");
+            
         }
         
         public override void Down()
