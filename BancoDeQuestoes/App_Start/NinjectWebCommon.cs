@@ -70,7 +70,9 @@ namespace BancoDeQuestoes.App_Start
 			kernel.Bind<IBancaMestreRepository>().To<BancaMestreRepository>();
             kernel.Bind<IRevisorRepository>().To<RevisorRepository>();
             kernel.Bind<IMestreRepository>().To<MestreRepository>();
+			kernel.Bind<IMestreFormacaoRepository>().To<MestreFormacaoRepository>();
+			kernel.Bind<IMestreDependentesRepository>().To<MestreDependentesRepository>();
 
-        }        
+		}        
     }
 }

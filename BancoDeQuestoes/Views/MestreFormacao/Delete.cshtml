@@ -1,0 +1,81 @@
+﻿@model BancoDeQuestoes.Models.INSCR_BQ_MESTRE_FORMACAO
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Excluir Formação</h2>
+
+<h3>Você tem certeza que deseja excluir essa formação.</h3>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.INSCR_BQ_MESTRE.DESC_NOME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSCR_BQ_MESTRE.DESC_NOME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_TIPO_FORMACAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_TIPO_FORMACAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_CURSO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_CURSO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_INSTITUICAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_INSTITUICAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_COPIA_DIPLOMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_COPIA_DIPLOMA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_DIPLOMA_AUTENTICADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_DIPLOMA_AUTENTICADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_NUMERO_COPIAS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_NUMERO_COPIAS)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

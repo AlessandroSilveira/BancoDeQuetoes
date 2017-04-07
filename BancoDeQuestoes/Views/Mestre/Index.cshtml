@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_MESTRE>
+﻿@using BancoDeQuestoes.Services
+@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_MESTRE>
 
 @{
 	ViewBag.Title = "Index";
@@ -15,9 +16,7 @@
 		<th>
 			@Html.DisplayNameFor(model => model.DESC_NOME)
 		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DESC_SENHA)
-		</th>
+		
 		<th>
 			@Html.DisplayNameFor(model => model.INSCR_BQ_BANCA.DESC_BANCA)
 		</th>
@@ -31,16 +30,7 @@
 			@Html.DisplayNameFor(model => model.DESC_EMAIL)
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.DESC_FORMACAO)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DESC_FORMACAO_2)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DESC_FORMACAO_3)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DESC_FORMACAO_4)
+			@Html.DisplayNameFor(model => model.DESC_SENHA)
 		</th>
 		<th>
 			@Html.DisplayNameFor(model => model.DESC_ATIVO)
@@ -56,9 +46,7 @@
 				@Html.DisplayFor(modelItem => item.DESC_NOME)
 			</td>
 			
-			<td>
-				@Html.DisplayFor(modelItem => item.DESC_SENHA)
-			</td>
+			
 			<td>
 				@Html.DisplayFor(modelItem => item.INSCR_BQ_BANCA.DESC_BANCA)
 			</td>
@@ -72,25 +60,21 @@
 				@Html.DisplayFor(modelItem => item.DESC_EMAIL)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.DESC_FORMACAO)
+				@Html.DisplayFor(modelItem => item.DESC_SENHA)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.DESC_FORMACAO_2)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.DESC_FORMACAO_3)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.DESC_FORMACAO_3)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.DESC_ATIVO)
+				@{
+					var ativo = item.DESC_ATIVO == "S" ? "Sim" : "Não";
+				}
+				@ativo
 			</td>
 			
 			<td>
 				@Html.ActionLink("Editar", "Edit", new { id = item.ID_MESTRE }) |
-				@Html.ActionLink("Details", "Details", new { id = item.ID_MESTRE }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.ID_MESTRE })
+				@Html.ActionLink("Detalhes", "Details", new { id = item.ID_MESTRE }) |
+				@Html.ActionLink("Adicionar Formação", "Index","MestreFormacao", new { id = item.ID_MESTRE },null) |
+				@Html.ActionLink("Adicionar Dependentes", "Index","MestreDependentes", new { id = item.ID_MESTRE },null) |
+				@Html.ActionLink("Excluir", "Delete", new { id = item.ID_MESTRE })
 			</td>
 		</tr>
 	}

@@ -216,6 +216,8 @@
     <Compile Include="Controllers\BancaMestreController.cs" />
     <Compile Include="Controllers\DisciplinaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MestreDependentesController.cs" />
+    <Compile Include="Controllers\MestreFormacaoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MestreController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
@@ -228,6 +230,7 @@
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IDisciplinaRepository.cs" />
     <Compile Include="Interfaces\IItensPesquisaDisciplina.cs" />
+    <Compile Include="Interfaces\IMestreFormacaoRepository.cs" />
     <Compile Include="Interfaces\IMestreRepository.cs" />
     <Compile Include="Interfaces\IProjetoRepository.cs" />
     <Compile Include="Migrations\201704062046167_Initial.cs" />
@@ -286,6 +289,9 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\DisciplinaRepository.cs" />
     <Compile Include="Interfaces\IRevisorRepository.cs" />
+    <Compile Include="Interfaces\IMestreDependentesRepository.cs" />
+    <Compile Include="Repositories\MestreDependentesRepository.cs" />
+    <Compile Include="Repositories\MestreFormacaoRepository.cs" />
     <Compile Include="Repositories\MestreRepository.cs" />
     <Compile Include="Repositories\ProjetoRepository.cs" />
     <Compile Include="Repositories\RevisorRepository.cs" />
@@ -323,13 +329,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Revisores\script.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -389,6 +388,23 @@
     <Content Include="Views\Mestre\Details.cshtml" />
     <Content Include="Views\Mestre\Edit.cshtml" />
     <Content Include="Views\Mestre\Index.cshtml" />
+    <Content Include="web.config" />
+    <Content Include="Views\MestreFormacao\Create.cshtml" />
+    <Content Include="Views\MestreFormacao\Delete.cshtml" />
+    <Content Include="Views\MestreFormacao\Details.cshtml" />
+    <Content Include="Views\MestreFormacao\Edit.cshtml" />
+    <Content Include="Views\MestreFormacao\Index.cshtml" />
+    <Content Include="Views\MestreDependentes\Create.cshtml" />
+    <Content Include="Views\MestreDependentes\Delete.cshtml" />
+    <Content Include="Views\MestreDependentes\Details.cshtml" />
+    <Content Include="Views\MestreDependentes\Edit.cshtml" />
+    <Content Include="Views\MestreDependentes\Index.cshtml" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
