@@ -2,7 +2,8 @@
 
 namespace BancoDeQuestoes.Controllers
 {
-    public class HomeController : Controller
+	[Authorize (Roles ="Admin")]
+	public class HomeController : Controller
     {
         public ActionResult Index()
         {
