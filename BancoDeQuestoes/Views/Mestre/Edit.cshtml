@@ -26,7 +26,8 @@
 		</div>
 
     <div class="form-group">
-            @Html.LabelFor(model => model.ID_BANCA, "ID_BANCA", htmlAttributes: new { @class = "control-label col-md-2" })
+	    @Html.Label("Banca", new { @class = "control-label col-md-2" }) 
+		
             <div class="col-md-10">
                 @Html.DropDownList("ID_BANCA", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ID_BANCA, "", new { @class = "text-danger" })
@@ -35,13 +36,13 @@
 
       
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DESC_CEP, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DESC_CEP, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DESC_CEP, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.DESC_CEP, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.DESC_CEP, new { htmlAttributes = new { @style = "width:100px", @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.DESC_CEP, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.DESC_ENDERECO, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -259,7 +260,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MINICURRICULO, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MINICURRICULO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.MINICURRICULO, new { htmlAttributes = new { @class = "form-control",@rows="100",@cols="100"  } })
                 @Html.ValidationMessageFor(model => model.MINICURRICULO, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -273,5 +274,19 @@
 }
 
 <div>
-    @Html.ActionLink("Voltar", "Index")
+	@Html.ActionLink("Voltar", "Index")
 </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<script src="~/Scripts/Mestres/script.js"></script>
+<script src="~/Scripts/jquery.mask.js"></script>
+<script>
+	$(document).ready(function () {
+		$("#DESC_CEP").focusout(function () {
+			getEndereco();
+		});
+		$("#DESC_CPF").mask("000.000.000-00", { reverse: true });
+	});
+
+</script>
