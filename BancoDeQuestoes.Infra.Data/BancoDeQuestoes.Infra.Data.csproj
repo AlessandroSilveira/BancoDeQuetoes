@@ -42,8 +42,16 @@
     <Compile Include="Repositories\AreaRepository.cs" />
     <Compile Include="Repositories\BancaMestreRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\DescBibliografia.cs" />
+    <Compile Include="Repositories\DescNivel.cs" />
+    <Compile Include="Repositories\DescTitulo.cs" />
+    <Compile Include="Repositories\DescTopico.cs" />
     <Compile Include="Repositories\DisciplinaRepository.cs" />
+    <Compile Include="Repositories\ExecutaPesquisaDisciplina.cs" />
+    <Compile Include="Repositories\FimPesquisa.cs" />
     <Compile Include="Repositories\FimPesquisaMestre.cs" />
+    <Compile Include="Repositories\IdDisciplina.cs" />
+    <Compile Include="Repositories\ItensPesquisaDusciplina.cs" />
     <Compile Include="Repositories\MestreDependentesRepository.cs" />
     <Compile Include="Repositories\MestreFormacaoRepository.cs" />
     <Compile Include="Repositories\MestreRepository.cs" />

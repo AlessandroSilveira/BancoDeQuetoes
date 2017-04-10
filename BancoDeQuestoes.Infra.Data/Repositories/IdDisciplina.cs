@@ -2,9 +2,8 @@
 using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Models;
 
-namespace BancoDeQuestoes.Services
+namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 {
     public class IdDisciplina : IItensPesquisaDisciplina
 	{

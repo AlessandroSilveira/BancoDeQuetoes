@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Models;
 
-namespace BancoDeQuestoes.Services.PesquisaDisciplina
+namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 {
 	public class FimPesquisa : IItensPesquisaDisciplina
 	{

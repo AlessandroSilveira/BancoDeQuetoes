@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Models;
-using BancoDeQuestoes.Services;
-using BancoDeQuestoes.Services.PesquisaDisciplina;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
-using BancoDeQuestoes.Domain.Services.PesquisaDisciplina;
+using BancoDeQuestoes.Mvc.Services.PesquisaDisciplina;
 
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
-    public class DisciplinaRepository : BaseRepository<Disciplina>,IDisciplinaRepository
+	public class DisciplinaRepository : BaseRepository<Disciplina>,IDisciplinaRepository
 
         
 	{

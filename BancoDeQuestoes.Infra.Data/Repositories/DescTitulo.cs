@@ -3,7 +3,7 @@ using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Interfaces;
 
-namespace BancoDeQuestoes.Domain.Services.PesquisaDisciplina
+namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 {
     public class DescTitulo : IItensPesquisaDisciplina
 	{

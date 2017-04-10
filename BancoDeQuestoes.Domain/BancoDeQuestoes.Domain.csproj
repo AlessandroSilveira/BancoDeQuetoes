@@ -82,14 +82,6 @@
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClienteService.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescBibliografia.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescNivel.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescTitulo.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescTopico.cs" />
-    <Compile Include="Services\PesquisaDisciplina\ExecutaPesquisaDisciplina.cs" />
-    <Compile Include="Services\PesquisaDisciplina\FimPesquisa.cs" />
-    <Compile Include="Services\PesquisaDisciplina\IdDisciplina.cs" />
-    <Compile Include="Services\PesquisaDisciplina\ItensPesquisaDusciplina.cs" />
     <Compile Include="Services\ProdutoService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
   </ItemGroup>
@@ -135,9 +127,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\PesquisaMestre\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
