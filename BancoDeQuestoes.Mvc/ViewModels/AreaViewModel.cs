@@ -9,6 +9,7 @@ namespace BancoDeQuestoes.Mvc.ViewModels
 		public int AreaId { get; set; }
 
 		[Required(ErrorMessage = "Preencha o campo Área")]
+		[DisplayName("Descrição")]
 		public string Descricao { get; set; }
 
 		[Required(ErrorMessage = "Preencha o campo É Conhecimento Específico?")]

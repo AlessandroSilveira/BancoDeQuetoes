@@ -12,12 +12,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
 {
 	public class RevisorController : Controller
     {
-	    public RevisorController(IRevisorRepository revisorRepository)
+	    public RevisorController(IRevisorRepository revisorRepository, IAreaRepository areRepository)
 	    {
 		    RevisorRepository = revisorRepository;
+		    AreaRepository = areRepository;
 	    }
 
 	    private IRevisorRepository RevisorRepository { get; set; }
+		private IAreaRepository AreaRepository { get; set; }
 		
         public ActionResult Index()
         {
@@ -39,7 +41,10 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		
         public ActionResult Create()
         {
-            return View();
+			var areaViewModel =
+				Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(AreaRepository.GetAll());
+			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao");
+			return View();
         }
 		
         [HttpPost]

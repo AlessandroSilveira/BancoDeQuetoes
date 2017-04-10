@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Models;
 
 namespace BancoDeQuestoes.Mvc.ViewModels
@@ -82,13 +83,15 @@ namespace BancoDeQuestoes.Mvc.ViewModels
 		public string Senha { get; set; }
 
 		
-		[Required]
+		[Required (ErrorMessage="Escolha a área que esse revisor pertence.")]
 		[DisplayName("Área")]
 		public int AreaId { get; set; }
 
 		[Required]
 		[DisplayName("Ativo")]
 		public bool Ativo { get; set; }
+
+		public virtual Area Area { get; set; }
 
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 		public virtual ICollection<INSCR_BQ_CONVITE_REVISOR> INSCR_BQ_CONVITE_REVISOR { get; set; }
