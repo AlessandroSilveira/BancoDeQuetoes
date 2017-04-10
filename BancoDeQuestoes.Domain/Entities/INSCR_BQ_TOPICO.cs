@@ -46,7 +46,7 @@ namespace BancoDeQuestoes.Models
 
         public virtual INSCR_BQ_CARGO_CBO INSCR_BQ_CARGO_CBO { get; set; }
 
-        public virtual INSCR_BQ_DISCIPLINA INSCR_BQ_DISCIPLINA { get; set; }
+        public virtual Area Area { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSCR_BQ_TOP_DISC_CARGO> INSCR_BQ_TOP_DISC_CARGO { get; set; }

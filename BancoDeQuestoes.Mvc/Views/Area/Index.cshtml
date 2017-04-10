@@ -1,11 +1,10 @@
-﻿@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_DISCIPLINA>
+﻿@model IEnumerable<BancoDeQuestoes.Mvc.ViewModels.AreaViewModel>
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Áreas</h2>
+<h2>Área</h2>
 
 <p>
     @Html.ActionLink("Nova Área", "Create")
@@ -13,38 +12,32 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DESC_DISCIPLINA)
+            @Html.DisplayNameFor(model => model.Descricao)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TIPO_CONH_ESPEC)
+            @Html.DisplayNameFor(model => model.ConhecimentoEspecifico)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DESC_ATIVO)
+            @Html.DisplayNameFor(model => model.Ativo)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
+@foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.DESC_DISCIPLINA)
+            @Html.DisplayFor(modelItem => item.Descricao)
         </td>
         <td>
-            @{var tipo = item.TIPO_CONH_ESPEC == "S" ? "Sim" : "Não";
-			}
-			@tipo
-
+            @Html.DisplayFor(modelItem => item.ConhecimentoEspecifico)
         </td>
         <td>
-            @{var ativo = item.DESC_ATIVO == "S" ? "Sim" : "Não";
-			}
-			@ativo
+            @Html.DisplayFor(modelItem => item.Ativo)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID_DISCIPLINA }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.ID_DISCIPLINA }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.ID_DISCIPLINA })
+            @Html.ActionLink("Editar", "Edit", new { id=item.AreaId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.AreaId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.AreaId })
         </td>
     </tr>
 }

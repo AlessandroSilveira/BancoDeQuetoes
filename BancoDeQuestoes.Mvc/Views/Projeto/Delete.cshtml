@@ -1,15 +1,14 @@
-﻿@model BancoDeQuestoes.Domain.Entities.Projeto
+﻿@model BancoDeQuestoes.Mvc.ViewModels.ProjetoViewModel
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Projeto</h2>
 
-<h3>Você tem certeza que deseja excluir esse projeto?</h3>
+<h3>Voce tem certeza que deseja ecluir esse projeto</h3>
 <div>
-    <h4></h4>
+    <h4>ProjetoViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -33,9 +32,7 @@
         </dt>
 
         <dd>
-            
-			@{ var ativo = Model.Ativo == "S" ? "Sim" : "Não";}
-			@ativo
+            @Html.DisplayFor(model => model.Ativo)
         </dd>
 
     </dl>

@@ -16,8 +16,10 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
                 .HasMaxLength(150)
                 .IsRequired();
 
-            HasRequired(p => p.Ativo);
+			Property(p => p.Ativo)
+			 .IsRequired();
 
-        }
+
+		}
     }
 }

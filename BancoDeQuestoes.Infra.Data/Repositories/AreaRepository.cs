@@ -1,10 +1,10 @@
-﻿using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Models;
+﻿using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repositories;
 
 
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
-	public class AreaRepository : BaseRepository<INSCR_BQ_DISCIPLINA>,IAreaRepository
+	public class AreaRepository : BaseRepository<Area>,IAreaRepository
     {
     }
 }

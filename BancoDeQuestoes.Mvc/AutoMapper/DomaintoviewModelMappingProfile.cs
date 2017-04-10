@@ -15,7 +15,8 @@ namespace BancoDeQuestoes.Mvc.AutoMapper
 		{
 			Mapper.CreateMap<ClienteViewModel, Cliente>();
 			Mapper.CreateMap<ProdutoViewModel, Produto>();
-
+			Mapper.CreateMap<AreaViewModel, Area>();
+			Mapper.CreateMap<ProjetoViewModel, Projeto>();
 		}
 	}
 }

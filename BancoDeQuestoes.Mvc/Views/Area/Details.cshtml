@@ -1,8 +1,7 @@
-﻿@model BancoDeQuestoes.Models.INSCR_BQ_DISCIPLINA
+﻿@model BancoDeQuestoes.Mvc.ViewModels.AreaViewModel
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Área</h2>
@@ -12,36 +11,32 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DESC_DISCIPLINA)
+            @Html.DisplayNameFor(model => model.Descricao)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DESC_DISCIPLINA)
+            @Html.DisplayFor(model => model.Descricao)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TIPO_CONH_ESPEC)
+            @Html.DisplayNameFor(model => model.ConhecimentoEspecifico)
         </dt>
 
         <dd>
-           
-			@{ var conhecimento = Model.TIPO_CONH_ESPEC == "S" ? "Sim" : "Não";}
-			@conhecimento
+            @Html.DisplayFor(model => model.ConhecimentoEspecifico)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DESC_ATIVO)
+            @Html.DisplayNameFor(model => model.Ativo)
         </dt>
 
         <dd>
-           
-	        @{ var ativo = Model.DESC_ATIVO == "S" ? "Sim" : "Não";}
-			@ativo
+            @Html.DisplayFor(model => model.Ativo)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_DISCIPLINA }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.AreaId }) |
     @Html.ActionLink("Voltar", "Index")
 </p>

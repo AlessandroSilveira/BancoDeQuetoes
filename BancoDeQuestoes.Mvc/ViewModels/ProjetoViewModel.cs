@@ -19,10 +19,8 @@ namespace BancoDeQuestoes.Mvc.ViewModels
         public string NomeProjeto { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Ativo")]
-        [MaxLength(1, ErrorMessage = "Máximo {0} caracteres ")]
         [DisplayName("Ativo")]
         public bool Ativo { get; set; }
-
 
     }
 }

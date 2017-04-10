@@ -1,8 +1,7 @@
-﻿@model IEnumerable<BancoDeQuestoes.Domain.Entities.Projeto>
+﻿@model IEnumerable<BancoDeQuestoes.Mvc.ViewModels.ProjetoViewModel>
 
 @{
-    ViewBag.Title = "Projetos";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
 }
 
 <h2>Projetos</h2>
@@ -33,9 +32,7 @@
             @Html.DisplayFor(modelItem => item.NomeProjeto)
         </td>
         <td>
-           
-			@{ var ativo = item.Ativo == "S" ? "Sim" : "Não";}
-			@ativo
+            @Html.DisplayFor(modelItem => item.Ativo)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.ProjetoId }) |

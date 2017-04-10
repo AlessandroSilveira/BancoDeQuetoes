@@ -19,7 +19,7 @@ namespace BancoDeQuestoes.Infra.Data.Repositories
 
 		public IEnumerable Area()
 		{
-			return Db.INSCR_BQ_DISCIPLINA.ToList();
+			return Db.Area.ToList();
 		}
 
 		public IEnumerable ResultadoPesquisaDisciplina(INSCR_BQ_TOPICO form)
