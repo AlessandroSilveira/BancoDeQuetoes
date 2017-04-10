@@ -53,10 +53,10 @@
     <Compile Include="Entities\INSCR_BQ_QUESTAO_REVISOR.cs" />
     <Compile Include="Entities\INSCR_BQ_RESPOSTA.cs" />
     <Compile Include="Entities\INSCR_BQ_RESPOSTA_REVISADA.cs" />
-    <Compile Include="Entities\INSCR_BQ_REVISOR.cs" />
+    <Compile Include="Entities\Revisor.cs" />
     <Compile Include="Entities\INSCR_BQ_STATUS.cs" />
     <Compile Include="Entities\INSCR_BQ_TIPO_GRAU_FORMACAO.cs" />
-    <Compile Include="Entities\INSCR_BQ_TOPICO.cs" />
+    <Compile Include="Entities\Disciplina.cs" />
     <Compile Include="Entities\INSCR_BQ_TOPICO_ATRIBUIDO.cs" />
     <Compile Include="Entities\INSCR_BQ_TOP_DISC_CARGO.cs" />
     <Compile Include="Entities\ManageViewModels.cs" />

@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
-using BancoDeQuestoes.Infra.Data.Context;
-using BancoDeQuestoes.Infra.Data.Repositories;
 using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
@@ -30,13 +26,10 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			return View(projetoViewModel);
         }
         
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-			if (id == null)
-			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			var projeto = ProjetoRepository.GetById(Convert.ToInt32(id));
+			
+			var projeto = ProjetoRepository.GetById(id);
 			var projetoViewModel = Mapper.Map<Projeto, ProjetoViewModel>(projeto);
 			if (projetoViewModel == null)
 			{

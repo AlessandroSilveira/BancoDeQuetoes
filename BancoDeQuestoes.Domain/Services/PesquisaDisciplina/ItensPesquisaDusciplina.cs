@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BancoDeQuestoes.Domain.Services.PesquisaDisciplina;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Services.PesquisaDisciplina;
 

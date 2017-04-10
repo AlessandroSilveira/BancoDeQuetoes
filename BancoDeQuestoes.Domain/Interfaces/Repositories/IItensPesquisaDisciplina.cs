@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Models;
 
 namespace BancoDeQuestoes.Interfaces
 {
 	public interface IItensPesquisaDisciplina
 	{
-		List<INSCR_BQ_TOPICO> Pesquisa(INSCR_BQ_TOPICO form, List<INSCR_BQ_TOPICO> sql);
+		List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql);
 		IItensPesquisaDisciplina Proximo { get; set; }
 	}
 }

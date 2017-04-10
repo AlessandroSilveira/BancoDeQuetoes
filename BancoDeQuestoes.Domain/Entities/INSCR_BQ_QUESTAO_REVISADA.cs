@@ -64,7 +64,7 @@ namespace BancoDeQuestoes.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSCR_BQ_QUESTAO_PROJETO> INSCR_BQ_QUESTAO_PROJETO { get; set; }
 
-        public virtual INSCR_BQ_REVISOR INSCR_BQ_REVISOR { get; set; }
+        public virtual Revisor Revisor { get; set; }
 
         public virtual INSCR_BQ_TOPICO_ATRIBUIDO INSCR_BQ_TOPICO_ATRIBUIDO { get; set; }
     }

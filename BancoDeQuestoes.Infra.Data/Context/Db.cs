@@ -34,11 +34,11 @@ namespace BancoDeQuestoes.Infra.Data.Context
         public virtual DbSet<INSCR_BQ_QUESTAO_REVISOR> INSCR_BQ_QUESTAO_REVISOR { get; set; }
         public virtual DbSet<INSCR_BQ_RESPOSTA> INSCR_BQ_RESPOSTA { get; set; }
         public virtual DbSet<INSCR_BQ_RESPOSTA_REVISADA> INSCR_BQ_RESPOSTA_REVISADA { get; set; }
-        public virtual DbSet<INSCR_BQ_REVISOR> INSCR_BQ_REVISOR { get; set; }
+        public virtual DbSet<Revisor> Revisor { get; set; }
         public virtual DbSet<INSCR_BQ_STATUS> INSCR_BQ_STATUS { get; set; }
         public virtual DbSet<INSCR_BQ_TIPO_GRAU_FORMACAO> INSCR_BQ_TIPO_GRAU_FORMACAO { get; set; }
         public virtual DbSet<INSCR_BQ_TOP_DISC_CARGO> INSCR_BQ_TOP_DISC_CARGO { get; set; }
-        public virtual DbSet<INSCR_BQ_TOPICO> INSCR_BQ_TOPICO { get; set; }
+        public virtual DbSet<Disciplina> INSCR_BQ_TOPICO { get; set; }
         public virtual DbSet<INSCR_BQ_TOPICO_ATRIBUIDO> INSCR_BQ_TOPICO_ATRIBUIDO { get; set; }
         public virtual DbSet<INSCR_BQ_MESTRE_FORMACAO> INSCR_BQ_MESTRE_FORMACAO { get; set; }
 		public virtual DbSet<MestreDependente> MestreDependente { get; set; }
@@ -52,5 +52,9 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Configurations.Add(new ProdutoConfiguration());
 			modelBuilder.Configurations.Add(new ProjetoConfiguration());
 		}
+
+		//public System.Data.Entity.DbSet<BancoDeQuestoes.Mvc.ViewModels.RevisorViewModel> RevisorViewModels { get; set; }
+
+		//public System.Data.Entity.DbSet<BancoDeQuestoes.Mvc.ViewModels.DisciplinaViewModel> DisciplinaViewModels { get; set; }
 	}
 }

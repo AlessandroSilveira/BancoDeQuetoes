@@ -1,151 +1,117 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Models;
+using AutoMapper;
+using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
+using BancoDeQuestoes.Mvc.ViewModels;
 
-namespace BancoDeQuestoes.Controllers
+namespace BancoDeQuestoes.Mvc.Controllers
 {
-    public class DisciplinaController : Controller
-    {
-        private IDisciplinaRepository DisciplinaRepository { get; set; }
+	public class DisciplinaController : Controller
+	{
+		public DisciplinaController(IDisciplinaRepository disciplinaRepository, IAreaRepository areaRepository)
+		{
+			DisciplinaRepository = disciplinaRepository;
+			AreaRepository = areaRepository;
+		}
 
-        public DisciplinaController(IDisciplinaRepository disciplinaRepository)
-        {
-            DisciplinaRepository = disciplinaRepository;
-        }
-       
-        public ActionResult Index(IEnumerable<INSCR_BQ_TOPICO> iNscrBqTopico)
-        {
-	        ViewBag.ListaDisciplinas = DisciplinaRepository.Area();
-	        if (iNscrBqTopico == null)
-	        {
-				iNscrBqTopico = DisciplinaRepository.GetAll();
+		private IDisciplinaRepository DisciplinaRepository { get; set; }
+		private IAreaRepository AreaRepository { get; set; }
+
+		public ActionResult Index()
+		{
+			var disciplinaViewModel =
+				Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(DisciplinaRepository.GetAll());
+			return View(disciplinaViewModel);
+		}
+
+		public ActionResult Details(int id)
+		{
+
+			var disciplina = DisciplinaRepository.GetById(id);
+			var disciplinaViewModel = Mapper.Map<Disciplina, DisciplinaViewModel>(disciplina);
+			if (disciplinaViewModel == null)
+			{
+				return HttpNotFound();
 			}
-            return View(iNscrBqTopico.ToList());
-        }
-		
-		public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+			return View(disciplinaViewModel);
+		}
 
-	        var iNscrBqTopico = DisciplinaRepository.GetById(Convert.ToInt32(id));
-
-			if (iNscrBqTopico == null)
-            {
-                return HttpNotFound();
-            }
-            return View(iNscrBqTopico);
-        }
-      
-        public ActionResult Create()
-        {
-            ViewBag.ID_CARGO = new SelectList(DisciplinaRepository.Cargo(), "ID_CARGO_CBO", "DESC_CARGO");
-            ViewBag.ID_DISCIPLINA = new SelectList(DisciplinaRepository.Area(), "ID_DISCIPLINA", "DESC_DISCIPLINA");
-            return View();
-        }
-       
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(
-        [Bind(
-            Include = "ID_TOPICO,ID_DISCIPLINA,ID_CARGO,DESC_TITULO,DESC_TOPICO,DESC_BIBLIOGRAFIA,DESC_ATIVO,DESC_NIVEL"
-        )] INSCR_BQ_TOPICO iNscrBqTopico)
-        {
-            if (ModelState.IsValid)
-            {
-                DisciplinaRepository.Add(iNscrBqTopico);
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.ID_CARGO = new SelectList(DisciplinaRepository.Cargo(), "ID_CARGO_CBO", "DESC_CARGO",
-                iNscrBqTopico.ID_CARGO);
-            ViewBag.ID_DISCIPLINA = new SelectList(DisciplinaRepository.Area(), "ID_DISCIPLINA", "DESC_DISCIPLINA",
-                iNscrBqTopico.ID_DISCIPLINA);
-            return View(iNscrBqTopico);
-        }
-
-        
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-	        var iNscrBqTopico = DisciplinaRepository.GetById(Convert.ToInt32(id));
-
-			if (iNscrBqTopico == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.ID_CARGO = new SelectList(DisciplinaRepository.Cargo(), "ID_CARGO_CBO", "DESC_CARGO",
-                iNscrBqTopico.ID_CARGO);
-            ViewBag.ID_DISCIPLINA = new SelectList(DisciplinaRepository.Area(), "ID_DISCIPLINA", "DESC_DISCIPLINA",
-                iNscrBqTopico.ID_DISCIPLINA);
-            return View(iNscrBqTopico);
-        }
-
-      
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(
-        [Bind(Include = "ID_TOPICO,ID_DISCIPLINA,ID_CARGO,DESC_TITULO,DESC_TOPICO,DESC_BIBLIOGRAFIA,DESC_ATIVO,DESC_NIVEL"
-        )] INSCR_BQ_TOPICO iNscrBqTopico)
-        {
-            if (!ModelState.IsValid)
-            {
-                ViewBag.ID_CARGO = new SelectList(DisciplinaRepository.Cargo(), "ID_CARGO_CBO", "DESC_CARGO",
-                    iNscrBqTopico.ID_CARGO);
-                ViewBag.ID_DISCIPLINA = new SelectList(DisciplinaRepository.Area(), "ID_DISCIPLINA", "DESC_DISCIPLINA",
-                    iNscrBqTopico.ID_DISCIPLINA);
-                return View(iNscrBqTopico);
-            }
-            DisciplinaRepository.Update(iNscrBqTopico);
-           
-            return RedirectToAction("Index");
-        }
-       
-        public ActionResult Delete(int? id)
-        {
-            if (id != null)
-            {
-	            var iNscrBqTopico = DisciplinaRepository.GetById(Convert.ToInt32(id));
-				return iNscrBqTopico == null ? (ActionResult) HttpNotFound() : View(iNscrBqTopico);
-            }
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-	        var iNscrBqTopico = DisciplinaRepository.GetById(Convert.ToInt32(id));
-            DisciplinaRepository.Remove(iNscrBqTopico);
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                DisciplinaRepository.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		public ActionResult Create()
+		{
+			var areaViewModel =
+				Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(AreaRepository.GetAll());
+			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao");
+			return View();
+		}
 
 		[HttpPost]
-	    public ActionResult Search(INSCR_BQ_TOPICO form)
-	    {
-			ViewBag.ListaDisciplinas = DisciplinaRepository.Area();
+		[ValidateAntiForgeryToken]
+		public ActionResult Create(DisciplinaViewModel disciplinaViewModel)
+		{
+			if (ModelState.IsValid)
+			{
+				var dsiciplina = Mapper.Map<DisciplinaViewModel, Disciplina>(disciplinaViewModel);
+				DisciplinaRepository.Add(dsiciplina);
+
+				return RedirectToAction("Index");
+			}
+
+			
+			var areaViewModel =
+				Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(AreaRepository.GetAll());
+			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
+
+			return View(disciplinaViewModel);
+		}
+
+		public ActionResult Edit(int id)
+		{
+			var disciplina = DisciplinaRepository.GetById(id);
+			var disciplinaViewModel = Mapper.Map<Disciplina, DisciplinaViewModel>(disciplina);
+			return View(disciplinaViewModel);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Edit(DisciplinaViewModel disciplinaViewModel)
+		{
+			if (!ModelState.IsValid) return View(disciplinaViewModel);
+			var discipliinaDomain = Mapper.Map<DisciplinaViewModel, Disciplina>(disciplinaViewModel);
+			DisciplinaRepository.Update(discipliinaDomain);
+
+			var areaViewModel =
+					Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(AreaRepository.GetAll());
+
+			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
+			return View(disciplinaViewModel);
+		}
+
+		public ActionResult Delete(int id)
+		{
+			var disciplina = DisciplinaRepository.GetById(id);
+			var disciplinaViewModel = Mapper.Map<Disciplina, DisciplinaViewModel>(disciplina);
+			return View(disciplinaViewModel);
+		}
+
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public ActionResult DeleteConfirmed(int id)
+		{
+			var disciplina = DisciplinaRepository.GetById(id);
+			DisciplinaRepository.Remove(disciplina);
+
+			return RedirectToAction("Index");
+		}
+
+
+		[HttpPost]
+		public ActionResult Search(Disciplina form)
+		{
+			ViewBag.ListaDisciplinas = Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(AreaRepository.GetAll());
 			var iNscrBqTopico = DisciplinaRepository.ResultadoPesquisaDisciplina(form);
-		    return View(iNscrBqTopico);
-	    }
+			return View(iNscrBqTopico);
+		}
 
 	}
 }

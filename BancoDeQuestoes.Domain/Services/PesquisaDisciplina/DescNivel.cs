@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Models;
 
-namespace BancoDeQuestoes.Services.PesquisaDisciplina
+namespace BancoDeQuestoes.Domain.Services.PesquisaDisciplina
 {
     public class DescNivel : IItensPesquisaDisciplina
 	{
-		public List<INSCR_BQ_TOPICO> Pesquisa(INSCR_BQ_TOPICO form, List<INSCR_BQ_TOPICO> sql)
+		public List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql)
 		{
-			if (!string.IsNullOrEmpty(form.DESC_NIVEL))
+			if (!string.IsNullOrEmpty(form.Nivel))
 			{
-				sql = sql.Where(a => a.DESC_NIVEL == form.DESC_NIVEL).ToList();
+				sql = sql.Where(a => a.Nivel == form.Nivel).ToList();
 			}
 
 			return Proximo.Pesquisa(form, sql);

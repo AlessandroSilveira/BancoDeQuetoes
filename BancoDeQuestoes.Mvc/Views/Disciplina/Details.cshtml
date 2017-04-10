@@ -1,8 +1,7 @@
-﻿@model BancoDeQuestoes.Models.INSCR_BQ_TOPICO
+﻿@model BancoDeQuestoes.Mvc.ViewModels.DisciplinaViewModel
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Disciplina</h2>
@@ -12,66 +11,56 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.INSCR_BQ_CARGO_CBO.DESC_CARGO)
+            @Html.DisplayNameFor(model => model.Area.Descricao)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.INSCR_BQ_CARGO_CBO.DESC_CARGO)
+            @Html.DisplayFor(model => model.Area.Descricao)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.INSCR_BQ_DISCIPLINA.DESC_DISCIPLINA)
+            @Html.DisplayNameFor(model => model.Nome)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.INSCR_BQ_DISCIPLINA.DESC_DISCIPLINA)
+            @Html.DisplayFor(model => model.Nome)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DESC_TITULO)
+            @Html.DisplayNameFor(model => model.Descricao)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DESC_TITULO)
+            @Html.DisplayFor(model => model.Descricao)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DESC_TOPICO)
+            @Html.DisplayNameFor(model => model.Bibliografia)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DESC_TOPICO)
+            @Html.DisplayFor(model => model.Bibliografia)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DESC_BIBLIOGRAFIA)
+            @Html.DisplayNameFor(model => model.Ativo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DESC_BIBLIOGRAFIA)
+            @Html.DisplayFor(model => model.Ativo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DESC_ATIVO)
+            @Html.DisplayNameFor(model => model.Nivel)
         </dt>
 
         <dd>
-            
-	        @{ var ativo = Model.DESC_ATIVO == "S" ? "Sim" : "Não";}
-			@ativo
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DESC_NIVEL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DESC_NIVEL)
+            @Html.DisplayFor(model => model.Nivel)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_TOPICO }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.DisciplinaId }) |
     @Html.ActionLink("Voltar", "Index")
 </p>

@@ -1,3 +1,5 @@
+using BancoDeQuestoes.Domain.Entities;
+
 namespace BancoDeQuestoes.Models
 {
     using System;
@@ -26,6 +28,6 @@ namespace BancoDeQuestoes.Models
 
         public virtual INSCR_BQ_QUESTAO INSCR_BQ_QUESTAO { get; set; }
 
-        public virtual INSCR_BQ_REVISOR INSCR_BQ_REVISOR { get; set; }
+        public virtual Revisor Revisor { get; set; }
     }
 }

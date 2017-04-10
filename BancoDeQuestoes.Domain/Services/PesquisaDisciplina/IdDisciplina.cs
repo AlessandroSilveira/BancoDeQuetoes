@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Interfaces;
 using BancoDeQuestoes.Models;
 
@@ -8,11 +9,11 @@ namespace BancoDeQuestoes.Services
     public class IdDisciplina : IItensPesquisaDisciplina
 	{
 		public IItensPesquisaDisciplina Proximo { get; set; }
-		public List<INSCR_BQ_TOPICO> Pesquisa(INSCR_BQ_TOPICO form, List<INSCR_BQ_TOPICO> sql)
+		public List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql)
 		{
-			if (form.ID_DISCIPLINA>0)
+			if (form.DisciplinaId>0)
 			{
-				sql = sql.Where(a => a.ID_DISCIPLINA == form.ID_DISCIPLINA).ToList();
+				sql = sql.Where(a => a.DisciplinaId == form.DisciplinaId).ToList();
 			}
 
 			return Proximo.Pesquisa(form, sql);

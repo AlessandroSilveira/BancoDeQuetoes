@@ -1,9 +1,9 @@
-﻿using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Models;
+﻿using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repositories;
 
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
-    public class RevisorRepository : BaseRepository<INSCR_BQ_REVISOR>, IRevisorRepository
+	public class RevisorRepository : BaseRepository<Revisor>, IRevisorRepository
     {
     }
 }

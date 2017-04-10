@@ -13,10 +13,10 @@ namespace BancoDeQuestoes.Mvc.AutoMapper
 
 		protected override void Configure()
 		{
-			Mapper.CreateMap<Cliente,ClienteViewModel>();
-			Mapper.CreateMap<Produto,ProdutoViewModel > ();
+			
 			Mapper.CreateMap<Area, AreaViewModel>();
 			Mapper.CreateMap<Projeto, ProjetoViewModel>();
+			Mapper.CreateMap<Disciplina, DisciplinaViewModel>();
 
 		}
 	}
