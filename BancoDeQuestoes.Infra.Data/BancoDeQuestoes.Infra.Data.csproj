@@ -52,9 +52,6 @@
     <Compile Include="Repositories\FimPesquisaMestre.cs" />
     <Compile Include="Repositories\IdDisciplina.cs" />
     <Compile Include="Repositories\ItensPesquisaDusciplina.cs" />
-    <Compile Include="Repositories\MestreDependentesRepository.cs" />
-    <Compile Include="Repositories\MestreFormacaoRepository.cs" />
-    <Compile Include="Repositories\MestreRepository.cs" />
     <Compile Include="Repositories\NomeMestre.cs" />
     <Compile Include="Repositories\ProjetoRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
@@ -87,6 +84,10 @@
     <None Include="Repositories\DisciplinaRepository.cs.orig" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BancoDeQuestoes.Application\BancoDeQuestoes.Application.csproj">
+      <Project>{4489D34B-B534-4892-B4A2-A58775E4A2F2}</Project>
+      <Name>BancoDeQuestoes.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
       <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
       <Name>BancoDeQuestoes.Domain</Name>

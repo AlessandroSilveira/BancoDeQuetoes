@@ -1,14 +1,14 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Models;
 
 namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 {
     public interface IDisciplinaRepository : IBaseRepository<Disciplina>
     {
-	    IEnumerable Cargo();
+	   
 	    IEnumerable Area();
-		IEnumerable ResultadoPesquisaDisciplina(Disciplina form);
-	}
+		IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina form);
+	   
+    }
 }

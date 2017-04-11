@@ -1,9 +1,8 @@
-﻿using BancoDeQuestoes.Domain.Interfaces.Repositories;
-using BancoDeQuestoes.Models;
+﻿using BancoDeQuestoes.Domain.Entities;
 
-namespace BancoDeQuestoes.Interfaces
+namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 {
-    public interface IBancaMestreRepository :IBaseRepository<INSCR_BQ_BANCA>
+    public interface IBancaMestreRepository :IBaseRepository<Banca>
     {
         
     }

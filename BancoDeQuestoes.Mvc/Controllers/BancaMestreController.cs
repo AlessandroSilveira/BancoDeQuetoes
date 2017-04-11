@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Web.Mvc;
-using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Models;
+using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repositories;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
@@ -34,10 +34,10 @@ namespace BancoDeQuestoes.Mvc.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_BANCA,DESC_BANCA,DESC_STATUS,DESC_VALOR_PORCENTAGEM")] INSCR_BQ_BANCA iNSCR_BQ_BANCA)
+        public ActionResult Create([Bind(Include = "ID_BANCA,DESC_BANCA,DESC_STATUS,DESC_VALOR_PORCENTAGEM")] Banca banca)
         {
-            if (!ModelState.IsValid) return View(iNSCR_BQ_BANCA);
-            BancaMestreRepository.Add(iNSCR_BQ_BANCA);
+            if (!ModelState.IsValid) return View(banca);
+            BancaMestreRepository.Add(banca);
             return RedirectToAction("Index");
         }
        
@@ -50,11 +50,11 @@ namespace BancoDeQuestoes.Mvc.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_BANCA,DESC_BANCA,DESC_STATUS,DESC_VALOR_PORCENTAGEM")] INSCR_BQ_BANCA iNSCR_BQ_BANCA)
+        public ActionResult Edit([Bind(Include = "ID_BANCA,DESC_BANCA,DESC_STATUS,DESC_VALOR_PORCENTAGEM")] Banca banca)
         {
-            if (!ModelState.IsValid) return View(iNSCR_BQ_BANCA);
-            BancaMestreRepository.Update(iNSCR_BQ_BANCA);
-            return RedirectToAction("Index");
+            if (!ModelState.IsValid) return View(banca);
+            BancaMestreRepository.Update(banca);
+	        return RedirectToAction("Index");
         }
         
         public ActionResult Delete(int? id)

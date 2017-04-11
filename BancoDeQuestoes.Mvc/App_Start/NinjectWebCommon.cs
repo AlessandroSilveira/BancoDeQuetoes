@@ -1,6 +1,5 @@
-using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Application.Interface;
-using BancoDeQuestoes.Domain.Interfaces;
+using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Application.Interface.Services;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 using BancoDeQuestoes.Domain.Services;
@@ -18,7 +17,7 @@ namespace BancoDeQuestoes.Mvc.App_Start
 
 	using Ninject;
 	using Ninject.Web.Common;
-	using Application;
+	
 
     public static class NinjectWebCommon 
     {
@@ -73,16 +72,23 @@ namespace BancoDeQuestoes.Mvc.App_Start
 	        kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
 			kernel.Bind<IClienteAppService>().To<ClienteAppService>();
 			kernel.Bind<IProdutoAppService>().To<ProdutoAppService>();
+			kernel.Bind<IDisciplinaAppService>().To<DisciplinaAppService>();
+			kernel.Bind<IAreaAppService>().To<AreaAppService>();
+			kernel.Bind<IProjetoAppService>().To<ProjetoAppService>();
 
 			kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
 			kernel.Bind<IClienteService>().To<ClienteService>();
 			kernel.Bind<IProdutoService>().To<ProdutoService>();
+			kernel.Bind<IDisciplinaService>().To<DisciplinaService>();
+			kernel.Bind<IAreaService>().To<AreaService>();
+			kernel.Bind<IProjetoService>().To<ProjetoService>();
 
 			kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
 			kernel.Bind<IProjetoRepository>().To<ProjetoRepository>();
             kernel.Bind<IDisciplinaRepository>().To<DisciplinaRepository>();
 			kernel.Bind<IAreaRepository>().To<AreaRepository>();
 			kernel.Bind<IRevisorRepository>().To<RevisorRepository>();
+			kernel.Bind<IProjetoRepository>().To<ProjetoRepository>();
 
 		}
     }

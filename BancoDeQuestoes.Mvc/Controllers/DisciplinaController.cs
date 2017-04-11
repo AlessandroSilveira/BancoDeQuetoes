@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
 using BancoDeQuestoes.Mvc.ViewModels;
@@ -9,25 +10,27 @@ namespace BancoDeQuestoes.Mvc.Controllers
 {
 	public class DisciplinaController : Controller
 	{
-		public DisciplinaController(IDisciplinaRepository disciplinaRepository, IAreaRepository areaRepository)
+		public DisciplinaController(IDisciplinaAppService disciplinaRepository, IAreaAppService areaRepository)
 		{
 			DisciplinaRepository = disciplinaRepository;
 			AreaRepository = areaRepository;
 		}
 
-		private IDisciplinaRepository DisciplinaRepository { get; set; }
-		private IAreaRepository AreaRepository { get; set; }
+
+		private   IDisciplinaAppService DisciplinaRepository { get; set; }
+		private   IAreaAppService AreaRepository { get;  }
 
 		public ActionResult Index()
 		{
 			var disciplinaViewModel =
 				Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(DisciplinaRepository.GetAll());
+			ViewBag.ListaDisciplinas =
+			Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(AreaRepository.GetAll());
 			return View(disciplinaViewModel);
 		}
 
 		public ActionResult Details(int id)
 		{
-
 			var disciplina = DisciplinaRepository.GetById(id);
 			var disciplinaViewModel = Mapper.Map<Disciplina, DisciplinaViewModel>(disciplina);
 			if (disciplinaViewModel == null)
@@ -57,7 +60,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 				return RedirectToAction("Index");
 			}
 
-			
 			var areaViewModel =
 				Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(AreaRepository.GetAll());
 			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
@@ -104,14 +106,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			return RedirectToAction("Index");
 		}
 
-
 		[HttpPost]
 		public ActionResult Search(Disciplina form)
 		{
 			ViewBag.ListaDisciplinas = Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(AreaRepository.GetAll());
-			var iNscrBqTopico = DisciplinaRepository.ResultadoPesquisaDisciplina(form);
+			var iNscrBqTopico = Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(DisciplinaRepository.ResultadoPesquisaDisciplina(form)); 
+			
 			return View(iNscrBqTopico);
 		}
-
 	}
 }

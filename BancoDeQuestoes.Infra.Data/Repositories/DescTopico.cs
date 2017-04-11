@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Interfaces;
+using BancoDeQuestoes.Domain.Interfaces.Repositories;
 
-namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
+namespace BancoDeQuestoes.Infra.Data.Repositories
 {
 	public class DescTopico : IItensPesquisaDisciplina
 	{
@@ -14,7 +14,6 @@ namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 			{
 				sql = sql.Where(a => a.Descricao == form.Descricao).ToList();
 			}
-
 			return Proximo.Pesquisa(form, sql);
 		}
 	}

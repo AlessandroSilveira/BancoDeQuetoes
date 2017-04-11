@@ -8,11 +8,11 @@
 				<div class="form-group">
 					<label for="Area" class="col-lg-2 control-label">Área</label>
 					<div class="col-lg-4">
-						<select class="form-control" id="ID_DISCIPLINA" name="ID_DISCIPLINA">
+						<select class="form-control" id="DisciplinaId" name="DisciplinaId">
 							<option value="">Selecione</option>
 							@foreach (var itens in ViewBag.ListaDisciplinas)
 							{
-								<option value="@itens.ID_DISCIPLINA">@itens.DESC_DISCIPLINA</option>
+								<option value="@itens.AreaId">@itens.Descricao</option>
 							}
 						</select>
 
@@ -20,7 +20,7 @@
 					<label for="Nivel" class="col-lg-2 control-label">Nível</label>
 					<div class="col-lg-4">
 
-						<select class="form-control" id="DESC_NIVEL" name="DESC_NIVEL">
+						<select class="form-control" id="Nivel" name="Nivel">
 							<option value="">Selecione</option>
 							<option value="Alta Complexidade">Alta Complexidade</option>
 							<option value="Média Complexidade">Média Complexidade</option>
@@ -31,17 +31,17 @@
 				<div class="form-group">
 					<label for="Disciplina" class="col-lg-2 control-label">Disciplina</label>
 					<div class="col-lg-4">
-						<input type="text" class="form-control" id="DESC_TITULO" name="DESC_TITULO" placeholder="Disciplina">
+						<input type="text" class="form-control" id="Nome" name="Nome" placeholder="Disciplina">
 					</div>
 					<label for="Descricao" class="col-lg-2 control-label">Descrição</label>
 					<div class="col-lg-4">
-						<input type="text" class="form-control" id="DESC_TOPICO" name="DESC_TOPICO" placeholder="Descrição">
+						<input type="text" class="form-control" id="Descricao" name="Descricao" placeholder="Descrição">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="Biblioteca" class="col-lg-2 control-label">Bibliografia</label>
 					<div class="col-lg-4">
-						<input type="text" class="form-control" id="DESC_BIBLIOGRAFIA" name="DESC_BIBLIOGRAFIA" placeholder="Biblioteca">
+						<input type="text" class="form-control" id="Bibliografia" name="Bibliografia" placeholder="Biblioteca">
 					</div>
 					<label for="TotalPagina" class="col-lg-2 control-label">Total de itens por página</label>
 					<div class="col-lg-4">
