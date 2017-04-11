@@ -7,10 +7,7 @@ using BancoDeQuestoes.Domain.Interfaces.Repositories;
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
 	public class DisciplinaRepository : BaseRepository<Disciplina>,IDisciplinaRepository
-
-        
 	{
-		
 
 		public IEnumerable Area()
 		{

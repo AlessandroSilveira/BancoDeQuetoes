@@ -10,7 +10,7 @@ namespace BancoDeQuestoes.Mvc.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(BancoDeQuestoes.Models.ApplicationDbContext context)
+        protected override void Seed(Models.ApplicationDbContext context)
         {
           
         }

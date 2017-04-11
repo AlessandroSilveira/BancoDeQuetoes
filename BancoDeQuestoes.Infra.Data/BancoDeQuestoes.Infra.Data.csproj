@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="Context\Db.cs" />
     <Compile Include="EntityConfig\AreaConfiguration.cs" />
+    <Compile Include="EntityConfig\BancaConfiguration.cs" />
     <Compile Include="EntityConfig\ClienteConfiguration.cs" />
     <Compile Include="EntityConfig\DisciplinaConfiguration.cs" />
     <Compile Include="EntityConfig\ProdutoConfiguration.cs" />
@@ -40,7 +41,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AreaRepository.cs" />
-    <Compile Include="Repositories\BancaMestreRepository.cs" />
+    <Compile Include="Repositories\BancaRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\DescBibliografia.cs" />
     <Compile Include="Repositories\DescNivel.cs" />

@@ -4,6 +4,5 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
 {
 	public interface IProjetoService : IServiceBase<Projeto>
 	{
-		
 	}
 }

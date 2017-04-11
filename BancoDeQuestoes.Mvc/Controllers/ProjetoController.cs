@@ -11,16 +11,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
 {
 	public class ProjetoController : Controller
     {
-	   
-
 	    private readonly IProjetoAppService _projetoAppService;
 
 	    public ProjetoController(IProjetoAppService projetoAppService)
 	    {
 		    _projetoAppService = projetoAppService;
 	    }
-
-
+		
 	    public ActionResult Index()
         {
 			var projetoViewModel =
