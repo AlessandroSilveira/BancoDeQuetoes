@@ -6,10 +6,8 @@ namespace BancoDeQuestoes.Domain.Services
 {
 	public  class RevisorService : ServiceBase<Revisor>, IRevisorService
 	{
-		private IRevisorRepository _revisorRepository;
-		public RevisorService(IRepositoryBase<Revisor> repositoryBase, IRevisorRepository revisorRepository) : base(repositoryBase)
+		public RevisorService(IRepositoryBase<Revisor> repositoryBase) : base(repositoryBase)
 		{
-			_revisorRepository = revisorRepository;
 		}
 	}
 }

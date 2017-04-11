@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
 using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
@@ -47,15 +45,11 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AreaViewModel areaViewModel)
         {
-            if (ModelState.IsValid)
-            {
-				var area = Mapper.Map< AreaViewModel, Area>(areaViewModel);
-				_areaAppService.Add(area);
+	        if (!ModelState.IsValid) return View(areaViewModel);
+	        var area = Mapper.Map< AreaViewModel, Area>(areaViewModel);
+	        _areaAppService.Add(area);
 
-				return RedirectToAction("Index");
-            }
-
-            return View(areaViewModel);
+	        return RedirectToAction("Index");
         }
        
         public ActionResult Edit(int id)

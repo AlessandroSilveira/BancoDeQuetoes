@@ -34,6 +34,7 @@
     <Compile Include="Entities\Banca.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\C__MigrationHistory.cs" />
+    <Compile Include="Entities\FormacaoRevisor.cs" />
     <Compile Include="Entities\Mestre.cs" />
     <Compile Include="Entities\Projeto.cs" />
     <Compile Include="Entities\Revisor.cs" />
@@ -45,6 +46,7 @@
     <Compile Include="Interfaces\Repositories\IBaseRepository.cs" />
     <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDisciplinaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IFormacaoRevisoresRepository.cs" />
     <Compile Include="Interfaces\Repositories\IItensPesquisaDisciplina.cs" />
     <Compile Include="Interfaces\Repositories\IItensPesquisaMestre.cs" />
     <Compile Include="Interfaces\Repositories\IProjetoRepository.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Interfaces\Services\IBancaService.cs" />
     <Compile Include="Interfaces\Services\IClienteService.cs" />
     <Compile Include="Interfaces\Services\IDisciplinaService.cs" />
+    <Compile Include="Interfaces\Services\IFormacaoRevisorService.cs" />
     <Compile Include="Interfaces\Services\IProjetoService.cs" />
     <Compile Include="Interfaces\Services\IRevisorService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
@@ -66,6 +69,7 @@
     <Compile Include="Services\DescTopico.cs" />
     <Compile Include="Services\DisciplinaService.cs" />
     <Compile Include="Services\FimPesquisa.cs" />
+    <Compile Include="Services\FormacaoRevisorService.cs" />
     <Compile Include="Services\IdDisciplina.cs" />
     <Compile Include="Services\ProjetoService.cs" />
     <Compile Include="Services\RevisorService.cs" />

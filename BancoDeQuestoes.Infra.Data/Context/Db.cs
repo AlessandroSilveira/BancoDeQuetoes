@@ -19,6 +19,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
 		public virtual DbSet<Revisor> Revisor { get; set; }
 		public virtual DbSet<Disciplina> Disciplina { get; set; }
 		public virtual DbSet<Banca> Banca { get; set; }
+		public virtual DbSet<FormacaoRevisor> FormacaoRevisor { get; set; }
 
 		//public virtual DbSet<INSCR_ADMIN> INSCR_ADMIN { get; set; }
 		//public virtual DbSet<INSCR_ADMIN_PERFIL> INSCR_ADMIN_PERFIL { get; set; }
@@ -59,9 +60,10 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Configurations.Add(new DisciplinaConfiguration());
 			modelBuilder.Configurations.Add(new BancaConfiguration());
 			modelBuilder.Configurations.Add(new RevisorConfigurations());
+			modelBuilder.Configurations.Add(new FormacaoRevisorConfiguration());
 
 		}
 
-		//public System.Data.Entity.DbSet<BancoDeQuestoes.Mvc.ViewModels.BancaViewModel> BancaViewModels { get; set; }
+		
 	}
 }

@@ -76,6 +76,8 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IAreaAppService>().To<AreaAppService>();
 			kernel.Bind<IProjetoAppService>().To<ProjetoAppService>();
 			kernel.Bind<IBancaAppService>().To<BancaAppService>();
+			kernel.Bind<IRevisorAppService>().To<RevisorAppService>();
+			kernel.Bind<IFormacaoRevisorAppService>().To<FormacaoRevisorAppService>();
 
 			kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
 			//kernel.Bind<IClienteService>().To<ClienteService>();
@@ -84,6 +86,8 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IAreaService>().To<AreaService>();
 			kernel.Bind<IProjetoService>().To<ProjetoService>();
 			kernel.Bind<IBancaService>().To<BancaService>();
+			kernel.Bind<IRevisorService>().To<RevisorService>();
+			kernel.Bind<IFormacaoRevisorService>().To<FormacaoRevisorService>();
 
 			kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
 			//kernel.Bind<IProjetoRepository>().To<ProjetoRepository>();
@@ -92,6 +96,8 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IRevisorRepository>().To<RevisorRepository>();
 			kernel.Bind<IProjetoRepository>().To<ProjetoRepository>();
 			kernel.Bind<IBancaRepository>().To<BancaRepository>();
+			kernel.Bind<IRevisorRepository>().To<RevisorRepository>();
+			kernel.Bind<IFormacaoRevisoresRepository>().To<FormacaoRevisoresRepository>();
 		}
     }
 }
