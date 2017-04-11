@@ -30,9 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Area.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\C__MigrationHistory.cs" />
-    <Compile Include="Entities\db.cs" />
     <Compile Include="Entities\INSCR_ADMIN.cs" />
     <Compile Include="Entities\INSCR_ADMIN_PERFIL.cs" />
     <Compile Include="Entities\INSCR_BQ_BANCA.cs" />
@@ -53,10 +53,10 @@
     <Compile Include="Entities\INSCR_BQ_QUESTAO_REVISOR.cs" />
     <Compile Include="Entities\INSCR_BQ_RESPOSTA.cs" />
     <Compile Include="Entities\INSCR_BQ_RESPOSTA_REVISADA.cs" />
-    <Compile Include="Entities\INSCR_BQ_REVISOR.cs" />
+    <Compile Include="Entities\Revisor.cs" />
     <Compile Include="Entities\INSCR_BQ_STATUS.cs" />
     <Compile Include="Entities\INSCR_BQ_TIPO_GRAU_FORMACAO.cs" />
-    <Compile Include="Entities\INSCR_BQ_TOPICO.cs" />
+    <Compile Include="Entities\Disciplina.cs" />
     <Compile Include="Entities\INSCR_BQ_TOPICO_ATRIBUIDO.cs" />
     <Compile Include="Entities\INSCR_BQ_TOP_DISC_CARGO.cs" />
     <Compile Include="Entities\ManageViewModels.cs" />
@@ -82,14 +82,6 @@
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClienteService.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescBibliografia.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescNivel.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescTitulo.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescTopico.cs" />
-    <Compile Include="Services\PesquisaDisciplina\ExecutaPesquisaDisciplina.cs" />
-    <Compile Include="Services\PesquisaDisciplina\FimPesquisa.cs" />
-    <Compile Include="Services\PesquisaDisciplina\IdDisciplina.cs" />
-    <Compile Include="Services\PesquisaDisciplina\ItensPesquisaDusciplina.cs" />
     <Compile Include="Services\ProdutoService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
   </ItemGroup>
@@ -109,8 +101,9 @@
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
@@ -134,9 +127,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\PesquisaMestre\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

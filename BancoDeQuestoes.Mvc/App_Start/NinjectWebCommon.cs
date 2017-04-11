@@ -80,8 +80,10 @@ namespace BancoDeQuestoes.Mvc.App_Start
 
 			kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
 			kernel.Bind<IProjetoRepository>().To<ProjetoRepository>();
-            kernel.Bind<IAreaRepository>().To<AreaRepository>();
+            kernel.Bind<IDisciplinaRepository>().To<DisciplinaRepository>();
+			kernel.Bind<IAreaRepository>().To<AreaRepository>();
+			kernel.Bind<IRevisorRepository>().To<RevisorRepository>();
 
-        }
+		}
     }
 }

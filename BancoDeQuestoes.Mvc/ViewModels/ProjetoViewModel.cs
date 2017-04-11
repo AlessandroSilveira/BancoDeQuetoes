@@ -9,7 +9,8 @@ namespace BancoDeQuestoes.Mvc.ViewModels
         [Key]
         public int ProjetoId { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Código do Pojeto")]
+		[DisplayName("Código do Projeto")]
+		[Required(ErrorMessage = "Preencha o campo Código do Pojeto")]
         public int CodigoProjeto { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Nome do Projeto")]
@@ -19,10 +20,8 @@ namespace BancoDeQuestoes.Mvc.ViewModels
         public string NomeProjeto { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Ativo")]
-        [MaxLength(1, ErrorMessage = "Máximo {0} caracteres ")]
         [DisplayName("Ativo")]
         public bool Ativo { get; set; }
-
 
     }
 }

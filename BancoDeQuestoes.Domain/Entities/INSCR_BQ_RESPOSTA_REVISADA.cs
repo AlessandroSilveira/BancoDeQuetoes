@@ -48,7 +48,7 @@ namespace BancoDeQuestoes.Models
 
         public virtual INSCR_BQ_RESPOSTA INSCR_BQ_RESPOSTA { get; set; }
 
-        public virtual INSCR_BQ_REVISOR INSCR_BQ_REVISOR { get; set; }
+        public virtual Revisor Revisor { get; set; }
 
         public virtual INSCR_BQ_TOPICO_ATRIBUIDO INSCR_BQ_TOPICO_ATRIBUIDO { get; set; }
     }

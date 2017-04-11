@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
+using BancoDeQuestoes.Infra.Data.Context;
 
 
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
-    public class RepositoryBase<TEntity>:IDisposable,IRepositoryBase<TEntity> where TEntity : class 
+	public class RepositoryBase<TEntity>:IDisposable,IRepositoryBase<TEntity> where TEntity : class 
 	{
 
 		protected Db db = new Db();

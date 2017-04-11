@@ -21,7 +21,7 @@ namespace BancoDeQuestoes.Domain.Entities
 
         public int ID_PROJETO { get; set; }
 
-        public int ID_DISCIPLINA { get; set; }
+        public int AreaId { get; set; }
 
         public int? ID_CARGO { get; set; }
 
@@ -62,7 +62,7 @@ namespace BancoDeQuestoes.Domain.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSCR_BQ_CONVITE_MESTRE> INSCR_BQ_CONVITE_MESTRE { get; set; }
 
-        public virtual INSCR_BQ_DISCIPLINA INSCR_BQ_DISCIPLINA { get; set; }
+        public virtual Area Area { get; set; }
 
         public virtual INSCR_BQ_MESTRE INSCR_BQ_MESTRE { get; set; }
 
@@ -80,6 +80,6 @@ namespace BancoDeQuestoes.Domain.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSCR_BQ_RESPOSTA_REVISADA> INSCR_BQ_RESPOSTA_REVISADA { get; set; }
 
-        public virtual INSCR_BQ_TOPICO INSCR_BQ_TOPICO { get; set; }
+        public virtual Disciplina Disciplina { get; set; }
     }
 }

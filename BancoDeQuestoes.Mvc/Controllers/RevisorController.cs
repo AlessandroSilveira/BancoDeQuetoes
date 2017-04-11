@@ -1,92 +1,96 @@
-﻿using System.Web.Mvc;
-using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Models;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Net;
+using System.Web.Mvc;
+using AutoMapper;
+using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repositories;
+using BancoDeQuestoes.Infra.Data.Repositories;
+using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-    public class RevisorController : Controller
+	public class RevisorController : Controller
     {
-        private IRevisorRepository RevisorRepository { get; set; }
+	    public RevisorController(IRevisorRepository revisorRepository, IAreaRepository areRepository)
+	    {
+		    RevisorRepository = revisorRepository;
+		    AreaRepository = areRepository;
+	    }
 
-        public RevisorController(IRevisorRepository revisorRepository)
-        {
-            RevisorRepository = revisorRepository;
-        }
-
-      
+	    private IRevisorRepository RevisorRepository { get; set; }
+		private IAreaRepository AreaRepository { get; set; }
+		
         public ActionResult Index()
         {
-            return View(RevisorRepository.GetAll());
+	        var repositorviewModel =
+		        Mapper.Map<IEnumerable<Revisor>, IEnumerable<RevisorViewModel>>(RevisorRepository.GetAll());
+            return View(repositorviewModel);
         }
-
         
         public ActionResult Details(int id)
         {
-            var iNscrBqRevisor = RevisorRepository.GetById(id);
-            if (iNscrBqRevisor == null)
-            {
-                return HttpNotFound();
-            }
-            return View(iNscrBqRevisor);
-        }
-
-       
+			var revisor = RevisorRepository.GetById(id);
+			var revisorViewModel = Mapper.Map<Revisor, RevisorViewModel>(revisor);
+			if (revisorViewModel == null)
+			{
+				return HttpNotFound();
+			}
+			return View(revisorViewModel);
+		}
+		
         public ActionResult Create()
         {
-            return View();
+			var areaViewModel =
+				Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(AreaRepository.GetAll());
+			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao");
+			return View();
         }
-
-       
+		
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_REVISOR,DESC_NOME,DESC_CEP,DESC_ENDERECO,DESC_COMPLEMENTO,DESC_NUMERO,DESC_BAIRRO,DESC_CIDADE,DESC_ESTADO,DESC_FORMACAO,DESC_INSTITUICAO,DESC_FORMACAO_2,DESC_INSTITUICAO_2,DESC_FORMACAO_3,DESC_INSTITUICAO_3,DESC_CPF,DESC_EMAIL,DESC_EMAIL_2,DESC_DDD,DESC_TELEFONE,DESC_DDD_CEL,DESC_CELULAR,DESC_SENHA,DESC_DISCIPLINA,DESC_ATIVO")] INSCR_BQ_REVISOR iNSCR_BQ_REVISOR)
+        public ActionResult Create( RevisorViewModel revisorViewModel)
         {
-            if (!ModelState.IsValid) return View(iNSCR_BQ_REVISOR);
-            RevisorRepository.Add(iNSCR_BQ_REVISOR);
-                
-            return RedirectToAction("Index");
-        }
-
-        // GET: Revisor/Edit/5
+			if (!ModelState.IsValid) return View(revisorViewModel);
+			var revisor = Mapper.Map<RevisorViewModel, Revisor>(revisorViewModel);
+			RevisorRepository.Add(revisor);
+			return RedirectToAction("Index");
+		}
+		
         public ActionResult Edit(int id)
         {
-            var iNscrBqRevisor = RevisorRepository.GetById(id);
-            return iNscrBqRevisor == null ? (ActionResult) HttpNotFound() : View(iNscrBqRevisor);
-        }
-      
+			var revisor = RevisorRepository.GetById(id);
+			var revisorViewModel = Mapper.Map<Revisor, RevisorViewModel>(revisor);
+			return View(revisorViewModel);
+		}
+		
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_REVISOR,DESC_NOME,DESC_CEP,DESC_ENDERECO,DESC_COMPLEMENTO,DESC_NUMERO,DESC_BAIRRO,DESC_CIDADE,DESC_ESTADO,DESC_FORMACAO,DESC_INSTITUICAO,DESC_FORMACAO_2,DESC_INSTITUICAO_2,DESC_FORMACAO_3,DESC_INSTITUICAO_3,DESC_CPF,DESC_EMAIL,DESC_EMAIL_2,DESC_DDD,DESC_TELEFONE,DESC_DDD_CEL,DESC_CELULAR,DESC_SENHA,DESC_DISCIPLINA,DESC_ATIVO")] INSCR_BQ_REVISOR iNSCR_BQ_REVISOR)
+        public ActionResult Edit( RevisorViewModel revisorViewModel)
         {
-            if (!ModelState.IsValid) return View(iNSCR_BQ_REVISOR);
-            RevisorRepository.Update(iNSCR_BQ_REVISOR);
-            return RedirectToAction("Index");
-        }
+			if (!ModelState.IsValid) return View(revisorViewModel);
+			var revisorDomain = Mapper.Map<RevisorViewModel, Revisor>(revisorViewModel);
+			RevisorRepository.Update(revisorDomain);
 
-       
+			return RedirectToAction("Index");
+		}
+		
         public ActionResult Delete(int id)
         {
-            var iNscrBqRevisor = RevisorRepository.GetById(id);
-            return iNscrBqRevisor == null ? (ActionResult) HttpNotFound() : View(iNscrBqRevisor);
-        }
+			var revisor = RevisorRepository.GetById(id);
+			var revisorViewModel = Mapper.Map<Revisor, RevisorViewModel>(revisor);
 
-       
+			return View(revisorViewModel);
+		}
+		
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var iNscrBqRevisor = RevisorRepository.GetById(id);
-            RevisorRepository.Remove(iNscrBqRevisor);
-            return RedirectToAction("Index");
-        }
+			var revisor = RevisorRepository.GetById(id);
+			RevisorRepository.Remove(revisor);
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                RevisorRepository.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+			return RedirectToAction("Index");
+		}
     }
 }

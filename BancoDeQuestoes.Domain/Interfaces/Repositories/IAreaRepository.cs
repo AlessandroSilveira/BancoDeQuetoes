@@ -1,9 +1,8 @@
-﻿using BancoDeQuestoes.Domain.Interfaces.Repositories;
-using BancoDeQuestoes.Models;
+﻿using BancoDeQuestoes.Domain.Entities;
 
-namespace BancoDeQuestoes.Interfaces
+namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 {
-    public interface IAreaRepository : IBaseRepository<INSCR_BQ_DISCIPLINA>
+    public interface IAreaRepository : IBaseRepository<Area>
     {
        
     }

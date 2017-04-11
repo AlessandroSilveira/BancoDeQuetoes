@@ -27,6 +27,6 @@ namespace BancoDeQuestoes.Domain.Entities
 
         public virtual Projeto Projeto { get; set; }
 
-        public virtual INSCR_BQ_TOPICO INSCR_BQ_TOPICO { get; set; }
+        public virtual Disciplina Disciplina { get; set; }
     }
 }

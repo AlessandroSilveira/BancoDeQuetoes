@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BancoDeQuestoes.Models;
-using BancoDeQuestoes.Services;
-using BancoDeQuestoes.Services.PesquisaDisciplina;
+using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
+using BancoDeQuestoes.Mvc.Services.PesquisaDisciplina;
 
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
-    public class DisciplinaRepository : BaseRepository<INSCR_BQ_TOPICO>,IDisciplinaRepository
+	public class DisciplinaRepository : BaseRepository<Disciplina>,IDisciplinaRepository
 
         
 	{
@@ -19,17 +18,17 @@ namespace BancoDeQuestoes.Infra.Data.Repositories
 
 		public IEnumerable Area()
 		{
-			return Db.INSCR_BQ_DISCIPLINA.ToList();
+			return Db.Area.ToList();
 		}
 
-		public IEnumerable ResultadoPesquisaDisciplina(INSCR_BQ_TOPICO form)
+		public IEnumerable ResultadoPesquisaDisciplina(Disciplina form)
 		{
 			var sql = Db.INSCR_BQ_TOPICO.ToList();
 
 			return ExecutadorDePesquisa(form, sql).ToList();
 		}
 
-		private static IEnumerable<INSCR_BQ_TOPICO> ExecutadorDePesquisa(INSCR_BQ_TOPICO form, List<INSCR_BQ_TOPICO> sql)
+		private static IEnumerable<Disciplina> ExecutadorDePesquisa(Disciplina form, List<Disciplina> sql)
 		{
 			var filtroDescTopico = new DescTopico();
 			var filtroIdDisciplina = new IdDisciplina();
