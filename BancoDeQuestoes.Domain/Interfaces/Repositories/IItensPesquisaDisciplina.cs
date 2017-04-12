@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Models;
 
-namespace BancoDeQuestoes.Interfaces
+namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 {
 	public interface IItensPesquisaDisciplina
 	{

@@ -1,22 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BancoDeQuestoes.Interfaces;
-using BancoDeQuestoes.Models;
+using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repositories;
 
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
 	internal class StatusMestre : IItensPesquisaMestre
 	{
-		public List<INSCR_BQ_MESTRE> Pesquisa(INSCR_BQ_MESTRE form, List<INSCR_BQ_MESTRE> sql)
+		public List<Mestre> Pesquisa(Mestre form, List<Mestre> sql)
 		{
-			if (!string.IsNullOrEmpty(form.DESC_ATIVO))
+			if (form.Ativo)
 			{
-				sql = sql.Where(a => a.DESC_ATIVO == form.DESC_ATIVO).ToList();
+				sql = sql.Where(a => a.Ativo == form.Ativo).ToList();
 			}
-
 			return Proximo.Pesquisa(form, sql);
 		}
-
 		public IItensPesquisaMestre Proximo { get; set; }
 	}
 }

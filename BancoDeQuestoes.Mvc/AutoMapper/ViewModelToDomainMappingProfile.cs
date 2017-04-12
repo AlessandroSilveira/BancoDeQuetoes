@@ -17,6 +17,9 @@ namespace BancoDeQuestoes.Mvc.AutoMapper
 			Mapper.CreateMap<Area, AreaViewModel>();
 			Mapper.CreateMap<Projeto, ProjetoViewModel>();
 			Mapper.CreateMap<Disciplina, DisciplinaViewModel>();
+			Mapper.CreateMap<Banca, BancaViewModel>();
+			Mapper.CreateMap<Revisor, RevisorViewModel>();
+			Mapper.CreateMap<FormacaoRevisor, FormacaoRevisorViewModel>();
 
 		}
 	}

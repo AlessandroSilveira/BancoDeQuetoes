@@ -30,12 +30,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AppServiceBase.cs" />
-    <Compile Include="ClienteAppService.cs" />
-    <Compile Include="Interface\IAppServiceBase.cs" />
-    <Compile Include="Interface\IClienteAppService.cs" />
-    <Compile Include="Interface\IProdutoAppService.cs" />
-    <Compile Include="ProdutoAppService.cs" />
+    <Compile Include="Interface\Repositories\IAreaAppService.cs" />
+    <Compile Include="Interface\Repositories\IBancaAppService.cs" />
+    <Compile Include="Interface\Repositories\IDisciplinaAppService.cs" />
+    <Compile Include="Interface\Repositories\IFormacaoRevisorAppService.cs" />
+    <Compile Include="Interface\Repositories\IMestreAppService.cs" />
+    <Compile Include="Interface\Repositories\IProjetoAppService.cs" />
+    <Compile Include="Interface\Repositories\IRevisorAppService.cs" />
+    <Compile Include="Interface\Services\AppServiceBase.cs" />
+    <Compile Include="Interface\Services\AreaAppService.cs" />
+    <Compile Include="Interface\Repositories\IAppServiceBase.cs" />
+    <Compile Include="Interface\Repositories\IClienteAppService.cs" />
+    <Compile Include="Interface\Repositories\IProdutoAppService.cs" />
+    <Compile Include="Interface\Services\BancaAppService.cs" />
+    <Compile Include="Interface\Services\DisciplinaAppService.cs" />
+    <Compile Include="Interface\Services\FormacaoRevisorAppService.cs" />
+    <Compile Include="Interface\Services\ProjetoAppService.cs" />
+    <Compile Include="Interface\Services\RevisorAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
