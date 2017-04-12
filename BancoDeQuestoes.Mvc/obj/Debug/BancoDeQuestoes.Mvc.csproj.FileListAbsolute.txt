@@ -210,10 +210,6 @@ C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Newto
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.csprojResolveAssemblyReference.cache
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.pdb
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.Migrations.projeto.resources
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.csproj.GenerateResource.Cache
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.Migrations.projetos.resources
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.Migrations.updateprojetos.resources
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\AutoMapper.Net4.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\ApplicationInsights.config
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\roslyn\csc.exe
@@ -319,4 +315,3 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.pdb
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.Application.dll.config
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.Migrations.UpdateArea.resources

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
@@ -26,7 +27,22 @@ namespace BancoDeQuestoes.Domain.Services
 			return ExecutadorDePesquisa(form, sql).ToList();
 		}
 
-		private static IEnumerable<Disciplina> ExecutadorDePesquisa(Disciplina form, List<Disciplina> sql)
+	    public IEnumerable ListaNivel()
+	    {
+	        var lista = new Dictionary<string, string>
+	        {
+	            {"", "Selecione"},
+                {"Alta Complexidade", "Alta Complexidade"},
+	            {"Média Complexidade", "Média Complexidade"},
+	            {"Baixa Complexidade", "Baixa Complexidade"}
+	        };
+
+
+	        return lista;
+
+	    }
+
+	    private static IEnumerable<Disciplina> ExecutadorDePesquisa(Disciplina form, List<Disciplina> sql)
 		{
 			var filtroDescTopico = new DescTopico();
 			var filtroIdDisciplina = new IdDisciplina();

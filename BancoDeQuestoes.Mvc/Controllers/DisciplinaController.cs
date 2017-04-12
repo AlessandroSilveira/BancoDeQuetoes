@@ -3,12 +3,11 @@ using System.Web.Mvc;
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
 using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-	public class DisciplinaController : Controller
+    public class DisciplinaController : Controller
 	{
 
 		private readonly IDisciplinaAppService _disciplinaAppService;
@@ -26,23 +25,23 @@ namespace BancoDeQuestoes.Mvc.Controllers
 				Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_disciplinaAppService.GetAll());
 			ViewBag.ListaDisciplinas =
 			Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
-			return View(disciplinaViewModel);
+
+            ViewBag.Nivel = new SelectList(_disciplinaAppService.ListaNivel(),"Key","Value");
+
+            return View(disciplinaViewModel);
 		}
 
 		public ActionResult Details(int id)
 		{
 			var disciplina = _disciplinaAppService.GetById(id);
 			var disciplinaViewModel = Mapper.Map<Disciplina, DisciplinaViewModel>(disciplina);
-			if (disciplinaViewModel == null)
-			{
-				return HttpNotFound();
-			}
-			return View(disciplinaViewModel);
+		    return disciplinaViewModel == null ? (ActionResult) HttpNotFound() : View(disciplinaViewModel);
 		}
 
 		public ActionResult Create()
 		{
-			var areaViewModel =
+		    ViewBag.Nivel = new SelectList(_disciplinaAppService.ListaNivel(), "Key", "Value");
+            var areaViewModel =
 				Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
 			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao");
 			return View();
@@ -52,26 +51,30 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(DisciplinaViewModel disciplinaViewModel)
 		{
-			if (ModelState.IsValid)
-			{
-				var dsiciplina = Mapper.Map<DisciplinaViewModel, Disciplina>(disciplinaViewModel);
-				_disciplinaAppService.Add(dsiciplina);
+		    if (!ModelState.IsValid)
+		    {
+		        var areaViewModel =
+		            Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
+		        ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
 
-				return RedirectToAction("Index");
-			}
+		        return View(disciplinaViewModel);
+		    }
 
-			var areaViewModel =
-				Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
-			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
+		    var dsiciplina = Mapper.Map<DisciplinaViewModel, Disciplina>(disciplinaViewModel);
+		    _disciplinaAppService.Add(dsiciplina);
 
-			return View(disciplinaViewModel);
+		    return RedirectToAction("Index");
 		}
 
 		public ActionResult Edit(int id)
 		{
-			var disciplina = _disciplinaAppService.GetById(id);
+		    var areaViewModel =
+		        Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
+            ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", "Selecione");
+            var disciplina = _disciplinaAppService.GetById(id);
 			var disciplinaViewModel = Mapper.Map<Disciplina, DisciplinaViewModel>(disciplina);
-			return View(disciplinaViewModel);
+		    ViewBag.Nivel = new SelectList(_disciplinaAppService.ListaNivel(), "Key", "Value");
+            return View(disciplinaViewModel);
 		}
 
 		[HttpPost]
@@ -86,7 +89,8 @@ namespace BancoDeQuestoes.Mvc.Controllers
 					Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
 
 			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
-			return View(disciplinaViewModel);
+		    ViewBag.Nivel = new SelectList(_disciplinaAppService.ListaNivel(), "Key", "Value");
+            return View(disciplinaViewModel);
 		}
 
 		public ActionResult Delete(int id)

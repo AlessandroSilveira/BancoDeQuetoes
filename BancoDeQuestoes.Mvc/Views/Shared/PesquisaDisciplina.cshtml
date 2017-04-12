@@ -15,17 +15,11 @@
 								<option value="@itens.AreaId">@itens.Descricao</option>
 							}
 						</select>
-
+					
 					</div>
 					<label for="Nivel" class="col-lg-2 control-label">Nível</label>
 					<div class="col-lg-4">
-
-						<select class="form-control" id="Nivel" name="Nivel">
-							<option value="">Selecione</option>
-							<option value="Alta Complexidade">Alta Complexidade</option>
-							<option value="Média Complexidade">Média Complexidade</option>
-							<option value="Baixa Complexidade">Baixa Complexidade</option>
-						</select>
+						@Html.DropDownList("Nivel", null, htmlAttributes: new { @class = "form-control" })
 					</div>
 				</div>
 				<div class="form-group">
