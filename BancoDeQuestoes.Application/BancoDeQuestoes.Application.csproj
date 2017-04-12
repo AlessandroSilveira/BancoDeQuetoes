@@ -39,7 +39,9 @@
     <Compile Include="Interface\Repositories\IMestreDependenteAppService.cs" />
     <Compile Include="Interface\Repositories\IMestreFormacaoAppService.cs" />
     <Compile Include="Interface\Repositories\IProjetoAppService.cs" />
+    <Compile Include="Interface\Repositories\IQuestaoAppService.cs" />
     <Compile Include="Interface\Repositories\IRevisorAppService.cs" />
+    <Compile Include="Interface\Repositories\ITopicoAtribuidoAppService.cs" />
     <Compile Include="Interface\Services\AppServiceBase.cs" />
     <Compile Include="Interface\Services\AreaAppService.cs" />
     <Compile Include="Interface\Repositories\IAppServiceBase.cs" />
@@ -53,7 +55,9 @@
     <Compile Include="Interface\Services\MestreDependenteAppService.cs" />
     <Compile Include="Interface\Services\MestreFormacaoAppService.cs" />
     <Compile Include="Interface\Services\ProjetoAppService.cs" />
+    <Compile Include="Interface\Services\QuestaoAppService.cs" />
     <Compile Include="Interface\Services\RevisorAppService.cs" />
+    <Compile Include="Interface\Services\TopicoAtribuidoAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

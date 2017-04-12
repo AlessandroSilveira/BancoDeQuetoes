@@ -58,8 +58,10 @@
     <Compile Include="Interfaces\Repositories\IMestreFormacaoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IMestreRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProjetoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IQuestaoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\IRevisorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITopicoAtribuidoRepository.cs" />
     <Compile Include="Interfaces\Services\IAreaService.cs" />
     <Compile Include="Interfaces\Services\IBancaService.cs" />
     <Compile Include="Interfaces\Services\IClienteService.cs" />
@@ -70,8 +72,10 @@
     <Compile Include="Interfaces\Services\IMestreFormacaoService.cs" />
     <Compile Include="Interfaces\Services\IMestreService.cs" />
     <Compile Include="Interfaces\Services\IProjetoService.cs" />
+    <Compile Include="Interfaces\Services\IQuestaoService.cs" />
     <Compile Include="Interfaces\Services\IRevisorService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
+    <Compile Include="Interfaces\Services\ITopicoAtribuidoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AreaService.cs" />
     <Compile Include="Services\BancaService.cs" />
@@ -88,8 +92,10 @@
     <Compile Include="Services\MestreFormacaoService.cs" />
     <Compile Include="Services\MestreService.cs" />
     <Compile Include="Services\ProjetoService.cs" />
+    <Compile Include="Services\QuestaoService.cs" />
     <Compile Include="Services\RevisorService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Services\TopicoAtribuidoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

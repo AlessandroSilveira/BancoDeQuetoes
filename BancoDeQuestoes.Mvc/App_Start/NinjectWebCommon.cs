@@ -80,6 +80,9 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IMestreAreaAppService>().To<MestreAreaAppService>();
 			kernel.Bind<IMestreDependenteAppService>().To<MestreDependenteAppService>();
 			kernel.Bind<IMestreFormacaoAppService>().To<MestreFormacaoAppService>();
+			kernel.Bind<IQuestaoAppService>().To<QuestaoAppService>();
+			kernel.Bind<ITopicoAtribuidoAppService>().To<TopicoAtribuidoAppService>();
+			
 
 			kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
 			kernel.Bind<IDisciplinaService>().To<DisciplinaService>();
@@ -92,6 +95,9 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IMestreAreaService>().To<MestreAreaService>();
 			kernel.Bind<IMestreDependenteService>().To<MestreDependenteService>();
 			kernel.Bind<IMestreFormacaoService>().To<MestreFormacaoService>();
+			kernel.Bind<IQuestaoService>().To<QuestaoService>();
+			kernel.Bind<ITopicoAtribuidoService>().To<TopicoAtribuidoService>();
+
 
 			kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
 			kernel.Bind<IAreaRepository>().To<AreaRepository>();
@@ -104,6 +110,8 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IMestreAreaRepository>().To<MestreAreaRepository>();
 			kernel.Bind<IMestreDependenteRepository>().To<MestreDependenteRepsitory>();
 			kernel.Bind<IMestreFormacaoRepository>().To<MestreFormacaoRepository>();
+			kernel.Bind<IQuestaoRepository>().To<QuestaoRepository>();
+			kernel.Bind<ITopicoAtribuidoRepository>().To<TopicoAtribuidoRepository>();
 
 		}
     }
