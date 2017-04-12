@@ -1,0 +1,78 @@
+﻿
+@{
+	using (Html.BeginForm("Search", "Disciplina", FormMethod.Post))
+	{
+		<form class="form-horizontal">
+			<fieldset>
+				<legend>Pesquisar</legend>
+				<div class="form-group">
+					<label for="Projeto" class="col-lg-2 control-label">Projeto</label>
+					<div class="col-lg-4">
+						<select class="form-control" id="ProjetoId" name="ProjetoId">
+							
+						</select>
+
+					</div>
+					<label for="Área" class="col-lg-2 control-label">Área</label>
+					<div class="col-lg-4">
+
+						<select class="form-control" id="AreaId" name="AreaId">
+							
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="Mestre" class="col-lg-2 control-label">Mestre</label>
+					<div class="col-lg-4">
+						<select class="form-control" id="MestreId" name="MestreId"></select>
+					</div>
+					<label for="Descricao" class="col-lg-2 control-label">Status</label>
+					<div class="col-lg-4">
+						<select class="form-control" id="Status" name="Status"></select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="Biblioteca" class="col-lg-2 control-label">ID Questão</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="QuestaoId" name="QuestaoId" placeholder="ID Questão">
+					</div>
+
+					<label for="TotalPagina" class="col-lg-2 control-label">Data de Entrega</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="DataEntrega" name="DataEntrega" placeholder="Data de Entrega">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="Biblioteca" class="col-lg-2 control-label">ID Disciplina</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="DisciplinaId" name="DisciplinaId" placeholder="ID Disciplina">
+					</div>
+
+					<label for="TotalPagina" class="col-lg-2 control-label">Descrição da Disciplina</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="Descricao " name="Descricao" placeholder="Descrição da Disciplina">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="Biblioteca" class="col-lg-2 control-label">Itens por Página</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="ItensPágina" name="ItensPágina" placeholder="Itens por Página">
+					</div>
+
+					<label for="TotalPagina" class="col-lg-2 control-label">Descrição da Questão</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="Descricao " name="Descricao" placeholder="Descrição da Questão">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-4 col-lg-offset-4">
+						<button type="submit" class="btn btn-primary">Enviar</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	}
+}

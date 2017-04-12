@@ -409,6 +409,7 @@
     <Content Include="Views\MestreFormacao\Edit.cshtml" />
     <Content Include="Views\MestreFormacao\Index.cshtml" />
     <Content Include="Views\GerenciamentoQuestoes\Index.cshtml" />
+    <Content Include="Views\Shared\PesquisaQuestão.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

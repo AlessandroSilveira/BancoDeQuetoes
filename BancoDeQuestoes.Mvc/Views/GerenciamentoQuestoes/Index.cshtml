@@ -2,8 +2,12 @@
 
 <h2>Gerenciamento de Questões</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+	@Html.ActionLink("Atribuir Novo Item de Prova a Ser Elaborado. ", "Create")
 </p>
+<p>
+	@Html.ActionLink("Itens Recusados.", "Create")
+</p>
+@Html.Partial("PesquisaQuestão")
 <table class="table">
     <tr>
         <th>
@@ -72,9 +76,9 @@
             @Html.DisplayFor(modelItem => item.ConviteAceito)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.QuestaoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.QuestaoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.QuestaoId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.QuestaoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.QuestaoId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.QuestaoId })
         </td>
     </tr>
 }
