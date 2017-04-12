@@ -2,8 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-
-namespace BancoDeQuestoes.Domain.Entities
+namespace BancoDeQuestoes.Mvc.ViewModels
 {
     public class IndexViewModel
     {

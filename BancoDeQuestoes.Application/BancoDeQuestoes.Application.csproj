@@ -35,6 +35,9 @@
     <Compile Include="Interface\Repositories\IDisciplinaAppService.cs" />
     <Compile Include="Interface\Repositories\IFormacaoRevisorAppService.cs" />
     <Compile Include="Interface\Repositories\IMestreAppService.cs" />
+    <Compile Include="Interface\Repositories\IMestreAreaAppService.cs" />
+    <Compile Include="Interface\Repositories\IMestreDependenteAppService.cs" />
+    <Compile Include="Interface\Repositories\IMestreFormacaoAppService.cs" />
     <Compile Include="Interface\Repositories\IProjetoAppService.cs" />
     <Compile Include="Interface\Repositories\IRevisorAppService.cs" />
     <Compile Include="Interface\Services\AppServiceBase.cs" />
@@ -45,6 +48,10 @@
     <Compile Include="Interface\Services\BancaAppService.cs" />
     <Compile Include="Interface\Services\DisciplinaAppService.cs" />
     <Compile Include="Interface\Services\FormacaoRevisorAppService.cs" />
+    <Compile Include="Interface\Services\MestreAppService.cs" />
+    <Compile Include="Interface\Services\MestreAreaAppService.cs" />
+    <Compile Include="Interface\Services\MestreDependenteAppService.cs" />
+    <Compile Include="Interface\Services\MestreFormacaoAppService.cs" />
     <Compile Include="Interface\Services\ProjetoAppService.cs" />
     <Compile Include="Interface\Services\RevisorAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

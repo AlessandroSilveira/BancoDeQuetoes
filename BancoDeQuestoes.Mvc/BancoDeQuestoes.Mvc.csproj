@@ -243,6 +243,10 @@
     <Compile Include="Controllers\FormacaoRevisorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MestreAreaController.cs" />
+    <Compile Include="Controllers\MestreController.cs" />
+    <Compile Include="Controllers\MestreDependenteController.cs" />
+    <Compile Include="Controllers\MestreFormacaoController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\RevisorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -265,6 +269,10 @@
     <Compile Include="ViewModels\FormacaoRevisorViewModel.cs" />
     <Compile Include="ViewModels\IdentityModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="ViewModels\MestreAreaViewModel.cs" />
+    <Compile Include="ViewModels\MestreDependenteViewModel.cs" />
+    <Compile Include="ViewModels\MestreFormacaoViewModel.cs" />
+    <Compile Include="ViewModels\MestreViewModel.cs" />
     <Compile Include="ViewModels\ProjetoViewModel.cs" />
     <Compile Include="ViewModels\RevisorViewModel.cs" />
   </ItemGroup>
@@ -377,6 +385,26 @@
     <Content Include="Views\FormacaoRevisor\Details.cshtml" />
     <Content Include="Views\FormacaoRevisor\Edit.cshtml" />
     <Content Include="Views\FormacaoRevisor\Index.cshtml" />
+    <Content Include="Views\Mestre\Create.cshtml" />
+    <Content Include="Views\Mestre\Delete.cshtml" />
+    <Content Include="Views\Mestre\Details.cshtml" />
+    <Content Include="Views\Mestre\Edit.cshtml" />
+    <Content Include="Views\Mestre\Index.cshtml" />
+    <Content Include="Views\MestreArea\Create.cshtml" />
+    <Content Include="Views\MestreArea\Delete.cshtml" />
+    <Content Include="Views\MestreArea\Details.cshtml" />
+    <Content Include="Views\MestreArea\Edit.cshtml" />
+    <Content Include="Views\MestreArea\Index.cshtml" />
+    <Content Include="Views\MestreDependente\Create.cshtml" />
+    <Content Include="Views\MestreDependente\Delete.cshtml" />
+    <Content Include="Views\MestreDependente\Details.cshtml" />
+    <Content Include="Views\MestreDependente\Edit.cshtml" />
+    <Content Include="Views\MestreDependente\Index.cshtml" />
+    <Content Include="Views\MestreFormacao\Create.cshtml" />
+    <Content Include="Views\MestreFormacao\Delete.cshtml" />
+    <Content Include="Views\MestreFormacao\Details.cshtml" />
+    <Content Include="Views\MestreFormacao\Edit.cshtml" />
+    <Content Include="Views\MestreFormacao\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

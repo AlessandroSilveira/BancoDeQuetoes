@@ -20,6 +20,11 @@ namespace BancoDeQuestoes.Mvc.AutoMapper
 			Mapper.CreateMap<Banca, BancaViewModel>();
 			Mapper.CreateMap<Revisor, RevisorViewModel>();
 			Mapper.CreateMap<RevisorFormacao, FormacaoRevisorViewModel>();
+			Mapper.CreateMap<Mestre, MestreViewModel>();
+			Mapper.CreateMap<MestreArea, MestreAreaViewModel>();
+			Mapper.CreateMap<MestreDependente, MestreDependenteViewModel>();
+			Mapper.CreateMap<MestreFormacao, MestreFormacaoViewModel>();
+
 
 		}
 	}

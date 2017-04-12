@@ -1,0 +1,194 @@
+﻿@model BancoDeQuestoes.Mvc.ViewModels.MestreViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Mestre</h2>
+
+<div>
+    <h4>DEtalhes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Complemento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Complemento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailSecundario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailSecundario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Banca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Banca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Filhos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Filhos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Minicurriculo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Minicurriculo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Banco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Banco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Agencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoConta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoConta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Conta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Conta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.MestreId }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

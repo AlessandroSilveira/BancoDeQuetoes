@@ -70,34 +70,41 @@ namespace BancoDeQuestoes.Mvc.App_Start
         private static void RegisterServices(IKernel kernel)
         {
 	        kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
-			//kernel.Bind<IClienteAppService>().To<ClienteAppService>();
-			//kernel.Bind<IProdutoAppService>().To<ProdutoAppService>();
 			kernel.Bind<IDisciplinaAppService>().To<DisciplinaAppService>();
 			kernel.Bind<IAreaAppService>().To<AreaAppService>();
 			kernel.Bind<IProjetoAppService>().To<ProjetoAppService>();
 			kernel.Bind<IBancaAppService>().To<BancaAppService>();
 			kernel.Bind<IRevisorAppService>().To<RevisorAppService>();
 			kernel.Bind<IFormacaoRevisorAppService>().To<FormacaoRevisorAppService>();
+			kernel.Bind<IMestreAppService>().To<MestreAppService>();
+			kernel.Bind<IMestreAreaAppService>().To<MestreAreaAppService>();
+			kernel.Bind<IMestreDependenteAppService>().To<MestreDependenteAppService>();
+			kernel.Bind<IMestreFormacaoAppService>().To<MestreFormacaoAppService>();
 
 			kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
-			//kernel.Bind<IClienteService>().To<ClienteService>();
-			//kernel.Bind<IProdutoService>().To<ProdutoService>();
 			kernel.Bind<IDisciplinaService>().To<DisciplinaService>();
 			kernel.Bind<IAreaService>().To<AreaService>();
 			kernel.Bind<IProjetoService>().To<ProjetoService>();
 			kernel.Bind<IBancaService>().To<BancaService>();
 			kernel.Bind<IRevisorService>().To<RevisorService>();
 			kernel.Bind<IFormacaoRevisorService>().To<FormacaoRevisorService>();
+			kernel.Bind<IMestreService>().To<MestreService>();
+			kernel.Bind<IMestreAreaService>().To<MestreAreaService>();
+			kernel.Bind<IMestreDependenteService>().To<MestreDependenteService>();
+			kernel.Bind<IMestreFormacaoService>().To<MestreFormacaoService>();
 
 			kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
-			//kernel.Bind<IProjetoRepository>().To<ProjetoRepository>();
-            //kernel.Bind<IDisciplinaRepository>().To<DisciplinaRepository>();
 			kernel.Bind<IAreaRepository>().To<AreaRepository>();
 			kernel.Bind<IRevisorRepository>().To<RevisorRepository>();
 			kernel.Bind<IProjetoRepository>().To<ProjetoRepository>();
 			kernel.Bind<IBancaRepository>().To<BancaRepository>();
 			kernel.Bind<IRevisorRepository>().To<RevisorRepository>();
 			kernel.Bind<IFormacaoRevisoresRepository>().To<FormacaoRevisoresRepository>();
+			kernel.Bind<IMestreRepository>().To<MestreRepository>();
+			kernel.Bind<IMestreAreaRepository>().To<MestreAreaRepository>();
+			kernel.Bind<IMestreDependenteRepository>().To<MestreDependenteRepsitory>();
+			kernel.Bind<IMestreFormacaoRepository>().To<MestreFormacaoRepository>();
+
 		}
     }
 }
