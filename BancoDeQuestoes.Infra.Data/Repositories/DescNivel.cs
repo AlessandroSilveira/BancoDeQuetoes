@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
+using BancoDeQuestoes.Interfaces;
 
-namespace BancoDeQuestoes.Infra.Data.Repositories
+namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 {
     public class DescNivel : IItensPesquisaDisciplina
 	{

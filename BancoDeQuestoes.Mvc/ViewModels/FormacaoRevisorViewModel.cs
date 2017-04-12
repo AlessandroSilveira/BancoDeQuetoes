@@ -1,38 +1,31 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Mvc.ViewModels
 {
 	public class FormacaoRevisorViewModel
 	{
-		[Key]
 		[DisplayName("Primeira Formação")]
 		[Required]
-        [ForeignKey("FormacaoRevisor")]
-		public int FormacaoRevisorId { get; set; }
-        public virtual FormacaoRevisor FormacaoRevisor { get; set; }
+		public string DESC_FORMACAO { get; set; }
 
-        [ForeignKey("Revisor")]
-		public int RevisorId { get; set; }
-        public virtual Revisor Revisor { get; set; }
-
-		[StringLength(150)]
+		[StringLength(50)]
 		[DisplayName("Instituição")]
 		[Required]
-		public string Instituicao { get; set; }
+		public string DESC_INSTITUICAO { get; set; }
 
-		[DisplayName("Formação")]
-		[Required]
-		[StringLength(150)]
-		public string Formacao { get; set; }
+		[DisplayName("Segunda Formação")]
+		public string DESC_FORMACAO_2 { get; set; }
 
-		
-		[DisplayName("Ativo")]
-		[Required]
-		public bool Ativo { get; set; }
+		[StringLength(50)]
+		[DisplayName("Segunda Instituição")]
+		public string DESC_INSTITUICAO_2 { get; set; }
 
-		
+		[DisplayName("Terceira Formação")]
+		public string DESC_FORMACAO_3 { get; set; }
+
+		[StringLength(50)]
+		[DisplayName("Terceira Instituição")]
+		public string DESC_INSTITUICAO_3 { get; set; }
 	}
 }

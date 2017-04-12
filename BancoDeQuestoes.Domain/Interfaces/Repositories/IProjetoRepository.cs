@@ -2,7 +2,8 @@
 
 namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 {
-	public interface IProjetoRepository : IBaseRepository<Projeto>
-	{
-	}
+    public interface IProjetoRepository : IBaseRepository<Projeto>
+    {
+      
+    }
 }

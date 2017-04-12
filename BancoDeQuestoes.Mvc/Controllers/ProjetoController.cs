@@ -3,32 +3,33 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
-using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repositories;
 using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
 	public class ProjetoController : Controller
     {
-	    private readonly IProjetoAppService _projetoAppService;
-
-	    public ProjetoController(IProjetoAppService projetoAppService)
+	    public ProjetoController(IProjetoRepository projetoRepository)
 	    {
-		    _projetoAppService = projetoAppService;
+		    this.ProjetoRepository = projetoRepository;
 	    }
-		
-	    public ActionResult Index()
+
+	    private IProjetoRepository ProjetoRepository { get; set; }
+
+        // GET: Projeto
+        public ActionResult Index()
         {
 			var projetoViewModel =
-			   Mapper.Map<IEnumerable<Projeto>, IEnumerable<ProjetoViewModel>>(_projetoAppService.GetAll());
+			   Mapper.Map<IEnumerable<Projeto>, IEnumerable<ProjetoViewModel>>(ProjetoRepository.GetAll());
 			return View(projetoViewModel);
         }
         
         public ActionResult Details(int id)
         {
 			
-			var projeto = _projetoAppService.GetById(id);
+			var projeto = ProjetoRepository.GetById(id);
 			var projetoViewModel = Mapper.Map<Projeto, ProjetoViewModel>(projeto);
 			if (projetoViewModel == null)
 			{
@@ -48,7 +49,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 	        if (!ModelState.IsValid) return View(projetoViewModel);
 	        var projeto = Mapper.Map<ProjetoViewModel, Projeto>(projetoViewModel);
-			_projetoAppService.Add(projeto);
+	        ProjetoRepository.Add(projeto);
 
 	        return RedirectToAction("Index");
         }
@@ -56,7 +57,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Edit(int? id)
         {
 	        if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-	        var projeto = _projetoAppService.GetById(Convert.ToInt32(id));
+	        var projeto = ProjetoRepository.GetById(Convert.ToInt32(id));
 	        var projetosViewModel = Mapper.Map<Projeto, ProjetoViewModel>(projeto);
 	        return View(projetosViewModel);
         }
@@ -67,14 +68,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 			if (!ModelState.IsValid) return View(projetoViewModel);
 			var projetoDomain = Mapper.Map<ProjetoViewModel, Projeto>(projetoViewModel);
-			_projetoAppService.Update(projetoDomain);
+			ProjetoRepository.Update(projetoDomain);
 
 			return RedirectToAction("Index");
 		}
 		
         public ActionResult Delete(int? id)
 		{
-			var projeto = _projetoAppService.GetById(Convert.ToInt32(id));
+			var projeto = ProjetoRepository.GetById(Convert.ToInt32(id));
 			var projetoViewModel = Mapper.Map<Projeto, ProjetoViewModel>(projeto);
 
 			return View(projetoViewModel);
@@ -84,8 +85,8 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-			var projeto = _projetoAppService.GetById(id);
-			_projetoAppService.Remove(projeto);
+			var projeto = ProjetoRepository.GetById(id);
+			ProjetoRepository.Remove(projeto);
 
 			return RedirectToAction("Index");
 		}

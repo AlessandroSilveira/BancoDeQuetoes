@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_MESTRE_FORMACAO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Formação do Mestre</h2>
+<h4>Mestre: @ViewBag.DadosMestre.DESC_NOME</h4>
+<p>
+   
+	@Html.ActionLink("Nova Formação", "Create", new { id = ViewBag.DadosMestre.ID_MESTRE },null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_TIPO_FORMACAO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_CURSO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_INSTITUICAO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_COPIA_DIPLOMA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_DIPLOMA_AUTENTICADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_NUMERO_COPIAS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_TIPO_FORMACAO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_CURSO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_INSTITUICAO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_COPIA_DIPLOMA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_DIPLOMA_AUTENTICADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_NUMERO_COPIAS)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_MESTRE_FORMACAO }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ID_MESTRE_FORMACAO }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.ID_MESTRE_FORMACAO })
+        </td>
+    </tr>
+}
+
+</table>

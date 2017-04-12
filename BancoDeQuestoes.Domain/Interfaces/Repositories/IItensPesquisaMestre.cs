@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Models;
 
-namespace BancoDeQuestoes.Domain.Interfaces.Repositories
+namespace BancoDeQuestoes.Interfaces
 {
 	public interface IItensPesquisaMestre
 	{
-		List<Mestre> Pesquisa(Mestre form, List<Mestre> sql);
+		List<INSCR_BQ_MESTRE> Pesquisa(INSCR_BQ_MESTRE form, List<INSCR_BQ_MESTRE> sql);
 		IItensPesquisaMestre Proximo { get; set; }
 	}
 }

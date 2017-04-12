@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
+using BancoDeQuestoes.Interfaces;
 
 namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 {
@@ -13,8 +13,10 @@ namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 			{
 				sql = sql.Where(a => a.Nome == form.Nome).ToList();
 			}
+
 			return Proximo.Pesquisa(form, sql);
 		}
+
 		public IItensPesquisaDisciplina Proximo { get; set; }
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace BancoDeQuestoes.Mvc.Controllers
+namespace BancoDeQuestoes.Controllers
 {
 	
 	public class HomeController : Controller

@@ -1,33 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
-using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repositories;
 using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
 	public class AreaController : Controller
-	{
-		private readonly IAreaAppService _areaAppService;
+    {
+	    public AreaController(IAreaRepository areaRepository)
+	    {
+		    AreaRepository = areaRepository;
+	    }
 
-		public AreaController(IAreaAppService areaAppService)
-		{
-			_areaAppService = areaAppService;
-		}
-
-		public ActionResult Index()
+	    private IAreaRepository AreaRepository { get; set; }
+       
+        public ActionResult Index()
         {
 			var areaViewModel =
-			   Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
+			   Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(AreaRepository.GetAll());
 			return View(areaViewModel);
         }
        
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-           
-			var area = _areaAppService.GetById(Convert.ToInt32(id));
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+			var area = AreaRepository.GetById(Convert.ToInt32(id));
 			var areaViewModel = Mapper.Map<Area, AreaViewModel>(area);
             if (areaViewModel == null)
             {
@@ -45,36 +49,44 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AreaViewModel areaViewModel)
         {
-	        if (!ModelState.IsValid) return View(areaViewModel);
-	        var area = Mapper.Map< AreaViewModel, Area>(areaViewModel);
-	        _areaAppService.Add(area);
+            if (ModelState.IsValid)
+            {
+				var area = Mapper.Map< AreaViewModel, Area>(areaViewModel);
+				AreaRepository.Add(area);
 
-	        return RedirectToAction("Index");
+				return RedirectToAction("Index");
+            }
+
+            return View(areaViewModel);
         }
        
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-           
-			var area = _areaAppService.GetById(Convert.ToInt32(id));
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+			var area = AreaRepository.GetById(Convert.ToInt32(id));
 			var areaViewModel = Mapper.Map<Area, AreaViewModel>(area);
 			return View(areaViewModel);
 		}
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( AreaViewModel areaViewModel)
+        public ActionResult Edit([Bind(Include = "AreaId,Descricao,ConhecimentoEspecifico,Ativo")] AreaViewModel areaViewModel)
         {
 	        if (!ModelState.IsValid) return View(areaViewModel);
 	        var areaDomain = Mapper.Map<AreaViewModel, Area>(areaViewModel);
-			_areaAppService.Update(areaDomain);
+	        AreaRepository.Update(areaDomain);
 
 	        return RedirectToAction("Index");
         }
        
         public ActionResult Delete(int? id)
         {
-			var area = _areaAppService.GetById(Convert.ToInt32(id));
+			var area = AreaRepository.GetById(Convert.ToInt32(id));
 			var areaViewModel = Mapper.Map<Area, AreaViewModel>(area);
+
 			return View(areaViewModel);
 		}
       
@@ -82,8 +94,10 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-			var area = _areaAppService.GetById(id);
-			_areaAppService.Remove(area);
+
+			var produto = AreaRepository.GetById(id);
+			AreaRepository.Remove(produto);
+			
 			return RedirectToAction("Index");
 		}
     }

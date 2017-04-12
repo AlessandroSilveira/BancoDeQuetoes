@@ -15,7 +15,19 @@
             @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Cep)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Complemento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Cidade)
@@ -24,7 +36,13 @@
             @Html.DisplayNameFor(model => model.Uf)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailSecundario)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Telefone)
@@ -34,6 +52,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Senha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Ativo)
@@ -47,7 +68,19 @@
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Cep)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Complemento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bairro)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Cidade)
@@ -55,8 +88,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.Uf)
         </td>
-       <td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cpf)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailSecundario)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Telefone)
@@ -68,10 +107,13 @@
             @Html.DisplayFor(modelItem => item.Senha)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.AreaId)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Ativo)
         </td>
 	    <td>
-		    @Html.ActionLink("Adicionar Formação", "Index","FormacaoRevisor", new { id = item.RevisorId },null) |
+		    @Html.ActionLink("Adicionar Formação", "Index","FormacaoRevisor", new { id = item.RevisorId }) |
 		    @Html.ActionLink("Editar", "Edit", new {id = item.RevisorId}) |
 		    @Html.ActionLink("Detalhes", "Details", new {id = item.RevisorId}) |
 		    @Html.ActionLink("Exluir", "Delete", new {id = item.RevisorId})

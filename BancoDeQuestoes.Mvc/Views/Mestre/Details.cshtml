@@ -1,0 +1,226 @@
+﻿@model BancoDeQuestoes.Models.INSCR_BQ_MESTRE
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mestre</h2>
+
+<div>
+    <h4>Detalhes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.INSCR_BQ_BANCA.DESC_BANCA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSCR_BQ_BANCA.DESC_BANCA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_NOME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_NOME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_CEP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_CEP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_ENDERECO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_ENDERECO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_COMPLEMENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_COMPLEMENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_NUMERO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_NUMERO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_BAIRRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_BAIRRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_CIDADE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_CIDADE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_ESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_ESTADO)
+        </dd>
+
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_EMAIL_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_EMAIL_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_TELEFONE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_DDD)-@Html.DisplayFor(model => model.DESC_TELEFONE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_CELULAR)
+        </dt>
+
+        <dd>
+			@Html.DisplayFor(model => model.DESC_DDD_CEL)-@Html.DisplayFor(model => model.DESC_CELULAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_SENHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_SENHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_DISCIPLINA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_DISCIPLINA)
+        </dd>
+		
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_BANCO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_BANCO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_AGENCIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_AGENCIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_TIPO_CONTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_TIPO_CONTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_CONTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_CONTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_FILHOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_FILHOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_PIS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_PIS)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CURRICULO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CURRICULO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DIPLOMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIPLOMA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_ACEITE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_ACEITE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MINICURRICULO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MINICURRICULO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_MESTRE }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

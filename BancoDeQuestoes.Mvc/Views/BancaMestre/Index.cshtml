@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BancoDeQuestoes.Models.INSCR_BQ_BANCA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Banca de Mestre</h2>
+
+<p>
+    @Html.ActionLink("Nova Banca", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_BANCA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESC_VALOR_PORCENTAGEM)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_BANCA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESC_VALOR_PORCENTAGEM)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_BANCA }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ID_BANCA }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.ID_BANCA })
+        </td>
+    </tr>
+}
+
+</table>
