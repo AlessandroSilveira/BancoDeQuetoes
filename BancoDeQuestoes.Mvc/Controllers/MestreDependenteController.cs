@@ -18,8 +18,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			_mestreDependenteAppService = mestreDependenteAppService;
 		}
 		
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+			ViewBag.MestreId = id;
 			var mestreViewModel =
 			   Mapper.Map<IEnumerable<MestreDependente>, IEnumerable<MestreDependenteViewModel>>(_mestreDependenteAppService.GetAll());
 			return View(mestreViewModel);
@@ -35,9 +36,10 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	        return mestreDependenteViewModel == null ? (ActionResult) HttpNotFound() : View(mestreDependenteViewModel);
         }
         
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            return View();
+			ViewBag.MestreId = id;
+			return View();
         }
         
         [HttpPost]
@@ -48,7 +50,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	        var mestre = Mapper.Map<MestreDependenteViewModel, MestreDependente>(mestreDependenteViewModel);
 	        _mestreDependenteAppService.Add(mestre);
 
-	        return RedirectToAction("Index");
+	        return RedirectToAction("Index", new { id = mestreDependenteViewModel.MestreId });
         }
       
         public ActionResult Edit(int? id)
@@ -68,13 +70,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	        var mestreDomain = Mapper.Map<MestreDependenteViewModel, MestreDependente>(mestreDependenteViewModel);
 	        _mestreDependenteAppService.Update(mestreDomain);
 
-	        return RedirectToAction("Index");
+	        return RedirectToAction("Index", new { id = mestreDependenteViewModel.MestreId });
         }
        
         public ActionResult Delete(int? id)
         {
 	        if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-	        var mestre = _mestreDependenteAppService.GetById(Convert.ToInt32(id));
+			ViewBag.MestreId = id;
+			var mestre = _mestreDependenteAppService.GetById(Convert.ToInt32(id));
 	        var mestreDependenteViewModel = Mapper.Map<MestreDependente, MestreDependenteViewModel>(mestre);
 
 	        return mestreDependenteViewModel == null ? (ActionResult) HttpNotFound() : View(mestreDependenteViewModel);

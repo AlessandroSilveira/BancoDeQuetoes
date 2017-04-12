@@ -4,19 +4,13 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Dependentes do Mestre</h2>
 
 <div>
-    <h4>MestreDependenteViewModel</h4>
+    <h4>Detalhes</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MestreId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MestreId)
-        </dd>
+       
 
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
@@ -53,6 +47,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MestreDependenteId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.MestreDependenteId }) |
+    @Html.ActionLink("Voltar", "Index",new {id= Model.MestreId })
 </p>

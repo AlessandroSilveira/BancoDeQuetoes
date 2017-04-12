@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Infra.Data.Context;
 using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
@@ -21,8 +18,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			_mestreFormacaoAppService = mestreFormacaoAppService;
 		}
 		
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+	        ViewBag.MestreId = id;
 			var mestreViewModel =
 			   Mapper.Map<IEnumerable<MestreFormacao>, IEnumerable<MestreFormacaoViewModel>>(_mestreFormacaoAppService.GetAll());
 			return View(mestreViewModel);
@@ -38,8 +36,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			return mestreDependenteViewModel == null ? (ActionResult)HttpNotFound() : View(mestreDependenteViewModel);
 		}
 		
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+	        ViewBag.MestreId = id;
             return View();
         }
 		
@@ -51,7 +50,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			var mestre = Mapper.Map<MestreFormacaoViewModel, MestreFormacao>(mestreFormacaoViewModel);
 			_mestreFormacaoAppService.Add(mestre);
 
-			return RedirectToAction("Index");
+			return RedirectToAction("Index",new {id= mestreFormacaoViewModel.MestreId});
 		}
         
         public ActionResult Edit(int? id)
@@ -62,7 +61,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
 			return mestreDependenteViewModel == null ? (ActionResult)HttpNotFound() : View(mestreDependenteViewModel);
 		}
-
       
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -72,20 +70,19 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			var mestreDomain = Mapper.Map<MestreFormacaoViewModel, MestreFormacao>(mestreFormacaoViewModel);
 			_mestreFormacaoAppService.Update(mestreDomain);
 
-			return RedirectToAction("Index");
+			return RedirectToAction("Index",new {id= mestreFormacaoViewModel .MestreId});
 		}
-
-        // GET: MestreFormacao/Delete/5
+		
         public ActionResult Delete(int? id)
         {
 			if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			var mestre = _mestreFormacaoAppService.GetById(Convert.ToInt32(id));
 			var mestreDependenteViewModel = Mapper.Map<MestreFormacao, MestreFormacaoViewModel>(mestre);
+			ViewBag.MestreId = id;
 
 			return mestreDependenteViewModel == null ? (ActionResult)HttpNotFound() : View(mestreDependenteViewModel);
 		}
-
-        // POST: MestreFormacao/Delete/5
+		
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -94,7 +91,5 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			_mestreFormacaoAppService.Remove(mestre);
 			return RedirectToAction("Index");
         }
-
-       
     }
 }

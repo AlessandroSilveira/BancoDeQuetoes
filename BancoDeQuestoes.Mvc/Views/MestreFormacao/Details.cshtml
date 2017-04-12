@@ -4,19 +4,13 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Formação do Mestre</h2>
 
 <div>
-    <h4>MestreFormacaoViewModel</h4>
+    <h4>Detalhes</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MestreId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MestreId)
-        </dd>
+       
 
         <dt>
             @Html.DisplayNameFor(model => model.TipoFormacao)
@@ -77,6 +71,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MestreFormacaoId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.MestreFormacaoId }) |
+    @Html.ActionLink("Voltar", "Index", new { id = Model.MestreId })
 </p>

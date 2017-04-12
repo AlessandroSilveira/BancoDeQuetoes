@@ -12,37 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Cpf)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cep)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Endereco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Complemento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Numero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bairro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.Cep)
+	    </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailSecundario)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Telefone)
@@ -54,27 +30,6 @@
             @Html.DisplayNameFor(model => model.Banca)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Filhos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pis)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Minicurriculo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Banco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Agencia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoConta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Conta)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Ativo)
         </th>
         <th></th>
@@ -82,38 +37,15 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cpf)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cep)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Complemento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Numero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bairro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Cep)
+		</td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailSecundario)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Telefone)
@@ -121,38 +53,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.Celular)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Banca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Filhos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Minicurriculo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Banco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Agencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoConta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Conta)
-        </td>
+		<th>
+			@Html.DisplayFor(model => item.Banca)
+		</th>
         <td>
             @Html.DisplayFor(modelItem => item.Ativo)
         </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.MestreId }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.MestreId }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.MestreId })
-        </td>
+	    <td>
+		    @Html.ActionLink("Add Formação", "Index","MestreFormacao", new { id = item.MestreId },null) |
+		    @Html.ActionLink("Add Dependente", "Index", "MestreDependente", new { id = item.MestreId },null) |
+			@Html.ActionLink("Add Área", "Index","MestreArea", new { id = item.MestreId },null)|
+		    @Html.ActionLink("Detalhes", "Details", new {id = item.MestreId}) |
+		    @Html.ActionLink("Excluir", "Delete", new {id = item.MestreId})
+	    </td>
     </tr>
 }
 

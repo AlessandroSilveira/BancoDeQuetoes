@@ -18,8 +18,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			_mestreAreaAppService = mestreAreaAppService;
 		}
 	
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+			ViewBag.MestreId = id;
 			var mestreViewModel =
 			   Mapper.Map<IEnumerable<MestreArea>, IEnumerable<MestreAreaViewModel>>(_mestreAreaAppService.GetAll());
 
@@ -36,13 +37,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
 	        return mestreAreaViewModel == null ? (ActionResult) HttpNotFound() : View(mestreAreaViewModel);
         }
-        
-        public ActionResult Create()
-        {
-            return View();
-        }
-		
-        [HttpPost]
+
+		public ActionResult Create(int id)
+		{
+			ViewBag.MestreId = id;
+			return View();
+		}
+
+		[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create( MestreAreaViewModel mestreAreaViewModel)
         {
@@ -51,8 +53,8 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	        var mestre = Mapper.Map<MestreAreaViewModel, MestreArea>(mestreAreaViewModel);
 	        _mestreAreaAppService.Add(mestre);
 
-	        return RedirectToAction("Index");
-        }
+			return RedirectToAction("Index", new { id = mestreAreaViewModel.MestreId });
+		}
         
         public ActionResult Edit(int? id)
         {
@@ -73,17 +75,16 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	        var mestreDomain = Mapper.Map<MestreAreaViewModel, MestreArea>(mestreAreaViewModel);
 	        _mestreAreaAppService.Update(mestreDomain);
 
-	        return RedirectToAction("Index");
-        }
-
-        // GET: MestreArea/Delete/5
+			return RedirectToAction("Index", new { id = mestreAreaViewModel.MestreId });
+		}
+		
         public ActionResult Delete(int? id)
         {
 	        if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 	        var mestre = _mestreAreaAppService.GetById(Convert.ToInt32(id));
 	        var mestreAreaViewModel = Mapper.Map<MestreArea, MestreAreaViewModel>(mestre);
-
-	        return mestreAreaViewModel == null ? (ActionResult) HttpNotFound() : View(mestreAreaViewModel);
+			ViewBag.MestreId = id;
+			return mestreAreaViewModel == null ? (ActionResult) HttpNotFound() : View(mestreAreaViewModel);
         }
         
         [HttpPost, ActionName("Delete")]
@@ -95,7 +96,5 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
 			return RedirectToAction("Index");
         }
-
-       
     }
 }
