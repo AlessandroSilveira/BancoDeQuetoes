@@ -59,3 +59,4 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._12042017.resources
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.csproj.GenerateResource.Cache
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations.addmestresesuasdependencias.resources
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations.QuestaoETopicoAtribuido.resources

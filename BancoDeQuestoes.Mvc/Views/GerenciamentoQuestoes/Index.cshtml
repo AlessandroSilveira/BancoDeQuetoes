@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BancoDeQuestoes.Mvc.ViewModels.QuestaoViewModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TopicoAtribuidoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroQuestao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arquivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroDeRevisoes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Finalizar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nivel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConviteAceito)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopicoAtribuidoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroQuestao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arquivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroDeRevisoes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Finalizar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nivel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imagem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConviteAceito)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.QuestaoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.QuestaoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.QuestaoId })
+        </td>
+    </tr>
+}
+
+</table>

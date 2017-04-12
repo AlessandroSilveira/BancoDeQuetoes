@@ -24,6 +24,8 @@ namespace BancoDeQuestoes.Infra.Data.Context
 		public virtual DbSet<MestreArea> MestreArea { get; set; }
 		public virtual DbSet<MestreDependente> MestreDependente { get; set; }
 		public virtual DbSet<MestreFormacao> MestreFormacao { get; set; }
+		public virtual DbSet<Questao> Questao { get; set; }
+		public virtual DbSet<TopicoAtribuido> TopicoAtribuido { get; set; }
 
 		//public virtual DbSet<INSCR_ADMIN> INSCR_ADMIN { get; set; }
 		//public virtual DbSet<INSCR_ADMIN_PERFIL> INSCR_ADMIN_PERFIL { get; set; }
@@ -69,11 +71,11 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Configurations.Add(new MestreAreaConfiguration());
 			modelBuilder.Configurations.Add(new MestreDependenteConfiguration());
 			modelBuilder.Configurations.Add(new MestreFormacaoConfiguration());
+			modelBuilder.Configurations.Add(new QuestoesConfiguration());
+			modelBuilder.Configurations.Add(new TopicoAtribuidoConfiguration());
 
 		}
 
 		
 	}
-
-	
 }

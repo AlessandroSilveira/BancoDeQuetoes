@@ -31,5 +31,6 @@ namespace BancoDeQuestoes.Domain.Entities
 		public virtual IEnumerable<MestreArea> MestreArea { get; set; }
 		public virtual IEnumerable<MestreFormacao> MestreFormacao { get; set; }
 		public virtual IEnumerable<MestreDependente> MestreDependente { get; set; }
+		public virtual IEnumerable<TopicoAtribuido> TopicoAtribuido { get; set; }
 	}
 }
