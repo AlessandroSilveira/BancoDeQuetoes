@@ -22,6 +22,6 @@ namespace BancoDeQuestoes.Domain.Entities
         public int AreaId { get; set; }
         public bool Ativo { get; set; }
 
-		public virtual IEnumerable<FormacaoRevisor> FormacaoRevisors { get; set; }
+		public virtual IEnumerable<RevisorFormacao> FormacaoRevisors { get; set; }
 	}
 }

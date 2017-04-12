@@ -4,16 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Formação do Revisor</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nova Formação", "Create", new { id = ViewBag.RevisorId })
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RevisorId)
-        </th>
+      
         <th>
             @Html.DisplayNameFor(model => model.Instituicao)
         </th>
@@ -28,9 +26,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RevisorId)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Instituicao)
         </td>
@@ -41,9 +37,9 @@
             @Html.DisplayFor(modelItem => item.Ativo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FormacaoRevisorId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FormacaoRevisorId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FormacaoRevisorId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.FormacaoRevisorId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.FormacaoRevisorId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.FormacaoRevisorId })
         </td>
     </tr>
 }

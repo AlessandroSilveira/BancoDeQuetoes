@@ -2,7 +2,7 @@
 
 namespace BancoDeQuestoes.Application.Interface.Repositories
 {
-	public interface IFormacaoRevisorAppService : IAppServiceBase<FormacaoRevisor>
+	public interface IFormacaoRevisorAppService : IAppServiceBase<RevisorFormacao>
 	{
 	}
 }

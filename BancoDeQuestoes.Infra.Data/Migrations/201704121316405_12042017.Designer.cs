@@ -7,13 +7,13 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addformacaoRevisor : IMigrationMetadata
+    public sealed partial class _12042017 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addformacaoRevisor));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_12042017));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704112104590_add formacaoRevisor"; }
+            get { return "201704121316405_12042017"; }
         }
         
         string IMigrationMetadata.Source

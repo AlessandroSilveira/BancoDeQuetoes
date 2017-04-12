@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BancoDeQuestoes.Domain.Entities
+﻿namespace BancoDeQuestoes.Domain.Entities
 {
-	public class FormacaoRevisor
+	public class RevisorFormacao
 	{
 		public int FormacaoRevisorId { get; set; }
 		public int RevisorId { get; set; }

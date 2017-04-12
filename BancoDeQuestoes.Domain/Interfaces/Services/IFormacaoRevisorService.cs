@@ -2,7 +2,7 @@
 
 namespace BancoDeQuestoes.Domain.Interfaces.Services
 {
-	public interface IFormacaoRevisorService : IServiceBase<FormacaoRevisor>
+	public interface IFormacaoRevisorService : IServiceBase<RevisorFormacao>
 	{
 	}
 }

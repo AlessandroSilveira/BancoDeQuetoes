@@ -31,15 +31,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Area.cs" />
+    <Compile Include="Entities\MestreArea.cs" />
     <Compile Include="Entities\Banca.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\C__MigrationHistory.cs" />
-    <Compile Include="Entities\FormacaoRevisor.cs" />
+    <Compile Include="Entities\MestreDependente.cs" />
+    <Compile Include="Entities\MestreFormacao.cs" />
+    <Compile Include="Entities\RevisorFormacao.cs" />
     <Compile Include="Entities\Mestre.cs" />
     <Compile Include="Entities\Projeto.cs" />
     <Compile Include="Entities\Revisor.cs" />
     <Compile Include="Entities\Disciplina.cs" />
-    <Compile Include="Entities\ManageViewModels.cs" />
     <Compile Include="Entities\Produto.cs" />
     <Compile Include="Interfaces\Repositories\IAreaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IBancaRepository.cs" />

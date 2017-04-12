@@ -28,6 +28,8 @@ namespace BancoDeQuestoes.Domain.Services
 
 		private static IEnumerable<Disciplina> ExecutadorDePesquisa(Disciplina form, List<Disciplina> sql)
 		{
+			//todo refazer essa pesquisa usando expressao lambda como sugerido pelo vlad
+
 			var filtroDescTopico = new DescTopico();
 			var filtroIdDisciplina = new IdDisciplina();
 			var filtroDescTitulo = new DescTitulo();

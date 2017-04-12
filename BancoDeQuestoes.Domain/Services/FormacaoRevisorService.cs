@@ -9,10 +9,10 @@ using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Domain.Services
 {
-	public class FormacaoRevisorService : ServiceBase<FormacaoRevisor>, IFormacaoRevisorService
+	public class FormacaoRevisorService : ServiceBase<RevisorFormacao>, IFormacaoRevisorService
 	{
 
-		public FormacaoRevisorService(IRepositoryBase<FormacaoRevisor> repositoryBase) : base(repositoryBase)
+		public FormacaoRevisorService(IRepositoryBase<RevisorFormacao> repositoryBase) : base(repositoryBase)
 		{
 		}
 	}

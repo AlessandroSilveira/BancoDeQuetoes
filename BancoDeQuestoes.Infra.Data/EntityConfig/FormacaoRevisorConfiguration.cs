@@ -3,7 +3,7 @@ using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Infra.Data.EntityConfig
 {
-	class FormacaoRevisorConfiguration : EntityTypeConfiguration<FormacaoRevisor>
+	public class FormacaoRevisorConfiguration : EntityTypeConfiguration<RevisorFormacao>
 	{
 		public FormacaoRevisorConfiguration()
 		{

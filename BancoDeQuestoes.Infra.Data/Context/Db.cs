@@ -19,7 +19,11 @@ namespace BancoDeQuestoes.Infra.Data.Context
 		public virtual DbSet<Revisor> Revisor { get; set; }
 		public virtual DbSet<Disciplina> Disciplina { get; set; }
 		public virtual DbSet<Banca> Banca { get; set; }
-		public virtual DbSet<FormacaoRevisor> FormacaoRevisor { get; set; }
+		public virtual DbSet<RevisorFormacao> FormacaoRevisor { get; set; }
+		public virtual DbSet<Mestre> Mestre { get; set; }
+		public virtual DbSet<MestreArea> MestreArea { get; set; }
+		public virtual DbSet<MestreDependente> MestreDependente { get; set; }
+		public virtual DbSet<MestreFormacao> MestreFormacao { get; set; }
 
 		//public virtual DbSet<INSCR_ADMIN> INSCR_ADMIN { get; set; }
 		//public virtual DbSet<INSCR_ADMIN_PERFIL> INSCR_ADMIN_PERFIL { get; set; }
@@ -61,9 +65,15 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Configurations.Add(new BancaConfiguration());
 			modelBuilder.Configurations.Add(new RevisorConfigurations());
 			modelBuilder.Configurations.Add(new FormacaoRevisorConfiguration());
+			modelBuilder.Configurations.Add(new MestreConfiguration());
+			modelBuilder.Configurations.Add(new MestreAreaConfiguration());
+			modelBuilder.Configurations.Add(new MestreDependenteConfiguration());
+			modelBuilder.Configurations.Add(new MestreFormacaoConfiguration());
 
 		}
 
 		
 	}
+
+	
 }
