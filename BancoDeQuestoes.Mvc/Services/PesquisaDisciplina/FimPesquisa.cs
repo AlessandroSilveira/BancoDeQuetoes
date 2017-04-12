@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Interfaces;
+using BancoDeQuestoes.Domain.Interfaces.Repositories;
 
 namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 {
@@ -10,7 +10,6 @@ namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 		{
 			return sql;
 		}
-
 		public IItensPesquisaDisciplina Proximo { get; set; }
 	}
 }

@@ -3,27 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
-using BancoDeQuestoes.Mvc.Services.PesquisaDisciplina;
 
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
 	public class DisciplinaRepository : BaseRepository<Disciplina>,IDisciplinaRepository
-
-        
 	{
-		public IEnumerable Cargo()
-		{
-			return Db.INSCR_BQ_CARGO_CBO.ToList();
-		}
 
 		public IEnumerable Area()
 		{
 			return Db.Area.ToList();
 		}
 
-		public IEnumerable ResultadoPesquisaDisciplina(Disciplina form)
+		public IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina form)
 		{
-			var sql = Db.INSCR_BQ_TOPICO.ToList();
+			var sql = Db.Disciplina.ToList();
 
 			return ExecutadorDePesquisa(form, sql).ToList();
 		}

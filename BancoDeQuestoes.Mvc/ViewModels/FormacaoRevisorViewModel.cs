@@ -5,27 +5,28 @@ namespace BancoDeQuestoes.Mvc.ViewModels
 {
 	public class FormacaoRevisorViewModel
 	{
+		[Key]
 		[DisplayName("Primeira Formação")]
 		[Required]
-		public string DESC_FORMACAO { get; set; }
+		public int FormacaoRevisorId { get; set; }
 
-		[StringLength(50)]
+		public int RevisorId { get; set; }
+
+		[StringLength(150)]
 		[DisplayName("Instituição")]
 		[Required]
-		public string DESC_INSTITUICAO { get; set; }
+		public string Instituicao { get; set; }
 
-		[DisplayName("Segunda Formação")]
-		public string DESC_FORMACAO_2 { get; set; }
+		[DisplayName("Formação")]
+		[Required]
+		[StringLength(150)]
+		public string Formacao { get; set; }
 
-		[StringLength(50)]
-		[DisplayName("Segunda Instituição")]
-		public string DESC_INSTITUICAO_2 { get; set; }
+		
+		[DisplayName("Ativo")]
+		[Required]
+		public bool Ativo { get; set; }
 
-		[DisplayName("Terceira Formação")]
-		public string DESC_FORMACAO_3 { get; set; }
-
-		[StringLength(50)]
-		[DisplayName("Terceira Instituição")]
-		public string DESC_INSTITUICAO_3 { get; set; }
+		
 	}
 }
