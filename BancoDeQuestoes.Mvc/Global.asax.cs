@@ -14,6 +14,7 @@ namespace BancoDeQuestoes.Mvc
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			AutoMapperConfig.RegisterMapping();
+			AutoMapperConfig.ConfigureForTests();
 		}
 	}
 }

@@ -82,7 +82,8 @@ namespace BancoDeQuestoesTeste
 				ProjetoId = 1
 
 			};
-			_mapperMock.Setup(a=>a.Map(dadosViewModel,dadosProjeto)).Returns(It.IsAny<Projeto>()).Verifiable();
+			_mapperMock.Setup(m => m.Map<List<Projeto>, List<ProjetoViewModel>>(It.IsAny<List<Projeto>>()));
+
 			_iprojetoAppServiceMock.Setup(a=>a.Add(dadosProjeto)).Verifiable();
 
 			//Act
