@@ -27,14 +27,12 @@ C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bi
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\BancoDeQuestoes.Domain.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\EntityFramework.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\Microsoft.Owin.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\Owin.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\BancoDeQuestoes.Domain.pdb
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\BancoDeQuestoes.Domain.dll.config
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\EntityFramework.xml
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\Microsoft.Owin.xml
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.csprojResolveAssemblyReference.cache
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.dll
@@ -60,3 +58,10 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.csproj.GenerateResource.Cache
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations.addmestresesuasdependencias.resources
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations.QuestaoETopicoAtribuido.resources
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\BancoDeQuestoes.Application.dll
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\BancoDeQuestoes.Application.pdb
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\BancoDeQuestoes.Application.dll.config
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._12042017.resources
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations.addmestresesuasdependencias.resources
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations.QuestaoETopicoAtribuido.resources
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.csproj.GenerateResource.Cache
