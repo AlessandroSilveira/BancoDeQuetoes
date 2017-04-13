@@ -12,13 +12,6 @@ namespace BancoDeQuestoes.Mvc.AutoMapper
 				x.AddProfile<ViewModelToDomainMappingProfile>();
 			});
 		}
-		public static void ConfigureForTests()
-		{
-			Mapper.Initialize(x =>
-			{
-				x.AddProfile<DomaintoviewModelMappingProfileTest>();
-				x.AddProfile<ViewModelToDomainMappingProfileTest>();
-			});
-		}
+	
 	}
 }

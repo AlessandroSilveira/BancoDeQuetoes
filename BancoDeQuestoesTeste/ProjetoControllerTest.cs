@@ -2,6 +2,7 @@
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Mvc.Adapter.Interface;
 using BancoDeQuestoes.Mvc.Controllers;
 using BancoDeQuestoes.Mvc.ViewModels;
 using Moq;
@@ -15,15 +16,18 @@ namespace BancoDeQuestoesTeste
 		private ProjetoController _projeto;
 		private MockRepository _repository;
 		private Mock<IProjetoAppService> _iprojetoAppServiceMock;
-		private Mock<IMappingEngine> _mapperMock;
+		private Mock<IMapperWrapper> _mapperWrapperMock;
+		private Mock<IAppServiceBase<Projeto>> _appServiceBase;
 
 		[SetUp]
 		public void Setup()
 		{
 			_repository = new MockRepository(MockBehavior.Strict);
 			_iprojetoAppServiceMock = _repository.Create<IProjetoAppService>();
-			_projeto = new ProjetoController(_iprojetoAppServiceMock.Object);
-			_mapperMock = _repository.Create<IMappingEngine>();
+			_mapperWrapperMock = _repository.Create<IMapperWrapper>();
+			 _appServiceBase = new Mock<IAppServiceBase<Projeto>>();
+			_projeto = new ProjetoController(_iprojetoAppServiceMock.Object, _mapperWrapperMock.Object);
+			
 		}
 
 		[Test]
@@ -82,8 +86,11 @@ namespace BancoDeQuestoesTeste
 				ProjetoId = 1
 
 			};
-			_mapperMock.Setup(m => m.Map<List<Projeto>, List<ProjetoViewModel>>(It.IsAny<List<Projeto>>()));
 
+			
+			_appServiceBase.Setup(a => a.GetAll()).Returns(It.IsAny<IEnumerable<Projeto>>());
+			_mapperWrapperMock.Setup(a => a.Map(typeof(Projeto), typeof(ProjetoViewModel),_appServiceBase.Object.GetAll())).Returns(It.IsAny<object>()).Verifiable();
+		
 			_iprojetoAppServiceMock.Setup(a=>a.Add(dadosProjeto)).Verifiable();
 
 			//Act

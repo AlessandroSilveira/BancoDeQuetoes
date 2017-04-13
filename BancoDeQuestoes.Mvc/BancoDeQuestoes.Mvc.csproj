@@ -231,6 +231,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\Interface\IMapperWrapper.cs" />
+    <Compile Include="Adapter\MapperWrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -239,9 +241,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\DomaintoviewModelMappingProfile.cs" />
-    <Compile Include="AutoMapper\DomaintoviewModelMappingProfileTest.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
-    <Compile Include="AutoMapper\ViewModelToDomainMappingProfileTest.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BancaController.cs" />

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
+using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Mvc.Adapter.Interface;
 using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
@@ -12,16 +14,21 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	public class ProjetoController : Controller
     {
 	    private readonly IProjetoAppService _projetoAppService;
+	    private readonly IMapperWrapper _mapperWrapper;
 
-	    public ProjetoController(IProjetoAppService projetoAppService)
-	    {
-		    _projetoAppService = projetoAppService;
-	    }
+		public ProjetoController(IProjetoAppService projetoAppService, IMapperWrapper mapperWrapper)
+		{
+			_projetoAppService = projetoAppService;
+			_mapperWrapper = mapperWrapper;
+		}
 		
 	    public ActionResult Index()
         {
-			var projetoViewModel =
-			   Mapper.Map<IEnumerable<Projeto>, IEnumerable<ProjetoViewModel>>(_projetoAppService.GetAll());
+			//var projetoViewModel =
+			//   Mapper.Map<IEnumerable<Projeto>, IEnumerable<ProjetoViewModel>>(_projetoAppService.GetAll());
+
+	        var projetoViewModel = _mapperWrapper.Map(typeof(Projeto), typeof(ProjetoViewModel), _projetoAppService.GetAll());
+
 			return View("Index",projetoViewModel);
         }
         
