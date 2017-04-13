@@ -274,6 +274,7 @@
     <Compile Include="ViewModels\BancaViewModel.cs" />
     <Compile Include="ViewModels\DisciplinaViewModel.cs" />
     <Compile Include="ViewModels\FormacaoRevisorViewModel.cs" />
+    <Compile Include="ViewModels\GerenciamentoDeQuestoesViewModel.cs" />
     <Compile Include="ViewModels\IdentityModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\MestreAreaViewModel.cs" />
@@ -430,7 +431,6 @@
     <Content Include="Views\MestreFormacao\Details.cshtml" />
     <Content Include="Views\MestreFormacao\Edit.cshtml" />
     <Content Include="Views\MestreFormacao\Index.cshtml" />
-    <Content Include="Views\GerenciamentoQuestoes\Index.cshtml" />
     <Content Include="Views\Shared\PesquisaQuestão.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
@@ -444,6 +444,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Services\PesquisaMestre\" />
+    <Folder Include="Views\GerenciamentoQuestoes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -458,7 +459,7 @@
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Infra.Data\BancoDeQuestoes.Infra.Data.csproj">
-      <Project>{39C11A26-2105-40D4-B0FD-210F799D7A0B}</Project>
+      <Project>{39c11a26-2105-40d4-b0fd-210f799d7a0b}</Project>
       <Name>BancoDeQuestoes.Infra.Data</Name>
     </ProjectReference>
   </ItemGroup>
