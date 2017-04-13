@@ -22,20 +22,15 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 			var projetoViewModel =
 			   Mapper.Map<IEnumerable<Projeto>, IEnumerable<ProjetoViewModel>>(_projetoAppService.GetAll());
-			return View(projetoViewModel);
+			return View("Index",projetoViewModel);
         }
         
         public ActionResult Details(int id)
         {
-			
 			var projeto = _projetoAppService.GetById(id);
 			var projetoViewModel = Mapper.Map<Projeto, ProjetoViewModel>(projeto);
-			if (projetoViewModel == null)
-			{
-				return HttpNotFound();
-			}
-			return View(projetoViewModel);
-		}
+	        return projetoViewModel == null ? (ActionResult) HttpNotFound() : View(projetoViewModel);
+        }
        
         public ActionResult Create()
         {

@@ -18,3 +18,11 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\Microsoft.Owin.xml
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\obj\Debug\BancoDeQuestoes.Domain.csprojResolveAssemblyReference.cache
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\Owin.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\Microsoft.Owin.Security.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\Microsoft.Owin.Security.xml
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\Newtonsoft.Json.xml
