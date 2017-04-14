@@ -61,6 +61,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 			modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 			modelBuilder.Configurations.Add(new AreaConfiguration());
+			modelBuilder.Configurations.Add(new ProdutoConfiguration());
 			modelBuilder.Configurations.Add(new ProjetoConfiguration());
 			modelBuilder.Configurations.Add(new DisciplinaConfiguration());
 			modelBuilder.Configurations.Add(new BancaConfiguration());
@@ -74,5 +75,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Configurations.Add(new TopicoAtribuidoConfiguration());
 
 		}
+
+		
 	}
 }
