@@ -44,9 +44,17 @@ namespace BancoDeQuestoes.Domain.Services
 			_repositoryBase.Dispose();
 		}
 
+		void IServiceBase<TEntity>.GetListaGerenciamentoQuestao()
+		{
+			_repositoryBase.GetListaGerenciamentoQuestao();
+		}
+
 		void IDisposable.Dispose()
 		{
 			_repositoryBase.Dispose();
 		}
+
+
+
 	}
 }

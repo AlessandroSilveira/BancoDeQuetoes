@@ -42,6 +42,7 @@
     <Compile Include="EntityConfig\ProjetoConfiguration.cs" />
     <Compile Include="EntityConfig\QuestoesConfiguration.cs" />
     <Compile Include="EntityConfig\RevisorConfigurations.cs" />
+    <Compile Include="EntityConfig\StatusConfiguration.cs" />
     <Compile Include="EntityConfig\TopicoAtribuidoConfiguration.cs" />
     <Compile Include="Migrations\201704121316405_12042017.cs" />
     <Compile Include="Migrations\201704121316405_12042017.Designer.cs">
@@ -58,6 +59,10 @@
     <Compile Include="Migrations\201704131423575_updatePtojeto.cs" />
     <Compile Include="Migrations\201704131423575_updatePtojeto.Designer.cs">
       <DependentUpon>201704131423575_updatePtojeto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704171837081_Creating Status.cs" />
+    <Compile Include="Migrations\201704171837081_Creating Status.Designer.cs">
+      <DependentUpon>201704171837081_Creating Status.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +90,7 @@
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\RevisorRepository.cs" />
     <Compile Include="Repositories\StatusMestre.cs" />
+    <Compile Include="Repositories\StatusRepository.cs" />
     <Compile Include="Repositories\TopicoAtribuidoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704131423575_updatePtojeto.resx">
       <DependentUpon>201704131423575_updatePtojeto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704171837081_Creating Status.resx">
+      <DependentUpon>201704171837081_Creating Status.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

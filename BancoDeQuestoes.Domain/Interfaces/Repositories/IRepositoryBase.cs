@@ -15,5 +15,6 @@ namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 		void Remove(TEntity obj);
 
 		void Dispose();
+		void GetListaGerenciamentoQuestao();
 	}
 }

@@ -84,6 +84,7 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IQuestaoAppService>().To<QuestaoAppService>();
 			kernel.Bind<ITopicoAtribuidoAppService>().To<TopicoAtribuidoAppService>();
 	        kernel.Bind<IMapperWrapper>().To<MapperWrapper>();
+			kernel.Bind<IStatusAppService>().To<StatusAppService>();
 
 			kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
 			kernel.Bind<IDisciplinaService>().To<DisciplinaService>();
@@ -98,6 +99,7 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IMestreFormacaoService>().To<MestreFormacaoService>();
 			kernel.Bind<IQuestaoService>().To<QuestaoService>();
 			kernel.Bind<ITopicoAtribuidoService>().To<TopicoAtribuidoService>();
+			kernel.Bind<IStatusService>().To<StatusService>();
 
 
 			kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
@@ -113,6 +115,7 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IMestreFormacaoRepository>().To<MestreFormacaoRepository>();
 			kernel.Bind<IQuestaoRepository>().To<QuestaoRepository>();
 			kernel.Bind<ITopicoAtribuidoRepository>().To<TopicoAtribuidoRepository>();
+			kernel.Bind<IStatusRepository>().To<StatusRepository>();
 
 		}
     }
