@@ -17,10 +17,9 @@ namespace BancoDeQuestoes.Mvc.App_Start
 
 	using Ninject;
 	using Ninject.Web.Common;
-	using Adapter;
-	using Adapter.Interface;
+	
 
-	public static class NinjectWebCommon 
+    public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
@@ -83,7 +82,7 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IMestreFormacaoAppService>().To<MestreFormacaoAppService>();
 			kernel.Bind<IQuestaoAppService>().To<QuestaoAppService>();
 			kernel.Bind<ITopicoAtribuidoAppService>().To<TopicoAtribuidoAppService>();
-	        kernel.Bind<IMapperWrapper>().To<MapperWrapper>();
+			
 			kernel.Bind<IStatusAppService>().To<StatusAppService>();
 
 			kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
