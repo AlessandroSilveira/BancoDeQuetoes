@@ -28,7 +28,7 @@
 					</div>
 					<label for="Descricao" class="col-lg-2 control-label">Status</label>
 					<div class="col-lg-4">
-						<select class="form-control" id="Status" name="Status"></select>
+						@Html.DropDownList("ProjetoId", null, htmlAttributes: new { @class = "form-control" })
 					</div>
 				</div>
 

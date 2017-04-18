@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections;
 
 namespace BancoDeQuestoes.Mvc.ViewModels
 {
-	public class GerenciamentoDeQuestoesViewModel
+	public class GerenciamentoDeQuestoesViewModel 
 	{
-		
 		public int ProjetoId { get; set; }
 		public int AreaId { get; set; }
 		public int MestreId { get; set; }
@@ -15,9 +15,6 @@ namespace BancoDeQuestoes.Mvc.ViewModels
 		public string DescricaoDisciplina { get; set; }
 		public int ItensPorPagina { get; set; }
 		public string DescricaoQuestao { get; set; }
-        public string Nivel { get; set; }
-	    public string DescricaoArea { get; set; }
-	    public string NomeMestre { get; set; }
-	    public string Status { get; set; }
+		
 	}
 }

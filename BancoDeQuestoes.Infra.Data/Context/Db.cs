@@ -26,6 +26,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
 		public virtual DbSet<MestreFormacao> MestreFormacao { get; set; }
 		public virtual DbSet<Questao> Questao { get; set; }
 		public virtual DbSet<TopicoAtribuido> TopicoAtribuido { get; set; }
+		public virtual DbSet<Status> Status { get; set; }
 
 		//public virtual DbSet<INSCR_ADMIN> INSCR_ADMIN { get; set; }
 		//public virtual DbSet<INSCR_ADMIN_PERFIL> INSCR_ADMIN_PERFIL { get; set; }
@@ -61,6 +62,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 			modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 			modelBuilder.Configurations.Add(new AreaConfiguration());
+			modelBuilder.Configurations.Add(new ProdutoConfiguration());
 			modelBuilder.Configurations.Add(new ProjetoConfiguration());
 			modelBuilder.Configurations.Add(new DisciplinaConfiguration());
 			modelBuilder.Configurations.Add(new BancaConfiguration());
@@ -72,7 +74,10 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Configurations.Add(new MestreFormacaoConfiguration());
 			modelBuilder.Configurations.Add(new QuestoesConfiguration());
 			modelBuilder.Configurations.Add(new TopicoAtribuidoConfiguration());
+			modelBuilder.Configurations.Add(new StatusConfiguration());
 
 		}
+
+		
 	}
 }

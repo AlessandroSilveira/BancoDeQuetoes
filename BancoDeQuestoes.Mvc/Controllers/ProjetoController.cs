@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
-using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Mvc.Adapter.Interface;
 using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
@@ -14,30 +12,30 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	public class ProjetoController : Controller
     {
 	    private readonly IProjetoAppService _projetoAppService;
-	    private readonly IMapperWrapper _mapperWrapper;
 
-		public ProjetoController(IProjetoAppService projetoAppService, IMapperWrapper mapperWrapper)
-		{
-			_projetoAppService = projetoAppService;
-			_mapperWrapper = mapperWrapper;
-		}
+	    public ProjetoController(IProjetoAppService projetoAppService)
+	    {
+		    _projetoAppService = projetoAppService;
+	    }
 		
 	    public ActionResult Index()
         {
-			//var projetoViewModel =
-			//   Mapper.Map<IEnumerable<Projeto>, IEnumerable<ProjetoViewModel>>(_projetoAppService.GetAll());
-
-	        var projetoViewModel = _mapperWrapper.Map(typeof(Projeto), typeof(ProjetoViewModel), _projetoAppService.GetAll());
-
-			return View("Index",projetoViewModel);
+			var projetoViewModel =
+			   Mapper.Map<IEnumerable<Projeto>, IEnumerable<ProjetoViewModel>>(_projetoAppService.GetAll());
+			return View(projetoViewModel);
         }
         
         public ActionResult Details(int id)
         {
+			
 			var projeto = _projetoAppService.GetById(id);
 			var projetoViewModel = Mapper.Map<Projeto, ProjetoViewModel>(projeto);
-	        return projetoViewModel == null ? (ActionResult) HttpNotFound() : View(projetoViewModel);
-        }
+			if (projetoViewModel == null)
+			{
+				return HttpNotFound();
+			}
+			return View(projetoViewModel);
+		}
        
         public ActionResult Create()
         {

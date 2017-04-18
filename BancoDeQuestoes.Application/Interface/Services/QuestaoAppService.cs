@@ -14,9 +14,9 @@ namespace BancoDeQuestoes.Application.Interface.Services
 			_questaoService = questaoService;
 		}
 
-	    public List<GerenciamentoDeQuestoesViewModel> ObterListaGerenciamentoQuestoes<GerenciamentoDeQuestoesViewModel>()
-	    {
-	        throw new System.NotImplementedException();
-	    }
+		public IEnumerable<Questao> GetListaGerenciamento()
+		{
+			return _questaoService.GetListaGerenciamentoQuestao();
+		}
 	}
 }
