@@ -33,7 +33,6 @@
     <Compile Include="Entities\Area.cs" />
     <Compile Include="Entities\MestreArea.cs" />
     <Compile Include="Entities\Banca.cs" />
-    <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\C__MigrationHistory.cs" />
     <Compile Include="Entities\MestreDependente.cs" />
     <Compile Include="Entities\MestreFormacao.cs" />
@@ -43,12 +42,11 @@
     <Compile Include="Entities\Projeto.cs" />
     <Compile Include="Entities\Revisor.cs" />
     <Compile Include="Entities\Disciplina.cs" />
-    <Compile Include="Entities\Produto.cs" />
+    <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\TopicoAtribuido.cs" />
     <Compile Include="Interfaces\Repositories\IAreaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IBancaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IBaseRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDisciplinaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFormacaoRevisoresRepository.cs" />
     <Compile Include="Interfaces\Repositories\IItensPesquisaDisciplina.cs" />
@@ -61,10 +59,11 @@
     <Compile Include="Interfaces\Repositories\IQuestaoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\IRevisorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IStatusRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITopicoAtribuidoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\StatusService.cs" />
     <Compile Include="Interfaces\Services\IAreaService.cs" />
     <Compile Include="Interfaces\Services\IBancaService.cs" />
-    <Compile Include="Interfaces\Services\IClienteService.cs" />
     <Compile Include="Interfaces\Services\IDisciplinaService.cs" />
     <Compile Include="Interfaces\Services\IFormacaoRevisorService.cs" />
     <Compile Include="Interfaces\Services\IMestreAreaService.cs" />
@@ -75,6 +74,7 @@
     <Compile Include="Interfaces\Services\IQuestaoService.cs" />
     <Compile Include="Interfaces\Services\IRevisorService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
+    <Compile Include="Interfaces\Services\IStatusService.cs" />
     <Compile Include="Interfaces\Services\ITopicoAtribuidoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AreaService.cs" />
@@ -102,9 +102,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

@@ -9,5 +9,7 @@ namespace BancoDeQuestoes.Domain.Services
 		public QuestaoService(IRepositoryBase<Questao> repositoryBase) : base(repositoryBase)
 		{
 		}
+
+		
 	}
 }
