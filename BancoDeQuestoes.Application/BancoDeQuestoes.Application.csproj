@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ApplicationService.cs" />
     <Compile Include="Interface\Repositories\IAreaAppService.cs" />
     <Compile Include="Interface\Repositories\IBancaAppService.cs" />
     <Compile Include="Interface\Repositories\IDisciplinaAppService.cs" />
@@ -82,6 +83,10 @@
     <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
       <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
       <Name>BancoDeQuestoes.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BancoDeQuestoes.Infra.Data\BancoDeQuestoes.Infra.Data.csproj">
+      <Project>{39c11a26-2105-40d4-b0fd-210f799d7a0b}</Project>
+      <Name>BancoDeQuestoes.Infra.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
