@@ -3,7 +3,7 @@ using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
 
-namespace BancoDeQuestoes.Infra.Data.Repositories
+namespace BancoDeQuestoes.Domain.Services
 {
 	public class DescTopico : IItensPesquisaDisciplina
 	{

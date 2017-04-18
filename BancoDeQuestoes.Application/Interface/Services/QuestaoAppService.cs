@@ -1,4 +1,5 @@
-﻿using BancoDeQuestoes.Application.Interface.Repositories;
+﻿using System.Collections.Generic;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 
@@ -11,6 +12,11 @@ namespace BancoDeQuestoes.Application.Interface.Services
 		public QuestaoAppService(IQuestaoService questaoService) : base(questaoService)
 		{
 			_questaoService = questaoService;
+		}
+
+		public IEnumerable<Questao> GetListaGerenciamento()
+		{
+			return _questaoService.GetListaGerenciamentoQuestao();
 		}
 	}
 }

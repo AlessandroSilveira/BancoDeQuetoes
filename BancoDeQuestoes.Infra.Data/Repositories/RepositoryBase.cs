@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
+using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
 using BancoDeQuestoes.Infra.Data.Context;
 
@@ -12,6 +14,9 @@ namespace BancoDeQuestoes.Infra.Data.Repositories
 	{
 
 		protected Db db = new Db();
+
+	
+
 
 		public void Add(TEntity obj)
 		{
@@ -49,6 +54,11 @@ namespace BancoDeQuestoes.Infra.Data.Repositories
 		void IDisposable.Dispose()
 		{
 		    db.Dispose();
+		}
+
+		public void GetListaGerenciamentoQuestao()
+		{
+		
 		}
 	}
 }
