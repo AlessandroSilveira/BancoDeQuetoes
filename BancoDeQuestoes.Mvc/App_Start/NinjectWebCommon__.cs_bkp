@@ -1,26 +1,22 @@
+using System;
+using System.Web;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.Interface.Services;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 using BancoDeQuestoes.Domain.Services;
 using BancoDeQuestoes.Infra.Data.Repositories;
+using BancoDeQuestoes.Mvc;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject;
+using Ninject.Web.Common;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(BancoDeQuestoes.Mvc.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(BancoDeQuestoes.Mvc.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon__), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon__), "Stop")]
 
-namespace BancoDeQuestoes.Mvc.App_Start
+namespace BancoDeQuestoes.Mvc
 {
-	using System;
-	using System.Web;
-
-	using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-	using Ninject;
-	using Ninject.Web.Common;
-	using Adapter;
-	using Adapter.Interface;
-
-	public static class NinjectWebCommon 
+	public static class NinjectWebCommon__ 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
@@ -74,7 +70,7 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IDisciplinaAppService>().To<DisciplinaAppService>();
 			kernel.Bind<IAreaAppService>().To<AreaAppService>();
 			kernel.Bind<IProjetoAppService>().To<ProjetoAppService>();
-			kernel.Bind<IBancaAppService>().To<BancaAppService>();
+			//kernel.Bind<IBancaAppService>().To<BancaAppService>();
 			kernel.Bind<IRevisorAppService>().To<RevisorAppService>();
 			kernel.Bind<IFormacaoRevisorAppService>().To<FormacaoRevisorAppService>();
 			kernel.Bind<IMestreAppService>().To<MestreAppService>();
@@ -83,12 +79,12 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind<IMestreFormacaoAppService>().To<MestreFormacaoAppService>();
 			kernel.Bind<IQuestaoAppService>().To<QuestaoAppService>();
 			kernel.Bind<ITopicoAtribuidoAppService>().To<TopicoAtribuidoAppService>();
-	        kernel.Bind<IMapperWrapper>().To<MapperWrapper>();
+	      
 
 			kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
 			kernel.Bind<IDisciplinaService>().To<DisciplinaService>();
 			kernel.Bind<IAreaService>().To<AreaService>();
-			kernel.Bind<IProjetoService>().To<ProjetoService>();
+		//	kernel.Bind<IProjetoService>().To<ProjetoService>();
 			kernel.Bind<IBancaService>().To<BancaService>();
 			kernel.Bind<IRevisorService>().To<RevisorService>();
 			kernel.Bind<IFormacaoRevisorService>().To<FormacaoRevisorService>();
@@ -103,7 +99,7 @@ namespace BancoDeQuestoes.Mvc.App_Start
 			kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
 			kernel.Bind<IAreaRepository>().To<AreaRepository>();
 			kernel.Bind<IRevisorRepository>().To<RevisorRepository>();
-			kernel.Bind<IProjetoRepository>().To<ProjetoRepository>();
+			//.Bind<IProjetoRepository>().To<ProjetoRepository>();
 			kernel.Bind<IBancaRepository>().To<BancaRepository>();
 			kernel.Bind<IRevisorRepository>().To<RevisorRepository>();
 			kernel.Bind<IFormacaoRevisoresRepository>().To<FormacaoRevisoresRepository>();

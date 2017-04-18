@@ -61,7 +61,6 @@
     <Compile Include="Interfaces\Repositories\IRevisorRepository.cs" />
     <Compile Include="Interfaces\Repositories\IStatusRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITopicoAtribuidoRepository.cs" />
-    <Compile Include="Interfaces\Repositories\StatusService.cs" />
     <Compile Include="Interfaces\Services\IAreaService.cs" />
     <Compile Include="Interfaces\Services\IBancaService.cs" />
     <Compile Include="Interfaces\Services\IDisciplinaService.cs" />

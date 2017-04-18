@@ -7,7 +7,7 @@ namespace BancoDeQuestoes.Application.Interface.Services
 {
 	public class QuestaoAppService : AppServiceBase<Questao>, IQuestaoAppService
 	{
-		private IQuestaoService _questaoService;
+		private readonly IQuestaoService _questaoService;
 
 		public QuestaoAppService(IQuestaoService questaoService) : base(questaoService)
 		{

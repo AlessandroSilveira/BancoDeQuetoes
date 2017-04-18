@@ -159,6 +159,18 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="SimpleInjector, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.0.0\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.4.0.0\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.Mvc.4.0.0\lib\net40\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -221,6 +233,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivator, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
@@ -231,13 +247,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapter\Interface\IMapperWrapper.cs" />
-    <Compile Include="Adapter\MapperWrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
-    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\DomaintoviewModelMappingProfile.cs" />
@@ -247,8 +261,6 @@
     <Compile Include="Controllers\BancaController.cs" />
     <Compile Include="Controllers\DisciplinaController.cs" />
     <Compile Include="Controllers\FormacaoRevisorController.cs" />
-    <Compile Include="Controllers\GerenciamentoDeQuestoesController.cs" />
-    <Compile Include="Controllers\GerenciamentoQuestoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MestreAreaController.cs" />
@@ -257,6 +269,7 @@
     <Compile Include="Controllers\MestreFormacaoController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\RevisorController.cs" />
+    <Compile Include="Controllers\TopicoAtribuidoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -435,11 +448,11 @@
     <Content Include="Views\Shared\PesquisaQuestão.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\GerenciamentoDeQuestoes\Create.cshtml" />
-    <Content Include="Views\GerenciamentoDeQuestoes\Delete.cshtml" />
-    <Content Include="Views\GerenciamentoDeQuestoes\Details.cshtml" />
-    <Content Include="Views\GerenciamentoDeQuestoes\Edit.cshtml" />
-    <Content Include="Views\GerenciamentoDeQuestoes\Index.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Create.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Delete.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Details.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Edit.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -459,13 +472,13 @@
       <Project>{4489D34B-B534-4892-B4A2-A58775E4A2F2}</Project>
       <Name>BancoDeQuestoes.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
-      <Project>{03c008db-45e7-45e7-9c3e-b02992609c9a}</Project>
-      <Name>BancoDeQuestoes.Domain</Name>
+    <ProjectReference Include="..\BancoDeQuestoes.CrossCutting.IoC\BancoDeQuestoes.Infra.CrossCutting.IoC.csproj">
+      <Project>{6E6CBF3D-8A65-426F-A4CC-F8FFEF683D09}</Project>
+      <Name>BancoDeQuestoes.Infra.CrossCutting.IoC</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BancoDeQuestoes.Infra.Data\BancoDeQuestoes.Infra.Data.csproj">
-      <Project>{39c11a26-2105-40d4-b0fd-210f799d7a0b}</Project>
-      <Name>BancoDeQuestoes.Infra.Data</Name>
+    <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
+      <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
+      <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

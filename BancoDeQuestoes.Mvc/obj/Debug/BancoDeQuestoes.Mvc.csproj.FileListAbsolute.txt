@@ -351,3 +351,12 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\roslyn\System.Xml.XPath.XDocument.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\roslyn\vbc.exe.config
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\roslyn\vbc.rsp
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.CrossCutting.IoC.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.Web.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\WebActivator.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.CrossCutting.IoC.pdb
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.xml
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.Web.xml
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.Web.Mvc.xml
