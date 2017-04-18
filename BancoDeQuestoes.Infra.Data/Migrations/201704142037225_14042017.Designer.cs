@@ -7,13 +7,13 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addmestresesuasdependencias : IMigrationMetadata
+    public sealed partial class _14042017 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addmestresesuasdependencias));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_14042017));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704121755215_addmestresesuasdependencias"; }
+            get { return "201704142037225_14042017"; }
         }
         
         string IMigrationMetadata.Source

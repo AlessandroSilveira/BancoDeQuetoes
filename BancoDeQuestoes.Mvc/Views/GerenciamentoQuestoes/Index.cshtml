@@ -1,0 +1,79 @@
+﻿@model BancoDeQuestoes.Mvc.ViewModels.GerenciamentoDeQuestoesViewModel
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Gerenciamento de Questões</h2>
+
+<p>
+	@Html.ActionLink("Atribuir Novo Item de Prova a Ser Elaborado.", "Create")
+</p>
+<p>
+	@Html.ActionLink("Itens Recusados.", "Create")
+</p>
+@Html.Partial("PesquisaQuestao")
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.ProjetoId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DisciplinaId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Nivel)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DescricaoDisciplina)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DescricaoArea)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.NomeMestre)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DataEntrega)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Status)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model) {
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.ProjetoId)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DisciplinaId)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Nivel)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DescricaoDisciplina)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DescricaoArea)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.NomeMestre)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DataEntrega)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Status)
+			</td>
+			<td>
+				@Html.ActionLink("Editar", "Edit", new { id=item.ProjetoId }) |
+				@Html.ActionLink("Detalhes", "Details", new { id=item.ProjetoId }) |
+				@Html.ActionLink("Excluir", "Delete", new { id=item.ProjetoId })
+			</td>
+		</tr>
+	}
+
+</table>

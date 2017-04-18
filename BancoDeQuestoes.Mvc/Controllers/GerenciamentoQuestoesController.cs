@@ -9,17 +9,12 @@ namespace BancoDeQuestoes.Mvc.Controllers
 {
 	public class GerenciamentoQuestoesController : Controller
 	{
-		private readonly IQuestaoAppService _questaoAppService;
-
-		public GerenciamentoQuestoesController(IQuestaoAppService questaoAppService)
-		{
-			_questaoAppService = questaoAppService;
-		}
+		
 
 		// GET: GerenciamentoQuestoes
         public ActionResult Index()
         {
-	        var listaQuestao = Mapper.Map<IEnumerable<Questao>, IEnumerable<QuestaoViewModel>>(_questaoAppService.GetAll());
+	       ViewBag.Lista = 
             return View(listaQuestao);
         }
     }

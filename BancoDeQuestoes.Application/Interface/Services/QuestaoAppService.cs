@@ -1,4 +1,5 @@
-﻿using BancoDeQuestoes.Application.Interface.Repositories;
+﻿using System.Collections.Generic;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 
@@ -12,5 +13,10 @@ namespace BancoDeQuestoes.Application.Interface.Services
 		{
 			_questaoService = questaoService;
 		}
+
+	    public List<GerenciamentoDeQuestoesViewModel> ObterListaGerenciamentoQuestoes<GerenciamentoDeQuestoesViewModel>()
+	    {
+	        throw new System.NotImplementedException();
+	    }
 	}
 }

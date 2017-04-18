@@ -431,9 +431,10 @@
     <Content Include="Views\MestreFormacao\Details.cshtml" />
     <Content Include="Views\MestreFormacao\Edit.cshtml" />
     <Content Include="Views\MestreFormacao\Index.cshtml" />
-    <Content Include="Views\Shared\PesquisaQuestão.cshtml" />
+    <Content Include="Views\Shared\PesquisaQuestao.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\GerenciamentoQuestoes\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -444,7 +445,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Services\PesquisaMestre\" />
-    <Folder Include="Views\GerenciamentoQuestoes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
