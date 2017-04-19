@@ -13,7 +13,6 @@ namespace BancoDeQuestoes.Mvc.AutoMapper
 
 		protected override  void Configure()
 		{
-			
 			Mapper.CreateMap<AreaViewModel, Area>();
 			Mapper.CreateMap<ProjetoViewModel, Projeto>();
 			Mapper.CreateMap<DisciplinaViewModel, Disciplina>();

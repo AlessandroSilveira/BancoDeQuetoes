@@ -12,5 +12,6 @@ namespace BancoDeQuestoes.Mvc.AutoMapper
 				x.AddProfile<ViewModelToDomainMappingProfile>();
 			});
 		}
+	
 	}
 }

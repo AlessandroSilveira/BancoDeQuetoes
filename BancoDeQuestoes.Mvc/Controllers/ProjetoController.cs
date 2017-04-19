@@ -12,30 +12,30 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	public class ProjetoController : Controller
     {
 	    private readonly IProjetoAppService _projetoAppService;
+	  
 
-	    public ProjetoController(IProjetoAppService projetoAppService)
-	    {
-		    _projetoAppService = projetoAppService;
-	    }
+		public ProjetoController(IProjetoAppService projetoAppService)
+		{
+			_projetoAppService = projetoAppService;
+			
+		}
 		
 	    public ActionResult Index()
         {
 			var projetoViewModel =
 			   Mapper.Map<IEnumerable<Projeto>, IEnumerable<ProjetoViewModel>>(_projetoAppService.GetAll());
-			return View(projetoViewModel);
+
+
+
+			return View("Index",projetoViewModel);
         }
         
         public ActionResult Details(int id)
         {
-			
 			var projeto = _projetoAppService.GetById(id);
 			var projetoViewModel = Mapper.Map<Projeto, ProjetoViewModel>(projeto);
-			if (projetoViewModel == null)
-			{
-				return HttpNotFound();
-			}
-			return View(projetoViewModel);
-		}
+	        return projetoViewModel == null ? (ActionResult) HttpNotFound() : View(projetoViewModel);
+        }
        
         public ActionResult Create()
         {

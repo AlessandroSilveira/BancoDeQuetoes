@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
-using BancoDeQuestoes.Infra.Data.Repositories;
 using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers

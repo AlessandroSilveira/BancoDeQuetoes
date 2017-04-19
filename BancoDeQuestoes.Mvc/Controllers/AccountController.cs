@@ -5,12 +5,11 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using BancoDeQuestoes.Mvc.ViewModels;
 using BancoDeQuestoes.Models;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-    [Authorize]
+	[Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -20,11 +19,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
+       
 
         public ApplicationSignInManager SignInManager
         {

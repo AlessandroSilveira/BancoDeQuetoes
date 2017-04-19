@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ApplicationService.cs" />
     <Compile Include="Interface\Repositories\IAreaAppService.cs" />
     <Compile Include="Interface\Repositories\IBancaAppService.cs" />
     <Compile Include="Interface\Repositories\IDisciplinaAppService.cs" />
@@ -46,8 +47,6 @@
     <Compile Include="Interface\Services\AppServiceBase.cs" />
     <Compile Include="Interface\Services\AreaAppService.cs" />
     <Compile Include="Interface\Repositories\IAppServiceBase.cs" />
-    <Compile Include="Interface\Repositories\IClienteAppService.cs" />
-    <Compile Include="Interface\Repositories\IProdutoAppService.cs" />
     <Compile Include="Interface\Services\BancaAppService.cs" />
     <Compile Include="Interface\Services\DisciplinaAppService.cs" />
     <Compile Include="Interface\Services\FormacaoRevisorAppService.cs" />
@@ -63,8 +62,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -74,14 +73,21 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
       <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\BancoDeQuestoes.Infra.Data\BancoDeQuestoes.Infra.Data.csproj">
+      <Project>{39c11a26-2105-40d4-b0fd-210f799d7a0b}</Project>
+      <Name>BancoDeQuestoes.Infra.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

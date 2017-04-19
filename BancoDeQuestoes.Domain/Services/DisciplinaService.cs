@@ -14,10 +14,10 @@ namespace BancoDeQuestoes.Domain.Services
 		{
 		}
 
-		public void Dispose()
-		{
-			throw new NotImplementedException();
-		}
+		//public void Dispose()
+		//{
+		//	throw new NotImplementedException();
+		//}
 
 		public IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina form)
 		{

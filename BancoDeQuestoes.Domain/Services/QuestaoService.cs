@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -14,7 +13,7 @@ namespace BancoDeQuestoes.Domain.Services
 
 		public IEnumerable<Questao> GetListaGerenciamentoQuestao()
 		{
-			var sql = GetAll();
+			throw new System.NotImplementedException();
 		}
 	}
 }
