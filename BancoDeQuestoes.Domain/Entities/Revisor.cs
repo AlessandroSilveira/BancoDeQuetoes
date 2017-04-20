@@ -1,10 +1,16 @@
+using System;
 using System.Collections.Generic;
 
 namespace BancoDeQuestoes.Domain.Entities
 {
 	public  class Revisor
     {
-        public int RevisorId { get; set; }
+	    public Revisor()
+	    {
+		    RevisorId = Guid.NewGuid();
+	    }
+
+        public Guid RevisorId { get; set; }
 		public string Nome { get; set; }
         public string Cep { get; set; }
         public string Endereco { get; set; }
@@ -22,6 +28,6 @@ namespace BancoDeQuestoes.Domain.Entities
         public int AreaId { get; set; }
         public bool Ativo { get; set; }
 
-		public virtual IEnumerable<RevisorFormacao> FormacaoRevisors { get; set; }
+		public virtual ICollection<RevisorFormacao> RevisorFormacao { get; set; } = new List<RevisorFormacao>();
 	}
 }

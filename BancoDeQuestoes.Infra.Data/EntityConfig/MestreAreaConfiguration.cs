@@ -16,13 +16,15 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 			Property(p => p.Ativo)
 				.IsRequired();
 
-			HasRequired(p => p.Mestre)
-				.WithMany()
-				.HasForeignKey(p => p.MestreId);
+			Property(p => p.AreaId)
+				.IsRequired();
 
-			HasRequired(p => p.Area)
-				.WithMany()
-				.HasForeignKey(p => p.AreaId);
+
+			HasRequired(p => p.Mestre)
+				.WithMany(p=>p.MestreAreas)
+				.HasForeignKey(p => p.MestreId);
+			
+			ToTable("MestreArea");
 		}
 	}
 }

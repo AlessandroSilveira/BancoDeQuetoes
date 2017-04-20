@@ -61,6 +61,8 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 			HasRequired(p => p.Area)
 				.WithMany()
 				.HasForeignKey(p => p.AreaId);
+
+			ToTable("TopicoAtribuido");
 		}
 	}
 }

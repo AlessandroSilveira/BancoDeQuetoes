@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Mvc.Controllers;
@@ -74,7 +75,7 @@ namespace BancoDeQuestoesTeste
 				Ativo = true,
 				CodigoProjeto = 1,
 				NomeProjeto = "TesteProjeto",
-				ProjetoId =1 
+				ProjetoId = new Guid()
 			};
 			var dadosViewModel = new ProjetoViewModel()
 			{

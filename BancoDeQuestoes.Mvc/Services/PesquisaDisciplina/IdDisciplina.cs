@@ -10,10 +10,10 @@ namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 		public IItensPesquisaDisciplina Proximo { get; set; }
 		public List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql)
 		{
-			if (form.DisciplinaId>0)
-			{
-				sql = sql.Where(a => a.DisciplinaId == form.DisciplinaId).ToList();
-			}
+			//if (form.DisciplinaId>0)
+			//{
+			//	sql = sql.Where(a => a.DisciplinaId == form.DisciplinaId).ToList();
+			//}
 			return Proximo.Pesquisa(form, sql);
 		}
 	}

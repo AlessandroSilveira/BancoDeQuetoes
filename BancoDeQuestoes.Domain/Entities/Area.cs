@@ -1,15 +1,21 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 namespace BancoDeQuestoes.Domain.Entities
 {
-	public partial class Area
+	public  class Area
 	{
-		public int AreaId { get; set; }
+		public Area()
+		{
+			AreaId = Guid.NewGuid();
+		}
+
+		public Guid AreaId { get; set; }
 		public string Descricao { get; set; }
 		public bool ConhecimentoEspecifico { get; set; }
 		public bool Ativo { get; set; }
 
-		public virtual IEnumerable<TopicoAtribuido> TopicoAtribuido { get; set; }
+		public virtual  ICollection<TopicoAtribuido> TopicoAtribuidos { get; set; } = new List<TopicoAtribuido>();
 	}
 }

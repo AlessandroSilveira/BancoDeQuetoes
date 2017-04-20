@@ -34,6 +34,8 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 
 			Property(p => p.Ativo)
 			 .IsRequired();
+
+			ToTable("Disciplina");
 		}
 	}
 }
