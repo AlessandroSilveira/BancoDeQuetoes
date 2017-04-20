@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
@@ -23,7 +23,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 	        ViewBag.RevisorId = id;
 			var formacaoViewModel =
-				 Mapper.Map<IEnumerable<RevisorFormacao>, IEnumerable<FormacaoRevisorViewModel>>(_formacaoRevisorAppService.GetAll());
+				 Mapper.Map<IEnumerable<RevisorFormacao>, IEnumerable<RevisorFormacaoViewModel>>(_formacaoRevisorAppService.GetAll());
 
 			return View(formacaoViewModel);
 		}
@@ -32,7 +32,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Details(int? id)
         {
 			var formacao = _formacaoRevisorAppService.GetById(Convert.ToInt32(id));
-			var formacaoViewModel = Mapper.Map<RevisorFormacao, FormacaoRevisorViewModel>(formacao);
+			var formacaoViewModel = Mapper.Map<RevisorFormacao, RevisorFormacaoViewModel>(formacao);
 	        return formacaoViewModel == null ? (ActionResult) HttpNotFound() : View(formacaoViewModel);
         }
 
@@ -45,10 +45,10 @@ namespace BancoDeQuestoes.Mvc.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( FormacaoRevisorViewModel formacaoRevisorViewModel)
+        public ActionResult Create( RevisorFormacaoViewModel formacaoRevisorViewModel)
         {
 			if (!ModelState.IsValid) return View(formacaoRevisorViewModel);
-			var formacao = Mapper.Map<FormacaoRevisorViewModel, RevisorFormacao>(formacaoRevisorViewModel);
+			var formacao = Mapper.Map<RevisorFormacaoViewModel, RevisorFormacao>(formacaoRevisorViewModel);
 			_formacaoRevisorAppService.Add(formacao);
 	      
 			return RedirectToAction("Index",new {id=formacaoRevisorViewModel.RevisorId});
@@ -57,16 +57,16 @@ namespace BancoDeQuestoes.Mvc.Controllers
        public ActionResult Edit(int? id)
         {
 			var formacao = _formacaoRevisorAppService.GetById(Convert.ToInt32(id));
-			var formacaoViewModel = Mapper.Map<RevisorFormacao, FormacaoRevisorViewModel>(formacao);
+			var formacaoViewModel = Mapper.Map<RevisorFormacao, RevisorFormacaoViewModel>(formacao);
 			return View(formacaoViewModel);
 		}
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( FormacaoRevisorViewModel formacaoRevisorViewModel)
+        public ActionResult Edit( RevisorFormacaoViewModel formacaoRevisorViewModel)
         {
 			if (!ModelState.IsValid) return View(formacaoRevisorViewModel);
-			var formacaoDomain = Mapper.Map<FormacaoRevisorViewModel, RevisorFormacao>(formacaoRevisorViewModel);
+			var formacaoDomain = Mapper.Map<RevisorFormacaoViewModel, RevisorFormacao>(formacaoRevisorViewModel);
 			_formacaoRevisorAppService.Update(formacaoDomain);
 
 			return RedirectToAction("Index",new { id = formacaoRevisorViewModel.RevisorId });
@@ -76,7 +76,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Delete(int? id)
         {
 			var formacao = _formacaoRevisorAppService.GetById(Convert.ToInt32(id));
-			var formacaoViewModel = Mapper.Map<RevisorFormacao, FormacaoRevisorViewModel>(formacao);
+			var formacaoViewModel = Mapper.Map<RevisorFormacao, RevisorFormacaoViewModel>(formacao);
 			return View(formacaoViewModel);
 		}
 

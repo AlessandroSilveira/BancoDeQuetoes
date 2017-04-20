@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BancoDeQuestoes.Application.AutoMapper;
 
 namespace BancoDeQuestoes.Mvc.AutoMapper
 {

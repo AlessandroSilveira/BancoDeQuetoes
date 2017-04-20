@@ -1,20 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 {
-	public interface IRepositoryBase<TEntity> where TEntity: class
+	public interface IRepositoryBase<TEntity> : IDisposable where TEntity: class
 	{
-		void Add(TEntity obj);
+		TEntity Add(TEntity obj);
 
-		TEntity GetById(int id);
+		TEntity GetById(Guid id);
 
 		IEnumerable<TEntity> GetAll();
 
-		void Update(TEntity obj);
+		TEntity Update(TEntity obj);
 
-		void Remove(TEntity obj);
+		void Remove(Guid id);
 
+		IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> predicate);
+
+		int SaveChanges();
 		void Dispose();
-		void GetListaGerenciamentoQuestao();
 	}
 }

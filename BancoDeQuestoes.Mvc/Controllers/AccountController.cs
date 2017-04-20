@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BancoDeQuestoes.Application.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using BancoDeQuestoes.Models;
+using System.Web.Helpers;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
@@ -14,13 +15,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
-        public AccountController()
-        {
-        }
-
-       
-
+		
         public ApplicationSignInManager SignInManager
         {
             get

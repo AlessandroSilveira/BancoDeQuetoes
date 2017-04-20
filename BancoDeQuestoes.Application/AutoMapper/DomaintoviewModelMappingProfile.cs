@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.AutoMapper
 {
@@ -18,7 +18,7 @@ namespace BancoDeQuestoes.Mvc.AutoMapper
 			Mapper.CreateMap<DisciplinaViewModel, Disciplina>();
 			Mapper.CreateMap<BancaViewModel, Banca>();
 			Mapper.CreateMap<RevisorViewModel, Revisor>();
-			Mapper.CreateMap<FormacaoRevisorViewModel, RevisorFormacao>();
+			Mapper.CreateMap<RevisorFormacaoViewModel, RevisorFormacao>();
 			Mapper.CreateMap<MestreViewModel, Mestre>();
 			Mapper.CreateMap<MestreAreaViewModel, MestreArea>();
 			Mapper.CreateMap<MestreDependenteViewModel, MestreDependente>();

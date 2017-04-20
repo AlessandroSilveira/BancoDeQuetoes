@@ -2,9 +2,8 @@
 using System.Web.Mvc;
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
-using BancoDeQuestoes.Mvc.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {

@@ -17,7 +17,7 @@ namespace BancoDeQuestoes.Infra.Data.Repositories
 			Db.SaveChanges();
 		}
 
-		public TEntity GetById(int id)
+		public TEntity GetById(Guid id)
 		{
 			return Db.Set<TEntity>().Find(id);
 		}
@@ -33,9 +33,9 @@ namespace BancoDeQuestoes.Infra.Data.Repositories
 			Db.SaveChanges();
 		}
 
-		public void Remove(TEntity obj)
+		public void Remove(Guid id)
 		{
-			Db.Set<TEntity>().Remove(obj);
+			Db.Set<TEntity>().Remove(GetById(id));
 			Db.SaveChanges();
 		}
 

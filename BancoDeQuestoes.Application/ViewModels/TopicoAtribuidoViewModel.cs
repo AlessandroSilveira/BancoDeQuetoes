@@ -2,17 +2,25 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class TopicoAtribuidoViewModel
 	{
-		[Key]
-		public int TopicoAtribuidoId { get; set; }
+		public TopicoAtribuidoViewModel()
+		{
+			TopicoAtribuidoId = new Guid();
+			ProjetoId = new Guid();
+			AreaId = new Guid();
+			MestreId = new Guid();
+			DisciplinaId = new Guid();
+		}
 
-		public int ProjetoId { get; set; }
-		public int AreaId { get; set; }
-		public int MestreId { get; set; }
-		public int DisciplinaId { get; set; }
+		[Key]
+		public Guid TopicoAtribuidoId { get; set; }
+		public Guid ProjetoId { get; set; }
+		public Guid AreaId { get; set; }
+		public Guid MestreId { get; set; }
+		public Guid DisciplinaId { get; set; }
 
 		[Required(ErrorMessage = "O campo Código do Projeto deve ser preenchido"), StringLength(150), DisplayName("Código do Projeto")]
 		public string CodigoProjeto { get; set; }

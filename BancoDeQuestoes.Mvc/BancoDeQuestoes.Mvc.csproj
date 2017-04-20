@@ -253,9 +253,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="App_Start\Startup.cs" />
-    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
-    <Compile Include="AutoMapper\DomaintoviewModelMappingProfile.cs" />
-    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BancaController.cs" />
@@ -282,23 +279,6 @@
     <Compile Include="Services\PesquisaDisciplina\FimPesquisa.cs" />
     <Compile Include="Services\PesquisaDisciplina\IdDisciplina.cs" />
     <Compile Include="Services\PesquisaDisciplina\ItensPesquisaDusciplina.cs" />
-    <Compile Include="ViewModels\AccountViewModels.cs" />
-    <Compile Include="ViewModels\AdminViewModel.cs" />
-    <Compile Include="ViewModels\AreaViewModel.cs" />
-    <Compile Include="ViewModels\BancaViewModel.cs" />
-    <Compile Include="ViewModels\DisciplinaViewModel.cs" />
-    <Compile Include="ViewModels\FormacaoRevisorViewModel.cs" />
-    <Compile Include="ViewModels\GerenciamentoDeQuestoesViewModel.cs" />
-    <Compile Include="ViewModels\IdentityModels.cs" />
-    <Compile Include="ViewModels\ManageViewModels.cs" />
-    <Compile Include="ViewModels\MestreAreaViewModel.cs" />
-    <Compile Include="ViewModels\MestreDependenteViewModel.cs" />
-    <Compile Include="ViewModels\MestreFormacaoViewModel.cs" />
-    <Compile Include="ViewModels\MestreViewModel.cs" />
-    <Compile Include="ViewModels\ProjetoViewModel.cs" />
-    <Compile Include="ViewModels\QuestaoViewModel.cs" />
-    <Compile Include="ViewModels\RevisorViewModel.cs" />
-    <Compile Include="ViewModels\TopicoAtribuidoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -475,10 +455,6 @@
     <ProjectReference Include="..\BancoDeQuestoes.CrossCutting.IoC\BancoDeQuestoes.Infra.CrossCutting.IoC.csproj">
       <Project>{6E6CBF3D-8A65-426F-A4CC-F8FFEF683D09}</Project>
       <Name>BancoDeQuestoes.Infra.CrossCutting.IoC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
-      <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
-      <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

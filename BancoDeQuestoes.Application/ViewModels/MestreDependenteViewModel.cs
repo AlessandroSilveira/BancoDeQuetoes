@@ -2,14 +2,20 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class MestreDependenteViewModel
 	{
-		[Key]
-		public int MestreDependenteId { get; set; }
+		public MestreDependenteViewModel()
+		{
+			MestreDependenteId = new Guid();
+			MestreId = new Guid();
+		}
 
-		public int MestreId { get; set; }
+		[Key]
+		public Guid MestreDependenteId { get; set; }
+
+		public Guid MestreId { get; set; }
 
 		[Required(ErrorMessage = "O campo Nome deve ser preenchido"), StringLength(150), DisplayName("Nome")]
 		public string Nome { get; set; }

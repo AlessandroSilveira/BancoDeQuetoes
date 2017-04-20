@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
     public class RoleViewModel
     {

@@ -1,13 +1,18 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
     public class ProjetoViewModel
     {
+	    public ProjetoViewModel()
+	    {
+		    ProjetoId = new Guid();
+	    }
 
         [Key]
-        public int ProjetoId { get; set; }
+        public Guid ProjetoId { get; set; }
 
 		[DisplayName("Código do Projeto")]
 		[Required(ErrorMessage = "Preencha o campo Código do Pojeto")]

@@ -1,12 +1,18 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class MestreViewModel
 	{
+		public MestreViewModel()
+		{
+			MestreId = new Guid();
+		}
+
 		[Key]
-		public int MestreId { get; set; }
+		public Guid MestreId { get; set; }
 
 		[Required(ErrorMessage = "O campo CPF deve ser preenchido"), StringLength(11),DisplayName("CPF")]
 		public string Cpf { get; set; }
@@ -70,7 +76,6 @@ namespace BancoDeQuestoes.Mvc.ViewModels
 
 		[Required(ErrorMessage = "O campo Conta deve ser preenchido"), StringLength(11), DisplayName("Conta")]
 		public string Conta { get; set; }
-
 		
 		public bool Ativo { get; set; }
 	}

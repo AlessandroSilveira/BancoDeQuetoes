@@ -1,16 +1,24 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
-	public class FormacaoRevisorViewModel
+	public class RevisorFormacaoViewModel
 	{
+
+		public RevisorFormacaoViewModel()
+		{
+			RevisorFormacaoId = new Guid();
+			RevisorId = new Guid();
+		}
+
 		[Key]
 		[DisplayName("Primeira Formação")]
 		[Required]
-		public int FormacaoRevisorId { get; set; }
+		public Guid RevisorFormacaoId { get; set; }
 
-		public int RevisorId { get; set; }
+		public Guid RevisorId { get; set; }
 
 		[StringLength(150)]
 		[DisplayName("Instituição")]

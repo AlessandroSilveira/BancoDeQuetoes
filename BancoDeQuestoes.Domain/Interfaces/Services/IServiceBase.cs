@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BancoDeQuestoes.Domain.Interfaces.Services
 {
@@ -12,7 +13,7 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
 
 		void Update(TEntity obj);
 
-		void Remove(TEntity obj);
+		void Remove(Guid obj);
 
 		void Dispose();
 	}

@@ -1,15 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Models;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class RevisorViewModel
 	{
+		public RevisorViewModel()
+		{
+			RevisorId = new Guid();
+		}
+
 		[Key]
-		public int RevisorId { get; set; }
+		public Guid RevisorId { get; set; }
 
 		[StringLength(500)]
 		[DisplayName("Nome")]
