@@ -1,4 +1,4 @@
-using BancoDeQuestoes.CrossCutting.IoC;
+
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(BancoDeQuestoes.Mvc.App_Start.SimpleInjectorInitializer), "Initialize")]
 
@@ -10,9 +10,9 @@ namespace BancoDeQuestoes.Mvc.App_Start
 	using SimpleInjector;
 	using SimpleInjector.Integration.Web;
 	using SimpleInjector.Integration.Web.Mvc;
+    using BancoDeQuestoes.CrossCutting.IoC;
 
-
-	public static class SimpleInjectorInitializer
+    public static class SimpleInjectorInitializer
     {
         /// <summary>Initialize the container and register it as MVC3 Dependency Resolver.</summary>
         public static void Initialize()
