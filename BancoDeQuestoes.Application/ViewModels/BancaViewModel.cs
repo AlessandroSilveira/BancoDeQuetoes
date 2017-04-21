@@ -1,12 +1,19 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class BancaViewModel
 	{
+
+		public BancaViewModel()
+		{
+			BancaId = new Guid();
+		}
+
 		[Key]
-		public int BancaId { get; set; }
+		public Guid BancaId { get; set; }
 
 		[Required(ErrorMessage = "Preencha o campo Nome da Banca")]
 		[DisplayName("Nome da Banca")]

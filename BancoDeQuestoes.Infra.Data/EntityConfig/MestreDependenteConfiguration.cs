@@ -26,7 +26,9 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 			HasRequired(p => p.Mestre)
 				.WithMany()
 				.HasForeignKey(p => p.MestreId);
-			
+
+			ToTable("MestreDependente");
+
 		}
 	}
 }

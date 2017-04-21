@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Mvc.Controllers;
-using BancoDeQuestoes.Mvc.ViewModels;
 using Moq;
 using NUnit.Framework;
 
@@ -74,14 +75,14 @@ namespace BancoDeQuestoesTeste
 				Ativo = true,
 				CodigoProjeto = 1,
 				NomeProjeto = "TesteProjeto",
-				ProjetoId =1 
+				ProjetoId = new Guid()
 			};
 			var dadosViewModel = new ProjetoViewModel()
 			{
 				Ativo = true,
 				CodigoProjeto = 1,
 				NomeProjeto = "TesteProjeto",
-				ProjetoId = 1
+				ProjetoId = new Guid()
 
 			};
 

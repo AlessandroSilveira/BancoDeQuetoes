@@ -2,8 +2,7 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Mvc.ViewModels;
+using BancoDeQuestoes.Application.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -17,17 +16,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController()
-        {
-        }
 
-        //public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        //{
-        //    UserManager = userManager;
-        //    SignInManager = signInManager;
-        //}
+		public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+		{
+			UserManager = userManager;
+			SignInManager = signInManager;
+		}
 
-        public ApplicationSignInManager SignInManager
+		public ApplicationSignInManager SignInManager
         {
             get
             {

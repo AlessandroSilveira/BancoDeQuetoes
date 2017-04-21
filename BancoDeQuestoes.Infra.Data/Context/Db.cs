@@ -33,6 +33,10 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 			modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+			modelBuilder.Properties().Where(p=>p.Name == p.ReflectedType.Name+"Id").Configure(p=>p.IsKey());
+			modelBuilder.Properties<string>().Configure(p=>p.HasColumnType("varchar"));
+
 			modelBuilder.Configurations.Add(new AreaConfiguration());
 			modelBuilder.Configurations.Add(new ProjetoConfiguration());
 			modelBuilder.Configurations.Add(new DisciplinaConfiguration());
@@ -46,6 +50,9 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Configurations.Add(new QuestoesConfiguration());
 			modelBuilder.Configurations.Add(new TopicoAtribuidoConfiguration());
 			modelBuilder.Configurations.Add(new StatusConfiguration());
+			modelBuilder.Configurations.Add(new C__MigrationHistoryConfiguration());
+
+			base.OnModelCreating(modelBuilder);
 		}
 
 		

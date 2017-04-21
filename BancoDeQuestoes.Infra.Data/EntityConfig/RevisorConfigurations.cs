@@ -1,4 +1,6 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
+using System.Data.Entity.ModelConfiguration;
 using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Infra.Data.EntityConfig
@@ -41,8 +43,10 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 				.IsRequired();
 
 			Property(p => p.Cpf)
+				.IsRequired()
 				.HasMaxLength(11)
-				.IsRequired();
+				.IsFixedLength()
+				.HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute() { IsUnique = true }));
 
 			Property(p => p.Email)
 				.HasMaxLength(150)
@@ -69,6 +73,8 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 
 			Property(p => p.Ativo)
 				.IsRequired();
+
+			ToTable("Revisor");
 		}
 	}
 }

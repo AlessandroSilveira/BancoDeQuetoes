@@ -19,7 +19,7 @@ namespace BancoDeQuestoes.Domain.Services
 			_repositoryBase.Add(obj);
 		}
 
-		public TEntity GetById(int id)
+		public TEntity GetById(Guid id)
 		{
 			return _repositoryBase.GetById(id);
 		}
@@ -34,7 +34,7 @@ namespace BancoDeQuestoes.Domain.Services
 			_repositoryBase.Update(obj);
 		}
 
-		public void Remove(TEntity obj)
+		public void Remove(Guid obj)
 		{
 			_repositoryBase.Remove(obj);
 		}
@@ -50,7 +50,9 @@ namespace BancoDeQuestoes.Domain.Services
 			_repositoryBase.Dispose();
 		}
 
-
-
+		public TEntity GetById(int id)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

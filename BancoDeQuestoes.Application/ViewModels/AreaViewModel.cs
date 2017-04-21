@@ -1,12 +1,19 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class AreaViewModel
 	{
+
+		public AreaViewModel()
+		{
+			AreaId = Guid.NewGuid();
+		}
+
 		[Key]
-		public int AreaId { get; set; }
+		public Guid AreaId { get; set; }
 
 		[Required(ErrorMessage = "Preencha o campo Área")]
 		[DisplayName("Descrição")]

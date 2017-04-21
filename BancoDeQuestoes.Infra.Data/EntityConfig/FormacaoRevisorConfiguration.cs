@@ -7,21 +7,24 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 	{
 		public FormacaoRevisorConfiguration()
 		{
-			HasKey(p => p.FormacaoRevisorId);
+			HasKey(p => p.RevisorFormacaoId);
 
 			Property(p => p.Formacao)
 				.IsRequired()
 				.HasMaxLength(150);
 
 			Property(p => p.Instituicao)
-				.IsRequired();
+				.IsRequired()
+			.HasMaxLength(150);
 
 			Property(p => p.Ativo)
 				.IsRequired();
 
 			HasRequired(p => p.Revisor)
-				.WithMany()
+				.WithMany(p=>p.RevisorFormacao)
 				.HasForeignKey(p => p.RevisorId);
+
+			ToTable("FormacaoRevisor");
 		}
 	}
 }

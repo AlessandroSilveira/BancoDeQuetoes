@@ -1,4 +1,6 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
+using System.Data.Entity.ModelConfiguration;
 using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Infra.Data.EntityConfig
@@ -15,7 +17,9 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 
 			Property(p => p.Cpf)
 				.IsRequired()
-			.HasMaxLength(11);
+				.HasMaxLength(11)
+				.IsFixedLength()
+				.HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute() { IsUnique = true }));
 
 			Property(p => p.Endereco)
 				.IsRequired()
@@ -34,7 +38,8 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 
 			Property(p => p.Estado)
 				.IsRequired()
-				.HasMaxLength(150);
+				.HasMaxLength(2)
+				.IsFixedLength();
 
 			Property(p => p.Email)
 				.IsRequired()
@@ -45,12 +50,12 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 				.HasMaxLength(150);
 
 			Property(p => p.Telefone)
-			.IsRequired()
-			.HasMaxLength(15);
+				.IsRequired()
+				.HasMaxLength(15);
 
 			Property(p => p.Celular)
-			.IsRequired()
-			.HasMaxLength(15);
+				.IsRequired()
+				.HasMaxLength(15);
 
 			Property(p => p.Banca)
 				.IsRequired();
@@ -59,29 +64,31 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 				.HasMaxLength(2);
 
 			Property(p => p.Pis)
-			.IsRequired()
-			.HasMaxLength(20);
+				.IsRequired()
+				.HasMaxLength(20);
 
 			Property(p => p.Minicurriculo);
 
 			Property(p => p.Banco)
-			.IsRequired()
-			.HasMaxLength(150);
+				.IsRequired()
+				.HasMaxLength(150);
 
 			Property(p => p.Agencia)
-			.IsRequired()
-			.HasMaxLength(150);
+				.IsRequired()
+				.HasMaxLength(150);
 
 			Property(p => p.TipoConta)
-			.IsRequired()
-			.HasMaxLength(150);
+				.IsRequired()
+				.HasMaxLength(150);
 
 			Property(p => p.Conta)
-			.IsRequired()
-			.HasMaxLength(150);
+				.IsRequired()
+				.HasMaxLength(150);
 
 			Property(p => p.Ativo)
 				.IsRequired();
+
+			ToTable("Mestre");
 		}
 	}
 }

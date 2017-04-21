@@ -45,6 +45,7 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 				.WithMany()
 				.HasForeignKey(p => p.TopicoAtribuidoId);
 
+			ToTable("Questao");
 		}
 	}
 }

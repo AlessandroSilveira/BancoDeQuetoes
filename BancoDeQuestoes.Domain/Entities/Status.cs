@@ -1,8 +1,15 @@
-﻿namespace BancoDeQuestoes.Domain.Entities
+﻿using System;
+
+namespace BancoDeQuestoes.Domain.Entities
 {
 	public class Status
 	{
-		public int StatusId { get; set; }
+		public Status()
+		{
+			StatusId = Guid.NewGuid();
+		}
+
+		public Guid StatusId { get; set; }
 		public string Nome { get; set; }
 		public bool Ativo { get; set; }
 	}

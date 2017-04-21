@@ -1,10 +1,26 @@
-﻿using System.Collections.Generic;
-using BancoDeQuestoes.Domain.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Application.Interface.Repositories
 {
-	public interface IDisciplinaAppService : IAppServiceBase<Disciplina>
+	public interface IDisciplinaAppService : IDisposable
 	{
-		IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina form);
+		DisciplinaViewModel Add(DisciplinaViewModel obj);
+
+		DisciplinaViewModel GetById(Guid id);
+
+		IEnumerable<DisciplinaViewModel> GetAll();
+
+		DisciplinaViewModel Update(DisciplinaViewModel obj);
+
+		void Remove(Guid id);
+
+		IEnumerable<DisciplinaViewModel> Search(Expression<Func<DisciplinaViewModel, bool>> predicate);
+
+		int SaveChanges();
+		
+		IEnumerable<RevisorFormacaoViewModel> ResultadoPesquisaDisciplina(RevisorFormacaoViewModel form);
 	}
 }

@@ -4,11 +4,17 @@ namespace BancoDeQuestoes.Domain.Entities
 {
 	public class TopicoAtribuido
 	{
-		public int TopicoAtribuidoId { get; set; }
-		public int ProjetoId { get; set; }
-		public int AreaId { get; set; }
-		public int MestreId { get; set; }
-		public int DisciplinaId { get; set; }
+
+		public TopicoAtribuido()
+		{
+			TopicoAtribuidoId = Guid.NewGuid();
+		}
+
+		public Guid TopicoAtribuidoId { get; set; }
+		public Guid ProjetoId { get; set; }
+		public Guid AreaId { get; set; }
+		public Guid MestreId { get; set; }
+		public Guid DisciplinaId { get; set; }
 		public string CodigoProjeto { get; set; }
 		public int NumeroQuestao { get; set; }
 		public DateTime DataEntrega { get; set; }

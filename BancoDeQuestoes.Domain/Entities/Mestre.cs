@@ -1,10 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BancoDeQuestoes.Domain.Entities
 {
 	public class Mestre
 	{
-		public int MestreId { get; set; }
+
+		public Mestre()
+		{
+			MestreId = Guid.NewGuid();
+		}
+
+		public Guid MestreId { get; set; }
 		public string Cpf { get; set; }
 		public string Nome { get; set; }
 		public string Cep { get; set; }
@@ -28,9 +35,9 @@ namespace BancoDeQuestoes.Domain.Entities
 		public string Conta { get; set; }
 		public bool Ativo { get; set; }
 
-		public virtual IEnumerable<MestreArea> MestreArea { get; set; }
-		public virtual IEnumerable<MestreFormacao> MestreFormacao { get; set; }
-		public virtual IEnumerable<MestreDependente> MestreDependente { get; set; }
-		public virtual IEnumerable<TopicoAtribuido> TopicoAtribuido { get; set; }
+		public virtual ICollection<MestreArea> MestreAreas { get; set; } = new List<MestreArea>();
+		public virtual ICollection<MestreFormacao> MestreFormacaos { get; set; } = new List<MestreFormacao>();
+		public virtual ICollection<MestreDependente> MestreDependentes { get; set; } = new List<MestreDependente>();
+		public virtual ICollection<TopicoAtribuido> TopicoAtribuidos { get; set; } = new List<TopicoAtribuido>();
 	}
 }

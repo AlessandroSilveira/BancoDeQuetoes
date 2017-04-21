@@ -39,19 +39,12 @@
     <Compile Include="EntityConfig\MestreConfiguration.cs" />
     <Compile Include="EntityConfig\MestreDependenteConfiguration.cs" />
     <Compile Include="EntityConfig\MestreFormacaoConfiguration.cs" />
+    <Compile Include="EntityConfig\C__MigrationHistoryConfiguration.cs" />
     <Compile Include="EntityConfig\ProjetoConfiguration.cs" />
     <Compile Include="EntityConfig\QuestoesConfiguration.cs" />
     <Compile Include="EntityConfig\RevisorConfigurations.cs" />
     <Compile Include="EntityConfig\StatusConfiguration.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201704142037225_14042017.cs" />
-    <Compile Include="Migrations\201704142037225_14042017.Designer.cs">
-      <DependentUpon>201704142037225_14042017.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704171837081_Creating Status.cs" />
-    <Compile Include="Migrations\201704171837081_Creating Status.Designer.cs">
-      <DependentUpon>201704171837081_Creating Status.cs</DependentUpon>
-    </Compile>
     <Compile Include="Repositories\StatusRepository.cs" />
     <Compile Include="EntityConfig\TopicoAtribuidoConfiguration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -112,11 +105,6 @@
       <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704171837081_Creating Status.resx">
-      <DependentUpon>201704171837081_Creating Status.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,18 +1,26 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using BancoDeQuestoes.Domain.Entities;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class DisciplinaViewModel
 	{
+
+		public DisciplinaViewModel()
+		{
+			DisciplinaId = new Guid();
+			AreaId = new Guid();
+		}
+
 		[Key]
 		[DisplayName("Id Discipliina")]
-		public int DisciplinaId { get; set; }
+		public Guid DisciplinaId { get; set; }
 
 		[Required(ErrorMessage = "Escolha uma Área que essa Disciplina pertence.")]
 		[DisplayName("Área")]
-		public int AreaId { get; set; }
+		public Guid AreaId { get; set; }
 
 		[StringLength(150)]
 		[Required(ErrorMessage = "Informe um Título da Disciplina.")]
@@ -41,10 +49,5 @@ namespace BancoDeQuestoes.Mvc.ViewModels
 
 		public virtual Area Area { get; set; }
 
-		//[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-		//public virtual ICollection<INSCR_BQ_TOP_DISC_CARGO> INSCR_BQ_TOP_DISC_CARGO { get; set; }
-
-		//[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-		//public virtual ICollection<INSCR_BQ_TOPICO_ATRIBUIDO> INSCR_BQ_TOPICO_ATRIBUIDO { get; set; }
 	}
 }

@@ -1,15 +1,21 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class MestreFormacaoViewModel
 	{
+		public MestreFormacaoViewModel()
+		{
+			MestreFormacaoId = new Guid();
+			MestreId = new Guid();
+		}
+
 		[Key]
-		public int MestreFormacaoId { get; set; }
+		public Guid MestreFormacaoId { get; set; }
 
-
-		public int MestreId { get; set; }
+		public Guid MestreId { get; set; }
 
 		[Required(ErrorMessage = "O campo Tipo de Formação deve ser Informado"), StringLength(150), DisplayName("Tipo de Formação")]
 		public string TipoFormacao { get; set; }
@@ -31,7 +37,6 @@ namespace BancoDeQuestoes.Mvc.ViewModels
 
 		[Required(ErrorMessage = "O campo Ativo deve ser Informado"), DisplayName("Ativo")]
 		public bool Ativo { get; set; }
-
 		
 	}
 }

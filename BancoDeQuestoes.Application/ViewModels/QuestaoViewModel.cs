@@ -1,14 +1,21 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BancoDeQuestoes.Mvc.ViewModels
+namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class QuestaoViewModel
 	{
-		[Key]
-		public int QuestaoId { get; set; }
+		public QuestaoViewModel()
+		{
+			QuestaoId = new Guid();
+			TopicoAtribuidoId = new Guid();
+		}
 
-		public int TopicoAtribuidoId { get; set; }
+		[Key]
+		public Guid QuestaoId { get; set; }
+
+		public Guid TopicoAtribuidoId { get; set; }
 
 		[Required(ErrorMessage = "O campo Número da Questão deve ser preenchido"), DisplayName("Número da Questão")]
 		public int NumeroQuestao { get; set; }
