@@ -2,7 +2,7 @@
 
 namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 {
-	public interface ITopicoAtribuidoRepository:IBaseRepository<TopicoAtribuido>
+	public interface ITopicoAtribuidoRepository:IRepository<TopicoAtribuido>
 	{
 		
 	}

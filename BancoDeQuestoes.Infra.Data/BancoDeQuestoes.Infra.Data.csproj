@@ -51,7 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AreaRepository.cs" />
     <Compile Include="Repositories\BancaRepository.cs" />
-    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\DescBibliografia.cs" />
     <Compile Include="Repositories\DescNivel.cs" />
     <Compile Include="Repositories\DescTitulo.cs" />
@@ -70,7 +70,6 @@
     <Compile Include="Repositories\NomeMestre.cs" />
     <Compile Include="Repositories\ProjetoRepository.cs" />
     <Compile Include="Repositories\QuestaoRepository.cs" />
-    <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\RevisorRepository.cs" />
     <Compile Include="Repositories\StatusMestre.cs" />
     <Compile Include="Repositories\TopicoAtribuidoRepository.cs" />

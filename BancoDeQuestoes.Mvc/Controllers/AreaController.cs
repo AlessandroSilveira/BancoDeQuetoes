@@ -1,39 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
-using AutoMapper;
-using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.ViewModels;
-using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-	public class AreaController : Controller
-	{
-		private readonly IAreaAppService _areaAppService;
+    public class AreaController : Controller
+    {
+        private readonly AreaAppService _areaAppService;
 
-		public AreaController(IAreaAppService areaAppService)
-		{
-			_areaAppService = areaAppService;
-		}
+        public AreaController()
+        {
+            _areaAppService = new AreaAppService();
+        }
 
 		public ActionResult Index()
         {
-			var areaViewModel =
-			   Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
-			return View(areaViewModel);
+			
+			return View(_areaAppService.GetAll());
         }
        
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-           
-			var area = _areaAppService.GetById(Convert.ToInt32(id));
-			var areaViewModel = Mapper.Map<Area, AreaViewModel>(area);
-            if (areaViewModel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(areaViewModel);
+
+            return View(_areaAppService.GetById(id));
         }
         
         public ActionResult Create()
@@ -46,44 +36,41 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Create(AreaViewModel areaViewModel)
         {
 	        if (!ModelState.IsValid) return View(areaViewModel);
-	        var area = Mapper.Map< AreaViewModel, Area>(areaViewModel);
-	        _areaAppService.Add(area);
+	      
+	        _areaAppService.Add(areaViewModel);
 
 	        return RedirectToAction("Index");
         }
        
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
            
-			var area = _areaAppService.GetById(Convert.ToInt32(id));
-			var areaViewModel = Mapper.Map<Area, AreaViewModel>(area);
-			return View(areaViewModel);
+			var area = _areaAppService.GetById(id);
+		
+			return View(area);
 		}
        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit( AreaViewModel areaViewModel)
         {
-	        if (!ModelState.IsValid) return View(areaViewModel);
-	        var areaDomain = Mapper.Map<AreaViewModel, Area>(areaViewModel);
-			_areaAppService.Update(areaDomain);
+			_areaAppService.Update(areaViewModel);
 
 	        return RedirectToAction("Index");
         }
        
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Guid id)
         {
-			var area = _areaAppService.GetById(Convert.ToInt32(id));
-			var areaViewModel = Mapper.Map<Area, AreaViewModel>(area);
-			return View(areaViewModel);
+			var area = _areaAppService.GetById(id);
+			
+			return View(area);
 		}
       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
-			var area = _areaAppService.GetById(id);
-			_areaAppService.Remove(area);
+			_areaAppService.Remove(id);
 			return RedirectToAction("Index");
 		}
     }

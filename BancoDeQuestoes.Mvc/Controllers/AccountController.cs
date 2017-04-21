@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Web.Helpers;
+using BancoDeQuestoes.Mvc.Models;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {

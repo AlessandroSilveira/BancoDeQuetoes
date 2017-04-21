@@ -3,7 +3,7 @@ using BancoDeQuestoes.Domain.Interfaces.Repositories;
 
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
-	public class QuestaoRepository : BaseRepository<Questao>, IQuestaoRepository
+	public class QuestaoRepository : Repository<Questao>, IQuestaoRepository
 
 	{
 		

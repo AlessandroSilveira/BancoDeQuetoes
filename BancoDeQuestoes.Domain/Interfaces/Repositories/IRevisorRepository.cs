@@ -2,7 +2,7 @@
 
 namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 {
-    public interface IRevisorRepository : IBaseRepository<Revisor>
+    public interface IRevisorRepository : IRepository<Revisor>
     {
     }
 }

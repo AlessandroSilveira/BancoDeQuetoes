@@ -5,11 +5,8 @@ using BancoDeQuestoes.Domain.Interfaces.Repositories;
 
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
-	public class AreaRepository : BaseRepository<Area>, IAreaRepository
+	public class AreaRepository : Repository<Area>, IAreaRepository
 	{
-		public void Dispose()
-		{
-			throw new NotImplementedException();
-		}
+		
 	}
 }

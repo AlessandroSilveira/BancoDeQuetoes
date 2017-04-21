@@ -2,7 +2,7 @@
 
 namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 {
-	public interface IStatusRepository : IBaseRepository<Status>
+	public interface IStatusRepository : IRepository<Status>
 	{
 		
 	}

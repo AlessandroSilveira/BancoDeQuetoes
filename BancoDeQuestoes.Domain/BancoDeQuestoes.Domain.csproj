@@ -46,7 +46,7 @@
     <Compile Include="Entities\TopicoAtribuido.cs" />
     <Compile Include="Interfaces\Repositories\IAreaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IBancaRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IBaseRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDisciplinaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFormacaoRevisoresRepository.cs" />
     <Compile Include="Interfaces\Repositories\IItensPesquisaDisciplina.cs" />

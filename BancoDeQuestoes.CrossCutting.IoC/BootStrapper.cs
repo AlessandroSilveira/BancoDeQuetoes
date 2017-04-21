@@ -1,4 +1,5 @@
-﻿using BancoDeQuestoes.Application.Interface.Repositories;
+﻿using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.Interface.Services;
 using BancoDeQuestoes.Domain.Interfaces.Repositories;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -45,7 +46,7 @@ namespace BancoDeQuestoes.CrossCutting.IoC
 			container.Register<ITopicoAtribuidoService, TopicoAtribuidoService>(Lifestyle.Scoped);
 
 			//Infra
-			container.Register(typeof(IRepositoryBase<>), typeof(RepositoryBase<>), Lifestyle.Scoped);
+			container.Register(typeof(IRepository<>), typeof(Repository<>), Lifestyle.Scoped);
 			container.Register<IProjetoRepository, ProjetoRepository>(Lifestyle.Scoped);
 			container.Register<IDisciplinaRepository, DisciplinaRepository>(Lifestyle.Scoped);
 			container.Register<IBancaRepository, BancaRepository>(Lifestyle.Scoped);

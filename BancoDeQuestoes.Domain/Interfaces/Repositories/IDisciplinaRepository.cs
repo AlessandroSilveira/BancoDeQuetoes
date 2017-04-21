@@ -2,7 +2,7 @@
 
 namespace BancoDeQuestoes.Domain.Interfaces.Repositories
 {
-	public interface IDisciplinaRepository :  IBaseRepository<Disciplina>
+	public interface IDisciplinaRepository :  IRepository<Disciplina>
 	{
 	}
 }

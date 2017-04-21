@@ -2,33 +2,28 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
-using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Application.Interface.Services;
 using BancoDeQuestoes.Application.ViewModels;
-using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-	public class BancaController : Controller
-    {
-	    private readonly IBancaAppService _bancaAppService;
+    public class BancaController : Controller
+	{
+	    private readonly BancaAppService _bancaAppService;
 
-	    public BancaController(IBancaAppService bancaAppService)
+	    public BancaController(BancaAppService bancaAppService)
 	    {
-		    _bancaAppService = bancaAppService;
+	        _bancaAppService = bancaAppService;
 	    }
-	   
-        public ActionResult Index()
+
+	    public ActionResult Index()
         {
-			var bancaViewModel =
-			   Mapper.Map<IEnumerable<Banca>, IEnumerable<BancaViewModel>>(_bancaAppService.GetAll());
-			return View(bancaViewModel);
+			return View(_bancaAppService.GetAll());
         }
       
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-			var banca = _bancaAppService.GetById(Convert.ToInt32(id));
-			var bancaViewModel = Mapper.Map<Banca, BancaViewModel>(banca);
-	        return bancaViewModel == null ? (ActionResult) HttpNotFound() : View(bancaViewModel);
+            return View(_bancaAppService.GetById(id));
         }
         
         public ActionResult Create()
@@ -40,19 +35,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BancaViewModel bancaViewModel)
         {
-	        if (!ModelState.IsValid) return View(bancaViewModel);
-	        var banca = Mapper.Map<BancaViewModel, Banca>(bancaViewModel);
-	        _bancaAppService.Add(banca);
-
+	        _bancaAppService.Add(bancaViewModel);
 	        return RedirectToAction("Index");
         }
         
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-
-			var banca = _bancaAppService.GetById(Convert.ToInt32(id));
-			var bancaViewModel = Mapper.Map<Banca, BancaViewModel>(banca);
-			return View(bancaViewModel);
+			var banca = _bancaAppService.GetById(id);
+			return View(banca);
 		}
        
         [HttpPost]
@@ -60,27 +50,22 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Edit(BancaViewModel bancaViewModel)
         {
 			if (!ModelState.IsValid) return View(bancaViewModel);
-			var bancaDomain = Mapper.Map<BancaViewModel, Banca>(bancaViewModel);
-			_bancaAppService.Update(bancaDomain);
+			 _bancaAppService.Update(bancaViewModel);
 
 			return RedirectToAction("Index");
 		}
 		
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
 			var banca = _bancaAppService.GetById(id);
-			var bancaViewModel = Mapper.Map<Banca, BancaViewModel>(banca);
-
-			return View(bancaViewModel);
+			return View(banca);
 		}
        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
-			var banca = _bancaAppService.GetById(id);
-			_bancaAppService.Remove(banca);
-
+			_bancaAppService.Remove(id);
 			return RedirectToAction("Index");
 		}
 

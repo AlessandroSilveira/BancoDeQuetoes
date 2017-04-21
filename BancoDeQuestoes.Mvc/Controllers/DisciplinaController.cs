@@ -1,48 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
+using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
-using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
 	public class DisciplinaController : Controller
 	{
+	    private readonly DisciplinaAppService _disciplinaAppService;
+	    private readonly AreaAppService _areaAppService;
 
-		private readonly IDisciplinaAppService _disciplinaAppService;
-		private readonly IAreaAppService _areaAppService;
+	    public DisciplinaController(DisciplinaAppService disciplinaAppService, AreaAppService areaAppService)
+	    {
+	        _disciplinaAppService = disciplinaAppService;
+	        _areaAppService = areaAppService;
+	    }
 
-		public DisciplinaController(IDisciplinaAppService disciplinaAppService, IAreaAppService areaAppService)
-		{
-			_disciplinaAppService = disciplinaAppService;
-			_areaAppService = areaAppService;
-		}
-
-		public ActionResult Index()
-		{
-			var disciplinaViewModel =
-				Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_disciplinaAppService.GetAll());
-			ViewBag.ListaDisciplinas =
-			Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
+	    public ActionResult Index()
+	    {
+	        var disciplinaViewModel = _disciplinaAppService.GetAll();
+	        ViewBag.ListaDisciplinas = _areaAppService.GetAll();
 			return View(disciplinaViewModel);
 		}
 
-		public ActionResult Details(int id)
+		public ActionResult Details(Guid id)
 		{
 			var disciplina = _disciplinaAppService.GetById(id);
-			var disciplinaViewModel = Mapper.Map<Disciplina, DisciplinaViewModel>(disciplina);
-			if (disciplinaViewModel == null)
+			
+			if (disciplina == null)
 			{
 				return HttpNotFound();
 			}
-			return View(disciplinaViewModel);
+			return View(disciplina);
 		}
 
 		public ActionResult Create()
 		{
-			var areaViewModel =
-				Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
+			var areaViewModel =_areaAppService.GetAll();
 			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao");
 			return View();
 		}
@@ -53,24 +50,19 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var dsiciplina = Mapper.Map<DisciplinaViewModel, Disciplina>(disciplinaViewModel);
-				_disciplinaAppService.Add(dsiciplina);
-
+				_disciplinaAppService.Add(disciplinaViewModel);
 				return RedirectToAction("Index");
 			}
 
-			var areaViewModel =
-				Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
+			var areaViewModel =_areaAppService.GetAll();
 			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
-
 			return View(disciplinaViewModel);
 		}
 
-		public ActionResult Edit(int id)
+		public ActionResult Edit(Guid id)
 		{
-			var disciplina = _disciplinaAppService.GetById(id);
-			var disciplinaViewModel = Mapper.Map<Disciplina, DisciplinaViewModel>(disciplina);
-			return View(disciplinaViewModel);
+			var disciplina = _disciplinaAppService.GetById(id);			
+			return View(disciplina);
 		}
 
 		[HttpPost]
@@ -78,40 +70,34 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		public ActionResult Edit(DisciplinaViewModel disciplinaViewModel)
 		{
 			if (!ModelState.IsValid) return View(disciplinaViewModel);
-			var discipliinaDomain = Mapper.Map<DisciplinaViewModel, Disciplina>(disciplinaViewModel);
-			_disciplinaAppService.Update(discipliinaDomain);
-
-			var areaViewModel =
-					Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
-
+			
+			_disciplinaAppService.Update(disciplinaViewModel);
+			var areaViewModel = _areaAppService.GetAll();
 			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
 			return View(disciplinaViewModel);
 		}
 
-		public ActionResult Delete(int id)
+		public ActionResult Delete(Guid id)
 		{
 			var disciplina = _disciplinaAppService.GetById(id);
-			var disciplinaViewModel = Mapper.Map<Disciplina, DisciplinaViewModel>(disciplina);
-			return View(disciplinaViewModel);
+			return View(disciplina);
 		}
 
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
-		public ActionResult DeleteConfirmed(int id)
+		public ActionResult DeleteConfirmed(Guid id)
 		{
-			var disciplina = _disciplinaAppService.GetById(id);
-			_disciplinaAppService.Remove(disciplina);
-
+			_disciplinaAppService.Remove(id);
 			return RedirectToAction("Index");
 		}
 
-		[HttpPost]
-		public ActionResult Search(Disciplina form)
-		{
-			ViewBag.ListaDisciplinas = Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
-			var iNscrBqTopico = Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_disciplinaAppService.ResultadoPesquisaDisciplina(form)); 
+		//[HttpPost]
+		//public ActionResult Search(Disciplina form)
+		//{
+		//	ViewBag.ListaDisciplinas = Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
+		//	var iNscrBqTopico = Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_disciplinaAppService.ResultadoPesquisaDisciplina(form)); 
 			
-			return View(iNscrBqTopico);
-		}
+		//	return View(iNscrBqTopico);
+		//}
 	}
 }

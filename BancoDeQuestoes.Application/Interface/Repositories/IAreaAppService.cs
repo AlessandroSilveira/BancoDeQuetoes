@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using BancoDeQuestoes.Application.ViewModels;
 
-namespace BancoDeQuestoes.Application.Interface.Repositories
+namespace BancoDeQuestoes.Application.Interface
 {
 	public interface IAreaAppService : IDisposable
 	{

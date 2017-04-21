@@ -3,7 +3,7 @@ using BancoDeQuestoes.Domain.Interfaces.Repositories;
 
 namespace BancoDeQuestoes.Infra.Data.Repositories
 {
-	public class MestreRepository : BaseRepository<Mestre>, IMestreRepository
+	public class MestreRepository : Repository<Mestre>, IMestreRepository
 	{
 	}
 }
