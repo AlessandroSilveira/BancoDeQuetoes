@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Domain.Services

@@ -4,8 +4,8 @@ using System.Linq.Expressions;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Infra.Data.Repositories;
 using AutoMapper;
+using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface.Services
 {

@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
-using AutoMapper;
-using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.ViewModels;
-using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-	public class TopicoAtribuidoController : Controller
+    public class TopicoAtribuidoController : Controller
 	{
-		private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
+		private readonly TopicoAtribuidoAppService _topicoAtribuidoAppService;
 
-		public TopicoAtribuidoController(ITopicoAtribuidoAppService topicoAtribuidoAppService)
+		public TopicoAtribuidoController(TopicoAtribuidoAppService topicoAtribuidoAppService)
 		{
 			_topicoAtribuidoAppService = topicoAtribuidoAppService;
 		}
@@ -20,17 +17,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		
         public ActionResult Index()
         {
-			var topicoAtribuidoViewModel =
-		   Mapper.Map<IEnumerable<TopicoAtribuido>, IEnumerable<TopicoAtribuidoViewModel>>(_topicoAtribuidoAppService.GetAll());
-			return View(topicoAtribuidoViewModel);
+			return View(_topicoAtribuidoAppService.GetAll());
 		}
-
-       
-        public ActionResult Details(int? id)
+        
+        public ActionResult Details(Guid id)
         {
-			var topico = _topicoAtribuidoAppService.GetById(Convert.ToInt32(id));
-			var topicoViewModel = Mapper.Map<TopicoAtribuido, TopicoAtribuidoViewModel>(topico);
-			return topicoViewModel == null ? (ActionResult)HttpNotFound() : View(topicoViewModel);
+			var topico = _topicoAtribuidoAppService.GetById(id);
+			return topico == null ? (ActionResult)HttpNotFound() : View(topico);
 			
         }
        
@@ -44,17 +37,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Create(TopicoAtribuidoViewModel topicoAtribuidoViewModel)
         {
 			if (!ModelState.IsValid) return View(topicoAtribuidoViewModel);
-			var topico = Mapper.Map<TopicoAtribuidoViewModel, TopicoAtribuido>(topicoAtribuidoViewModel);
-			_topicoAtribuidoAppService.Add(topico);
-
+			_topicoAtribuidoAppService.Add(topicoAtribuidoViewModel);
 			return RedirectToAction("Index");
 		}
        
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-			var topico = _topicoAtribuidoAppService.GetById(Convert.ToInt32(id));
-			var topicoViewModel = Mapper.Map<TopicoAtribuido, TopicoAtribuidoViewModel>(topico);
-			return View(topicoViewModel);
+			var topico = _topicoAtribuidoAppService.GetById(id);
+			return View(topico);
 		}
 		
         [HttpPost]
@@ -62,26 +52,24 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Edit( TopicoAtribuidoViewModel topicoAtribuidoViewModel)
         {
 			if (!ModelState.IsValid) return View(topicoAtribuidoViewModel);
-			var topicoDomain = Mapper.Map<TopicoAtribuidoViewModel, TopicoAtribuido>(topicoAtribuidoViewModel);
-			_topicoAtribuidoAppService.Update(topicoDomain);
-
+			
+			_topicoAtribuidoAppService.Update(topicoAtribuidoViewModel);
 			return RedirectToAction("Index");
 		}
         
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-			var topico = _topicoAtribuidoAppService.GetById(id);
-			var topicoAtribuidoViewModel = Mapper.Map<TopicoAtribuido, TopicoAtribuidoViewModel>(topico);
-			return View(topicoAtribuidoViewModel);
+			
+			return View(_topicoAtribuidoAppService.GetById(id));
         }
 
        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
-			var topico = _topicoAtribuidoAppService.GetById(id);
-			_topicoAtribuidoAppService.Remove(topico);
+			
+			_topicoAtribuidoAppService.Remove(id);
 			return RedirectToAction("Index");
         }
     }

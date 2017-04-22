@@ -1,38 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Web.Mvc;
-using AutoMapper;
-using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.ViewModels;
-using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-	public class MestreController : Controller
+    public class MestreController : Controller
 	{
-		private readonly IMestreAppService _mestreAppService;
+	    private readonly MestreAppService _mestreAppService;
 
-		public MestreController(IMestreAppService mestreAppService)
-		{
-			_mestreAppService = mestreAppService;
-		}
-		
-        public ActionResult Index()
+	    public MestreController(MestreAppService mestreAppService)
+	    {
+	        _mestreAppService = mestreAppService;
+	    }
+
+	    public ActionResult Index()
         {
-			var mestreViewModel =
-			   Mapper.Map<IEnumerable<Mestre>, IEnumerable<MestreViewModel>>(_mestreAppService.GetAll());
-
-			return View(mestreViewModel);
+			return View(_mestreAppService.GetAll());
         }
         
-        public ActionResult Details(int? id)
+        public ActionResult Details(Guid id)
         {
-	        if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-	        var mestre = _mestreAppService.GetById(Convert.ToInt32(id));
-	        var mestreViewModel = Mapper.Map<Mestre, MestreViewModel>(mestre);
-
-	        return mestreViewModel == null ? (ActionResult) HttpNotFound() : View(mestreViewModel);
+	        var mestre = _mestreAppService.GetById(id);
+	        return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
        
         public ActionResult Create()
@@ -45,19 +35,15 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Create( MestreViewModel mestreViewModel)
         {
 	        if (!ModelState.IsValid) return View(mestreViewModel);
-	        var mestre = Mapper.Map<MestreViewModel, Mestre>(mestreViewModel);
-	        _mestreAppService.Add(mestre);
+	        _mestreAppService.Add(mestreViewModel);
 
 	        return RedirectToAction("Index");
         }
        
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid id)
         {
-	        if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-	        var mestre = _mestreAppService.GetById(Convert.ToInt32(id));
-	        var mestreViewModel = Mapper.Map<Mestre, MestreViewModel>(mestre);
-
-	        return mestreViewModel == null ? (ActionResult) HttpNotFound() : View(mestreViewModel);
+	        var mestre = _mestreAppService.GetById(id);
+	        return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
 		
         [HttpPost]
@@ -65,35 +51,21 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Edit( MestreViewModel mestreViewModel)
         {
 	        if (!ModelState.IsValid) return View(mestreViewModel);
-	        var mestreDomain = Mapper.Map<MestreViewModel, Mestre>(mestreViewModel);
-	        _mestreAppService.Update(mestreDomain);
-
+	        _mestreAppService.Update(mestreViewModel);
 	        return RedirectToAction("Index");
         }
        
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Guid id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-			var mestre = _mestreAppService.GetById(Convert.ToInt32(id));
-			var mestreViewModel = Mapper.Map<Mestre, MestreViewModel>(mestre);
-			if (mestreViewModel == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(mestreViewModel);
+            var mestre = _mestreAppService.GetById(id);
+            return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
         
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
-			var mestre = _mestreAppService.GetById(id);
-			_mestreAppService.Remove(mestre);
-
+			_mestreAppService.Remove(id);
 			return RedirectToAction("Index");
         }
     }

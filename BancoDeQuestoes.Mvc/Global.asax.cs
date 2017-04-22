@@ -1,7 +1,10 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using BancoDeQuestoes.Application.AutoMapper;
 using BancoDeQuestoes.Mvc.AutoMapper;
+
+//using BancoDeQuestoes.Mvc.AutoMapper;
 
 namespace BancoDeQuestoes.Mvc
 {
@@ -14,6 +17,7 @@ namespace BancoDeQuestoes.Mvc
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			AutoMapperConfig.RegisterMapping();
+            
 			
 		}
 	}

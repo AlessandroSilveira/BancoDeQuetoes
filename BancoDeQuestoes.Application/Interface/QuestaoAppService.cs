@@ -5,8 +5,8 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Services;
-using BancoDeQuestoes.Infra.Data.Repositories;
+
+using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {

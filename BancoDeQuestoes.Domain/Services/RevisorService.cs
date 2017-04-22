@@ -1,13 +1,55 @@
-﻿using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
+﻿using System;
+using System.Collections.Generic;
+using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Domain.Services
 {
-	public  class RevisorService : ServiceBase<Revisor>, IRevisorService
-	{
-		public RevisorService(IRepositoryBase<Revisor> repositoryBase) : base(repositoryBase)
-		{
-		}
+    public  class RevisorService : IRevisorService
+    {
+        private IRevisorRepository _revisorRepository;
+
+        public RevisorService(IRevisorRepository revisorRepository)
+        {
+            _revisorRepository = revisorRepository;
+        }
+
+        public void Add(Revisor obj)
+        {
+            _revisorRepository.Add(obj);
+
+        }
+
+	    public Revisor GetById(Guid id)
+	    {
+	      return  _revisorRepository.GetById(id);
+
+	    }
+
+	    public IEnumerable<Revisor> GetAll()
+	    {
+	        return _revisorRepository.GetAll();
+
+	    }
+
+	    public void Update(Revisor obj)
+	    {
+	        _revisorRepository.Update(obj);
+
+	    }
+
+	    public void Remove(Guid obj)
+	    {
+	        _revisorRepository.Remove(obj);
+
+        }
+
+	    public void Dispose()
+	    {
+	        _revisorRepository.Dispose();
+            GC.SuppressFinalize(this);
+
+	    }
 	}
 }

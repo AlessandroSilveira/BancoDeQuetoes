@@ -1,39 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Web.Mvc;
-using AutoMapper;
-using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.ViewModels;
-using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-	public class MestreDependenteController : Controller
+    public class MestreDependenteController : Controller
 	{
-		private readonly IMestreDependenteAppService _mestreDependenteAppService;
+	    private MestreDependenteAppService _mestreDependenteAppService;
 
-		public MestreDependenteController(IMestreDependenteAppService mestreDependenteAppService)
-		{
-			_mestreDependenteAppService = mestreDependenteAppService;
-		}
-		
-        public ActionResult Index(int id)
+	    public MestreDependenteController(MestreDependenteAppService mestreDependenteAppService)
+	    {
+	        _mestreDependenteAppService = mestreDependenteAppService;
+	    }
+
+	    public ActionResult Index(int id)
         {
 			ViewBag.MestreId = id;
-			var mestreViewModel =
-			   Mapper.Map<IEnumerable<MestreDependente>, IEnumerable<MestreDependenteViewModel>>(_mestreDependenteAppService.GetAll());
-			return View(mestreViewModel);
+		    return View(_mestreDependenteAppService.GetAll());
         }
        
-        public ActionResult Details(int? id)
+        public ActionResult Details(Guid id)
         {
-	        if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-	        var mestre = _mestreDependenteAppService.GetById(Convert.ToInt32(id));
-	        var mestreDependenteViewModel = Mapper.Map<MestreDependente, MestreDependenteViewModel>(mestre);
-
-	        return mestreDependenteViewModel == null ? (ActionResult) HttpNotFound() : View(mestreDependenteViewModel);
+	        var mestre = _mestreDependenteAppService.GetById(id);
+	        return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
         
         public ActionResult Create(int id)
@@ -47,19 +37,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Create( MestreDependenteViewModel mestreDependenteViewModel)
         {
 	        if (!ModelState.IsValid) return View(mestreDependenteViewModel);
-	        var mestre = Mapper.Map<MestreDependenteViewModel, MestreDependente>(mestreDependenteViewModel);
-	        _mestreDependenteAppService.Add(mestre);
-
+	        _mestreDependenteAppService.Add(mestreDependenteViewModel);
 	        return RedirectToAction("Index", new { id = mestreDependenteViewModel.MestreId });
         }
       
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid id)
         {
-	        if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-	        var mestre = _mestreDependenteAppService.GetById(Convert.ToInt32(id));
-	        var mestreDependenteViewModel = Mapper.Map<MestreDependente, MestreDependenteViewModel>(mestre);
-
-	        return mestreDependenteViewModel == null ? (ActionResult) HttpNotFound() : View(mestreDependenteViewModel);
+	        var mestre = _mestreDependenteAppService.GetById(id);
+	        return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
       
         [HttpPost]
@@ -67,29 +52,22 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Edit( MestreDependenteViewModel mestreDependenteViewModel)
         {
 	        if (!ModelState.IsValid) return View(mestreDependenteViewModel);
-	        var mestreDomain = Mapper.Map<MestreDependenteViewModel, MestreDependente>(mestreDependenteViewModel);
-	        _mestreDependenteAppService.Update(mestreDomain);
-
+	        _mestreDependenteAppService.Update(mestreDependenteViewModel);
 	        return RedirectToAction("Index", new { id = mestreDependenteViewModel.MestreId });
         }
        
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Guid id)
         {
-	        if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			ViewBag.MestreId = id;
-			var mestre = _mestreDependenteAppService.GetById(Convert.ToInt32(id));
-	        var mestreDependenteViewModel = Mapper.Map<MestreDependente, MestreDependenteViewModel>(mestre);
-
-	        return mestreDependenteViewModel == null ? (ActionResult) HttpNotFound() : View(mestreDependenteViewModel);
+			var mestre = _mestreDependenteAppService.GetById(id);
+	        return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
         
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
-			var mestre = _mestreDependenteAppService.GetById(id);
-			_mestreDependenteAppService.Remove(mestre);
-
+			_mestreDependenteAppService.Remove(id);
 			return RedirectToAction("Index");
         }
     }

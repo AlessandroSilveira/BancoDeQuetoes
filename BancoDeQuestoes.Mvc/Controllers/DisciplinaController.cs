@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
-using AutoMapper;
 using BancoDeQuestoes.Application.Interface;
-using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-	public class DisciplinaController : Controller
+    public class DisciplinaController : Controller
 	{
 	    private readonly DisciplinaAppService _disciplinaAppService;
 	    private readonly AreaAppService _areaAppService;

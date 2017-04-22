@@ -7,7 +7,7 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
 	{
 		void Add(TEntity obj);
 
-		TEntity GetById(int id);
+		TEntity GetById(Guid id);
 
 		IEnumerable<TEntity> GetAll();
 

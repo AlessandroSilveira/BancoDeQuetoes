@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using AutoMapper;
+
 using BancoDeQuestoes.Application.Interface.Services;
 using BancoDeQuestoes.Application.ViewModels;
 

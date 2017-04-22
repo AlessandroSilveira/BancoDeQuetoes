@@ -1,38 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
-using AutoMapper;
-using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
     public class FormacaoRevisorController : Controller
     {
-	    private readonly IFormacaoRevisorAppService _formacaoRevisorAppService;
+        private readonly FormacaoRevisorAppService _formacaoRevisorAppService;
 
-	    public FormacaoRevisorController(IFormacaoRevisorAppService formacaoRevisorAppService)
-	    {
-		    _formacaoRevisorAppService = formacaoRevisorAppService;
-	    }
+        public FormacaoRevisorController(FormacaoRevisorAppService formacaoRevisorAppService)
+        {
+            _formacaoRevisorAppService = formacaoRevisorAppService;
+        }
 
-
-	    // GET: FormacaoRevisor
+        // GET: FormacaoRevisor
         public ActionResult Index(int id)
         {
 	        ViewBag.RevisorId = id;
-			var formacaoViewModel =
-				 Mapper.Map<IEnumerable<RevisorFormacao>, IEnumerable<RevisorFormacaoViewModel>>(_formacaoRevisorAppService.GetAll());
+			
 
-			return View(formacaoViewModel);
+			return View(_formacaoRevisorAppService.GetAll());
 		}
 
       
-        public ActionResult Details(int? id)
+        public ActionResult Details(Guid id)
         {
-			var formacao = _formacaoRevisorAppService.GetById(Convert.ToInt32(id));
-			var formacaoViewModel = Mapper.Map<RevisorFormacao, RevisorFormacaoViewModel>(formacao);
-	        return formacaoViewModel == null ? (ActionResult) HttpNotFound() : View(formacaoViewModel);
+			var formacao = _formacaoRevisorAppService.GetById(id);
+			
+	        return formacao == null ? (ActionResult) HttpNotFound() : View(formacao);
         }
 
      
@@ -47,17 +43,16 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Create( RevisorFormacaoViewModel formacaoRevisorViewModel)
         {
 			if (!ModelState.IsValid) return View(formacaoRevisorViewModel);
-			var formacao = Mapper.Map<RevisorFormacaoViewModel, RevisorFormacao>(formacaoRevisorViewModel);
-			_formacaoRevisorAppService.Add(formacao);
+			
+			_formacaoRevisorAppService.Add(formacaoRevisorViewModel);
 	      
 			return RedirectToAction("Index",new {id=formacaoRevisorViewModel.RevisorId});
 		}
 
-       public ActionResult Edit(int? id)
+       public ActionResult Edit(Guid id)
         {
-			var formacao = _formacaoRevisorAppService.GetById(Convert.ToInt32(id));
-			var formacaoViewModel = Mapper.Map<RevisorFormacao, RevisorFormacaoViewModel>(formacao);
-			return View(formacaoViewModel);
+			var formacao = _formacaoRevisorAppService.GetById(id);
+			return View(formacao);
 		}
        
         [HttpPost]
@@ -65,27 +60,24 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Edit( RevisorFormacaoViewModel formacaoRevisorViewModel)
         {
 			if (!ModelState.IsValid) return View(formacaoRevisorViewModel);
-			var formacaoDomain = Mapper.Map<RevisorFormacaoViewModel, RevisorFormacao>(formacaoRevisorViewModel);
-			_formacaoRevisorAppService.Update(formacaoDomain);
-
+			_formacaoRevisorAppService.Update(formacaoRevisorViewModel);
 			return RedirectToAction("Index",new { id = formacaoRevisorViewModel.RevisorId });
 		}
 
        
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Guid id)
         {
-			var formacao = _formacaoRevisorAppService.GetById(Convert.ToInt32(id));
-			var formacaoViewModel = Mapper.Map<RevisorFormacao, RevisorFormacaoViewModel>(formacao);
-			return View(formacaoViewModel);
+			var formacao = _formacaoRevisorAppService.GetById(id);
+			return View(formacao);
 		}
 
         // POST: FormacaoRevisor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
 			var area = _formacaoRevisorAppService.GetById(id);
-			_formacaoRevisorAppService.Remove(area);
+			_formacaoRevisorAppService.Remove(id);
 			return RedirectToAction("Index", new { id = area.RevisorId });
 		}
 

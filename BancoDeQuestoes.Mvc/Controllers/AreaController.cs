@@ -9,12 +9,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
     {
         private readonly AreaAppService _areaAppService;
 
-        public AreaController()
+        public AreaController(AreaAppService areaAppService)
         {
-            _areaAppService = new AreaAppService();
+            _areaAppService = areaAppService;
         }
 
-		public ActionResult Index()
+
+        public ActionResult Index()
         {
 			
 			return View(_areaAppService.GetAll());

@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 
 namespace BancoDeQuestoes.Domain.Services
 {
 	public class DescTopico : IItensPesquisaDisciplina
 	{
-		public IItensPesquisaDisciplina Proximo { get; set; }
+
 		public List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql)
 		{
 			if (!string.IsNullOrEmpty(form.Descricao))
@@ -16,5 +16,7 @@ namespace BancoDeQuestoes.Domain.Services
 			}
 			return Proximo.Pesquisa(form, sql);
 		}
+
+	    public IItensPesquisaDisciplina Proximo { get; set; }
 	}
 }

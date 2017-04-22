@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace BancoDeQuestoes.Application.ViewModels
+
+namespace BancoDeQuestoes.Mvc.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

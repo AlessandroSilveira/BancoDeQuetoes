@@ -5,14 +5,14 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Services;
-using BancoDeQuestoes.Infra.Data.Repositories;
+
+using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class MestreFormacaoAppService :  IMestreFormacaoAppService
 	{
-	    private MestreFormacaoRepository _mestreFormacaoRepository;
+	    private readonly MestreFormacaoRepository _mestreFormacaoRepository;
 
 	    public MestreFormacaoAppService(MestreFormacaoRepository mestreFormacaoRepository)
 	    {

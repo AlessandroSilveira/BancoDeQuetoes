@@ -30,11 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ApplicationService.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\DomaintoviewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
-    <Compile Include="Interface\AppServiceBase.cs" />
     <Compile Include="Interface\AreaAppService.cs" />
     <Compile Include="Interface\BancaAppService.cs" />
     <Compile Include="Interface\DisciplinaAppService.cs" />

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 
 namespace BancoDeQuestoes.Mvc.Services.PesquisaDisciplina
 {
-	public class FimPesquisa : IItensPesquisaDisciplina
+    public class FimPesquisa : IItensPesquisaDisciplina
 	{
 		public List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql)
 		{

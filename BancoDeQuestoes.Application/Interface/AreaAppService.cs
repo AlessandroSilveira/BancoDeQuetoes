@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using AutoMapper;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Infra.Data.Repositories;
+using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
@@ -13,14 +13,8 @@ namespace BancoDeQuestoes.Application.Interface
 
 		private readonly AreaRepository _areaRepository;
 
-		public AreaAppService(AreaRepository areaRepository)
-		{
-			_areaRepository = areaRepository;
-		}
 
-        public AreaAppService()
-        {
-        }
+     
 
         public AreaViewModel Add(AreaViewModel obj)
 		{

@@ -2,24 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repositories;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
-using BancoDeQuestoes.Infra.Data.Repositories;
 
 namespace BancoDeQuestoes.Domain.Services
 {
-	public class DisciplinaService : ServiceBase<Disciplina>, IDisciplinaService
-	{
-		public DisciplinaService(IRepositoryBase<Disciplina> repositoryBase) : base(repositoryBase)
-		{
-		}
+    public class DisciplinaService : IDisciplinaService
+    {
+        private IDisciplinaRepository _disciplinaRepository;
 
-		//public void Dispose()
-		//{
-		//	throw new NotImplementedException();
-		//}
+        public DisciplinaService(IDisciplinaRepository disciplinaRepository)
+        {
+            _disciplinaRepository = disciplinaRepository;
+        }
 
-		public IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina form)
+        public IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina form)
 		{
 			var sql = GetAll().ToList();
 
@@ -37,15 +34,52 @@ namespace BancoDeQuestoes.Domain.Services
 			var filtroDescNivel = new DescNivel();
 			var filtroFimPesquisa = new FimPesquisa();
 
-			filtroDescTopico.Proximo = filtroIdDisciplina;
-			filtroIdDisciplina.Proximo = filtroDescTitulo;
-			filtroDescTitulo.Proximo = filtroDescBibliografia;
-			filtroDescBibliografia.Proximo = filtroDescNivel;
+			//filtroDescTopico.Proximo = filtroIdDisciplina;
+			//filtroIdDisciplina.Proximo = filtroDescTitulo;
+			//filtroDescTitulo.Proximo = filtroDescBibliografia;
+			//filtroDescBibliografia.Proximo = filtroDescNivel;
 
-			//Deixar a classe FimPesquisa sempre por ultimo, ela é que finaliza e retorna a consulta, sem ela dárá um erro
-			filtroDescNivel.Proximo = filtroFimPesquisa;
+			////Deixar a classe FimPesquisa sempre por ultimo, ela é que finaliza e retorna a consulta, sem ela dárá um erro
+			//filtroDescNivel.Proximo = filtroFimPesquisa;
 
 			return filtroDescTopico.Pesquisa(form, sql);
 		}
+
+	    public void Add(Disciplina obj)
+	    {
+	        _disciplinaRepository.Add(obj);
+
+	    }
+
+	    public Disciplina GetById(Guid id)
+	    {
+	      return  _disciplinaRepository.GetById(id);
+
+	    }
+
+	    public IEnumerable<Disciplina> GetAll()
+	    {
+	        return _disciplinaRepository.GetAll();
+
+	    }
+
+	    public void Update(Disciplina obj)
+	    {
+	        _disciplinaRepository.Update(obj);
+
+	    }
+
+	    public void Remove(Guid obj)
+	    {
+	        _disciplinaRepository.Remove(obj);
+
+        }
+
+	    public void Dispose()
+	    {
+	        _disciplinaRepository.Dispose();
+            GC.SuppressFinalize(this);
+
+	    }
 	}
 }

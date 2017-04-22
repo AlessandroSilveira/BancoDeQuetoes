@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Web.Mvc;
-using AutoMapper;
 using BancoDeQuestoes.Application.Interface;
-using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
@@ -10,37 +8,35 @@ namespace BancoDeQuestoes.Mvc.Controllers
     public class RevisorController : Controller
 	{
 
-		private readonly IRevisorAppService _revisorAppService;
-		private readonly IAreaAppService _areaAppService;
+		private readonly RevisorAppService _revisorAppService;
+		private readonly AreaAppService _areaAppService;
 
-		public RevisorController(IRevisorAppService revisorAppService, IAreaAppService areaAppService)
+		public RevisorController(RevisorAppService revisorAppService, AreaAppService areaAppService)
 		{
 			_revisorAppService = revisorAppService;
 			_areaAppService = areaAppService;
 		}
 
 		public ActionResult Index()
-        {
-	        var repositorviewModel =
-		        Mapper.Map<IEnumerable<Revisor>, IEnumerable<RevisorViewModel>>(_revisorAppService.GetAll());
-            return View(repositorviewModel);
+		{
+		   
+            return View(_revisorAppService.GetAll());
         }
         
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
 			var revisor = _revisorAppService.GetById(id);
-			var revisorViewModel = Mapper.Map<Revisor, RevisorViewModel>(revisor);
-			if (revisorViewModel == null)
+			
+			if (revisor == null)
 			{
 				return HttpNotFound();
 			}
-			return View(revisorViewModel);
+			return View(revisor);
 		}
 		
         public ActionResult Create()
         {
-			var areaViewModel =
-				Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
+			var areaViewModel =_areaAppService.GetAll();
 			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao");
 			return View();
         }
@@ -50,16 +46,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Create( RevisorViewModel revisorViewModel)
         {
 			if (!ModelState.IsValid) return View(revisorViewModel);
-			var revisor = Mapper.Map<RevisorViewModel, Revisor>(revisorViewModel);
-			_revisorAppService.Add(revisor);
+			_revisorAppService.Add(revisorViewModel);
 			return RedirectToAction("Index");
 		}
 		
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
 			var revisor = _revisorAppService.GetById(id);
-			var revisorViewModel = Mapper.Map<Revisor, RevisorViewModel>(revisor);
-			return View(revisorViewModel);
+			return View(revisor);
 		}
 		
         [HttpPost]
@@ -67,27 +61,22 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Edit( RevisorViewModel revisorViewModel)
         {
 			if (!ModelState.IsValid) return View(revisorViewModel);
-			var revisorDomain = Mapper.Map<RevisorViewModel, Revisor>(revisorViewModel);
-			_revisorAppService.Update(revisorDomain);
-
+			_revisorAppService.Update(revisorViewModel);
 			return RedirectToAction("Index");
 		}
 		
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
 			var revisor = _revisorAppService.GetById(id);
-			var revisorViewModel = Mapper.Map<Revisor, RevisorViewModel>(revisor);
-
-			return View(revisorViewModel);
+			
+			return View(revisor);
 		}
 		
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
-			var revisor = _revisorAppService.GetById(id);
-			_revisorAppService.Remove(revisor);
-
+			_revisorAppService.Remove(id);
 			return RedirectToAction("Index");
 		}
     }
