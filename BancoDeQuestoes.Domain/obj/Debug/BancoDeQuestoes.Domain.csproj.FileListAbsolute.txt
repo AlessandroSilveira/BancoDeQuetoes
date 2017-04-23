@@ -9,4 +9,3 @@ C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\De
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Domain\bin\Debug\BancoDeQuestoes.Domain.pdb
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Domain\obj\Debug\BancoDeQuestoes.Domain.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Domain\obj\Debug\BancoDeQuestoes.Domain.pdb
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Domain\obj\Debug\BancoDeQuestoes.Domain.csprojResolveAssemblyReference.cache
