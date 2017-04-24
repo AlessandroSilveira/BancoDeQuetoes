@@ -1,30 +1,33 @@
 ﻿using System;
 using System.Web.Mvc;
-using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-    public class MestreDependenteController : Controller
+	public class MestreDependenteController : Controller
 	{
 	    private readonly IMestreDependenteAppService _mestreDependenteAppService;
+		private readonly IMestreAppService _mestreAppService;
 
-	    public MestreDependenteController(IMestreDependenteAppService mestreDependenteAppService)
+	    public MestreDependenteController(IMestreDependenteAppService mestreDependenteAppService, IMestreAppService mestreAppService)
 	    {
-	        _mestreDependenteAppService = mestreDependenteAppService;
+		    _mestreDependenteAppService = mestreDependenteAppService;
+		    _mestreAppService = mestreAppService;
 	    }
 
 	    public ActionResult Index(Guid id)
         {
 			ViewBag.MestreId = id;
-		    return View(_mestreDependenteAppService.GetAll());
+			ViewBag.DadosMestre = _mestreAppService.GetById(id);
+			return View(_mestreDependenteAppService.GetAll());
         }
        
         public ActionResult Details(Guid id)
         {
 	        var mestre = _mestreDependenteAppService.GetById(id);
-	        return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
+			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
+			return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
         
         public ActionResult Create(Guid id)
@@ -37,15 +40,21 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create( MestreDependenteViewModel mestreDependenteViewModel)
         {
-	        if (!ModelState.IsValid) return View(mestreDependenteViewModel);
+	        if (!ModelState.IsValid)
+	        {
+				ViewBag.DadosMestre = _mestreAppService.GetById(mestreDependenteViewModel.MestreId);
+				return View(mestreDependenteViewModel);
+	        }
 	        _mestreDependenteAppService.Add(mestreDependenteViewModel);
-	        return RedirectToAction("Index", new { id = mestreDependenteViewModel.MestreId });
+			ViewBag.DadosMestre = _mestreAppService.GetById(mestreDependenteViewModel.MestreId);
+			return RedirectToAction("Index", new { id = mestreDependenteViewModel.MestreId });
         }
       
         public ActionResult Edit(Guid id)
         {
 	        var mestre = _mestreDependenteAppService.GetById(id);
-	        return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
+			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
+			return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
       
         [HttpPost]
@@ -54,14 +63,16 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 	        if (!ModelState.IsValid) return View(mestreDependenteViewModel);
 	        _mestreDependenteAppService.Update(mestreDependenteViewModel);
-	        return RedirectToAction("Index", new { id = mestreDependenteViewModel.MestreId });
+			ViewBag.DadosMestre = _mestreAppService.GetById(mestreDependenteViewModel.MestreId);
+			return RedirectToAction("Index", new { id = mestreDependenteViewModel.MestreId });
         }
        
         public ActionResult Delete(Guid id)
         {
 			ViewBag.MestreId = id;
 			var mestre = _mestreDependenteAppService.GetById(id);
-	        return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
+			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
+			return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
         
         [HttpPost, ActionName("Delete")]

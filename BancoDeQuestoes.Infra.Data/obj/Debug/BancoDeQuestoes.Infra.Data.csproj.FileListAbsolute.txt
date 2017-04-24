@@ -54,3 +54,4 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.pdb
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._2404207_5.resources
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.csproj.GenerateResource.Cache
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._2404207_7.resources

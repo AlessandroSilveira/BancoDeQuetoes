@@ -44,7 +44,7 @@ namespace BancoDeQuestoes.Application.ViewModels
 		[Required(ErrorMessage = "O campo E-mail deve ser preenchido"), StringLength(150), DisplayName("E-mail")]
 		public string Email { get; set; }
 
-		[Required(ErrorMessage = "O campo Segundo E-mail deve ser preenchido"), StringLength(11), DisplayName("Segundo E-mail")]
+		[Required(ErrorMessage = "O campo Segundo E-mail deve ser preenchido"), StringLength(150), DisplayName("Segundo E-mail")]
 		public string EmailSecundario { get; set; }
 
 		[Required(ErrorMessage = "O campo Telefone deve ser preenchido"), StringLength(15), DisplayName("Telefone")]
