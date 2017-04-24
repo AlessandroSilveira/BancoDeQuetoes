@@ -19,6 +19,5 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 
 		IEnumerable<MestreDependenteViewModel> Search(Expression<Func<MestreDependenteViewModel, bool>> predicate);
 
-		int SaveChanges();
 	}
 }

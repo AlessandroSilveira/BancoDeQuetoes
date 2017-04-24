@@ -1,52 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using AutoMapper;
+using BancoDeQuestoes.Domain.Interfaces.Services;
 using BancoDeQuestoes.Infra.Data.Repository;
 
-namespace BancoDeQuestoes.Application.Interface.Services
+namespace BancoDeQuestoes.Application.Interface
 {
 
     public class BancaAppService : IBancaAppService
     {
 
-        private readonly BancaRepository _bancaRepository;
+        private readonly IBancaService _bancaService;
 
-        public BancaAppService(BancaRepository bancaRepository)
-        {
-            _bancaRepository = bancaRepository;
-        }
+	    public BancaAppService(IBancaService bancaService)
+	    {
+		    _bancaService = bancaService;
+	    }
 
-        public BancaViewModel Add(BancaViewModel obj)
+
+	    public BancaViewModel Add(BancaViewModel obj)
         {
             var banca = Mapper.Map<BancaViewModel, Banca>(obj);
-            _bancaRepository.Add(banca);
+			_bancaService.Add(banca);
             return obj;
         }
 
         public IEnumerable<BancaViewModel> GetAll()
         {
-            return Mapper.Map<IEnumerable<Banca>, IEnumerable<BancaViewModel>>(_bancaRepository.GetAll());
+            return Mapper.Map<IEnumerable<Banca>, IEnumerable<BancaViewModel>>(_bancaService.GetAll());
         }
 
         public BancaViewModel GetById(Guid id)
         {
-            return Mapper.Map<Banca, BancaViewModel>(_bancaRepository.GetById(id));
+            return Mapper.Map<Banca, BancaViewModel>(_bancaService.GetById(id));
         }
 
         public void Remove(Guid id)
         {
-            _bancaRepository.Remove(id);
+			_bancaService.Remove(id);
         }
 
-        public int SaveChanges()
-        {
-            return _bancaRepository.SaveChanges();
-        }
-
+      
         public IEnumerable<BancaViewModel> Search(Expression<Func<BancaViewModel, bool>> predicate)
         {
             throw new NotImplementedException();
@@ -54,14 +52,14 @@ namespace BancoDeQuestoes.Application.Interface.Services
 
         public BancaViewModel Update(BancaViewModel obj)
         {
-            _bancaRepository.Update(Mapper.Map<BancaViewModel, Banca>(obj));
+			_bancaService.Update(Mapper.Map<BancaViewModel, Banca>(obj));
             return obj;
         }
 
          
         public void Dispose()
         {
-            _bancaRepository.Dispose();
+			_bancaService.Dispose();
         }      
     }
 }

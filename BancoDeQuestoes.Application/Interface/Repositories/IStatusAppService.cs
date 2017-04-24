@@ -19,6 +19,6 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 
 		IEnumerable<StatusViewModel> Search(Expression<Func<StatusViewModel, bool>> predicate);
 
-		int SaveChanges();
+		
 	}
 }

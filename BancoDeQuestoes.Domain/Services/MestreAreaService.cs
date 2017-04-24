@@ -1,53 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Domain.Services
 {
     public class MestreAreaService : IMestreAreaService
     {
-        private IMestreAreaService _mestreAreaService;
+	    private readonly IMestreAreaRepository _mestreAreaRepository;
 
-        public MestreAreaService(IMestreAreaService mestreAreaService)
-        {
-            _mestreAreaService = mestreAreaService;
-        }
-
-        public void Add(MestreArea obj)
+	    public MestreAreaService(IMestreAreaRepository mestreAreaRepository)
 	    {
-	        _mestreAreaService.Add(obj);
+		    _mestreAreaRepository = mestreAreaRepository;
+	    }
+
+
+	    public MestreArea Add(MestreArea obj)
+	    {
+			return _mestreAreaRepository.Add(obj);
 
         }
 
 	    public MestreArea GetById(Guid id)
 	    {
-	       return _mestreAreaService.GetById(id);
+	       return _mestreAreaRepository.GetById(id);
 
 	    }
 
 	    public IEnumerable<MestreArea> GetAll()
 	    {
-	        return _mestreAreaService.GetAll();
+	        return _mestreAreaRepository.GetAll();
 	    }
 
-	    public void Update(MestreArea obj)
+	    public MestreArea Update(MestreArea obj)
 	    {
-	        _mestreAreaService.Update(obj);
+			return _mestreAreaRepository.Update(obj);
 
         }
 
 	    public void Remove(Guid obj)
 	    {
-	        _mestreAreaService.Remove(obj);
+			_mestreAreaRepository.Remove(obj);
 
         }
 
 	    public void Dispose()
 	    {
-	        _mestreAreaService.Dispose();
+			_mestreAreaRepository.Dispose();
             GC.SuppressFinalize(this);
 
         }
-	}
+
+	   
+    }
 }

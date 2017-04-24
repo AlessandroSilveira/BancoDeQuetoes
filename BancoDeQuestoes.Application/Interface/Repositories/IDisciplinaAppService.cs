@@ -19,8 +19,6 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 
 		IEnumerable<DisciplinaViewModel> Search(Expression<Func<DisciplinaViewModel, bool>> predicate);
 
-		int SaveChanges();
-		
 		IEnumerable<RevisorFormacaoViewModel> ResultadoPesquisaDisciplina(RevisorFormacaoViewModel form);
 	}
 }

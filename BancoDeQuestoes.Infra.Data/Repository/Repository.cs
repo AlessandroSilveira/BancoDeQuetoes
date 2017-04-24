@@ -50,6 +50,8 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	    public virtual void Remove(Guid id)
 	    {
 	        DbSet.Remove(GetById(id));
+		    Db.SaveChanges();
+
 	    }
 
 	    public IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)

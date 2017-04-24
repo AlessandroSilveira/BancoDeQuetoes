@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
     public class AreaController : Controller
     {
-        private readonly AreaAppService _areaAppService;
+        private readonly IAreaAppService _areaAppService;
 
-        public AreaController(AreaAppService areaAppService)
+        public AreaController(IAreaAppService areaAppService)
         {
             _areaAppService = areaAppService;
         }

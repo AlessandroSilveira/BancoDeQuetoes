@@ -12,6 +12,7 @@ namespace BancoDeQuestoes.Application.ViewModels
 	    }
 
         [Key]
+
         public Guid ProjetoId { get; set; }
 
 		[DisplayName("Código do Projeto")]

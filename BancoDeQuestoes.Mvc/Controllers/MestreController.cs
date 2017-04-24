@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
     public class MestreController : Controller
 	{
-	    private readonly MestreAppService _mestreAppService;
+	    private readonly IMestreAppService _mestreAppService;
 
-	    public MestreController(MestreAppService mestreAppService)
+	    public MestreController(IMestreAppService mestreAppService)
 	    {
 	        _mestreAppService = mestreAppService;
 	    }

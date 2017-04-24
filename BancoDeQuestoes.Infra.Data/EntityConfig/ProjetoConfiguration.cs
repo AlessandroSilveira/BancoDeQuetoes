@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Infra.Data.EntityConfig
@@ -8,6 +9,9 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
         public ProjetoConfiguration()
         {
             HasKey(p => p.ProjetoId);
+
+	      
+			
 
             Property(p => p.CodigoProjeto)
                 .IsRequired();

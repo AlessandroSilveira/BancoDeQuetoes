@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -15,9 +16,9 @@ namespace BancoDeQuestoes.Domain.Services
 	        _mestreFormacaoRepository = mestreFormacaoRepository;
 	    }
 
-	    public void Add(MestreFormacao obj)
+	    public MestreFormacao Add(MestreFormacao obj)
 	    {
-	        _mestreFormacaoRepository.Add(obj);
+	     return   _mestreFormacaoRepository.Add(obj);
 
 	    }
 
@@ -33,9 +34,9 @@ namespace BancoDeQuestoes.Domain.Services
 
 	    }
 
-	    public void Update(MestreFormacao obj)
+	    public MestreFormacao Update(MestreFormacao obj)
 	    {
-	        _mestreFormacaoRepository.Update(obj);
+	     return   _mestreFormacaoRepository.Update(obj);
 
 	    }
 
@@ -51,5 +52,7 @@ namespace BancoDeQuestoes.Domain.Services
             GC.SuppressFinalize(this);
 
 	    }
+
+		
 	}
 }

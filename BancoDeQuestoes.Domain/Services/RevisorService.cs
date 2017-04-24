@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -8,16 +9,16 @@ namespace BancoDeQuestoes.Domain.Services
 {
     public  class RevisorService : IRevisorService
     {
-        private IRevisorRepository _revisorRepository;
+        private readonly IRevisorRepository _revisorRepository;
 
         public RevisorService(IRevisorRepository revisorRepository)
         {
             _revisorRepository = revisorRepository;
         }
 
-        public void Add(Revisor obj)
+        public Revisor Add(Revisor obj)
         {
-            _revisorRepository.Add(obj);
+         return   _revisorRepository.Add(obj);
 
         }
 
@@ -33,9 +34,9 @@ namespace BancoDeQuestoes.Domain.Services
 
 	    }
 
-	    public void Update(Revisor obj)
+	    public Revisor Update(Revisor obj)
 	    {
-	        _revisorRepository.Update(obj);
+	    return    _revisorRepository.Update(obj);
 
 	    }
 
@@ -51,5 +52,6 @@ namespace BancoDeQuestoes.Domain.Services
             GC.SuppressFinalize(this);
 
 	    }
-	}
+
+    }
 }

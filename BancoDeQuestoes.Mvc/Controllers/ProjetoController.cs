@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
     public class ProjetoController : Controller
 	{
-	    private readonly ProjetoAppService _projetoAppService;
+	    private readonly IProjetoAppService _projetoAppService;
 
-	    public ProjetoController(ProjetoAppService projetoAppService)
-	    {
-	        _projetoAppService = projetoAppService;
-	    }
+		public ProjetoController(IProjetoAppService projetoAppService)
+		{
+			_projetoAppService = projetoAppService;
+		}
 
 
-	    public ActionResult Index()
+		public ActionResult Index()
         {
 			var projetoViewModel = _projetoAppService.GetAll();
 			return View("Index",projetoViewModel);
@@ -37,6 +38,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Create(ProjetoViewModel projetoViewModel)
         {
 	        if (!ModelState.IsValid) return View(projetoViewModel);
+	        _projetoAppService.Add(projetoViewModel);
 	        return RedirectToAction("Index");
         }
        
@@ -57,6 +59,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		
         public ActionResult Delete(Guid id)
 		{
+			
 			var projeto = _projetoAppService.GetById(id);
 			return View(projeto);
 		}

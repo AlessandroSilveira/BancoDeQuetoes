@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
 	public class MestreFormacaoController : Controller
 	{
-	    private readonly MestreFormacaoAppService _mestreFormacaoAppService;
+	    private readonly IMestreFormacaoAppService _mestreFormacaoAppService;
 
-	    public MestreFormacaoController(MestreFormacaoAppService mestreFormacaoAppService)
+	    public MestreFormacaoController(IMestreFormacaoAppService mestreFormacaoAppService)
 	    {
 	        _mestreFormacaoAppService = mestreFormacaoAppService;
 	    }
 
-	    public ActionResult Index(int id)
+	    public ActionResult Index(Guid id)
         {
 	        ViewBag.MestreId = id;
 			return View(_mestreFormacaoAppService.GetAll());
@@ -26,9 +27,10 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			return mestre == null ? (ActionResult)HttpNotFound() : View(mestre);
 		}
 		
-        public ActionResult Create(int id)
+        public ActionResult Create(Guid id)
         {
 	        ViewBag.MestreId = id;
+	        ViewBag.Formacao = new SelectList(new ListaFormacao().Formacoes(), "Key", "Value", "Selecione");
             return View();
         }
 		

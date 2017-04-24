@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -17,9 +18,9 @@ namespace BancoDeQuestoes.Domain.Services
         }
 
 
-        public void Add(TopicoAtribuido obj)
+        public TopicoAtribuido Add(TopicoAtribuido obj)
         {
-            _topicoAtribuidoRepository.Add(obj);
+          return  _topicoAtribuidoRepository.Add(obj);
 
         }
 
@@ -36,9 +37,9 @@ namespace BancoDeQuestoes.Domain.Services
 
 	    }
 
-	    public void Update(TopicoAtribuido obj)
+	    public TopicoAtribuido Update(TopicoAtribuido obj)
 	    {
-	        _topicoAtribuidoRepository.Add(obj);
+	     return   _topicoAtribuidoRepository.Add(obj);
 
 	    }
 
@@ -53,5 +54,7 @@ namespace BancoDeQuestoes.Domain.Services
 	        _topicoAtribuidoRepository.Dispose();
             GC.SuppressFinalize(this);
 	    }
-	}
+
+	  
+    }
 }

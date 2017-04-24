@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
     public class FormacaoRevisorController : Controller
     {
-        private readonly FormacaoRevisorAppService _formacaoRevisorAppService;
+        private readonly IFormacaoRevisorAppService _formacaoRevisorAppService;
 
-        public FormacaoRevisorController(FormacaoRevisorAppService formacaoRevisorAppService)
+        public FormacaoRevisorController(IFormacaoRevisorAppService formacaoRevisorAppService)
         {
             _formacaoRevisorAppService = formacaoRevisorAppService;
         }
 
         // GET: FormacaoRevisor
-        public ActionResult Index(int id)
+        public ActionResult Index(Guid id)
         {
 	        ViewBag.RevisorId = id;
 			
@@ -32,7 +33,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
 
      
-        public ActionResult Create(int id)
+        public ActionResult Create(Guid id)
         {
 			ViewBag.RevisorId = id;
 			return View();

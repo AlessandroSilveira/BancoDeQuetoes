@@ -19,6 +19,6 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 
 		IEnumerable<RevisorFormacaoViewModel> Search(Expression<Func<RevisorFormacaoViewModel, bool>> predicate);
 
-		int SaveChanges();
+		
 	}
 }

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using BancoDeQuestoes.Domain.Entities;
@@ -34,7 +35,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 			modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
-			modelBuilder.Properties().Where(p=>p.Name == p.ReflectedType.Name+"Id").Configure(p=>p.IsKey());
+			modelBuilder.Properties().Where(p=>p.Name == p.ReflectedType.Name+"Id").Configure(p=>p.IsKey().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity));
 			modelBuilder.Properties<string>().Configure(p=>p.HasColumnType("varchar"));
 
 			modelBuilder.Configurations.Add(new AreaConfiguration());

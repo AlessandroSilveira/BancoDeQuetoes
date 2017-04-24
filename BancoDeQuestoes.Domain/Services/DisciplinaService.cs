@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -9,7 +10,7 @@ namespace BancoDeQuestoes.Domain.Services
 {
     public class DisciplinaService : IDisciplinaService
     {
-        private IDisciplinaRepository _disciplinaRepository;
+        private readonly IDisciplinaRepository _disciplinaRepository;
 
         public DisciplinaService(IDisciplinaRepository disciplinaRepository)
         {
@@ -45,9 +46,9 @@ namespace BancoDeQuestoes.Domain.Services
 			return filtroDescTopico.Pesquisa(form, sql);
 		}
 
-	    public void Add(Disciplina obj)
+	    public Disciplina Add(Disciplina obj)
 	    {
-	        _disciplinaRepository.Add(obj);
+	      return  _disciplinaRepository.Add(obj);
 
 	    }
 
@@ -63,9 +64,9 @@ namespace BancoDeQuestoes.Domain.Services
 
 	    }
 
-	    public void Update(Disciplina obj)
+	    public Disciplina Update(Disciplina obj)
 	    {
-	        _disciplinaRepository.Update(obj);
+	     return  _disciplinaRepository.Update(obj);
 
 	    }
 
@@ -81,5 +82,7 @@ namespace BancoDeQuestoes.Domain.Services
             GC.SuppressFinalize(this);
 
 	    }
-	}
+
+	   
+    }
 }

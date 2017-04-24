@@ -1,11 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 
 
 namespace BancoDeQuestoes.Domain.Interfaces.Services
 {
-	public interface IDisciplinaService : IServiceBase<Disciplina>
+	public interface IDisciplinaService : IDisposable
 	{
-		IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina form);
+		Disciplina Add(Disciplina obj);
+
+		Disciplina GetById(Guid id);
+
+		IEnumerable<Disciplina> GetAll();
+
+		Disciplina Update(Disciplina obj);
+
+		void Remove(Guid id);
+
 	}
 }

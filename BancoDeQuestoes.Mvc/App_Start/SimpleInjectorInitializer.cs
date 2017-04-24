@@ -1,12 +1,9 @@
-
-
 [assembly: WebActivator.PostApplicationStartMethod(typeof(BancoDeQuestoes.Mvc.App_Start.SimpleInjectorInitializer), "Initialize")]
 
 namespace BancoDeQuestoes.Mvc.App_Start
 {
 	using System.Reflection;
 	using System.Web.Mvc;
-
 	using SimpleInjector;
 	using SimpleInjector.Integration.Web;
 	using SimpleInjector.Integration.Web.Mvc;

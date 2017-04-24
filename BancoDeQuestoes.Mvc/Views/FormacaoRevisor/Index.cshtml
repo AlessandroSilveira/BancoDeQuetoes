@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BancoDeQuestoes.Application.ViewModels.FormacaoRevisorViewModel>
+﻿@model IEnumerable<BancoDeQuestoes.Application.ViewModels.RevisorFormacaoViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -37,9 +37,9 @@
             @Html.DisplayFor(modelItem => item.Ativo)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.FormacaoRevisorId }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.FormacaoRevisorId }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.FormacaoRevisorId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.RevisorFormacaoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.RevisorFormacaoId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.RevisorFormacaoId })
         </td>
     </tr>
 }

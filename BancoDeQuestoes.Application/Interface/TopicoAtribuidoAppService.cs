@@ -5,61 +5,58 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Services;
 using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class TopicoAtribuidoAppService :  ITopicoAtribuidoAppService
 	{
-	    private readonly TopicoAtribuidoRepository _topicoAtribuidoRepository;
 
-	    public TopicoAtribuidoAppService(TopicoAtribuidoRepository topicoAtribuidoRepository)
-	    {
-	        _topicoAtribuidoRepository = topicoAtribuidoRepository;
-	    }
+		private readonly ITopicoAtribuidoService _topicoAtribuido;
 
-	    public void Dispose()
+		public TopicoAtribuidoAppService(ITopicoAtribuidoService topicoAtribuido)
+		{
+			_topicoAtribuido = topicoAtribuido;
+		}
+
+		public void Dispose()
 	    {
-	        _topicoAtribuidoRepository.Dispose();
+			_topicoAtribuido.Dispose();
 
         }
 
 	    public TopicoAtribuidoViewModel Add(TopicoAtribuidoViewModel obj)
 	    {
 	        var topico = Mapper.Map<TopicoAtribuidoViewModel, TopicoAtribuido>(obj);
-	        _topicoAtribuidoRepository.Add(topico);
+			_topicoAtribuido.Add(topico);
 	        return obj;
 	    }
 
 	    public TopicoAtribuidoViewModel GetById(Guid id)
 	    {
-	        return Mapper.Map< TopicoAtribuido, TopicoAtribuidoViewModel>(_topicoAtribuidoRepository.GetById(id));
+	        return Mapper.Map< TopicoAtribuido, TopicoAtribuidoViewModel>(_topicoAtribuido.GetById(id));
 	    }
 
 	    public IEnumerable<TopicoAtribuidoViewModel> GetAll()
 	    {
-	        return Mapper.Map<IEnumerable<TopicoAtribuido>, IEnumerable<TopicoAtribuidoViewModel>>(_topicoAtribuidoRepository.GetAll());
+	        return Mapper.Map<IEnumerable<TopicoAtribuido>, IEnumerable<TopicoAtribuidoViewModel>>(_topicoAtribuido.GetAll());
         }
 
 	    public TopicoAtribuidoViewModel Update(TopicoAtribuidoViewModel obj)
 	    {
-	         _topicoAtribuidoRepository.Update(Mapper.Map< TopicoAtribuidoViewModel, TopicoAtribuido>(obj));
+			_topicoAtribuido.Update(Mapper.Map< TopicoAtribuidoViewModel, TopicoAtribuido>(obj));
 	        return obj;
 	    }
 
 	    public void Remove(Guid id)
 	    {
-	        _topicoAtribuidoRepository.Remove(id);
+			_topicoAtribuido.Remove(id);
 	    }
 
 	    public IEnumerable<TopicoAtribuidoViewModel> Search(Expression<Func<TopicoAtribuidoViewModel, bool>> predicate)
 	    {
 	        throw new NotImplementedException();
-	    }
-
-	    public int SaveChanges()
-	    {
-	        return _topicoAtribuidoRepository.SaveChanges();
 	    }
 	}
 }

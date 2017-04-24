@@ -5,63 +5,56 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Infra.Data.Repository;
+using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class MestreAppService :  IMestreAppService
 	{
-	    private readonly MestreRepository _mestreRepository;
+		private readonly IMestreService _mestreService;
 
-	    public MestreAppService(MestreRepository mestreRepository)
-	    {
-	        _mestreRepository = mestreRepository;
-	    }
+		public MestreAppService(IMestreService mestreService)
+		{
+			_mestreService = mestreService;
+		}
 
-	    public void Dispose()
+		public void Dispose()
 	    {
-	        _mestreRepository.Dispose();
+			_mestreService.Dispose();
 	    }
 
 	    public MestreViewModel Add(MestreViewModel obj)
 	    {
 	        var mestre = Mapper.Map<MestreViewModel, Mestre>(obj);
-	        _mestreRepository.Add(mestre);
+			_mestreService.Add(mestre);
 	        return obj;
 	    }
 
 	    public MestreViewModel GetById(Guid id)
 	    {
-	        return Mapper.Map<Mestre, MestreViewModel>(_mestreRepository.GetById(id));
+	        return Mapper.Map<Mestre, MestreViewModel>(_mestreService.GetById(id));
 
         }
 
 	    public IEnumerable<MestreViewModel> GetAll()
 	    {
-	        return Mapper.Map<IEnumerable<Mestre>, IEnumerable<MestreViewModel>>(_mestreRepository.GetAll());
+	        return Mapper.Map<IEnumerable<Mestre>, IEnumerable<MestreViewModel>>(_mestreService.GetAll());
         }
 
 	    public MestreViewModel Update(MestreViewModel obj)
 	    {
-	        _mestreRepository.Update(Mapper.Map<MestreViewModel, Mestre>(obj));
+			_mestreService.Update(Mapper.Map<MestreViewModel, Mestre>(obj));
 	        return obj;
         }
 
 	    public void Remove(Guid id)
 	    {
-	        _mestreRepository.Remove(id);
+			_mestreService.Remove(id);
 	    }
 
 	    public IEnumerable<MestreViewModel> Search(Expression<Func<MestreViewModel, bool>> predicate)
 	    {
 	        throw new NotImplementedException();
 	    }
-
-	    public int SaveChanges()
-	    {
-	      return  _mestreRepository.SaveChanges();
-	    }
-
-
 	}
 }

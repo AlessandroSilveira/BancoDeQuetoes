@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using BancoDeQuestoes.Application.ViewModels;
 
-namespace BancoDeQuestoes.Application.Interface
+namespace BancoDeQuestoes.Application.Interface.Repositories
 {
 	public interface IAreaAppService : IDisposable
 	{
@@ -19,9 +19,6 @@ namespace BancoDeQuestoes.Application.Interface
 		void Remove(Guid id);
 
 		IEnumerable<AreaViewModel> Search(Expression<Func<AreaViewModel, bool>> predicate);
-
-		int SaveChanges();
-
-	
+		
 	}
 }

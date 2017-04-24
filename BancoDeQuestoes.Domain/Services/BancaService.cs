@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -16,9 +17,9 @@ namespace BancoDeQuestoes.Domain.Services
 	    }
 
 
-	    public void Add(Banca obj)
+	    public Banca Add(Banca obj)
 	    {
-	        _bancaRepository.Add(obj);
+	      return  _bancaRepository.Add(obj);
 
 	    }
 
@@ -34,9 +35,9 @@ namespace BancoDeQuestoes.Domain.Services
 
 	    }
 
-	    public void Update(Banca obj)
+	    public Banca Update(Banca obj)
 	    {
-	        _bancaRepository.Update(obj);
+	     return _bancaRepository.Update(obj);
 
 	    }
 
@@ -52,5 +53,6 @@ namespace BancoDeQuestoes.Domain.Services
             GC.SuppressFinalize(this);
 
 	    }
+
 	}
 }

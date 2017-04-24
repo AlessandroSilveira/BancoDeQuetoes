@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-
-using BancoDeQuestoes.Application.Interface.Services;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
     public class BancaController : Controller
 	{
-	    private readonly BancaAppService _bancaAppService;
+	    private readonly IBancaAppService _bancaAppService;
 
-	    public BancaController(BancaAppService bancaAppService)
+	    public BancaController(IBancaAppService bancaAppService)
 	    {
 	        _bancaAppService = bancaAppService;
 	    }
