@@ -25,7 +25,7 @@ namespace BancoDeQuestoes.Domain.Entities
         public string Telefone { get; set; }
         public string Celular { get; set; }
         public string Senha { get; set; }
-        public int AreaId { get; set; }
+        public virtual Area Area { get; set; }
         public bool Ativo { get; set; }
 
 		public virtual ICollection<RevisorFormacao> RevisorFormacao { get; set; } = new List<RevisorFormacao>();

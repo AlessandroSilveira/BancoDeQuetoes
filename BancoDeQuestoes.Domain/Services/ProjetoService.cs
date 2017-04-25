@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -8,16 +9,16 @@ namespace BancoDeQuestoes.Domain.Services
 {
 	public class ProjetoService : IProjetoService
 	{
-	    private IProjetoRepository _projetoRepository;
+	    private readonly IProjetoRepository _projetoRepository;
 
 	    public ProjetoService(IProjetoRepository projetoRepository)
 	    {
 	        _projetoRepository = projetoRepository;
 	    }
 
-	    public void Add(Projeto obj)
+	    public Projeto Add(Projeto obj)
 	    {
-	        _projetoRepository.Add(obj);
+	     return   _projetoRepository.Add(obj);
 
 	    }
 
@@ -33,9 +34,9 @@ namespace BancoDeQuestoes.Domain.Services
 
 	    }
 
-	    public void Update(Projeto obj)
+	    public Projeto Update(Projeto obj)
 	    {
-	        _projetoRepository.Update(obj);
+	       return _projetoRepository.Update(obj);
 
 	    }
 
@@ -51,5 +52,7 @@ namespace BancoDeQuestoes.Domain.Services
             GC.SuppressFinalize(this);
 
 	    }
+
+	
 	}
 }

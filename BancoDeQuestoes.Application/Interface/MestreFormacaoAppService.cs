@@ -5,62 +5,55 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-
-using BancoDeQuestoes.Infra.Data.Repository;
+using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class MestreFormacaoAppService :  IMestreFormacaoAppService
 	{
-	    private readonly MestreFormacaoRepository _mestreFormacaoRepository;
+		private readonly IMestreFormacaoService _mestreFormacaoService;
 
-	    public MestreFormacaoAppService(MestreFormacaoRepository mestreFormacaoRepository)
+		public MestreFormacaoAppService(IMestreFormacaoService mestreFormacaoService)
+		{
+			_mestreFormacaoService = mestreFormacaoService;
+		}
+
+		public void Dispose()
 	    {
-	        _mestreFormacaoRepository = mestreFormacaoRepository;
-	    }
-
-	    public void Dispose()
-	    {
-	        _mestreFormacaoRepository.Dispose();
-
+			_mestreFormacaoService.Dispose();
         }
 
 	    public MestreFormacaoViewModel Add(MestreFormacaoViewModel obj)
 	    {
 	        var mestreFormacao = Mapper.Map<MestreFormacaoViewModel, MestreFormacao>(obj);
-	        _mestreFormacaoRepository.Add(mestreFormacao);
+			_mestreFormacaoService.Add(mestreFormacao);
 	        return obj;
 	    }
 
 	    public MestreFormacaoViewModel GetById(Guid id)
 	    {
-	        return Mapper.Map<MestreFormacao,MestreFormacaoViewModel> (_mestreFormacaoRepository.GetById(id));
+	        return Mapper.Map<MestreFormacao,MestreFormacaoViewModel> (_mestreFormacaoService.GetById(id));
 	    }
 
 	    public IEnumerable<MestreFormacaoViewModel> GetAll()
 	    {
-	        return Mapper.Map<IEnumerable<MestreFormacao>,IEnumerable< MestreFormacaoViewModel>>(_mestreFormacaoRepository.GetAll());
+	        return Mapper.Map<IEnumerable<MestreFormacao>,IEnumerable< MestreFormacaoViewModel>>(_mestreFormacaoService.GetAll());
         }
 
 	    public MestreFormacaoViewModel Update(MestreFormacaoViewModel obj)
 	    {
-	        _mestreFormacaoRepository.Update(Mapper.Map<MestreFormacaoViewModel, MestreFormacao>(obj));
+			_mestreFormacaoService.Update(Mapper.Map<MestreFormacaoViewModel, MestreFormacao>(obj));
 	        return obj;
 	    }
 
 	    public void Remove(Guid id)
 	    {
-	       _mestreFormacaoRepository.Remove(id);
+			_mestreFormacaoService.Remove(id);
 	    }
 
 	    public IEnumerable<MestreFormacaoViewModel> Search(Expression<Func<MestreFormacaoViewModel, bool>> predicate)
 	    {
 	        throw new NotImplementedException();
-	    }
-
-	    public int SaveChanges()
-	    {
-	      return  _mestreFormacaoRepository.SaveChanges();
 	    }
 	}
 }

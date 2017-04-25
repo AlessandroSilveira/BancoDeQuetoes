@@ -5,51 +5,50 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-
-using BancoDeQuestoes.Infra.Data.Repository;
+using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class ProjetoAppService :  IProjetoAppService
 	{
-	    private readonly ProjetoRepository _projetoRepository;
+		private readonly IProjetoService _projetoService;
 
-	    public ProjetoAppService(ProjetoRepository projetoRepository)
-	    {
-	        _projetoRepository = projetoRepository;
-	    }
+		public ProjetoAppService(IProjetoService projetoService)
+		{
+			_projetoService = projetoService;
+		}
 
-	    public void Dispose()
+		public void Dispose()
 	    {
-	       _projetoRepository.Dispose();
+			_projetoService.Dispose();
 	    }
 
 	    public ProjetoViewModel Add(ProjetoViewModel obj)
 	    {
 	        var projeto = Mapper.Map<ProjetoViewModel, Projeto>(obj);
-	        _projetoRepository.Add(projeto);
+			_projetoService.Add(projeto);
 	        return obj;
 	    }
 
 	    public ProjetoViewModel GetById(Guid id)
 	    {
-	        return Mapper.Map< Projeto, ProjetoViewModel>(_projetoRepository.GetById(id));
+	        return Mapper.Map< Projeto, ProjetoViewModel>(_projetoService.GetById(id));
 	    }
 
 	    public IEnumerable<ProjetoViewModel> GetAll()
 	    {
-	        return Mapper.Map<IEnumerable<Projeto>, IEnumerable<ProjetoViewModel>>(_projetoRepository.GetAll());
+	        return Mapper.Map<IEnumerable<Projeto>, IEnumerable<ProjetoViewModel>>(_projetoService.GetAll());
         }
 
 	    public ProjetoViewModel Update(ProjetoViewModel obj)
 	    {
-	        _projetoRepository.Update(Mapper.Map< ProjetoViewModel, Projeto>(obj));
+			_projetoService.Update(Mapper.Map< ProjetoViewModel, Projeto>(obj));
 	        return obj;
 	    }
 
 	    public void Remove(Guid id)
 	    {
-	        _projetoRepository.Remove(id);
+			_projetoService.Remove(id);
 	    }
 
 	    public IEnumerable<ProjetoViewModel> Search(Expression<Func<ProjetoViewModel, bool>> predicate)
@@ -57,9 +56,6 @@ namespace BancoDeQuestoes.Application.Interface
 	        throw new NotImplementedException();
 	    }
 
-	    public int SaveChanges()
-	    {
-	        return _projetoRepository.SaveChanges();
-	    }
+	   
 	}
 }

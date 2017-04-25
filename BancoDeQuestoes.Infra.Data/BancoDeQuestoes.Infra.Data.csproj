@@ -44,6 +44,14 @@
     <Compile Include="EntityConfig\QuestoesConfiguration.cs" />
     <Compile Include="EntityConfig\RevisorConfigurations.cs" />
     <Compile Include="EntityConfig\StatusConfiguration.cs" />
+    <Compile Include="Migrations\201704241953389_2404207_5.cs" />
+    <Compile Include="Migrations\201704241953389_2404207_5.Designer.cs">
+      <DependentUpon>201704241953389_2404207_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704242116141_2404207_7.cs" />
+    <Compile Include="Migrations\201704242116141_2404207_7.Designer.cs">
+      <DependentUpon>201704242116141_2404207_7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\StatusRepository.cs" />
     <Compile Include="EntityConfig\TopicoAtribuidoConfiguration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -103,7 +111,14 @@
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704241953389_2404207_5.resx">
+      <DependentUpon>201704241953389_2404207_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704242116141_2404207_7.resx">
+      <DependentUpon>201704242116141_2404207_7.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

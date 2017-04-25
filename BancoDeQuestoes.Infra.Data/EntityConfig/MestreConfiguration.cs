@@ -57,8 +57,7 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 				.IsRequired()
 				.HasMaxLength(15);
 
-			Property(p => p.Banca)
-				.IsRequired();
+			
 
 			Property(p => p.Filhos)
 				.HasMaxLength(2);

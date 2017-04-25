@@ -5,64 +5,72 @@
 }
 
 <h2>Formação do Mestre</h2>
+<h4>Mestre: @ViewBag.DadosMestre.Nome</h4>
 
 <p>
    @Html.ActionLink("Nova Formação", "Create", new { id = ViewBag.MestreId })
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoFormacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Curso)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Instituicao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CopiaDiploma)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiplomaAutenticado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumeroCopiaAutenticada)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ativo)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			Mestre
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TipoFormacao)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Curso)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Instituicao)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.CopiaDiploma)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DiplomaAutenticado)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.NumeroCopiaAutenticada)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Ativo)
+		</th>
+		<th></th>
+	</tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoFormacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Curso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Instituicao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CopiaDiploma)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiplomaAutenticado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumeroCopiaAutenticada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ativo)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.MestreFormacaoId }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.MestreFormacaoId }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.MestreFormacaoId })
-        </td>
-    </tr>
+	<tr>
+		
+		<td>
+			@ViewBag.DadosMestre.Nome
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.TipoFormacao)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Curso)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Instituicao)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.CopiaDiploma)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DiplomaAutenticado)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.NumeroCopiaAutenticada)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Ativo)
+		</td>
+		<td>
+			@Html.ActionLink("Editar", "Edit", new {id = item.MestreFormacaoId}) |
+			@Html.ActionLink("Detalhes", "Details", new {id = item.MestreFormacaoId}) |
+			@Html.ActionLink("Excluir", "Delete", new {id = item.MestreFormacaoId})
+		</td>
+	</tr>
 }
 </table>

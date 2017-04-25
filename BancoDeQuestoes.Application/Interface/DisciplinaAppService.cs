@@ -5,7 +5,7 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-
+using BancoDeQuestoes.Domain.Interfaces.Services;
 using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
@@ -13,39 +13,40 @@ namespace BancoDeQuestoes.Application.Interface
 	public class DisciplinaAppService : IDisciplinaAppService
 	{
 
-	    private readonly DisciplinaRepository _disciplinaRepository;
+		private readonly IDisciplinaService _disciplinaService;
 
-	    public DisciplinaAppService(DisciplinaRepository disciplinaRepository)
-	    {
-	        _disciplinaRepository = disciplinaRepository;
-	    }
+		public DisciplinaAppService(IDisciplinaService disciplinaService)
+		{
+			_disciplinaService = disciplinaService;
+		}
 
-        public DisciplinaViewModel Add(DisciplinaViewModel obj)
+
+		public DisciplinaViewModel Add(DisciplinaViewModel obj)
 	    {
 	        var disciplina = Mapper.Map<DisciplinaViewModel, Disciplina>(obj);
-	        _disciplinaRepository.Add(disciplina);
+			_disciplinaService.Add(disciplina);
 	        return obj;
         }
 
 	    public DisciplinaViewModel GetById(Guid id)
 	    {
-	        return Mapper.Map<Disciplina, DisciplinaViewModel>(_disciplinaRepository.GetById(id));
+	        return Mapper.Map<Disciplina, DisciplinaViewModel>(_disciplinaService.GetById(id));
         }
 
 	    public IEnumerable<DisciplinaViewModel> GetAll()
 	    {
-	        return Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_disciplinaRepository.GetAll());
+	        return Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_disciplinaService.GetAll());
         }
 
 	    public DisciplinaViewModel Update(DisciplinaViewModel obj)
 	    {
-	        _disciplinaRepository.Update(Mapper.Map<DisciplinaViewModel, Disciplina>(obj));
+			_disciplinaService.Update(Mapper.Map<DisciplinaViewModel, Disciplina>(obj));
 	        return obj;
         }
 
 	    public void Remove(Guid id)
 	    {
-	        _disciplinaRepository.Remove(id);
+			_disciplinaService.Remove(id);
         }
 
 	    public IEnumerable<DisciplinaViewModel> Search(Expression<Func<DisciplinaViewModel, bool>> predicate)
@@ -53,10 +54,7 @@ namespace BancoDeQuestoes.Application.Interface
 	        throw new NotImplementedException();
 	    }
 
-	    public int SaveChanges()
-	    {
-	        return _disciplinaRepository.SaveChanges();
-	    }
+	   
 
 	    public IEnumerable<RevisorFormacaoViewModel> ResultadoPesquisaDisciplina(RevisorFormacaoViewModel form)
 	    {
@@ -65,7 +63,7 @@ namespace BancoDeQuestoes.Application.Interface
 
 	    public void Dispose()
 	    {
-	        _disciplinaRepository.Dispose();
+			_disciplinaService.Dispose();
 	    }
     }
 }

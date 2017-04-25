@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -15,9 +16,9 @@ namespace BancoDeQuestoes.Domain.Services
 	        _statusRepository = statusRepository;
 	    }
 
-	    public void Add(Status obj)
+	    public Status Add(Status obj)
 	    {
-	        _statusRepository.Add(obj);
+	      return  _statusRepository.Add(obj);
 
 	    }
 
@@ -33,9 +34,9 @@ namespace BancoDeQuestoes.Domain.Services
 
 	    }
 
-	    public void Update(Status obj)
+	    public Status Update(Status obj)
 	    {
-	        _statusRepository.Update(obj);
+	     return   _statusRepository.Update(obj);
 
 	    }
 
@@ -51,5 +52,7 @@ namespace BancoDeQuestoes.Domain.Services
             GC.SuppressFinalize(this);
 
 	    }
+
+		
 	}
 }

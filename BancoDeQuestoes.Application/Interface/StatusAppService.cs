@@ -5,52 +5,52 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-
+using BancoDeQuestoes.Domain.Interfaces.Services;
 using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class StatusAppService : IStatusAppService
 	{
-	    private readonly StatusRepository _statusRepository;
+		private readonly IStatusService _statusService;
 
-	    public StatusAppService(StatusRepository statusRepository)
-	    {
-	        _statusRepository = statusRepository;
-	    }
+		public StatusAppService(IStatusService statusService)
+		{
+			_statusService = statusService;
+		}
 
-	    public void Dispose()
+		public void Dispose()
 	    {
-	        _statusRepository.Dispose();
+			_statusService.Dispose();
 	    }
 
 	    public StatusViewModel Add(StatusViewModel obj)
 	    {
 	        var status = Mapper.Map<StatusViewModel, Status>(obj);
-	        _statusRepository.Add(status);
+			_statusService.Add(status);
 	        return obj;
 	    }
 
 	    public StatusViewModel GetById(Guid id)
 	    {
-	        return Mapper.Map<Status, StatusViewModel>(_statusRepository.GetById(id));
+	        return Mapper.Map<Status, StatusViewModel>(_statusService.GetById(id));
         }
 
 	    public IEnumerable<StatusViewModel> GetAll()
 	    {
-	        return Mapper.Map<IEnumerable<Status>, IEnumerable<StatusViewModel>>(_statusRepository.GetAll());
+	        return Mapper.Map<IEnumerable<Status>, IEnumerable<StatusViewModel>>(_statusService.GetAll());
         }
 
 	    public StatusViewModel Update(StatusViewModel obj)
 	    {
-	         _statusRepository.Update(Mapper.Map<  StatusViewModel, Status>(obj));
+			_statusService.Update(Mapper.Map<  StatusViewModel, Status>(obj));
 	        return obj;
 
 	    }
 
 	    public void Remove(Guid id)
 	    {
-	       _statusRepository.Remove(id);
+			_statusService.Remove(id);
 	    }
 
 	    public IEnumerable<StatusViewModel> Search(Expression<Func<StatusViewModel, bool>> predicate)
@@ -58,9 +58,6 @@ namespace BancoDeQuestoes.Application.Interface
 	        throw new NotImplementedException();
 	    }
 
-	    public int SaveChanges()
-	    {
-	      return  _statusRepository.SaveChanges();
-	    }
+	  
 	}
 }

@@ -89,7 +89,7 @@ namespace BancoDeQuestoes.Application.ViewModels
 		
 		[Required (ErrorMessage="Escolha a área que esse revisor pertence.")]
 		[DisplayName("Área")]
-		public int AreaId { get; set; }
+		public Guid AreaId { get; set; }
 
 		[Required]
 		[DisplayName("Ativo")]

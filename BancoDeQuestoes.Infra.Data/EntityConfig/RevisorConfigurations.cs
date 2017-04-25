@@ -68,8 +68,8 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 				.HasMaxLength(10)
 				.IsRequired();
 
-			Property(p => p.AreaId)
-				.IsRequired();
+			//Property(p => p.AreaId)
+			//	.IsRequired();
 
 			Property(p => p.Ativo)
 				.IsRequired();

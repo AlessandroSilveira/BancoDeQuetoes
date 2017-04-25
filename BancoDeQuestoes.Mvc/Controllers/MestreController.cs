@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Web.Mvc;
-using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-    public class MestreController : Controller
+	public class MestreController : Controller
 	{
-	    private readonly MestreAppService _mestreAppService;
+	    private readonly IMestreAppService _mestreAppService;
+		private readonly IBancaAppService _bancaAppService;
 
-	    public MestreController(MestreAppService mestreAppService)
+	    public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService)
 	    {
-	        _mestreAppService = mestreAppService;
+		    _mestreAppService = mestreAppService;
+		    _bancaAppService = bancaAppService;
 	    }
 
 	    public ActionResult Index()
-        {
+	    {
+		   
 			return View(_mestreAppService.GetAll());
         }
         
@@ -26,8 +29,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
        
         public ActionResult Create()
-        {
-            return View();
+		{
+			ViewBag.Banca =new SelectList(_bancaAppService.GetAll(),"BancaId","Nome") ;
+			return View();
         }
         
         [HttpPost]

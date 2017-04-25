@@ -20,6 +20,6 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 
 		IEnumerable<BancaViewModel> Search(Expression<Func<BancaViewModel, bool>> predicate);
 
-		int SaveChanges();
+		
 	}
 }

@@ -5,63 +5,57 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-
-using BancoDeQuestoes.Infra.Data.Repository;
+using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class MestreDependenteAppService :IMestreDependenteAppService
 	{
-	    private readonly MestreDependenteRepsitory _mestreDependenteRepsitory;
+		private readonly IMestreDependenteService _mestreDependente;
 
-	    public MestreDependenteAppService(MestreDependenteRepsitory mestreDependenteRepsitory)
-	    {
-	        _mestreDependenteRepsitory = mestreDependenteRepsitory;
-	    }
+		public MestreDependenteAppService(IMestreDependenteService mestreDependente)
+		{
+			_mestreDependente = mestreDependente;
+		}
 
-	    public void Dispose()
+		public void Dispose()
 	    {
-	        _mestreDependenteRepsitory.Dispose();
+			_mestreDependente.Dispose();
 
         }
 
 	    public MestreDependenteViewModel Add(MestreDependenteViewModel obj)
 	    {
 	        var mestreDependente = Mapper.Map<MestreDependenteViewModel, MestreDependente>(obj);
-	        _mestreDependenteRepsitory.Add(mestreDependente);
+			_mestreDependente.Add(mestreDependente);
 	        return obj;
 	    }
 
 	    public MestreDependenteViewModel GetById(Guid id)
 	    {
-	       return Mapper.Map<MestreDependente, MestreDependenteViewModel>(_mestreDependenteRepsitory.GetById(id));
+	       return Mapper.Map<MestreDependente, MestreDependenteViewModel>(_mestreDependente.GetById(id));
         }
 
 	    public IEnumerable<MestreDependenteViewModel> GetAll()
 	    {
-	        return Mapper.Map<IEnumerable<MestreDependente>, IEnumerable<MestreDependenteViewModel>>(_mestreDependenteRepsitory.GetAll());
+	        return Mapper.Map<IEnumerable<MestreDependente>, IEnumerable<MestreDependenteViewModel>>(_mestreDependente.GetAll());
         }
 
 	    public MestreDependenteViewModel Update(MestreDependenteViewModel obj)
 	    {
-	         _mestreDependenteRepsitory.Update(Mapper.Map<MestreDependenteViewModel, MestreDependente>(obj));
+			_mestreDependente.Update(Mapper.Map<MestreDependenteViewModel, MestreDependente>(obj));
 	        return obj;
 
 	    }
 
 	    public void Remove(Guid id)
 	    {
-	       _mestreDependenteRepsitory.Remove(id);
+			_mestreDependente.Remove(id);
 	    }
 
 	    public IEnumerable<MestreDependenteViewModel> Search(Expression<Func<MestreDependenteViewModel, bool>> predicate)
 	    {
 	        throw new NotImplementedException();
-	    }
-
-	    public int SaveChanges()
-	    {
-	        return _mestreDependenteRepsitory.SaveChanges();
 	    }
 	}
 }

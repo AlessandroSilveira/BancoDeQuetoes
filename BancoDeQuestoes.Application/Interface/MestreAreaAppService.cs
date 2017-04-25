@@ -5,52 +5,52 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Infra.Data.Repository;
+using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Application.Interface
 {
-    public class MestreAreaAppService :  IMestreAreaAppService
-	{
-	    private readonly MestreAreaRepository _mestreAreaRepository;
+	public class MestreAreaAppService :  IMestreAreaAppService
+    {
+	    private readonly IMestreAreaService _mestreAreaService;
 
-	    public MestreAreaAppService(MestreAreaRepository mestreAreaRepository)
+	    public MestreAreaAppService(IMestreAreaService mestreAreaService)
 	    {
-	        _mestreAreaRepository = mestreAreaRepository;
+		    _mestreAreaService = mestreAreaService;
 	    }
+
 
 	    public void Dispose()
 	    {
-	        _mestreAreaRepository.Dispose();
+			_mestreAreaService.Dispose();
 	    }
 
 	    public MestreAreaViewModel Add(MestreAreaViewModel obj)
 	    {
 	        var mestreArea = Mapper.Map<MestreAreaViewModel, MestreArea>(obj);
-	        _mestreAreaRepository.Add(mestreArea);
+			_mestreAreaService.Add(mestreArea);
 	        return obj;
-
 	    }
 
 	    public MestreAreaViewModel GetById(Guid id)
 	    {
-	        return Mapper.Map<MestreArea, MestreAreaViewModel>(_mestreAreaRepository.GetById(id));
+	        return Mapper.Map<MestreArea, MestreAreaViewModel>(_mestreAreaService.GetById(id));
 
 	    }
 
 	    public IEnumerable<MestreAreaViewModel> GetAll()
 	    {
-	        return Mapper.Map<IEnumerable<MestreArea>, IEnumerable<MestreAreaViewModel>>(_mestreAreaRepository.GetAll());
+	        return Mapper.Map<IEnumerable<MestreArea>, IEnumerable<MestreAreaViewModel>>(_mestreAreaService.GetAll());
         }
 
 	    public MestreAreaViewModel Update(MestreAreaViewModel obj)
 	    {
-	        _mestreAreaRepository.Update(Mapper.Map<MestreAreaViewModel, MestreArea>(obj));
+			_mestreAreaService.Update(Mapper.Map<MestreAreaViewModel, MestreArea>(obj));
 	        return obj;
         }
 
 	    public void Remove(Guid id)
 	    {
-	        _mestreAreaRepository.Remove(id);
+			_mestreAreaService.Remove(id);
 	    }
 
 	    public IEnumerable<MestreAreaViewModel> Search(Expression<Func<MestreAreaViewModel, bool>> predicate)
@@ -58,9 +58,6 @@ namespace BancoDeQuestoes.Application.Interface
 	        throw new NotImplementedException();
 	    }
 
-	    public int SaveChanges()
-	    {
-	       return _mestreAreaRepository.SaveChanges();
-	    }
+	 
 	}
 }

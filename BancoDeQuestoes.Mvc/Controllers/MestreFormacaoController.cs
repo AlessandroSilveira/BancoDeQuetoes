@@ -1,34 +1,39 @@
 ﻿using System;
 using System.Web.Mvc;
-using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
 	public class MestreFormacaoController : Controller
 	{
-	    private readonly MestreFormacaoAppService _mestreFormacaoAppService;
+	    private readonly IMestreFormacaoAppService _mestreFormacaoAppService;
+		private readonly IMestreAppService _mestreAppService;
 
-	    public MestreFormacaoController(MestreFormacaoAppService mestreFormacaoAppService)
+	    public MestreFormacaoController(IMestreFormacaoAppService mestreFormacaoAppService, IMestreAppService mestreAppService)
 	    {
-	        _mestreFormacaoAppService = mestreFormacaoAppService;
+		    _mestreFormacaoAppService = mestreFormacaoAppService;
+		    _mestreAppService = mestreAppService;
 	    }
 
-	    public ActionResult Index(int id)
+	    public ActionResult Index(Guid id)
         {
 	        ViewBag.MestreId = id;
+	        ViewBag.DadosMestre = _mestreAppService.GetById(id);
 			return View(_mestreFormacaoAppService.GetAll());
         }
 		
         public ActionResult Details(Guid id)
         {
 			var mestre = _mestreFormacaoAppService.GetById(id);
+			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
 			return mestre == null ? (ActionResult)HttpNotFound() : View(mestre);
 		}
 		
-        public ActionResult Create(int id)
+        public ActionResult Create(Guid id)
         {
 	        ViewBag.MestreId = id;
+	        ViewBag.TipoFormacao = new SelectList(new ListaFormacao().Formacoes(), "Key", "Value", "Selecione");
             return View();
         }
 		
@@ -45,7 +50,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 			
 			var mestre = _mestreFormacaoAppService.GetById(id);
-			
+			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
 
 			return mestre == null ? (ActionResult)HttpNotFound() : View(mestre);
 		}
@@ -56,6 +61,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 			if (!ModelState.IsValid) return View(mestreFormacaoViewModel);
 			_mestreFormacaoAppService.Update(mestreFormacaoViewModel);
+			ViewBag.DadosMestre = _mestreAppService.GetById(mestreFormacaoViewModel.MestreId);
 			return RedirectToAction("Index",new {id= mestreFormacaoViewModel .MestreId});
 		}
 		
@@ -63,6 +69,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 			var mestre = _mestreFormacaoAppService.GetById(id);
 			ViewBag.MestreId = id;
+			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
 			return mestre == null ? (ActionResult)HttpNotFound() : View(mestre);
 		}
 		

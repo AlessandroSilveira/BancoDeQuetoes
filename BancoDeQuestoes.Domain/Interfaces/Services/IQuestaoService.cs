@@ -1,10 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Domain.Interfaces.Services
 {
-	public interface IQuestaoService : IServiceBase<Questao>
+	public interface IQuestaoService : IDisposable
 	{
-		IEnumerable<Questao> GetListaGerenciamentoQuestao();
+		Questao Add(Questao obj);
+
+		Questao GetById(Guid id);
+
+		IEnumerable<Questao> GetAll();
+
+		Questao Update(Questao obj);
+
+		void Remove(Guid id);
+
+	
 	}
 }

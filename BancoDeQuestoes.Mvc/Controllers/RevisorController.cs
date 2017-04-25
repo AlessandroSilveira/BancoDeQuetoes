@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Web.Mvc;
-using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-    public class RevisorController : Controller
+	public class RevisorController : Controller
 	{
 
-		private readonly RevisorAppService _revisorAppService;
-		private readonly AreaAppService _areaAppService;
+		private readonly IRevisorAppService _revisorAppService;
+		private readonly IAreaAppService _areaAppService;
 
-		public RevisorController(RevisorAppService revisorAppService, AreaAppService areaAppService)
+		public RevisorController(IRevisorAppService revisorAppService, IAreaAppService areaAppService)
 		{
 			_revisorAppService = revisorAppService;
 			_areaAppService = areaAppService;
@@ -45,8 +45,15 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create( RevisorViewModel revisorViewModel)
         {
-			if (!ModelState.IsValid) return View(revisorViewModel);
+			var areaViewModel = _areaAppService.GetAll();
+			if (!ModelState.IsValid)
+	        {
+				ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao");
+				return View(revisorViewModel);
+			}
+				
 			_revisorAppService.Add(revisorViewModel);
+			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao");
 			return RedirectToAction("Index");
 		}
 		

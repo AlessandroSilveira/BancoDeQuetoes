@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -8,16 +9,16 @@ namespace BancoDeQuestoes.Domain.Services
 {
 	public class QuestaoService :  IQuestaoService
 	{
-	    private IQuestaoRepository _questaoRepository;
+	    private readonly IQuestaoRepository _questaoRepository;
 
 	    public QuestaoService(IQuestaoRepository questaoRepository)
 	    {
 	        _questaoRepository = questaoRepository;
 	    }
 
-	    public void Add(Questao obj)
+	    public Questao Add(Questao obj)
 	    {
-	        _questaoRepository.Add(obj);
+	     return   _questaoRepository.Add(obj);
 
 	    }
 
@@ -33,9 +34,9 @@ namespace BancoDeQuestoes.Domain.Services
 
 	    }
 
-	    public void Update(Questao obj)
+	    public Questao Update(Questao obj)
 	    {
-	        _questaoRepository.Update(obj);
+	      return  _questaoRepository.Update(obj);
 
 	    }
 
@@ -52,9 +53,6 @@ namespace BancoDeQuestoes.Domain.Services
 
 	    }
 
-	    public IEnumerable<Questao> GetListaGerenciamentoQuestao()
-	    {
-	        throw new NotImplementedException();
-	    }
+	   
 	}
 }

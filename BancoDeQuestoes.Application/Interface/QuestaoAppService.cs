@@ -5,52 +5,54 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-
+using BancoDeQuestoes.Domain.Interfaces.Services;
 using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class QuestaoAppService : IQuestaoAppService
 	{
-	    private readonly QuestaoRepository _questaoRepository;
 
-	    public QuestaoAppService(QuestaoRepository questaoRepository)
-	    {
-	        _questaoRepository = questaoRepository;
-	    }
+		private readonly IQuestaoService _questaoService;
 
-	    public void Dispose()
+		public QuestaoAppService(IQuestaoService questaoService)
+		{
+			_questaoService = questaoService;
+		}
+
+
+		public void Dispose()
 	    {
-	        _questaoRepository.Dispose();
+			_questaoService.Dispose();
 
         }
 
 	    public QuestaoViewModel Add(QuestaoViewModel obj)
 	    {
 	        var questao = Mapper.Map<QuestaoViewModel, Questao>(obj);
-	        _questaoRepository.Add(questao);
+			_questaoService.Add(questao);
 	        return obj;
         }
 
 	    public QuestaoViewModel GetById(Guid id)
 	    {
-	        return Mapper.Map<Questao, QuestaoViewModel>(_questaoRepository.GetById(id));
+	        return Mapper.Map<Questao, QuestaoViewModel>(_questaoService.GetById(id));
         }
 
 	    public IEnumerable<QuestaoViewModel> GetAll()
 	    {
-	        return Mapper.Map<IEnumerable<Questao>, IEnumerable<QuestaoViewModel>>(_questaoRepository.GetAll());
+	        return Mapper.Map<IEnumerable<Questao>, IEnumerable<QuestaoViewModel>>(_questaoService.GetAll());
         }
 
 	    public QuestaoViewModel Update(QuestaoViewModel obj)
 	    {
-	        _questaoRepository.Update(Mapper.Map<QuestaoViewModel, Questao>(obj));
+			_questaoService.Update(Mapper.Map<QuestaoViewModel, Questao>(obj));
 	        return obj;
         }
 
 	    public void Remove(Guid id)
 	    {
-	        _questaoRepository.Remove(id);
+			_questaoService.Remove(id);
         }
 
 	    public IEnumerable<QuestaoViewModel> Search(Expression<Func<QuestaoViewModel, bool>> predicate)
@@ -58,9 +60,6 @@ namespace BancoDeQuestoes.Application.Interface
 	        throw new NotImplementedException();
 	    }
 
-	    public int SaveChanges()
-	    {
-	        return _questaoRepository.SaveChanges();
-        }
+	 
 	}
 }
