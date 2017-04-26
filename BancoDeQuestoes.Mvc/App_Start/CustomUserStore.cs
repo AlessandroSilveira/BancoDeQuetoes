@@ -10,7 +10,7 @@ namespace BancoDeQuestoes.Mvc
 
 		public CustomUserStore(ApplicationDbContext applicationDbContext)
 		{
-			this._applicationDbContext = applicationDbContext;
+			_applicationDbContext = applicationDbContext;
 		}
 
 		public void Dispose()

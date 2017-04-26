@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Application.ViewModels
 {
@@ -9,18 +10,22 @@ namespace BancoDeQuestoes.Application.ViewModels
 		public TopicoAtribuidoViewModel()
 		{
 			TopicoAtribuidoId = new Guid();
-			ProjetoId = new Guid();
-			AreaId = new Guid();
-			MestreId = new Guid();
-			DisciplinaId = new Guid();
 		}
 
 		[Key]
 		public Guid TopicoAtribuidoId { get; set; }
-		public Guid ProjetoId { get; set; }
-		public Guid AreaId { get; set; }
-		public Guid MestreId { get; set; }
-		public Guid DisciplinaId { get; set; }
+
+		[Required(ErrorMessage = "Escolha um Projeto"), StringLength(150), DisplayName("Projeto")]
+		public Projeto Projeto { get; set; }
+
+		[Required(ErrorMessage = "Escolha uma Área"), StringLength(150), DisplayName("Área")]
+		public Area Area { get; set; }
+
+		[Required(ErrorMessage = "Escolha um Mestre"), StringLength(150), DisplayName("Mestre")]
+		public Mestre Mestre { get; set; }
+
+		[Required(ErrorMessage = "Escolha uma Disciplina"), StringLength(150), DisplayName("Disciplina")]
+		public Disciplina Disciplina { get; set; }
 
 		[Required(ErrorMessage = "O campo Código do Projeto deve ser preenchido"), StringLength(150), DisplayName("Código do Projeto")]
 		public string CodigoProjeto { get; set; }

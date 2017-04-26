@@ -46,21 +46,7 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 			Property(p => p.ConviteAceito)
 				.IsRequired();
 
-			HasRequired(p => p.Projeto)
-				.WithMany()
-				.HasForeignKey(p => p.ProjetoId);
-
-			HasRequired(p => p.Disciplina)
-				.WithMany()
-				.HasForeignKey(p => p.DisciplinaId);
-
-			HasRequired(p => p.Mestre)
-				.WithMany()
-				.HasForeignKey(p => p.MestreId);
-
-			HasRequired(p => p.Area)
-				.WithMany()
-				.HasForeignKey(p => p.AreaId);
+			
 
 			ToTable("TopicoAtribuido");
 		}

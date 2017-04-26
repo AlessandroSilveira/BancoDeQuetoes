@@ -25,7 +25,7 @@ namespace BancoDeQuestoes.Domain.Entities
 		public string EmailSecundario { get; set; }
 		public string Telefone { get; set; }
 		public string Celular { get; set; }
-		public virtual Banca Banca { get; set; }
+		public Banca Banca { get; set; }
 		public string Filhos { get; set; }
 		public string Pis { get; set; }
 		public string Minicurriculo { get; set; }

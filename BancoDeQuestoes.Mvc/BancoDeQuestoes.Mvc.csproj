@@ -362,7 +362,6 @@
     <Content Include="Views\UsersAdmin\Details.cshtml" />
     <Content Include="Views\UsersAdmin\Edit.cshtml" />
     <Content Include="Views\UsersAdmin\Index.cshtml" />
-    <Content Include="Web.config" />
     <Content Include="Views\Area\Create.cshtml" />
     <Content Include="Views\Area\Delete.cshtml" />
     <Content Include="Views\Area\Details.cshtml" />
@@ -414,7 +413,6 @@
     <Content Include="Views\MestreFormacao\Details.cshtml" />
     <Content Include="Views\MestreFormacao\Edit.cshtml" />
     <Content Include="Views\MestreFormacao\Index.cshtml" />
-    <Content Include="Views\Shared\PesquisaQuestão.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\TopicoAtribuido\Create.cshtml" />
@@ -422,11 +420,14 @@
     <Content Include="Views\TopicoAtribuido\Details.cshtml" />
     <Content Include="Views\TopicoAtribuido\Edit.cshtml" />
     <Content Include="Views\TopicoAtribuido\Index.cshtml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Views\Shared\PesquisaTopicos.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Search.cshtml" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -454,7 +455,7 @@
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Infra.Data\BancoDeQuestoes.Infra.Data.csproj">
-      <Project>{39C11A26-2105-40D4-B0FD-210F799D7A0B}</Project>
+      <Project>{39c11a26-2105-40d4-b0fd-210f799d7a0b}</Project>
       <Name>BancoDeQuestoes.Infra.Data</Name>
     </ProjectReference>
   </ItemGroup>

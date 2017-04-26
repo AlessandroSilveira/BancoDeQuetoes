@@ -6,17 +6,17 @@ using BancoDeQuestoes.Domain.Interfaces.Repository;
 
 namespace BancoDeQuestoes.Infra.Data.Repository
 {
-	public class DisciplinaRepository : Repository<Disciplina>,IDisciplinaRepository
+	public class DisciplinaRepositoryBase : RepositoryBase<Disciplina>,IDisciplinaRepository
 	{
 
 		public IEnumerable Area()
 		{
-			return Db.Area.ToList();
+			return Context.Area.ToList();
 		}
 
 		public IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina form)
 		{
-			var sql = Db.Disciplina.ToList();
+			var sql = Context.Disciplina.ToList();
 
 			return ExecutadorDePesquisa(form, sql).ToList();
 		}

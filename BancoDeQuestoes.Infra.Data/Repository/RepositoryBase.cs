@@ -8,18 +8,16 @@ using BancoDeQuestoes.Infra.Data.Context;
 
 namespace BancoDeQuestoes.Infra.Data.Repository
 {
-	public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+	public class RepositoryBase<TEntity> : IRepository<TEntity> where TEntity : class
 	{
-	    protected Db Db;
-
+	    protected Db Context;
 	    protected DbSet<TEntity> DbSet;
 
-	    public Repository()
+	    public RepositoryBase()
 	    {
-	        Db = new Db();
-	        DbSet = Db.Set<TEntity>();
+	        Context = new Db();
+	        DbSet = Context.Set<TEntity>();
 	    }
-
 
 	    public TEntity Add(TEntity obj)
 	    {
@@ -40,7 +38,7 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 
 	    public virtual  TEntity Update(TEntity obj)
 	    {
-	        var entry = Db.Entry(obj);
+	        var entry = Context.Entry(obj);
 	        DbSet.Attach(obj);
             entry.State = EntityState.Modified;
 	        SaveChanges();
@@ -50,8 +48,7 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	    public virtual void Remove(Guid id)
 	    {
 	        DbSet.Remove(GetById(id));
-		    Db.SaveChanges();
-
+		    Context.SaveChanges();
 	    }
 
 	    public IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
@@ -61,12 +58,12 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 
 	    public int SaveChanges()
 	    {
-	        return  Db.SaveChanges();
+	        return  Context.SaveChanges();
 	    }
 
 	    public void Dispose()
 	    {
-	        Db.Dispose();
+	        Context.Dispose();
             GC.SuppressFinalize(this); 
 	    }
 	}

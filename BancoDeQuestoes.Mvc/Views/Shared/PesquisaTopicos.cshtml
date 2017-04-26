@@ -1,0 +1,52 @@
+﻿@model BancoDeQuestoes.Application.ViewModels.TopicoAtribuidoViewModel
+@{
+	using (Html.BeginForm("Search", "TopicoAtribuido", FormMethod.Post))
+	{
+		<form class="form-horizontal">
+			<fieldset>
+				<legend>Pesquisar</legend>
+				<div class="form-group">
+					@Html.Label("Projeto", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-lg-4">
+						@Html.DropDownList("Projeto_ProjetoId", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.Projeto.ProjetoId, "", new { @class = "text-danger" })
+
+					</div>
+					@Html.Label("Área", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-lg-4">
+						@Html.DropDownList("Area_AreaId", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.Area.AreaId, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					@Html.Label("Mestre", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-lg-4">
+						@Html.DropDownList("Mestre_MestreId", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.Mestre.MestreId, "", new { @class = "text-danger" })
+					</div>
+					@Html.Label("Disciplina", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-lg-4">
+						@Html.DropDownList("Disciplina_DisciplinaId", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.Disciplina.DisciplinaId, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(model => model.Nivel, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-lg-4">
+						@Html.DropDownList("Nivel", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.Nivel, "", new { @class = "text-danger" })
+					</div>
+					<label for="TotalPagina" class="col-lg-2 control-label">Total de itens por página</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="TotalPagina" name="TotalPagina" placeholder="Total de Páginas">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-4 col-lg-offset-4">
+						<button type="submit" class="btn btn-primary">Enviar</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	}
+}

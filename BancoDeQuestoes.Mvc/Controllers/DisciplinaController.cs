@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
@@ -29,19 +28,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		public ActionResult Details(Guid id)
 		{
 			var disciplina = _disciplinaAppService.GetById(id);
-			
-			if (disciplina == null)
-			{
-				return HttpNotFound();
-			}
-			return View(disciplina);
+			return disciplina == null ? (ActionResult) HttpNotFound() : View(disciplina);
 		}
 
 		public ActionResult Create()
 		{
-			var areaViewModel =_areaAppService.GetAll();
 			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
-			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao");
+			ViewBag.AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao");
 			return View();
 		}
 

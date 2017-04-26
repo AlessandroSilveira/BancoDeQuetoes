@@ -120,10 +120,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Banca, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BancaId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Banca",null, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Banca, "", new { @class = "text-danger" })
+                @Html.DropDownList("BancaId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BancaId, "", new { @class = "text-danger" })
             </div>
         </div>
 

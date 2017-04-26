@@ -3,7 +3,7 @@ using BancoDeQuestoes.Domain.Interfaces.Repository;
 
 namespace BancoDeQuestoes.Infra.Data.Repository
 {
-	public class TopicoAtribuidoRepository : Repository<TopicoAtribuido>, ITopicoAtribuidoRepository
+	public class TopicoAtribuidoRepositoryBase : RepositoryBase<TopicoAtribuido>, ITopicoAtribuidoRepository
 	{
 	}
 }

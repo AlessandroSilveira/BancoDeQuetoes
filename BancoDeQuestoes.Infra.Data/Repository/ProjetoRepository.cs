@@ -5,7 +5,7 @@ using BancoDeQuestoes.Infra.Data.Context;
 
 namespace BancoDeQuestoes.Infra.Data.Repository
 {
-    public class ProjetoRepository : Repository<Projeto>, IProjetoRepository
+    public class ProjetoRepositoryBase : RepositoryBase<Projeto>, IProjetoRepository
     {
 	    //public override void Remove(Guid id)
 	    //{

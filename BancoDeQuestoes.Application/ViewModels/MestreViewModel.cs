@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Application.ViewModels
 {
@@ -54,7 +55,7 @@ namespace BancoDeQuestoes.Application.ViewModels
 		public string Celular { get; set; }
 
 		[Required(ErrorMessage = "O campo Banca deve ser preenchido"), StringLength(150), DisplayName("Banca")]
-		public string Banca { get; set; }
+		public Guid  BancaId { get; set; }
 
 		[Required(ErrorMessage = "O campo Filhos deve ser preenchido"), StringLength(2), DisplayName("Filhos")]
 		public string Filhos { get; set; }
@@ -78,5 +79,7 @@ namespace BancoDeQuestoes.Application.ViewModels
 		public string Conta { get; set; }
 		
 		public bool Ativo { get; set; }
+
+		public virtual Banca Banca { get; set; }
 	}
 }
