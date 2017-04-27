@@ -3,7 +3,7 @@ using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 
-namespace BancoDeQuestoes.Infra.Data.Repository
+namespace BancoDeQuestoes.Infra.Data.Repository.PesquisaDisciplina
 {
 	public class ExecutaPesquisaDisciplina
 	{

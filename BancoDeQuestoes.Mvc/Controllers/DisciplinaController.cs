@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
+
 namespace BancoDeQuestoes.Mvc.Controllers
 {
 	public class DisciplinaController : Controller
@@ -57,6 +58,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		{
 			var disciplina = _disciplinaAppService.GetById(id);
 			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
+			ViewBag.AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao");
 			return View(disciplina);
 		}
 
@@ -67,9 +69,8 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			if (!ModelState.IsValid) return View(disciplinaViewModel);
 
 			_disciplinaAppService.Update(disciplinaViewModel);
-			var areaViewModel = _areaAppService.GetAll();
 			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
-			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
+			ViewBag.AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", disciplinaViewModel.AreaId);
 			return View(disciplinaViewModel);
 		}
 
@@ -87,13 +88,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			return RedirectToAction("Index");
 		}
 
-		//[HttpPost]
-		//public ActionResult Search(Disciplina form)
-		//{
-		//	ViewBag.ListaDisciplinas = Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
-		//	var iNscrBqTopico = Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_disciplinaAppService.ResultadoPesquisaDisciplina(form)); 
-
-		//	return View(iNscrBqTopico);
-		//}
+		[HttpPost]
+		public ActionResult Search(DisciplinaViewModel form)
+		{
+			ViewBag.ListaDisciplinas =_areaAppService.GetAll();
+			var iNscrBqTopico =_disciplinaAppService.ResultadoPesquisaDisciplina(form);
+			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
+			return View(iNscrBqTopico);
+		}
 	}
 }

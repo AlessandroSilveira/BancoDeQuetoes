@@ -51,7 +51,7 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 		    Context.SaveChanges();
 	    }
 
-	    public IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
+	    public IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> predicate)
 	    {
 	        return DbSet.Where(predicate);
 	    }

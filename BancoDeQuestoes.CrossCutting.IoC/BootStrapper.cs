@@ -6,6 +6,7 @@ using BancoDeQuestoes.Domain.Services;
 using BancoDeQuestoes.Infra.Data.Repository;
 using SimpleInjector;
 
+
 namespace BancoDeQuestoes.CrossCutting.IoC
 {
 	public class BootStrapper

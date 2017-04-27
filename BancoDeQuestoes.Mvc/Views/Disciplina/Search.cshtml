@@ -52,7 +52,7 @@
 				@Html.DisplayFor(modelItem => item.Ativo)
 			</td>
 			<td>
-				@Html.DropDownList("Nivel", null, htmlAttributes: new { @class = "form-control" })
+				@Html.DisplayFor(modelItem => item.Nivel)
 			</td>
 			<td>
 				@Html.ActionLink("Editar", "Edit", new { id = item.DisciplinaId }) |

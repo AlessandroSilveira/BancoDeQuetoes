@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
+using BancoDeQuestoes.Infra.Data.Repository.PesquisaDisciplina;
 
 namespace BancoDeQuestoes.Infra.Data.Repository
 {

@@ -15,11 +15,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		private readonly ApplicationSignInManager _signInManager;
 		private ApplicationUserManager _userManager;
 
-		public ManageController(ApplicationSignInManager signInManager)
-		{
-			_signInManager = signInManager;
-		}
-
 		public ApplicationSignInManager SignInManager => _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
 		public ApplicationUserManager UserManager => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
 

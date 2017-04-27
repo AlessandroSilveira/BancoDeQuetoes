@@ -271,14 +271,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescBibliografia.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescNivel.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescTitulo.cs" />
-    <Compile Include="Services\PesquisaDisciplina\DescTopico.cs" />
-    <Compile Include="Services\PesquisaDisciplina\ExecutaPesquisaDisciplina.cs" />
-    <Compile Include="Services\PesquisaDisciplina\FimPesquisa.cs" />
-    <Compile Include="Services\PesquisaDisciplina\IdDisciplina.cs" />
-    <Compile Include="Services\PesquisaDisciplina\ItensPesquisaDusciplina.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -432,31 +424,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Services\PesquisaMestre\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BancoDeQuestoes.Application\BancoDeQuestoes.Application.csproj">
-      <Project>{4489D34B-B534-4892-B4A2-A58775E4A2F2}</Project>
+      <Project>{4489d34b-b534-4892-b4a2-a58775e4a2f2}</Project>
       <Name>BancoDeQuestoes.Application</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BancodeQuestoes.CrossCutting.Filters\BancodeQuestoes.Infra.CrossCutting.MvcFilters.csproj">
-      <Project>{d5bdef4a-954b-4b40-884e-8054b54b1cc0}</Project>
-      <Name>BancodeQuestoes.Infra.CrossCutting.MvcFilters</Name>
     </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.CrossCutting.IoC\BancoDeQuestoes.Infra.CrossCutting.IoC.csproj">
       <Project>{6e6cbf3d-8a65-426f-a4cc-f8ffef683d09}</Project>
       <Name>BancoDeQuestoes.Infra.CrossCutting.IoC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
-      <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
-      <Name>BancoDeQuestoes.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BancoDeQuestoes.Infra.Data\BancoDeQuestoes.Infra.Data.csproj">
-      <Project>{39c11a26-2105-40d4-b0fd-210f799d7a0b}</Project>
-      <Name>BancoDeQuestoes.Infra.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

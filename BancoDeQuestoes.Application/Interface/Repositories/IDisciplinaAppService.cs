@@ -12,7 +12,6 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 		IEnumerable<DisciplinaViewModel> GetAll();
 		DisciplinaViewModel Update(DisciplinaViewModel obj);
 		void Remove(Guid id);
-		IEnumerable<DisciplinaViewModel> Search(Expression<Func<DisciplinaViewModel, bool>> predicate);
-		IEnumerable<RevisorFormacaoViewModel> ResultadoPesquisaDisciplina(RevisorFormacaoViewModel form);
+		IEnumerable<DisciplinaViewModel> ResultadoPesquisaDisciplina(DisciplinaViewModel form);
 	}
 }

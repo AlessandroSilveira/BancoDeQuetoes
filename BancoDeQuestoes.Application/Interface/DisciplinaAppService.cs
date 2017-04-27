@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
@@ -46,19 +45,16 @@ namespace BancoDeQuestoes.Application.Interface
 			_disciplinaService.Remove(id);
 		}
 
-		public IEnumerable<DisciplinaViewModel> Search(Expression<Func<DisciplinaViewModel, bool>> predicate)
-		{
-			throw new NotImplementedException();
-		}
-
-		public IEnumerable<RevisorFormacaoViewModel> ResultadoPesquisaDisciplina(RevisorFormacaoViewModel form)
-		{
-			throw new NotImplementedException();
-		}
-
 		public void Dispose()
 		{
 			_disciplinaService.Dispose();
+		}
+		
+		public IEnumerable<DisciplinaViewModel> ResultadoPesquisaDisciplina(DisciplinaViewModel form)
+		{
+			var disciplina = Mapper.Map<DisciplinaViewModel, Disciplina>(form);
+			
+			return Mapper.Map<IEnumerable<Disciplina>,IEnumerable<DisciplinaViewModel>>(_disciplinaService.ResultadoPesquisaDisciplina(disciplina));
 		}
 	}
 }

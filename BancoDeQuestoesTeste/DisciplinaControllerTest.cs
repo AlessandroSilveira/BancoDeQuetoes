@@ -31,7 +31,7 @@ namespace BancoDeQuestoesTeste
 		public void TestIndex()
 		{
 			//Arrange
-			_disciplinaAppServiceMock.Setup(a => a.GetAll()).Returns(It.IsAny<IEnumerable<DisciplinaViewModel>>()).Verifiable();
+			_disciplinaAppServiceMock.Setup(a => a.GetAll()).Returns(It.IsAny<ICollection<DisciplinaViewModel>>()).Verifiable();
 
 			//Act
 			_disciplina.Index();
