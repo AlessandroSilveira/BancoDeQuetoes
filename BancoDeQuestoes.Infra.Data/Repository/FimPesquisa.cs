@@ -10,7 +10,6 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 		{
 			return sql;
 		}
-
 		public IItensPesquisaDisciplina Proximo { get; set; }
 	}
 }

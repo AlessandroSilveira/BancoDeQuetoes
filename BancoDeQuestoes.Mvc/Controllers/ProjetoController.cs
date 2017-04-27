@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Web.Mvc;
-using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-    public class ProjetoController : Controller
+	public class ProjetoController : Controller
 	{
 	    private readonly IProjetoAppService _projetoAppService;
 
@@ -14,7 +13,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		{
 			_projetoAppService = projetoAppService;
 		}
-
 
 		public ActionResult Index()
         {
@@ -59,7 +57,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		
         public ActionResult Delete(Guid id)
 		{
-			
 			var projeto = _projetoAppService.GetById(id);
 			return View(projeto);
 		}

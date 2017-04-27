@@ -6,11 +6,10 @@ using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Services;
-using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
-    public class RevisorAppService : IRevisorAppService
+	public class RevisorAppService : IRevisorAppService
     {
 	    private readonly IRevisorService _revisorService;
 

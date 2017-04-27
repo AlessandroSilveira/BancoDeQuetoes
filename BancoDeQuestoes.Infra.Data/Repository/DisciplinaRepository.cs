@@ -8,7 +8,6 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 {
 	public class DisciplinaRepositoryBase : RepositoryBase<Disciplina>,IDisciplinaRepository
 	{
-
 		public IEnumerable Area()
 		{
 			return Context.Area.ToList();
@@ -17,7 +16,6 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 		public IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina form)
 		{
 			var sql = Context.Disciplina.ToList();
-
 			return ExecutadorDePesquisa(form, sql).ToList();
 		}
 

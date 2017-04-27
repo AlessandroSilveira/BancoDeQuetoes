@@ -6,7 +6,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class MestreAreaViewModel
 	{
-
 		public MestreAreaViewModel()
 		{
 			MestreAreaId = new Guid();

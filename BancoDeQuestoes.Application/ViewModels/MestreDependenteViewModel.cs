@@ -14,7 +14,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 
 		[Key]
 		public Guid MestreDependenteId { get; set; }
-
 		public Guid MestreId { get; set; }
 
 		[Required(ErrorMessage = "O campo Nome deve ser preenchido"), StringLength(150), DisplayName("Nome")]

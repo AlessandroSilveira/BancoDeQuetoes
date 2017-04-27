@@ -7,18 +7,11 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 {
 	public interface IAreaAppService : IDisposable
 	{
-
 		AreaViewModel Add(AreaViewModel obj);
-
 		AreaViewModel GetById(Guid id);
-
 		IEnumerable<AreaViewModel> GetAll();
-
 		AreaViewModel Update(AreaViewModel obj);
-
 		void Remove(Guid id);
-
 		IEnumerable<AreaViewModel> Search(Expression<Func<AreaViewModel, bool>> predicate);
-		
 	}
 }

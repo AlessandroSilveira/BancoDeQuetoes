@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
@@ -14,8 +13,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 				{"Média Complexidade", "Média Complexidade"},
 				{"Baixa Complexidade", "Baixa Complexidade"}
 			};
-
-
 			return lista;
 		}
 	}

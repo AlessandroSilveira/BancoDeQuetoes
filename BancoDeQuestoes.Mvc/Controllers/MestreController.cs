@@ -18,7 +18,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
 	    public ActionResult Index()
 	    {
-		   
 			return View(_mestreAppService.GetAll());
         }
         

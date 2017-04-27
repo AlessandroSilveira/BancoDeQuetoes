@@ -85,7 +85,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 		[Required]
 		[DisplayName("Senha")]
 		public string Senha { get; set; }
-
 		
 		[Required (ErrorMessage="Escolha a área que esse revisor pertence.")]
 		[DisplayName("Área")]
@@ -94,7 +93,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 		[Required]
 		[DisplayName("Ativo")]
 		public bool Ativo { get; set; }
-
 		public virtual Area Area { get; set; }
 	}
 }

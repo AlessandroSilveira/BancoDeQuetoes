@@ -5,6 +5,5 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 {
 	public class BancaRepositoryBase : RepositoryBase<Banca> , IBancaRepository
     {
-        
     }
 }

@@ -6,7 +6,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class AreaViewModel
 	{
-
 		public AreaViewModel()
 		{
 			AreaId = Guid.NewGuid();

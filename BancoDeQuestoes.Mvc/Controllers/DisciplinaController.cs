@@ -5,10 +5,10 @@ using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-    public class DisciplinaController : Controller
+	public class DisciplinaController : Controller
 	{
-	    private readonly IDisciplinaAppService _disciplinaAppService;
-	    private readonly IAreaAppService _areaAppService;
+		private readonly IDisciplinaAppService _disciplinaAppService;
+		private readonly IAreaAppService _areaAppService;
 
 		public DisciplinaController(IDisciplinaAppService disciplinaAppService, IAreaAppService areaAppService)
 		{
@@ -16,19 +16,18 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			_areaAppService = areaAppService;
 		}
 
-
 		public ActionResult Index()
-	    {
-	        var disciplinaViewModel = _disciplinaAppService.GetAll();
-	        ViewBag.ListaDisciplinas = _areaAppService.GetAll();
-			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key","Value","Selecione");
+		{
+			var disciplinaViewModel = _disciplinaAppService.GetAll();
+			ViewBag.ListaDisciplinas = _areaAppService.GetAll();
+			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
 			return View(disciplinaViewModel);
 		}
 
 		public ActionResult Details(Guid id)
 		{
 			var disciplina = _disciplinaAppService.GetById(id);
-			return disciplina == null ? (ActionResult) HttpNotFound() : View(disciplina);
+			return disciplina == null ? (ActionResult)HttpNotFound() : View(disciplina);
 		}
 
 		public ActionResult Create()
@@ -48,7 +47,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 				return RedirectToAction("Index");
 			}
 
-			var areaViewModel =_areaAppService.GetAll();
+			var areaViewModel = _areaAppService.GetAll();
 			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
 			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
 			return View(disciplinaViewModel);
@@ -66,7 +65,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		public ActionResult Edit(DisciplinaViewModel disciplinaViewModel)
 		{
 			if (!ModelState.IsValid) return View(disciplinaViewModel);
-			
+
 			_disciplinaAppService.Update(disciplinaViewModel);
 			var areaViewModel = _areaAppService.GetAll();
 			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
@@ -93,7 +92,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		//{
 		//	ViewBag.ListaDisciplinas = Mapper.Map<IEnumerable<Area>, IEnumerable<AreaViewModel>>(_areaAppService.GetAll());
 		//	var iNscrBqTopico = Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_disciplinaAppService.ResultadoPesquisaDisciplina(form)); 
-			
+
 		//	return View(iNscrBqTopico);
 		//}
 	}

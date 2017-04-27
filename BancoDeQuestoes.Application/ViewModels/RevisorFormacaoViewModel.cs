@@ -6,7 +6,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class RevisorFormacaoViewModel
 	{
-
 		public RevisorFormacaoViewModel()
 		{
 			RevisorFormacaoId = new Guid();
@@ -17,7 +16,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 		[DisplayName("Primeira Formação")]
 		[Required]
 		public Guid RevisorFormacaoId { get; set; }
-
 		public Guid RevisorId { get; set; }
 
 		[StringLength(150)]
@@ -29,12 +27,9 @@ namespace BancoDeQuestoes.Application.ViewModels
 		[Required]
 		[StringLength(150)]
 		public string Formacao { get; set; }
-
 		
 		[DisplayName("Ativo")]
 		[Required]
 		public bool Ativo { get; set; }
-
-		
 	}
 }

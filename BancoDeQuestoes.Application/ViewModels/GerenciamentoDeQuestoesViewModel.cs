@@ -14,7 +14,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 			QuestaoId = new Guid();
 		}
 
-
 		public Guid ProjetoId { get; set; }
 		public Guid AreaId { get; set; }
 		public Guid MestreId { get; set; }

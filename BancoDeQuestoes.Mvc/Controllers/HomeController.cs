@@ -2,26 +2,23 @@
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-	
 	public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
-            return View("Index");
-        }
+	{
+		public ActionResult Index()
+		{
+			return View("Index");
+		}
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+		public ActionResult About()
+		{
+			ViewBag.Message = "Your application description page.";
+			return View("About");
+		}
 
-            return View("About");
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View("Contact");
-        }
-    }
+		public ActionResult Contact()
+		{
+			ViewBag.Message = "Your contact page.";
+			return View("Contact");
+		}
+	}
 }

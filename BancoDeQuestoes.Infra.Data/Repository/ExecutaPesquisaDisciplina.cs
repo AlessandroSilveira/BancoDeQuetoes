@@ -9,11 +9,7 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	{
 		internal List<Disciplina> Executa(IList<IItensPesquisaDisciplina> itensPesquisaDisciplinas, List<Disciplina> sql, Disciplina form)
 		{
-			foreach (var itens in itensPesquisaDisciplinas)
-			{
-				sql = itens.Pesquisa(form,sql);
-			}
-
+			sql = itensPesquisaDisciplinas.Aggregate(sql, (current, itens) => itens.Pesquisa(form, current));
 			return sql.ToList();
 		}
 	}

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Domain.Services
 {
-	public class BancaService :  IBancaService
+	public class BancaService : IBancaService
 	{
 	    private readonly IBancaRepository _bancaRepository;
 
@@ -16,43 +15,35 @@ namespace BancoDeQuestoes.Domain.Services
 	        _bancaRepository = bancaRepository;
 	    }
 
-
 	    public Banca Add(Banca obj)
 	    {
 	      return  _bancaRepository.Add(obj);
-
 	    }
 
 	    public Banca GetById(Guid id)
 	    {
 	       return  _bancaRepository.GetById(id);
-
 	    }
 
 	    public IEnumerable<Banca> GetAll()
 	    {
 	       return _bancaRepository.GetAll();
-
 	    }
 
 	    public Banca Update(Banca obj)
 	    {
 	     return _bancaRepository.Update(obj);
-
 	    }
 
 	    public void Remove(Guid obj)
 	    {
 	        _bancaRepository.Remove(obj);
-
 	    }
 
 	    public void Dispose()
 	    {
 	        _bancaRepository.Dispose();
             GC.SuppressFinalize(this);
-
 	    }
-
 	}
 }
