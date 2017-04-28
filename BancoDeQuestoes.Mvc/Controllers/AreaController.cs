@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Web.Mvc;
-using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-    public class AreaController : Controller
+	public class AreaController : Controller
     {
         private readonly IAreaAppService _areaAppService;
 
@@ -15,16 +14,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
             _areaAppService = areaAppService;
         }
 
-
         public ActionResult Index()
         {
-			
 			return View(_areaAppService.GetAll());
         }
        
         public ActionResult Details(Guid id)
         {
-
             return View(_areaAppService.GetById(id));
         }
         
@@ -38,17 +34,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Create(AreaViewModel areaViewModel)
         {
 	        if (!ModelState.IsValid) return View(areaViewModel);
-	      
 	        _areaAppService.Add(areaViewModel);
-
 	        return RedirectToAction("Index");
         }
        
         public ActionResult Edit(Guid id)
         {
-           
 			var area = _areaAppService.GetById(id);
-		
 			return View(area);
 		}
        
@@ -57,14 +49,12 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Edit( AreaViewModel areaViewModel)
         {
 			_areaAppService.Update(areaViewModel);
-
 	        return RedirectToAction("Index");
         }
        
         public ActionResult Delete(Guid id)
         {
 			var area = _areaAppService.GetById(id);
-			
 			return View(area);
 		}
       

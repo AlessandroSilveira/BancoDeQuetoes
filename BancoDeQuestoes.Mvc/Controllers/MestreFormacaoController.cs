@@ -27,7 +27,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 			var mestre = _mestreFormacaoAppService.GetById(id);
 			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
-			return mestre == null ? (ActionResult)HttpNotFound() : View(mestre);
+			return View(mestre);
 		}
 		
         public ActionResult Create(Guid id)
@@ -48,11 +48,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
         
         public ActionResult Edit(Guid id)
         {
-			
 			var mestre = _mestreFormacaoAppService.GetById(id);
 			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
-
-			return mestre == null ? (ActionResult)HttpNotFound() : View(mestre);
+			return View(mestre);
 		}
       
         [HttpPost]
@@ -70,14 +68,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			var mestre = _mestreFormacaoAppService.GetById(id);
 			ViewBag.MestreId = id;
 			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
-			return mestre == null ? (ActionResult)HttpNotFound() : View(mestre);
+			return View(mestre);
 		}
 		
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-		
 			_mestreFormacaoAppService.Remove(id);
 			return RedirectToAction("Index");
         }

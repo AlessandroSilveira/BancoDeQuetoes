@@ -14,7 +14,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 
 		[Key]
 		public Guid QuestaoId { get; set; }
-
 		public Guid TopicoAtribuidoId { get; set; }
 
 		[Required(ErrorMessage = "O campo Número da Questão deve ser preenchido"), DisplayName("Número da Questão")]

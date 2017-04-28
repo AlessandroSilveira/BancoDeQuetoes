@@ -20,7 +20,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
             return View(_mestreAreaAppService.GetAll());
         }
 
-
         public ActionResult Details(Guid id)
         {
             var mestre = _mestreAreaAppService.GetById(id);

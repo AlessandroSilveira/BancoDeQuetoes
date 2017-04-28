@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BancoDeQuestoes.Application.ViewModels.DisciplinaViewModel>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Atribuição de Novo Item de Prova</h2>
+
+@Html.Partial("PesquisaTopicos")
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Nome)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Descricao)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Area.Descricao)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Nivel)
+		</th>
+	
+		<th></th>
+	</tr>
+	@if (Model != null)
+	{
+foreach (var item in Model)
+ {
+	 <tr>
+		 <td>
+			 @Html.DisplayFor(modelItem => item.Nome)
+		 </td>
+		 <td>
+			 @Html.DisplayFor(modelItem => item.Descricao)
+		 </td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Area.Descricao)
+		</td>
+		 <td>
+			 @Html.DisplayFor(modelItem => item.Nivel)
+		 </td>
+		 <td>
+			 @Html.ActionLink("Edit", "Edit", new {id = item.DisciplinaId}) 
+		 </td>
+	 </tr>
+ }
+	}
+</table>

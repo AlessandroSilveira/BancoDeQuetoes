@@ -6,21 +6,18 @@ using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Services;
-using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 
-    public class BancaAppService : IBancaAppService
+	public class BancaAppService : IBancaAppService
     {
-
         private readonly IBancaService _bancaService;
 
 	    public BancaAppService(IBancaService bancaService)
 	    {
 		    _bancaService = bancaService;
 	    }
-
 
 	    public BancaViewModel Add(BancaViewModel obj)
         {
@@ -43,7 +40,6 @@ namespace BancoDeQuestoes.Application.Interface
         {
 			_bancaService.Remove(id);
         }
-
       
         public IEnumerable<BancaViewModel> Search(Expression<Func<BancaViewModel, bool>> predicate)
         {
@@ -55,7 +51,6 @@ namespace BancoDeQuestoes.Application.Interface
 			_bancaService.Update(Mapper.Map<BancaViewModel, Banca>(obj));
             return obj;
         }
-
          
         public void Dispose()
         {

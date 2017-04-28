@@ -5,7 +5,7 @@ using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Domain.Services
 {
-	public class ServiceBase<TEntity> : IDisposable,IServiceBase<TEntity> where TEntity : class
+	public class ServiceBase<TEntity> : IDisposable, IServiceBase<TEntity> where TEntity : class
 	{
 		private readonly IRepositoryBase<TEntity> _repositoryBase;
 
@@ -43,7 +43,6 @@ namespace BancoDeQuestoes.Domain.Services
 		{
 			_repositoryBase.Dispose();
 		}
-
 
 		void IDisposable.Dispose()
 		{

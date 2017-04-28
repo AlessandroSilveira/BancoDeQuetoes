@@ -7,7 +7,7 @@
 <h2>Gerenciamento de Questões</h2>
 
 <p>
-	@Html.ActionLink("Atribuir Novo Item de Prova a Ser Elaborado.", "Create")
+	@Html.ActionLink("Atribuir Novo Item de Prova a Ser Elaborado.", "Search")
 </p>
 <p>
 	@Html.ActionLink("Itens Recusados", "Create")
@@ -15,16 +15,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProjetoId)
+            @Html.DisplayNameFor(model => model.Projeto)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AreaId)
+            @Html.DisplayNameFor(model => model.Area)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MestreId)
+            @Html.DisplayNameFor(model => model.Mestre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DisciplinaId)
+            @Html.DisplayNameFor(model => model.Disciplina)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CodigoProjeto)
@@ -65,16 +65,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ProjetoId)
+            @Html.DisplayFor(modelItem => item.Projeto)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AreaId)
+            @Html.DisplayFor(modelItem => item.Area)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MestreId)
+            @Html.DisplayFor(modelItem => item.Mestre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DisciplinaId)
+            @Html.DisplayFor(modelItem => item.Disciplina)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CodigoProjeto)

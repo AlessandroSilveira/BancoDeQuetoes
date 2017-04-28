@@ -27,7 +27,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 	        var mestre = _mestreDependenteAppService.GetById(id);
 			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
-			return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
+			return View(mestre);
         }
         
         public ActionResult Create(Guid id)
@@ -54,7 +54,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
 	        var mestre = _mestreDependenteAppService.GetById(id);
 			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
-			return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
+			return View(mestre);
         }
       
         [HttpPost]
@@ -72,7 +72,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			ViewBag.MestreId = id;
 			var mestre = _mestreDependenteAppService.GetById(id);
 			ViewBag.DadosMestre = _mestreAppService.GetById(mestre.MestreId);
-			return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
+			return View(mestre);
         }
         
         [HttpPost, ActionName("Delete")]

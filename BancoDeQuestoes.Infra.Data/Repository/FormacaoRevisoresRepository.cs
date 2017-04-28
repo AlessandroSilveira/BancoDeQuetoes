@@ -3,7 +3,7 @@ using BancoDeQuestoes.Domain.Interfaces.Repository;
 
 namespace BancoDeQuestoes.Infra.Data.Repository
 {
-	public class FormacaoRevisoresRepository : Repository<RevisorFormacao> , IFormacaoRevisoresRepository
+	public class FormacaoRevisoresRepositoryBase : RepositoryBase<RevisorFormacao> , IFormacaoRevisoresRepository
 	{
 	}
 }

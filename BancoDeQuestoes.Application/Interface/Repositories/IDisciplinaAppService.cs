@@ -8,17 +8,10 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 	public interface IDisciplinaAppService : IDisposable
 	{
 		DisciplinaViewModel Add(DisciplinaViewModel obj);
-
 		DisciplinaViewModel GetById(Guid id);
-
 		IEnumerable<DisciplinaViewModel> GetAll();
-
 		DisciplinaViewModel Update(DisciplinaViewModel obj);
-
 		void Remove(Guid id);
-
-		IEnumerable<DisciplinaViewModel> Search(Expression<Func<DisciplinaViewModel, bool>> predicate);
-
-		IEnumerable<RevisorFormacaoViewModel> ResultadoPesquisaDisciplina(RevisorFormacaoViewModel form);
+		IEnumerable<DisciplinaViewModel> ResultadoPesquisaDisciplina(DisciplinaViewModel form);
 	}
 }

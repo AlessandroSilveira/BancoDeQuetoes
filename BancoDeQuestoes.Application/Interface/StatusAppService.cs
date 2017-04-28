@@ -6,7 +6,6 @@ using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Services;
-using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
@@ -45,7 +44,6 @@ namespace BancoDeQuestoes.Application.Interface
 	    {
 			_statusService.Update(Mapper.Map<  StatusViewModel, Status>(obj));
 	        return obj;
-
 	    }
 
 	    public void Remove(Guid id)
@@ -57,7 +55,5 @@ namespace BancoDeQuestoes.Application.Interface
 	    {
 	        throw new NotImplementedException();
 	    }
-
-	  
 	}
 }

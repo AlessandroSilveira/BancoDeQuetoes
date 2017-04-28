@@ -7,7 +7,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class DisciplinaViewModel
 	{
-
 		public DisciplinaViewModel()
 		{
 			DisciplinaId = new Guid();
@@ -36,7 +35,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 		[DisplayName("Bibliografia")]
 		[Required(ErrorMessage = "Informe uma Bibliografia.")]
 		public string Bibliografia { get; set; }
-
 		
 		[DisplayName("Ativo")]
 		[Required(ErrorMessage = "Escolha se está ativo.")]
@@ -48,6 +46,5 @@ namespace BancoDeQuestoes.Application.ViewModels
 		public string Nivel { get; set; }
 
 		public virtual Area Area { get; set; }
-
 	}
 }

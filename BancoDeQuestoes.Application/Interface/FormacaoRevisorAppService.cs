@@ -6,7 +6,6 @@ using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Services;
-using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
@@ -56,7 +55,5 @@ namespace BancoDeQuestoes.Application.Interface
 	    {
 	        throw new NotImplementedException();
 	    }
-
-	  
 	}
 }

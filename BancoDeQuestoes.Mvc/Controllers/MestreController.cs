@@ -18,7 +18,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
 	    public ActionResult Index()
 	    {
-		   
 			return View(_mestreAppService.GetAll());
         }
         
@@ -30,7 +29,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
        
         public ActionResult Create()
 		{
-			ViewBag.Banca =new SelectList(_bancaAppService.GetAll(),"BancaId","Nome") ;
+			ViewBag.BancaId = new SelectList(_bancaAppService.GetAll(),"BancaId","Nome") ;
 			return View();
         }
         
@@ -38,10 +37,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create( MestreViewModel mestreViewModel)
         {
-	        if (!ModelState.IsValid) return View(mestreViewModel);
+	        if (!ModelState.IsValid)
+	        {
+				ViewBag.BancaId = new SelectList(_bancaAppService.GetAll(), "BancaId", "Nome");
+				return View(mestreViewModel);
+	        }
 	        _mestreAppService.Add(mestreViewModel);
-
-	        return RedirectToAction("Index");
+			ViewBag.BancaId = new SelectList(_bancaAppService.GetAll(), "BancaId", "Nome");
+			return RedirectToAction("Index");
         }
        
         public ActionResult Edit(Guid id)

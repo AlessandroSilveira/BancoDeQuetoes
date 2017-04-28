@@ -6,13 +6,11 @@ using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Services;
-using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class TopicoAtribuidoAppService :  ITopicoAtribuidoAppService
 	{
-
 		private readonly ITopicoAtribuidoService _topicoAtribuido;
 
 		public TopicoAtribuidoAppService(ITopicoAtribuidoService topicoAtribuido)
@@ -23,7 +21,6 @@ namespace BancoDeQuestoes.Application.Interface
 		public void Dispose()
 	    {
 			_topicoAtribuido.Dispose();
-
         }
 
 	    public TopicoAtribuidoViewModel Add(TopicoAtribuidoViewModel obj)
@@ -58,5 +55,12 @@ namespace BancoDeQuestoes.Application.Interface
 	    {
 	        throw new NotImplementedException();
 	    }
+
+		public IEnumerable<DisciplinaViewModel> ResultadoPesquisaDisciplina(DisciplinaViewModel form,  IEnumerable<DisciplinaViewModel> todos)
+		{
+			var disciplina = Mapper.Map<DisciplinaViewModel, Disciplina>(form);
+			var lista = Mapper.Map<IEnumerable<DisciplinaViewModel>, IEnumerable<Disciplina>>(todos);
+			return Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_topicoAtribuido.ResultadoPesquisaDisciplina(disciplina, lista));
+		}
 	}
 }

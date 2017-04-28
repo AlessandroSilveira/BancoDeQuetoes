@@ -6,13 +6,11 @@ using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Services;
-using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class QuestaoAppService : IQuestaoAppService
 	{
-
 		private readonly IQuestaoService _questaoService;
 
 		public QuestaoAppService(IQuestaoService questaoService)
@@ -20,11 +18,9 @@ namespace BancoDeQuestoes.Application.Interface
 			_questaoService = questaoService;
 		}
 
-
 		public void Dispose()
 	    {
 			_questaoService.Dispose();
-
         }
 
 	    public QuestaoViewModel Add(QuestaoViewModel obj)
@@ -59,7 +55,5 @@ namespace BancoDeQuestoes.Application.Interface
 	    {
 	        throw new NotImplementedException();
 	    }
-
-	 
 	}
 }

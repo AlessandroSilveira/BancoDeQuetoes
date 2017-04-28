@@ -3,8 +3,7 @@ using BancoDeQuestoes.Domain.Interfaces.Repository;
 
 namespace BancoDeQuestoes.Infra.Data.Repository
 {
-	public class AreaRepository : Repository<Area>, IAreaRepository
+	public class AreaRepositoryBase : RepositoryBase<Area>, IAreaRepository
 	{
-		
 	}
 }

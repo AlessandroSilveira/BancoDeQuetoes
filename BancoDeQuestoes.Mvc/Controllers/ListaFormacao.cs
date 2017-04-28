@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
@@ -15,8 +14,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 				{"Mestrado", "Mestrado"},
 				{"Doutorado", "Doutorado"}
 			};
-
-
 			return lista;
 		}
 	}

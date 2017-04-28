@@ -6,20 +6,17 @@ using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Services;
-using BancoDeQuestoes.Infra.Data.Repository;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 	public class AreaAppService :  IAreaAppService
 	{
-
 		private readonly IAreaService _areaService;
 
 		public AreaAppService(IAreaService areaService)
 		{
 			_areaService = areaService;
 		}
-
 
 		public AreaViewModel Add(AreaViewModel obj)
 		{
@@ -58,7 +55,5 @@ namespace BancoDeQuestoes.Application.Interface
 		{
 			_areaService.Dispose();
 		}
-
-	
 	}
 }

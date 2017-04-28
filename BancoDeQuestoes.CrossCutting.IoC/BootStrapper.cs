@@ -1,11 +1,12 @@
-﻿using System;
-using BancoDeQuestoes.Application.Interface;
+﻿using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 using BancoDeQuestoes.Domain.Services;
+using BancoDeQuestoes.Infra.Data;
 using BancoDeQuestoes.Infra.Data.Repository;
 using SimpleInjector;
+
 
 namespace BancoDeQuestoes.CrossCutting.IoC
 {
@@ -15,7 +16,6 @@ namespace BancoDeQuestoes.CrossCutting.IoC
 		{
 
 			//App
-			
 			container.Register<IAreaAppService, AreaAppService>(Lifestyle.Scoped);
 			container.Register<IBancaAppService, BancaAppService>(Lifestyle.Scoped);
 			container.Register<IDisciplinaAppService, DisciplinaAppService>(Lifestyle.Scoped);
@@ -47,20 +47,21 @@ namespace BancoDeQuestoes.CrossCutting.IoC
 			container.Register<ITopicoAtribuidoService, TopicoAtribuidoService>(Lifestyle.Scoped);
 
 			//Infra Dados
-			container.Register(typeof(IRepository<>),typeof(Repository<>));
-			container.Register<IAreaRepository, AreaRepository>(Lifestyle.Scoped);
-			container.Register<IBancaRepository, BancaRepository>(Lifestyle.Scoped);
-			container.Register<IDisciplinaRepository, DisciplinaRepository>(Lifestyle.Scoped);
-			container.Register<IFormacaoRevisoresRepository, FormacaoRevisoresRepository>(Lifestyle.Scoped);
-			container.Register<IMestreRepository, MestreRepository>(Lifestyle.Scoped);
-			container.Register<IMestreAreaRepository, MestreAreaRepository>(Lifestyle.Scoped);
+			container.Register(typeof(IRepository<>),typeof(RepositoryBase<>));
+			container.Register<IAreaRepository, AreaRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IBancaRepository, BancaRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IDisciplinaRepository, DisciplinaRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IFormacaoRevisoresRepository, FormacaoRevisoresRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IMestreRepository, MestreRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IMestreAreaRepository, MestreAreaRepositoryBase>(Lifestyle.Scoped);
 			container.Register<IMestreDependenteRepository, MestreDependenteRepsitory>(Lifestyle.Scoped);
-			container.Register<IMestreFormacaoRepository, MestreFormacaoRepository>(Lifestyle.Scoped);
-			container.Register<IProjetoRepository, ProjetoRepository>(Lifestyle.Scoped);
-			container.Register<IQuestaoRepository, QuestaoRepository>(Lifestyle.Scoped);
-			container.Register<IRevisorRepository, RevisorRepository>(Lifestyle.Scoped);
-			container.Register<IStatusRepository, StatusRepository>(Lifestyle.Scoped);
-			container.Register<ITopicoAtribuidoRepository, TopicoAtribuidoRepository>(Lifestyle.Scoped);
+			container.Register<IMestreFormacaoRepository, MestreFormacaoRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IProjetoRepository, ProjetoRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IQuestaoRepository, QuestaoRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IRevisorRepository, RevisorRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IStatusRepository, StatusRepositoryBase>(Lifestyle.Scoped);
+			container.Register<ITopicoAtribuidoRepository, TopicoAtribuidoRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IItemPesquisaTopico, ItensPesquisaTopico>(Lifestyle.Scoped);
 
 		}
 	}

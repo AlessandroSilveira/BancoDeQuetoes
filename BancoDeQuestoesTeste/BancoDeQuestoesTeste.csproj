@@ -99,6 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DisciplinaControllerTest.cs" />
     <Compile Include="HomeControllerTest.cs" />
     <Compile Include="ProjetoControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,7 +6,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 {
 	public class BancaViewModel
 	{
-
 		public BancaViewModel()
 		{
 			BancaId = new Guid();

@@ -46,6 +46,7 @@
     <Compile Include="Entities\TopicoAtribuido.cs" />
     <Compile Include="Interfaces\Repository\IAreaRepository.cs" />
     <Compile Include="Interfaces\Repository\IBancaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IItemPesquisaTopico.cs" />
     <Compile Include="Interfaces\Repository\IRepository.cs" />
     <Compile Include="Interfaces\Repository\IDisciplinaRepository.cs" />
     <Compile Include="Interfaces\Repository\IFormacaoRevisoresRepository.cs" />
@@ -78,14 +79,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AreaService.cs" />
     <Compile Include="Services\BancaService.cs" />
-    <Compile Include="Services\DescBibliografia.cs" />
-    <Compile Include="Services\DescNivel.cs" />
-    <Compile Include="Services\DescTitulo.cs" />
-    <Compile Include="Services\DescTopico.cs" />
     <Compile Include="Services\DisciplinaService.cs" />
-    <Compile Include="Services\FimPesquisa.cs" />
     <Compile Include="Services\FormacaoRevisorService.cs" />
-    <Compile Include="Services\IdDisciplina.cs" />
     <Compile Include="Services\MestreAreaService.cs" />
     <Compile Include="Services\MestreDependenteService.cs" />
     <Compile Include="Services\MestreFormacaoService.cs" />

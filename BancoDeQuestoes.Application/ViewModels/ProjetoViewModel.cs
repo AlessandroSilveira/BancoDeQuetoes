@@ -12,7 +12,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 	    }
 
         [Key]
-
         public Guid ProjetoId { get; set; }
 
 		[DisplayName("Código do Projeto")]
@@ -28,6 +27,5 @@ namespace BancoDeQuestoes.Application.ViewModels
         [Required(ErrorMessage = "Preencha o campo Ativo")]
         [DisplayName("Ativo")]
         public bool Ativo { get; set; }
-
     }
 }

@@ -55,7 +55,5 @@ namespace BancoDeQuestoes.Application.Interface
 	    {
 	        throw new NotImplementedException();
 	    }
-
-	   
 	}
 }

@@ -33,7 +33,6 @@ namespace BancoDeQuestoes.Application.Interface
 	    public MestreViewModel GetById(Guid id)
 	    {
 	        return Mapper.Map<Mestre, MestreViewModel>(_mestreService.GetById(id));
-
         }
 
 	    public IEnumerable<MestreViewModel> GetAll()

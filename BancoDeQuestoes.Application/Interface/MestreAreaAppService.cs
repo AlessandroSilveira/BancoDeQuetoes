@@ -18,7 +18,6 @@ namespace BancoDeQuestoes.Application.Interface
 		    _mestreAreaService = mestreAreaService;
 	    }
 
-
 	    public void Dispose()
 	    {
 			_mestreAreaService.Dispose();
@@ -34,7 +33,6 @@ namespace BancoDeQuestoes.Application.Interface
 	    public MestreAreaViewModel GetById(Guid id)
 	    {
 	        return Mapper.Map<MestreArea, MestreAreaViewModel>(_mestreAreaService.GetById(id));
-
 	    }
 
 	    public IEnumerable<MestreAreaViewModel> GetAll()
@@ -57,7 +55,5 @@ namespace BancoDeQuestoes.Application.Interface
 	    {
 	        throw new NotImplementedException();
 	    }
-
-	 
 	}
 }

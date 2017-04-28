@@ -1,0 +1,58 @@
+﻿
+@{
+	using (Html.BeginForm("Search", "TopicoAtribuido", FormMethod.Post))
+	{
+		<form class="form-horizontal">
+			<fieldset>
+				<legend>Pesquisar</legend>
+				<div class="form-group">
+					@Html.Label("Disciplina", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-lg-4">
+						@Html.DropDownList("Disciplina_DisciplinaId", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessage("Disciplina_DisciplinaId", "", new { @class = "text-danger" })
+
+					</div>
+					@Html.Label("Área", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-lg-4">
+						@Html.DropDownList("Area_AreaId", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessage("Area_AreaId", "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					@Html.Label("Nome", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="Nome" name="Nome" placeholder="Nome">
+						@Html.ValidationMessage("Nome", "", new { @class = "text-danger" })
+					</div>
+					@Html.Label("Descricao", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="Descricao" name="Descricao" placeholder="Descrição">
+						@Html.ValidationMessage("Descricao", "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					@Html.Label("Nivel", htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-lg-4">
+						@Html.DropDownList("Nivel", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessage("Nivel", "", new { @class = "text-danger" })
+					</div>
+					@*<label for="Bibliografia" class="col-lg-2 control-label">Total de itens por página</label>
+					<div class="col-lg-4">
+						<input type="text" class="form-control" id="Bibliografia" name="Bibliografia" placeholder="Bibliografia">
+					</div>*@
+					
+						<div class="col-lg-4">
+							<button type="submit" class="btn btn-primary">Enviar</button>
+						</div>
+					
+				</div>
+				
+				@*<div class="form-group">
+					<div class="col-lg-4 col-lg-offset-4">
+						<button type="submit" class="btn btn-primary">Enviar</button>
+					</div>
+				</div>*@
+			</fieldset>
+		</form>
+	}
+}

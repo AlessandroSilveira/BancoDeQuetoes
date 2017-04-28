@@ -21,7 +21,6 @@ namespace BancoDeQuestoes.Application.Interface
 		public void Dispose()
 	    {
 			_mestreDependente.Dispose();
-
         }
 
 	    public MestreDependenteViewModel Add(MestreDependenteViewModel obj)
@@ -45,7 +44,6 @@ namespace BancoDeQuestoes.Application.Interface
 	    {
 			_mestreDependente.Update(Mapper.Map<MestreDependenteViewModel, MestreDependente>(obj));
 	        return obj;
-
 	    }
 
 	    public void Remove(Guid id)
