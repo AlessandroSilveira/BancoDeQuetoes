@@ -6,10 +6,10 @@
 			<fieldset>
 				<legend>Pesquisar</legend>
 				<div class="form-group">
-					@Html.Label("Projeto", htmlAttributes: new { @class = "control-label col-md-2" })
+					@Html.Label("Disciplina", htmlAttributes: new { @class = "control-label col-md-2" })
 					<div class="col-lg-4">
-						@Html.DropDownList("Projeto_ProjetoId", null, htmlAttributes: new { @class = "form-control" })
-						@Html.ValidationMessage("Projeto_ProjetoId", "", new { @class = "text-danger" })
+						@Html.DropDownList("Disciplina_DisciplinaId", null, htmlAttributes: new { @class = "form-control" })
+						@Html.ValidationMessage("Disciplina_DisciplinaId", "", new { @class = "text-danger" })
 
 					</div>
 					@Html.Label("Área", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -19,15 +19,15 @@
 					</div>
 				</div>
 				<div class="form-group">
-					@Html.Label("Mestre", htmlAttributes: new { @class = "control-label col-md-2" })
+					@Html.Label("Nome", htmlAttributes: new { @class = "control-label col-md-2" })
 					<div class="col-lg-4">
-						@Html.DropDownList("Mestre_MestreId", null, htmlAttributes: new { @class = "form-control" })
-						@Html.ValidationMessage("Mestre_MestreId", "", new { @class = "text-danger" })
+						<input type="text" class="form-control" id="Nome" name="Nome" placeholder="Nome">
+						@Html.ValidationMessage("Nome", "", new { @class = "text-danger" })
 					</div>
-					@Html.Label("Disciplina", htmlAttributes: new { @class = "control-label col-md-2" })
+					@Html.Label("Descricao", htmlAttributes: new { @class = "control-label col-md-2" })
 					<div class="col-lg-4">
-						@Html.DropDownList("Disciplina_DisciplinaId", null, htmlAttributes: new { @class = "form-control" })
-						@Html.ValidationMessage("Disciplina_DisciplinaId", "", new { @class = "text-danger" })
+						<input type="text" class="form-control" id="Descricao" name="Descricao" placeholder="Descrição">
+						@Html.ValidationMessage("Descricao", "", new { @class = "text-danger" })
 					</div>
 				</div>
 				<div class="form-group">
@@ -36,16 +36,22 @@
 						@Html.DropDownList("Nivel", null, htmlAttributes: new { @class = "form-control" })
 						@Html.ValidationMessage("Nivel", "", new { @class = "text-danger" })
 					</div>
-					<label for="TotalPagina" class="col-lg-2 control-label">Total de itens por página</label>
+					@*<label for="Bibliografia" class="col-lg-2 control-label">Total de itens por página</label>
 					<div class="col-lg-4">
-						<input type="text" class="form-control" id="TotalPagina" name="TotalPagina" placeholder="Total de Páginas">
-					</div>
+						<input type="text" class="form-control" id="Bibliografia" name="Bibliografia" placeholder="Bibliografia">
+					</div>*@
+					
+						<div class="col-lg-4">
+							<button type="submit" class="btn btn-primary">Enviar</button>
+						</div>
+					
 				</div>
-				<div class="form-group">
+				
+				@*<div class="form-group">
 					<div class="col-lg-4 col-lg-offset-4">
 						<button type="submit" class="btn btn-primary">Enviar</button>
 					</div>
-				</div>
+				</div>*@
 			</fieldset>
 		</form>
 	}

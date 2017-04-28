@@ -11,6 +11,6 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
 		IEnumerable<TopicoAtribuido> GetAll();
 		TopicoAtribuido Update(TopicoAtribuido obj);
 		void Remove(Guid id);
-		IEnumerable<TopicoAtribuido> ResultadoPesquisaDisciplina(TopicoAtribuido topico);
+		IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina topico , IEnumerable<Disciplina> todos);
 	}
 }

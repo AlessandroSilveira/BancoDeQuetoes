@@ -3,6 +3,7 @@ using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 using BancoDeQuestoes.Domain.Services;
+using BancoDeQuestoes.Infra.Data;
 using BancoDeQuestoes.Infra.Data.Repository;
 using SimpleInjector;
 
@@ -60,6 +61,7 @@ namespace BancoDeQuestoes.CrossCutting.IoC
 			container.Register<IRevisorRepository, RevisorRepositoryBase>(Lifestyle.Scoped);
 			container.Register<IStatusRepository, StatusRepositoryBase>(Lifestyle.Scoped);
 			container.Register<ITopicoAtribuidoRepository, TopicoAtribuidoRepositoryBase>(Lifestyle.Scoped);
+			container.Register<IItemPesquisaTopico, ItensPesquisaTopico>(Lifestyle.Scoped);
 
 		}
 	}

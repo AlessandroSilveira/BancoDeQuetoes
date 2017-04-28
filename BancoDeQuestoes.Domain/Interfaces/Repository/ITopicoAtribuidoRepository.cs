@@ -6,7 +6,7 @@ namespace BancoDeQuestoes.Domain.Interfaces.Repository
 	public interface ITopicoAtribuidoRepository:IRepository<TopicoAtribuido>
 	{
 	    void Dispose();
-		IEnumerable<TopicoAtribuido> ExecutadorDePesquisa(TopicoAtribuido form);
+		IEnumerable<Disciplina> ExecutadorDePesquisa(Disciplina form, IEnumerable<Disciplina> todos);
 	}
 }
 

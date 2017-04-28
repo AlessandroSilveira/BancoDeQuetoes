@@ -45,10 +45,11 @@
     <Compile Include="EntityConfig\RevisorConfigurations.cs" />
     <Compile Include="EntityConfig\StatusConfiguration.cs" />
     <Compile Include="ItensPesquisaTopico.cs" />
+    <Compile Include="Repository\PesquisaTopico\Descricao.cs" />
+    <Compile Include="Repository\PesquisaTopico\Nome.cs" />
     <Compile Include="Repository\PesquisaTopico\AreaId.cs" />
     <Compile Include="Repository\PesquisaTopico\DisciplinaId.cs" />
     <Compile Include="Repository\PesquisaTopico\FimPesquisaTopico.cs" />
-    <Compile Include="Repository\PesquisaTopico\MestreId.cs" />
     <Compile Include="Repository\PesquisaTopico\Nivel.cs" />
     <Compile Include="Repository\PesquisaDisciplina\DescBibliografia.cs" />
     <Compile Include="Repository\PesquisaDisciplina\DescNivel.cs" />
@@ -57,7 +58,6 @@
     <Compile Include="Repository\PesquisaDisciplina\ExecutaPesquisaDisciplina.cs" />
     <Compile Include="Repository\PesquisaDisciplina\FimPesquisa.cs" />
     <Compile Include="Repository\PesquisaDisciplina\IdDisciplina.cs" />
-    <Compile Include="Repository\PesquisaTopico\ProjetoId.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\StatusRepository.cs" />
     <Compile Include="EntityConfig\TopicoAtribuidoConfiguration.cs" />

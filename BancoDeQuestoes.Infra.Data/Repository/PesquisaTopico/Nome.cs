@@ -5,13 +5,14 @@ using BancoDeQuestoes.Domain.Interfaces.Repository;
 
 namespace BancoDeQuestoes.Infra.Data.Repository.PesquisaTopico
 {
-	public class MestreId : IItemPesquisaTopico
+	public class Nome : IItemPesquisaTopico
 	{
-		public List<TopicoAtribuido> Pesquisa(TopicoAtribuido form, List<TopicoAtribuido> sql)
+		public List<Disciplina> Pesquisa(Disciplina form, IEnumerable<Disciplina> sql)
 		{
-			sql = sql.Where(a => a.Mestre.MestreId == form.Mestre.MestreId).ToList();
+			sql =   sql.Where(c => c.Nome == form.Nome).ToList();
 			return Proximo.Pesquisa(form, sql);
 		}
+
 		public IItemPesquisaTopico Proximo { get; set; }
 	}
 }

@@ -5,7 +5,7 @@ namespace BancoDeQuestoes.Domain.Interfaces.Repository
 {
 	public interface IItemPesquisaTopico
 	{
-		List<TopicoAtribuido> Pesquisa(TopicoAtribuido form, List<TopicoAtribuido> sql);
+		List<Disciplina> Pesquisa(Disciplina form, IEnumerable<Disciplina> sql);
 		IItemPesquisaTopico Proximo { get; set; }
 	}
 }

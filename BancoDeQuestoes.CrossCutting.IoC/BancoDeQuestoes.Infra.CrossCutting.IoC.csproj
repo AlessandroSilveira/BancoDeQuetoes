@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BancoDeQuestoes.Application\BancoDeQuestoes.Application.csproj">
-      <Project>{4489D34B-B534-4892-B4A2-A58775E4A2F2}</Project>
+      <Project>{4489d34b-b534-4892-b4a2-a58775e4a2f2}</Project>
       <Name>BancoDeQuestoes.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
