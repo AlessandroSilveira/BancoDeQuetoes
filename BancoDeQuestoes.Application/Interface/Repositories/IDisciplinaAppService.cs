@@ -13,5 +13,7 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 		DisciplinaViewModel Update(DisciplinaViewModel obj);
 		void Remove(Guid id);
 		IEnumerable<DisciplinaViewModel> ResultadoPesquisaDisciplina(DisciplinaViewModel form);
-	}
+	    IEnumerable<DisciplinaViewModel> ResultadoPesquisaDisciplinaAtribuicao(DisciplinaViewModel topicoAtribuidoViewModel);
+
+    }
 }

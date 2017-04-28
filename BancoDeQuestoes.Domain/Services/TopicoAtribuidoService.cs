@@ -46,9 +46,6 @@ namespace BancoDeQuestoes.Domain.Services
 			GC.SuppressFinalize(this);
 		}
 
-		public IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina form , IEnumerable<Disciplina> todos)
-		{
-			return _topicoAtribuidoRepository.ExecutadorDePesquisa(form, todos);
-		}
+		
 	}
 }

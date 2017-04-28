@@ -8,5 +8,6 @@ namespace BancoDeQuestoes.Domain.Interfaces.Repository
 	    void Dispose();
 
 		IEnumerable<Disciplina> ExecutadorDePesquisa(Disciplina form);
-	}
+	    IEnumerable<Disciplina> ExecutadorDePesquisaAtribuicao(Disciplina form);
+    }
 }

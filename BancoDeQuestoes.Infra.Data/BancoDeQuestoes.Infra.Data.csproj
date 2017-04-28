@@ -45,6 +45,10 @@
     <Compile Include="EntityConfig\RevisorConfigurations.cs" />
     <Compile Include="EntityConfig\StatusConfiguration.cs" />
     <Compile Include="ItensPesquisaTopico.cs" />
+    <Compile Include="Migrations\201704281748257_28042017-1.cs" />
+    <Compile Include="Migrations\201704281748257_28042017-1.Designer.cs">
+      <DependentUpon>201704281748257_28042017-1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\PesquisaTopico\Descricao.cs" />
     <Compile Include="Repository\PesquisaTopico\Nome.cs" />
     <Compile Include="Repository\PesquisaTopico\AreaId.cs" />
@@ -109,6 +113,11 @@
       <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704281748257_28042017-1.resx">
+      <DependentUpon>201704281748257_28042017-1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

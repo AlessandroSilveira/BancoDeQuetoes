@@ -3,6 +3,7 @@ using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Infra.Data.Repository.PesquisaDisciplina;
+using BancoDeQuestoes.Infra.Data.Repository.PesquisaTopico;
 
 namespace BancoDeQuestoes.Infra.Data.Repository
 {
@@ -29,5 +30,29 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 
 			return filtroDescTopico.Pesquisa(form, sql);
 		}
-	}
+
+	    public IEnumerable<Disciplina> ExecutadorDePesquisaAtribuicao(Disciplina form)
+	    {
+	        var sql = GetAll().ToList();
+
+	        var filtroDisciplinaId = new DisciplinaId();
+	        var filtroAreaId = new AreaId();
+	        var filtroNome = new Nome();
+	        var filtroDescricao = new Descricao();
+	        var filtroNivel = new Nivel();
+
+	        var filtroFimPesquisa = new FimPesquisaTopico();
+
+	        filtroDisciplinaId.Proximo = filtroAreaId;
+	        filtroAreaId.Proximo = filtroNome;
+	        filtroNome.Proximo = filtroDescricao;
+	        filtroDescricao.Proximo = filtroNivel;
+	        filtroNivel.Proximo = filtroFimPesquisa;
+
+	        //Deixar a classe FimPesquisa sempre por ultimo, ela é que finaliza e retorna a consulta, sem ela dará um erro
+	        filtroNivel.Proximo = filtroFimPesquisa;
+
+	        return filtroDisciplinaId.Pesquisa(form,sql);
+	    }
+    }
 }

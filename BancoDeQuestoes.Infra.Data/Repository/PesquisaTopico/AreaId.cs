@@ -7,9 +7,10 @@ namespace BancoDeQuestoes.Infra.Data.Repository.PesquisaTopico
 {
 	public class AreaId : IItemPesquisaTopico
 	{
-		public List<Disciplina> Pesquisa(Disciplina form, IEnumerable<Disciplina> sql)
+		public List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql)
 		{
-			sql = sql.Where(a => a.Area.AreaId == form.Area.AreaId).ToList();
+		    if (string.IsNullOrEmpty(form.Area.AreaId.ToString())) return Proximo.Pesquisa(form, sql);
+            sql = sql.Where(a => a.Area.AreaId == form.Area.AreaId).ToList();
 			return Proximo.Pesquisa(form, sql);
 		}
 

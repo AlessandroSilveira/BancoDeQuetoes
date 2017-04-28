@@ -413,7 +413,7 @@
     <Content Include="Views\TopicoAtribuido\Edit.cshtml" />
     <Content Include="Views\TopicoAtribuido\Index.cshtml" />
     <Content Include="Views\Shared\PesquisaTopicos.cshtml" />
-    <Content Include="Views\TopicoAtribuido\Search.cshtml" />
+    <Content Include="Views\Disciplina\Atribuicao.cshtml" />
     <Content Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

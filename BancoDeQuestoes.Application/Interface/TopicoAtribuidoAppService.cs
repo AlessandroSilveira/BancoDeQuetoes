@@ -56,11 +56,6 @@ namespace BancoDeQuestoes.Application.Interface
 	        throw new NotImplementedException();
 	    }
 
-		public IEnumerable<DisciplinaViewModel> ResultadoPesquisaDisciplina(DisciplinaViewModel form,  IEnumerable<DisciplinaViewModel> todos)
-		{
-			var disciplina = Mapper.Map<DisciplinaViewModel, Disciplina>(form);
-			var lista = Mapper.Map<IEnumerable<DisciplinaViewModel>, IEnumerable<Disciplina>>(todos);
-			return Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_topicoAtribuido.ResultadoPesquisaDisciplina(disciplina, lista));
-		}
+		
 	}
 }

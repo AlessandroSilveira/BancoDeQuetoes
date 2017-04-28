@@ -13,5 +13,6 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
 		Disciplina Update(Disciplina obj);
 		void Remove(Guid id);
 		IEnumerable<Disciplina> ResultadoPesquisaDisciplina(Disciplina disciplina);
-	}
+	    IEnumerable<Disciplina> ResultadoPesquisaDisciplinaAtribuicao(Disciplina topico);
+    }
 }

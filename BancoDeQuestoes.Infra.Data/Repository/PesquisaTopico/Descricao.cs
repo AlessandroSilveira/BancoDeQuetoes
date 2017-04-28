@@ -7,9 +7,10 @@ namespace BancoDeQuestoes.Infra.Data.Repository.PesquisaTopico
 {
 	public class Descricao : IItemPesquisaTopico
 	{
-		public List<Disciplina> Pesquisa(Disciplina form, IEnumerable<Disciplina> sql)
+		public List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql)
 		{
-			sql = sql.Where(c => c.Descricao == form.Descricao).ToList();
+		    if (string.IsNullOrEmpty(form.Descricao)) return Proximo.Pesquisa(form, sql);
+            sql = sql.Where(c => c.Descricao == form.Descricao).ToList();
 			return Proximo.Pesquisa(form, sql);
 		}
 

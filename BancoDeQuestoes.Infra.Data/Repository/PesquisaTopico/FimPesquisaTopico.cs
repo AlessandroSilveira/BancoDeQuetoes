@@ -7,7 +7,7 @@ namespace BancoDeQuestoes.Infra.Data.Repository.PesquisaTopico
 {
 	public class FimPesquisaTopico : IItemPesquisaTopico
 	{
-		public List<Disciplina> Pesquisa(Disciplina form, IEnumerable<Disciplina> sql)
+		public List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql)
 		{
 			return sql.ToList();
 		}

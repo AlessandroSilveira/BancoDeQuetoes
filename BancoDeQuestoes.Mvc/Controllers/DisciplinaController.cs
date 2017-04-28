@@ -10,11 +10,16 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	{
 		private readonly IDisciplinaAppService _disciplinaAppService;
 		private readonly IAreaAppService _areaAppService;
+	    private readonly IProjetoAppService _projetoAppService;
+	    private readonly IMestreAppService _mestreAppService;
 
-		public DisciplinaController(IDisciplinaAppService disciplinaAppService, IAreaAppService areaAppService)
+		public DisciplinaController(IDisciplinaAppService disciplinaAppService, IAreaAppService areaAppService, 
+            IProjetoAppService projetoAppService, IMestreAppService mestreAppService)
 		{
 			_disciplinaAppService = disciplinaAppService;
 			_areaAppService = areaAppService;
+		    _projetoAppService = projetoAppService;
+		    _mestreAppService = mestreAppService;
 		}
 
 		public ActionResult Index()
@@ -34,7 +39,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		public ActionResult Create()
 		{
 			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
-			ViewBag.AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao");
+			ViewBag.Area_AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao");
 			return View();
 		}
 
@@ -49,16 +54,16 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			}
 
 			var areaViewModel = _areaAppService.GetAll();
-			ViewBag.AreaId = new SelectList(areaViewModel, "AreaId", "Descricao", disciplinaViewModel.AreaId);
+			ViewBag.Area_AreaId = new SelectList(areaViewModel, "AreaId", "Descricao");
 			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
-			return View(disciplinaViewModel);
-		}
+		    return RedirectToAction("Index");
+        }
 
 		public ActionResult Edit(Guid id)
 		{
 			var disciplina = _disciplinaAppService.GetById(id);
 			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
-			ViewBag.AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao");
+			ViewBag.Area_AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao");
 			return View(disciplina);
 		}
 
@@ -66,12 +71,16 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(DisciplinaViewModel disciplinaViewModel)
 		{
-			if (!ModelState.IsValid) return View(disciplinaViewModel);
-
-			_disciplinaAppService.Update(disciplinaViewModel);
+		    if (!ModelState.IsValid)
+		    {
+		        return View(disciplinaViewModel);
+		    }
+            
+            _disciplinaAppService.Update(disciplinaViewModel);
 			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
-			ViewBag.AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", disciplinaViewModel.AreaId);
-			return View(disciplinaViewModel);
+		    ViewBag.Area_AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao");
+            var disciplina = _disciplinaAppService.GetAll();
+            return View("Index", disciplina);
 		}
 
 		public ActionResult Delete(Guid id)
@@ -96,5 +105,28 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
 			return View(iNscrBqTopico);
 		}
-	}
+
+
+	    public ActionResult Atribuicao()
+	    {
+	        ViewBag.Projeto_ProjetoId = new SelectList(_projetoAppService.GetAll(), "ProjetoId", "NomeProjeto", "Selecione");
+	        ViewBag.Area_AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", "Selecione");
+	        ViewBag.Mestre_MestreId = new SelectList(_mestreAppService.GetAll(), "MestreId", "Nome", "Selecione");
+	        ViewBag.Disciplina_DisciplinaId = new SelectList(_disciplinaAppService.GetAll(), "DisciplinaId", "Descricao", "Selecione");
+	        ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
+	        return View();
+	    }
+
+	    [HttpPost]
+	    public ActionResult Atribuicao(DisciplinaViewModel disciplinaViewModel)
+	    {
+	        ViewBag.Projeto_ProjetoId = new SelectList(_projetoAppService.GetAll(), "ProjetoId", "NomeProjeto", "Selecione");
+	        ViewBag.Area_AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", "Selecione");
+	        ViewBag.Mestre_MestreId = new SelectList(_mestreAppService.GetAll(), "MestreId", "Nome", "Selecione");
+	        ViewBag.Disciplina_DisciplinaId = new SelectList(_disciplinaAppService.GetAll(), "DisciplinaId", "Descricao", "Selecione");
+	        ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
+	        return View(_disciplinaAppService.ResultadoPesquisaDisciplinaAtribuicao(disciplinaViewModel));
+	    }
+
+    }
 }

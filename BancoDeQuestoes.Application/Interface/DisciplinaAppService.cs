@@ -56,5 +56,11 @@ namespace BancoDeQuestoes.Application.Interface
 			
 			return Mapper.Map<IEnumerable<Disciplina>,IEnumerable<DisciplinaViewModel>>(_disciplinaService.ResultadoPesquisaDisciplina(disciplina));
 		}
-	}
+
+	    public IEnumerable<DisciplinaViewModel> ResultadoPesquisaDisciplinaAtribuicao(DisciplinaViewModel form)
+	    {
+	        var disciplina = Mapper.Map<DisciplinaViewModel, Disciplina>(form);
+	       return Mapper.Map<IEnumerable<Disciplina>, IEnumerable<DisciplinaViewModel>>(_disciplinaService.ResultadoPesquisaDisciplinaAtribuicao(disciplina));
+	    }
+    }
 }
