@@ -45,10 +45,15 @@
     <Compile Include="EntityConfig\RevisorConfigurations.cs" />
     <Compile Include="EntityConfig\StatusConfiguration.cs" />
     <Compile Include="ItensPesquisaTopico.cs" />
-    <Compile Include="Migrations\201704281748257_28042017-1.cs" />
-    <Compile Include="Migrations\201704281748257_28042017-1.Designer.cs">
-      <DependentUpon>201704281748257_28042017-1.cs</DependentUpon>
+    <Compile Include="Migrations\201705021847420_02052017.cs" />
+    <Compile Include="Migrations\201705021847420_02052017.Designer.cs">
+      <DependentUpon>201705021847420_02052017.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705021914168_02052017-2.cs" />
+    <Compile Include="Migrations\201705021914168_02052017-2.Designer.cs">
+      <DependentUpon>201705021914168_02052017-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\AreaId_Disciplina.cs" />
     <Compile Include="Repository\PesquisaTopico\Descricao.cs" />
     <Compile Include="Repository\PesquisaTopico\Nome.cs" />
     <Compile Include="Repository\PesquisaTopico\AreaId.cs" />
@@ -115,8 +120,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704281748257_28042017-1.resx">
-      <DependentUpon>201704281748257_28042017-1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705021847420_02052017.resx">
+      <DependentUpon>201705021847420_02052017.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705021914168_02052017-2.resx">
+      <DependentUpon>201705021914168_02052017-2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

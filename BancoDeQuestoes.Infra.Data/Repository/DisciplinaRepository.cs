@@ -13,20 +13,23 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 		{
 			var sql = GetAll().ToList();
 
+
 			var filtroDescTopico = new DescTopico();
 			var filtroIdDisciplina = new IdDisciplina();
 			var filtroDescTitulo = new DescTitulo();
 			var filtroDescBibliografia = new DescBibliografia();
 			var filtroDescNivel = new DescNivel();
+			var filtroAreaId = new AreaIdDisciplina();
 			var filtroFimPesquisa = new FimPesquisa();
 
 			filtroDescTopico.Proximo = filtroIdDisciplina;
 			filtroIdDisciplina.Proximo = filtroDescTitulo;
 			filtroDescTitulo.Proximo = filtroDescBibliografia;
 			filtroDescBibliografia.Proximo = filtroDescNivel;
+			filtroDescNivel.Proximo = filtroAreaId;
 
 			//Deixar a classe FimPesquisa sempre por ultimo, ela é que finaliza e retorna a consulta, sem ela dará um erro
-			filtroDescNivel.Proximo = filtroFimPesquisa;
+			filtroAreaId.Proximo = filtroFimPesquisa;
 
 			return filtroDescTopico.Pesquisa(form, sql);
 		}

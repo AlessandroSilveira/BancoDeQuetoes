@@ -3,7 +3,7 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _280420171 : DbMigration
+    public partial class _02052017 : DbMigration
     {
         public override void Up()
         {
@@ -54,16 +54,16 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
                 c => new
                     {
                         DisciplinaId = c.Guid(nullable: false, identity: true),
+                        AreaId = c.Guid(nullable: false),
                         Descricao = c.String(nullable: false, maxLength: 150, unicode: false),
                         Nome = c.String(nullable: false, maxLength: 150, unicode: false),
                         Bibliografia = c.String(nullable: false, maxLength: 150, unicode: false),
                         Ativo = c.Boolean(nullable: false),
                         Nivel = c.String(nullable: false, maxLength: 150, unicode: false),
-                        Area_AreaId = c.Guid(),
                     })
                 .PrimaryKey(t => t.DisciplinaId)
-                .ForeignKey("dbo.Area", t => t.Area_AreaId)
-                .Index(t => t.Area_AreaId);
+                .ForeignKey("dbo.Area", t => t.AreaId)
+                .Index(t => t.AreaId);
             
             CreateTable(
                 "dbo.Mestre",
@@ -274,7 +274,7 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
             DropForeignKey("dbo.MestreArea", "AreaId", "dbo.Area");
             DropForeignKey("dbo.Mestre", "Banca_BancaId", "dbo.Banca");
             DropForeignKey("dbo.TopicoAtribuido", "Disciplina_DisciplinaId", "dbo.Disciplina");
-            DropForeignKey("dbo.Disciplina", "Area_AreaId", "dbo.Area");
+            DropForeignKey("dbo.Disciplina", "AreaId", "dbo.Area");
             DropForeignKey("dbo.TopicoAtribuido", "Area_AreaId", "dbo.Area");
             DropIndex("dbo.Questao", new[] { "TopicoAtribuidoId" });
             DropIndex("dbo.Revisor", new[] { "Area_AreaId" });
@@ -288,7 +288,7 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
             DropIndex("dbo.MestreArea", new[] { "MestreId" });
             DropIndex("dbo.Mestre", new[] { "Banca_BancaId" });
             DropIndex("dbo.Mestre", new[] { "Cpf" });
-            DropIndex("dbo.Disciplina", new[] { "Area_AreaId" });
+            DropIndex("dbo.Disciplina", new[] { "AreaId" });
             DropIndex("dbo.TopicoAtribuido", new[] { "Projeto_ProjetoId" });
             DropIndex("dbo.TopicoAtribuido", new[] { "Mestre_MestreId" });
             DropIndex("dbo.TopicoAtribuido", new[] { "Disciplina_DisciplinaId" });

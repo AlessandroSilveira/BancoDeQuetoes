@@ -24,7 +24,7 @@ namespace BancoDeQuestoesTeste
 			_repository = new MockRepository(MockBehavior.Strict);
 			_disciplinaAppServiceMock = _repository.Create<IDisciplinaAppService>();
 			_areaAppServiceMock = _repository.Create<IAreaAppService>();
-			_disciplina = new DisciplinaController(_disciplinaAppServiceMock.Object, _areaAppServiceMock.Object);
+			//_disciplina = new DisciplinaController(_disciplinaAppServiceMock.Object, _areaAppServiceMock.Object);
 		}
 
 		[Test]

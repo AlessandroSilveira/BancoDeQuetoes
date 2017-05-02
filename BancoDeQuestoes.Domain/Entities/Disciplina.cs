@@ -11,7 +11,7 @@ namespace BancoDeQuestoes.Domain.Entities
 		}
 
 		public Guid DisciplinaId { get; set; }
-		//public Guid AreaId { get; set; }
+		public Guid AreaId { get; set; }
         public string Descricao { get; set; }
         public string Nome { get; set; }
         public string Bibliografia { get; set; }

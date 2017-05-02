@@ -12,8 +12,8 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 			Property(p => p.Nome)
 				.IsRequired();
 
-			//Property(p => p.AreaId)
-			//	.IsRequired();
+			Property(p => p.AreaId)
+				.IsRequired();
 
 			Property(p => p.Descricao)
 				.HasMaxLength(150)
