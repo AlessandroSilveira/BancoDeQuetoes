@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BancoDeQuestoes.Application.ViewModels.DisciplinaViewModel>
 
 @{
-    ViewBag.Title = "Atribuicao";
+	ViewBag.Title = "Atribuicao";
 }
 
 <h2>Atribuição de Novo Item de Prova</h2>
@@ -17,35 +17,44 @@
 			@Html.DisplayNameFor(model => model.Descricao)
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.Area.Descricao)
+			@*@Html.DisplayNameFor(model => model.Area.Descricao)*@
+			Área
 		</th>
 		<th>
 			@Html.DisplayNameFor(model => model.Nivel)
 		</th>
-	
-		<th></th>
+
+		<th>Selecionar Disciplina</th>
 	</tr>
 	@if (Model != null)
 	{
-foreach (var item in Model)
- {
-	 <tr>
-		 <td>
-			 @Html.DisplayFor(modelItem => item.Nome)
-		 </td>
-		 <td>
-			 @Html.DisplayFor(modelItem => item.Descricao)
-		 </td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Area.Descricao)
-		</td>
-		 <td>
-			 @Html.DisplayFor(modelItem => item.Nivel)
-		 </td>
-		 <td>
-			 @Html.ActionLink("Edit", "Edit", new {id = item.DisciplinaId}) 
-		 </td>
-	 </tr>
- }
+		foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Nome)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Descricao)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Area.Descricao)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Nivel)
+				</td>
+				<td>
+					@*@Html.ActionLink("Edit", "Edit", new {id = item.DisciplinaId})*@
+					@*@Html.CheckBox("DisciplinaId",new {id= item.DisciplinaId })*@
+					<input type="checkbox" name="DisciplinaId[]" value="@item.DisciplinaId" />
+				</td>
+			</tr>
+		}
+		<tr>
+			<td colspan="5">
+				<button type="submit" class="btn btn-primary">Enviar</button>
+			</td>
+		</tr>
+
 	}
 </table>
