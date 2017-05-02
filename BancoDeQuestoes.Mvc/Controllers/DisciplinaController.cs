@@ -110,9 +110,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	    public ActionResult Atribuicao()
 	    {
 	        ViewBag.Projeto_ProjetoId = new SelectList(_projetoAppService.GetAll(), "ProjetoId", "NomeProjeto", "Selecione");
-	        ViewBag.Area_AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", "Selecione");
+	        ViewBag.Area = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", "Selecione");
 	        ViewBag.Mestre_MestreId = new SelectList(_mestreAppService.GetAll(), "MestreId", "Nome", "Selecione");
-	        ViewBag.Disciplina_DisciplinaId = new SelectList(_disciplinaAppService.GetAll(), "DisciplinaId", "Descricao", "Selecione");
+	        ViewBag.DisciplinaId = new SelectList(_disciplinaAppService.GetAll(), "DisciplinaId", "Descricao", "Selecione");
 	        ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
 	        return View();
 	    }
@@ -121,9 +121,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	    public ActionResult Atribuicao(DisciplinaViewModel disciplinaViewModel)
 	    {
 	        ViewBag.Projeto_ProjetoId = new SelectList(_projetoAppService.GetAll(), "ProjetoId", "NomeProjeto", "Selecione");
-	        ViewBag.Area_AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", "Selecione");
+	        ViewBag.Area = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", "Selecione");
 	        ViewBag.Mestre_MestreId = new SelectList(_mestreAppService.GetAll(), "MestreId", "Nome", "Selecione");
-	        ViewBag.Disciplina_DisciplinaId = new SelectList(_disciplinaAppService.GetAll(), "DisciplinaId", "Descricao", "Selecione");
+	        ViewBag.DisciplinaId = new SelectList(_disciplinaAppService.GetAll(), "DisciplinaId", "Descricao", "Selecione");
 	        ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
 	        return View(_disciplinaAppService.ResultadoPesquisaDisciplinaAtribuicao(disciplinaViewModel));
 	    }
