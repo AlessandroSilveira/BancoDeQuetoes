@@ -17,7 +17,7 @@
 			@Html.DisplayNameFor(model => model.Descricao)
 		</th>
 		<th>
-			@*@Html.DisplayNameFor(model => model.Area.Descricao)*@
+		
 			Área
 		</th>
 		<th>
@@ -44,8 +44,7 @@
 					@Html.DisplayFor(modelItem => item.Nivel)
 				</td>
 				<td>
-					@*@Html.ActionLink("Edit", "Edit", new {id = item.DisciplinaId})*@
-					@*@Html.CheckBox("DisciplinaId",new {id= item.DisciplinaId })*@
+				
 					<input type="checkbox" name="DisciplinaId[]" value="@item.DisciplinaId" />
 				</td>
 			</tr>
