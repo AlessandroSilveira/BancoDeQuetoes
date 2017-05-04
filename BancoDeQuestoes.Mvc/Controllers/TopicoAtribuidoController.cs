@@ -74,26 +74,19 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			_topicoAtribuidoAppService.Remove(id);
 			return RedirectToAction("Index");
 		}
-		
-		//public ActionResult Search()
-		//{
-		//	ViewBag.Projeto_ProjetoId = new SelectList(_projetoAppService.GetAll(), "ProjetoId", "NomeProjeto", "Selecione");
-		//	ViewBag.Area_AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", "Selecione");
-		//	ViewBag.Mestre_MestreId = new SelectList(_mestreAppService.GetAll(), "MestreId", "Nome", "Selecione");
-		//	ViewBag.Disciplina_DisciplinaId = new SelectList(_disciplinaAppService.GetAll(), "DisciplinaId", "Descricao", "Selecione");
-		//	ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
-		//	return View();
-		//}
 
-		//[HttpPost]
-		//public ActionResult Search(DisciplinaViewModel disciplinaViewModel)
-		//{
-		//	ViewBag.Projeto_ProjetoId = new SelectList(_projetoAppService.GetAll(), "ProjetoId", "NomeProjeto", "Selecione");
-		//	ViewBag.Area_AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", "Selecione");
-		//	ViewBag.Mestre_MestreId = new SelectList(_mestreAppService.GetAll(), "MestreId", "Nome", "Selecione");
-		//	ViewBag.Disciplina_DisciplinaId = new SelectList(_disciplinaAppService.GetAll(), "DisciplinaId", "Descricao", "Selecione");
-		//	ViewBag.Nivel = new SelectList(new ListaNiveis().Niveis(), "Key", "Value", "Selecione");
-		//	return View(_topicoAtribuidoAppService.ResultadoPesquisaDisciplina(disciplinaViewModel,_disciplinaAppService.GetAll()));
-		//}
+		
+		[HttpPost]
+		public ActionResult SalvarTopicoAtribuido(TopicoAtribuidoViewModel form)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View();
+			}
+			_topicoAtribuidoAppService.Add(form);
+			return View();
+
+
+		}
 	}
 }

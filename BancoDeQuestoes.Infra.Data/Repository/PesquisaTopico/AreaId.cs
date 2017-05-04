@@ -9,8 +9,8 @@ namespace BancoDeQuestoes.Infra.Data.Repository.PesquisaTopico
 	{
 		public List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql)
 		{
-		    if (string.IsNullOrEmpty(form.AreaId.ToString())) return Proximo.Pesquisa(form, sql);
-            sql = sql.Where(a => a.AreaId == form.AreaId).ToList();
+			if (form.AreaId.ToString() == "00000000-0000-0000-0000-000000000000" || string.IsNullOrEmpty(form.AreaId.ToString())) return Proximo.Pesquisa(form, sql);
+			sql = sql.Where(a => a.AreaId.ToString().Contains(form.AreaId.ToString())).ToList();
 			return Proximo.Pesquisa(form, sql);
 		}
 

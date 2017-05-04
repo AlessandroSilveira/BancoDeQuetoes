@@ -8,33 +8,33 @@
 				<div class="form-group">
 					@Html.Label("Disciplina", htmlAttributes: new { @class = "control-label col-md-2" })
 					<div class="col-lg-4">
-						@Html.DropDownList("DisciplinaId", null, htmlAttributes: new { @class = "form-control" })
-						@Html.ValidationMessage("DisciplinaId", "", new { @class = "text-danger" })
+						@Html.DropDownList("DisciplinaId", (IEnumerable<SelectListItem>)ViewBag.DisciplinaId,"Selecione", htmlAttributes: new { @class = "form-control" })
+						@*@Html.ValidationMessage("DisciplinaId", "", new { @class = "text-danger" })*@
 
 					</div>
 					@Html.Label("Área", htmlAttributes: new { @class = "control-label col-md-2" })
 					<div class="col-lg-4">
-						@Html.DropDownList("AreaId", null, htmlAttributes: new { @class = "form-control" })
-						@Html.ValidationMessage("AreaId", "", new { @class = "text-danger" })
+						@Html.DropDownList("AreaId", (IEnumerable<SelectListItem>)ViewBag.AreaId, "Selecione", htmlAttributes: new { @class = "form-control" })
+						@*@Html.ValidationMessage("AreaId", "", new { @class = "text-danger" })*@
 					</div>
 				</div>
 				<div class="form-group">
 					@Html.Label("Nome", htmlAttributes: new { @class = "control-label col-md-2" })
 					<div class="col-lg-4">
 						<input type="text" class="form-control" id="Nome" name="Nome" placeholder="Nome">
-						@Html.ValidationMessage("Nome", "", new { @class = "text-danger" })
+						@*@Html.ValidationMessage("Nome", "", new { @class = "text-danger" })*@
 					</div>
 					@Html.Label("Descricao", htmlAttributes: new { @class = "control-label col-md-2" })
 					<div class="col-lg-4">
 						<input type="text" class="form-control" id="Descricao" name="Descricao" placeholder="Descrição">
-						@Html.ValidationMessage("Descricao", "", new { @class = "text-danger" })
+						@*@Html.ValidationMessage("Descricao", "", new { @class = "text-danger" })*@
 					</div>
 				</div>
 				<div class="form-group">
 					@Html.Label("Nivel", htmlAttributes: new { @class = "control-label col-md-2" })
 					<div class="col-lg-4">
 						@Html.DropDownList("Nivel", null, htmlAttributes: new { @class = "form-control" })
-						@Html.ValidationMessage("Nivel", "", new { @class = "text-danger" })
+						@*@Html.ValidationMessage("Nivel", "", new { @class = "text-danger" })*@
 					</div>
 					@*<label for="Bibliografia" class="col-lg-2 control-label">Total de itens por página</label>
 					<div class="col-lg-4">

@@ -18,7 +18,7 @@
 		</th>
 		<th>
 		
-			Xablau
+			Área
 		</th>
 		<th>
 			@Html.DisplayNameFor(model => model.Nivel)
@@ -45,15 +45,91 @@
 				</td>
 				<td>
 				
-					<input type="checkbox" name="DisciplinaId[]" value="@item.DisciplinaId" />
+					<input type="checkbox" name="DisciplinaId" value="@item.DisciplinaId" />
 				</td>
 			</tr>
 		}
 		<tr>
 			<td colspan="5">
-				<button type="submit" class="btn btn-primary">Enviar</button>
+				@*@Html.Hidden("Disciplinas_selecionadas")*@
+				@*<button type="button" id="envia_selecionados" class="btn btn-primary">Enviar</button>*@
+				<button type="button" class="btn btn-primary" id="envia_selecionados" data-toggle="modal" data-target="#myModal">Enviar</button>
 			</td>
 		</tr>
 
 	}
+
 </table>
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		@using (Html.BeginForm("SalvarTopicoAtribuido", "TopicoAtribuido", FormMethod.Post, new {@form = "form"}))
+		{
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Atribuição de Novo Item de Prova - Disciplinas Escolhidas</h4>
+				</div>
+				<div class="modal-body">
+					<h5 class="modal-title">As seguintes dsiciplinas foram escolhidas para atribuição</h5>
+					<br/>
+					<span id="disc"></span>
+					@Html.Hidden("Disciplinas_selecionadas")
+					<br/>
+					<h5 class="modal-title">Preencha os dados abaixo para seguir com a atribuição:</h5>
+					<br/>
+					<form class="form-horizontal">
+						<fieldset >
+							<div class="form-group">
+								<label for="inputMestre" class="col-lg-2 control-label">Mestre</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="inputMestre" placeholder="Mestre">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputValor" class="col-lg-2 control-label">Valor</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="inputValor" placeholder="Valor">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputData" class="col-lg-2 control-label">Data de Entrega</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="inputData" placeholder="Data de Entrega">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputNumQuestao" class="col-lg-2 control-label">Núm </label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="inputNumQuestao" placeholder="Núm de Questões">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="Nivel" class="col-lg-2 control-label">Nível</label>
+								<div class="col-lg-10">
+									@Html.DropDownList("Nivel", null, htmlAttributes: new {@class = "form-control"})
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputObservacoes" class="col-lg-2 control-label">Observações</label>
+								<div class="col-lg-10">
+									<input type="text" class="form-control" id="inputObservacoes" placeholder="Observações">
+								</div>
+							</div>
+						</fieldset>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="Submit" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		}
+	</div>
+</div>
+
+</div>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/Disciplina/DisciplinaScript.js"></script>
