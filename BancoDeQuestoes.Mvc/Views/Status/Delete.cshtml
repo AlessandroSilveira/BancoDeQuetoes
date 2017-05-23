@@ -1,0 +1,44 @@
+﻿@model BancoDeQuestoes.Application.ViewModels.StatusViewModel
+
+@{
+    ViewBag.Title = "Deletar Status - Banco de Questões";
+}
+
+<h2>Status</h2>
+
+<h3>Você deseja excluir esse Status?</h3>
+<div>
+    <h4>Deletar Status</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        
+        <dd>
+            @Html.DisplayFor(model => model.NumeroStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

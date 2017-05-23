@@ -45,7 +45,5 @@ namespace BancoDeQuestoes.Domain.Services
 			_topicoAtribuidoRepository.Dispose();
 			GC.SuppressFinalize(this);
 		}
-
-		
 	}
 }

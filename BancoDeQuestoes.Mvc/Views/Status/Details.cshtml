@@ -1,0 +1,38 @@
+﻿@model BancoDeQuestoes.Application.ViewModels.StatusViewModel
+
+@{
+    ViewBag.Title = "Detalhes Status - Banco de Questões";
+}
+
+<h2>Status</h2>
+
+<div>
+    <h4>Detalhes Status</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        
+        <dd>
+            @Html.DisplayFor(model => model.NumeroStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.StatusId }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

@@ -14,8 +14,9 @@ namespace BancoDeQuestoes.Application.ViewModels
 
 		[Key]
 		public Guid TopicoAtribuidoId { get; set; }
+        public Guid MestreId { get; set; }
 
-		[Required(ErrorMessage = "Escolha um Projeto"), StringLength(150), DisplayName("Projeto")]
+        [Required(ErrorMessage = "Escolha um Projeto"), StringLength(150), DisplayName("Projeto")]
 		public Projeto Projeto { get; set; }
 
 		[Required(ErrorMessage = "Escolha uma Área"), StringLength(150), DisplayName("Área")]
@@ -59,5 +60,11 @@ namespace BancoDeQuestoes.Application.ViewModels
 
 		[DisplayName("Convite Aceito")]
 		public bool ConviteAceito { get; set; }
-	}
+
+	    public Guid ProjetoId { get; set; }
+
+	    public Guid AreaId { get; set; }
+
+        public Guid DisciplinaId { get; set; }
+    }
 }

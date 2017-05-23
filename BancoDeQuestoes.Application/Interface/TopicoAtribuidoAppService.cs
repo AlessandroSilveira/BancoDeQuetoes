@@ -12,10 +12,12 @@ namespace BancoDeQuestoes.Application.Interface
 	public class TopicoAtribuidoAppService :  ITopicoAtribuidoAppService
 	{
 		private readonly ITopicoAtribuidoService _topicoAtribuido;
+	    private readonly IProjetoAppService _projetoAppService;
 
-		public TopicoAtribuidoAppService(ITopicoAtribuidoService topicoAtribuido)
+		public TopicoAtribuidoAppService(ITopicoAtribuidoService topicoAtribuido, IProjetoAppService projetoAppService)
 		{
-			_topicoAtribuido = topicoAtribuido;
+		    _topicoAtribuido = topicoAtribuido;
+		    _projetoAppService = projetoAppService;
 		}
 
 		public void Dispose()
@@ -56,6 +58,10 @@ namespace BancoDeQuestoes.Application.Interface
 	        throw new NotImplementedException();
 	    }
 
-		
+	    public int ObterCodigoProjeto(Guid projetoId)
+	    {
+	        var projeto = _projetoAppService.GetById(projetoId);
+	        return projeto.CodigoProjeto;
+	    }
 	}
 }

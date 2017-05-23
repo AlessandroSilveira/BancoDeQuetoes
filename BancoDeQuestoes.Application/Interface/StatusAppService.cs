@@ -37,7 +37,7 @@ namespace BancoDeQuestoes.Application.Interface
 
 	    public IEnumerable<StatusViewModel> GetAll()
 	    {
-	        return Mapper.Map<IEnumerable<Status>, IEnumerable<StatusViewModel>>(_statusService.GetAll());
+            return Mapper.Map<IEnumerable<Status>, IEnumerable<StatusViewModel>>(_statusService.GetAll());
         }
 
 	    public StatusViewModel Update(StatusViewModel obj)

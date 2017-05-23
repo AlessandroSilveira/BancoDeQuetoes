@@ -28,5 +28,7 @@ namespace BancoDeQuestoes.Mvc.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<BancoDeQuestoes.Application.ViewModels.StatusViewModel> StatusViewModels { get; set; }
     }
 }

@@ -13,7 +13,9 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 				.IsRequired()
 				.HasMaxLength(150);
 
-			Property(p => p.Ativo)
+		    Property(p => p.NumeroStatus);
+
+            Property(p => p.Ativo)
 				.IsRequired();
 
 			ToTable("Status");

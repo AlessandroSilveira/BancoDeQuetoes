@@ -25,6 +25,7 @@ namespace BancoDeQuestoes.Mvc.AutoMapper
 			Mapper.CreateMap<MestreFormacaoViewModel, MestreFormacao>();
 			Mapper.CreateMap<QuestaoViewModel, Questao>();
 			Mapper.CreateMap<TopicoAtribuidoViewModel, TopicoAtribuido>();
-		}
+            Mapper.CreateMap<StatusViewModel, Status>();
+        }
 	}
 }

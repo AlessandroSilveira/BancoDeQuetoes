@@ -13,5 +13,6 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 		TopicoAtribuidoViewModel Update(TopicoAtribuidoViewModel obj);
 		void Remove(Guid id);
 		IEnumerable<TopicoAtribuidoViewModel> Search(Expression<Func<TopicoAtribuidoViewModel, bool>> predicate);
-		}
+	    int ObterCodigoProjeto(Guid projetoId);
+	}
 }
