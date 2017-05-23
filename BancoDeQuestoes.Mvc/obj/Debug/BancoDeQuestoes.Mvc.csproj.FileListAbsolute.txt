@@ -104,7 +104,6 @@ C:\sources\ProjetoModeloDDD\ProjetoModeloDDD.Mvc\bin\Newtonsoft.Json.xml
 C:\sources\ProjetoModeloDDD\ProjetoModeloDDD.Mvc\obj\Debug\BancoDeQuestoes.Mvc.csprojResolveAssemblyReference.cache
 C:\sources\ProjetoModeloDDD\ProjetoModeloDDD.Mvc\obj\Debug\ProjetoModeloDDD.Mvc.dll
 C:\sources\ProjetoModeloDDD\ProjetoModeloDDD.Mvc\obj\Debug\ProjetoModeloDDD.Mvc.pdb
-C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.csprojResolveAssemblyReference.cache
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\ApplicationInsights.config
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\roslyn\csc.exe
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\roslyn\csc.exe.config
@@ -257,6 +256,7 @@ C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Banco
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.csprojResolveAssemblyReference.cache
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.pdb
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.csprojResolveAssemblyReference.cache
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\ApplicationInsights.config
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\roslyn\csc.exe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\roslyn\csc.exe.config
@@ -343,6 +343,7 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.Web.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.WebApi.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\System.Net.Http.Formatting.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\System.Web.Helpers.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\System.Web.Http.dll
@@ -389,6 +390,7 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.xml
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.Web.xml
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.Web.Mvc.xml
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.WebApi.xml
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\System.Net.Http.Formatting.xml
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\System.Web.Http.xml
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\System.Web.Http.Owin.xml

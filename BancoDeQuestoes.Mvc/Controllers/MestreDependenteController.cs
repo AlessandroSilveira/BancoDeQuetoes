@@ -33,6 +33,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Create(Guid id)
         {
 			ViewBag.MestreId = id;
+			ViewBag.DadosMestre = _mestreAppService.GetById(id);
 			return View();
         }
         

@@ -8,13 +8,15 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	public class MestreAreaController : Controller
     {
         private readonly IMestreAreaAppService _mestreAreaAppService;
+	    private readonly IAreaAppService _areaAppService;
 
-        public MestreAreaController(IMestreAreaAppService mestreAreaAppService)
+        public MestreAreaController(IMestreAreaAppService mestreAreaAppService, IAreaAppService areaAppService)
         {
-            _mestreAreaAppService = mestreAreaAppService;
+	        _mestreAreaAppService = mestreAreaAppService;
+	        _areaAppService = areaAppService;
         }
 
-        public ActionResult Index(int id)
+        public ActionResult Index(Guid id)
         {
             ViewBag.MestreId = id;
             return View(_mestreAreaAppService.GetAll());
@@ -26,10 +28,11 @@ namespace BancoDeQuestoes.Mvc.Controllers
             return mestre == null ? (ActionResult)HttpNotFound() : View(mestre);
         }
 
-        public ActionResult Create(int id)
+        public ActionResult Create(Guid id)
         {
             ViewBag.MestreId = id;
-            return View();
+			ViewBag.AreaId = new SelectList(_areaAppService.GetAll(), "AreaId", "Descricao", "Selecione");
+			return View();
         }
 
         [HttpPost]

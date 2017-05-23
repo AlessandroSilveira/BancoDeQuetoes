@@ -8,18 +8,10 @@ namespace BancoDeQuestoes.Mvc.Controllers
 	public class TopicoAtribuidoController : Controller
 	{
 		private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
-		private readonly IProjetoAppService _projetoAppService;
-		private readonly IAreaAppService _areaAppService;
-		private readonly IMestreAppService _mestreAppService;
-		private readonly IDisciplinaAppService _disciplinaAppService;
 
-		public TopicoAtribuidoController(ITopicoAtribuidoAppService topicoAtribuidoAppService, IProjetoAppService projetoAppService, IAreaAppService areaAppService, IMestreAppService mestreAppService, IDisciplinaAppService disciplinaAppService)
+		public TopicoAtribuidoController(ITopicoAtribuidoAppService topicoAtribuidoAppService)
 		{
 			_topicoAtribuidoAppService = topicoAtribuidoAppService;
-			_projetoAppService = projetoAppService;
-			_areaAppService = areaAppService;
-			_mestreAppService = mestreAppService;
-			_disciplinaAppService = disciplinaAppService;
 		}
 
 		public ActionResult Index()
@@ -74,7 +66,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			_topicoAtribuidoAppService.Remove(id);
 			return RedirectToAction("Index");
 		}
-
 		
 		[HttpPost]
 		public ActionResult SalvarTopicoAtribuido(TopicoAtribuidoViewModel form)
@@ -85,8 +76,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			}
 			_topicoAtribuidoAppService.Add(form);
 			return View();
-
-
 		}
 	}
 }
