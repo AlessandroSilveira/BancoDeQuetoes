@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BancoDeQuestoes.Domain.Entities
 {
@@ -20,7 +21,7 @@ namespace BancoDeQuestoes.Domain.Entities
 		public string Nivel { get; set; }
 		public string Imagem { get; set; }
 		public bool ConviteAceito { get; set; }
-
 		public virtual  TopicoAtribuido TopicoAtribuido { get; set; }
-	}
+        public virtual ICollection<TopicoAtribuido> TopicoAtribuidos { get; set; } = new List<TopicoAtribuido>();
+    }
 }

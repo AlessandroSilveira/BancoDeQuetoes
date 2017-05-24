@@ -26,6 +26,7 @@ namespace BancoDeQuestoes.Mvc.App_Start
             container.Verify();
             
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+          
         }
      
         private static void InitializeContainer(Container container)

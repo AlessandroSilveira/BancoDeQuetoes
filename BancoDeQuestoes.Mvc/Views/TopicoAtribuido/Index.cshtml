@@ -7,10 +7,10 @@
 <h2>Gerenciamento de Questões</h2>
 
 <p>
-	@Html.ActionLink("Atribuir Novo Item de Prova a Ser Elaborado.", "Atribuicao", "Disciplina")
+    @Html.ActionLink("Atribuir Novo Item de Prova a Ser Elaborado.", "Atribuicao", "Disciplina")
 </p>
 <p>
-	@Html.ActionLink("Itens Recusados", "Create")
+    @Html.ActionLink("Itens Recusados", "Create")
 </p>
 <table class="table">
     <tr>
@@ -48,8 +48,8 @@
             @Html.DisplayNameFor(model => model.QuestoesRealizadas)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.Aceito)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Aceito)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Observacao)
         </th>
@@ -62,59 +62,60 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Projeto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Area)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mestre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Disciplina)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodigoProjeto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumeroQuestao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataEntrega)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nivel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuestoesRealizadas)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Aceito)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Observacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataAtribuicao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConviteAceito)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.TopicoAtribuidoId }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.TopicoAtribuidoId }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.TopicoAtribuidoId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Projeto.NomeProjeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mestre.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disciplina.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoProjeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroQuestao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nivel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestoesRealizadas)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Aceito)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataAtribuicao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConviteAceito)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new {id = item.TopicoAtribuidoId}) |
+                @Html.ActionLink("Detalhes", "Details", new {id = item.TopicoAtribuidoId}) |
+                @Html.ActionLink("Excluir", "Delete", new {id = item.TopicoAtribuidoId})
+            </td>
+        </tr>
+    }
 
 </table>
