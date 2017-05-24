@@ -88,8 +88,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
             var idDiscipliina = Disciplinas_selecionadas.Split(',');
             var status = _statusAppService.ObterDescricaoStatus("Item sem confirmação de aceite pelo Elaborador");
 
-            _unitOfWork.BeginTransaction();
-
             foreach (var dados in idDiscipliina)
             {
                 var form = new TopicoAtribuidoViewModel
@@ -124,8 +122,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
                     NumeroDeRevisoes = 0
                 };
                 _questaoAppService.Add(questao);
-
-                _unitOfWork.Commit();
             }
 
             return View();

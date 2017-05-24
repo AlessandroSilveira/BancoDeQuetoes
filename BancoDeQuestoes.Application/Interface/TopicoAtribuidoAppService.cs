@@ -28,8 +28,8 @@ namespace BancoDeQuestoes.Application.Interface
 	    public TopicoAtribuidoViewModel Add(TopicoAtribuidoViewModel obj)
 	    {
 	        var topico = Mapper.Map<TopicoAtribuidoViewModel, TopicoAtribuido>(obj);
-			_topicoAtribuido.Add(topico);
-	        return obj;
+		    var returnobj = 	_topicoAtribuido.Add(topico);
+            return Mapper.Map<TopicoAtribuido, TopicoAtribuidoViewModel>(returnobj); 
 	    }
 
 	    public TopicoAtribuidoViewModel GetById(Guid id)
