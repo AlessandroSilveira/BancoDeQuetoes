@@ -66,5 +66,10 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	        Context.Dispose();
             GC.SuppressFinalize(this); 
 	    }
+
+	    public IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
+	    {
+	        return DbSet.Where(predicate);
+	    }
 	}
 }

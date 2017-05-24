@@ -11,5 +11,6 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
 		IEnumerable<Status> GetAll();
 		Status Update(Status obj);
 		void Remove(Guid id);
+	    IEnumerable<Status> ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador);
 	}
 }

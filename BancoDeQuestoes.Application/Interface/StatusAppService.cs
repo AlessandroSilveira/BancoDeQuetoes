@@ -51,9 +51,11 @@ namespace BancoDeQuestoes.Application.Interface
 			_statusService.Remove(id);
 	    }
 
-	    public IEnumerable<StatusViewModel> Search(Expression<Func<StatusViewModel, bool>> predicate)
+	    public IEnumerable<StatusViewModel> ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador)
 	    {
-	        throw new NotImplementedException();
+            return Mapper.Map<IEnumerable<Status>, IEnumerable<StatusViewModel>>(_statusService.ObterDescricaoStatus(itemSemConfirmaçãoDeAceitePeloElaborador));
+           // return (IEnumerable<StatusViewModel>) _statusService.ObterDescricaoStatus(itemSemConfirmaçãoDeAceitePeloElaborador);
+
 	    }
 	}
 }
