@@ -1,4 +1,5 @@
-﻿using BancoDeQuestoes.Domain.Entities;
+﻿using System;
+using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 
 namespace BancoDeQuestoes.Infra.Data.Repository

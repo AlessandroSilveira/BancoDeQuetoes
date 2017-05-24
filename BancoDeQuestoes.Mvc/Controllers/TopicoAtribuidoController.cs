@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
@@ -8,10 +9,12 @@ namespace BancoDeQuestoes.Mvc.Controllers
     public class TopicoAtribuidoController : Controller
     {
         private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
+        private readonly IStatusAppService _statusAppService;
 
-        public TopicoAtribuidoController(ITopicoAtribuidoAppService topicoAtribuidoAppService)
+        public TopicoAtribuidoController(ITopicoAtribuidoAppService topicoAtribuidoAppService, IStatusAppService statusAppService)
         {
             _topicoAtribuidoAppService = topicoAtribuidoAppService;
+            _statusAppService = statusAppService;
         }
 
         public ActionResult Index()
@@ -74,9 +77,10 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
             if (!ModelState.IsValid) return View();
 
-            var id_discipliina = Disciplinas_selecionadas.Split(',');
+            var idDiscipliina = Disciplinas_selecionadas.Split(',');
+            var status = _statusAppService.ObterDescricaoStatus("Item sem confirmação de aceite pelo Elaborador");
 
-            foreach (var dados in id_discipliina)
+            foreach (var dados in idDiscipliina)
             {
                 var form = new TopicoAtribuidoViewModel
                 {
@@ -90,8 +94,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
                     Observacao = inputObservacoes,
                     CodigoProjeto = _topicoAtribuidoAppService.ObterCodigoProjeto(ProjetoId).ToString(),
                     DataAtribuicao = DateTime.Now,
-                    DisciplinaId = new Guid(dados)
-                   
+                    DisciplinaId = new Guid(dados),
+                   Status = status.FirstOrDefault()?.Nome
+
                 };
                 _topicoAtribuidoAppService.Add(form);
             }

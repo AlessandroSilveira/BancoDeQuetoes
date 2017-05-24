@@ -11,7 +11,7 @@ namespace BancoDeQuestoes.Domain.Interfaces.Repository
 		IEnumerable<TEntity> GetAll();
 		TEntity Update(TEntity obj);
 		void Remove(Guid id);
-	    IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>>predicate);
+	    IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate);
 	    int SaveChanges();
 	}
 }

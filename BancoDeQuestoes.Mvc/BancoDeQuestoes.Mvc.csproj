@@ -449,6 +449,10 @@
       <Project>{6e6cbf3d-8a65-426f-a4cc-f8ffef683d09}</Project>
       <Name>BancoDeQuestoes.Infra.CrossCutting.IoC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
+      <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
+      <Name>BancoDeQuestoes.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

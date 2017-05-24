@@ -15,35 +15,25 @@ namespace BancoDeQuestoes.Domain.Services
 			_statusRepository = statusRepository;
 		}
 
-		public Status Add(Status obj)
-		{
-			return _statusRepository.Add(obj);
-		}
+		public Status Add(Status obj) => _statusRepository.Add(obj);
 
-		public Status GetById(Guid id)
-		{
-			return _statusRepository.GetById(id);
-		}
+	    public Status GetById(Guid id) => _statusRepository.GetById(id);
 
-		public IEnumerable<Status> GetAll()
-		{
-			return _statusRepository.GetAll();
-		}
+	    public IEnumerable<Status> GetAll() => _statusRepository.GetAll();
 
-		public Status Update(Status obj)
-		{
-			return _statusRepository.Update(obj);
-		}
+	    public Status Update(Status obj) => _statusRepository.Update(obj);
 
-		public void Remove(Guid obj)
-		{
-			_statusRepository.Remove(obj);
-		}
+	    public void Remove(Guid obj) => _statusRepository.Remove(obj);
 
-		public void Dispose()
+	    public void Dispose()
 		{
 			_statusRepository.Dispose();
 			GC.SuppressFinalize(this);
 		}
+
+	    public IEnumerable<Status> ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador)
+	    {
+	     return   _statusRepository.Buscar(a => a.Nome.Equals(itemSemConfirmaçãoDeAceitePeloElaborador));
+	    }
 	}
 }
