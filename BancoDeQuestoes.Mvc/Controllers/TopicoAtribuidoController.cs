@@ -3,8 +3,6 @@ using System.Linq;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
-using BancoDeQuestoes.Domain.Interfaces;
-using BancoDeQuestoes.Domain.Interfaces.Repository;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
@@ -13,15 +11,15 @@ namespace BancoDeQuestoes.Mvc.Controllers
         private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
         private readonly IStatusAppService _statusAppService;
         private readonly IQuestaoAppService _questaoAppService;
-        private readonly IUnitOfWork _unitOfWork;
+       
 
         public TopicoAtribuidoController(ITopicoAtribuidoAppService topicoAtribuidoAppService,
-            IStatusAppService statusAppService, IQuestaoAppService questaoAppService, IUnitOfWork unitOfWork)
+            IStatusAppService statusAppService, IQuestaoAppService questaoAppService)
         {
             _topicoAtribuidoAppService = topicoAtribuidoAppService;
             _statusAppService = statusAppService;
             _questaoAppService = questaoAppService;
-            _unitOfWork = unitOfWork;
+            
         }
 
         public ActionResult Index()

@@ -44,7 +44,6 @@
     <Compile Include="Entities\Disciplina.cs" />
     <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\TopicoAtribuido.cs" />
-    <Compile Include="Interfaces\Repository\IUnitOfWork.cs" />
     <Compile Include="Interfaces\Repository\IAreaRepository.cs" />
     <Compile Include="Interfaces\Repository\IBancaRepository.cs" />
     <Compile Include="Interfaces\Repository\IItemPesquisaTopico.cs" />

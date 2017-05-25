@@ -1,15 +1,11 @@
 ﻿using BancoDeQuestoes.Application.Interface;
 using BancoDeQuestoes.Application.Interface.Repositories;
-using BancoDeQuestoes.Domain.Interfaces;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 using BancoDeQuestoes.Domain.Services;
 using BancoDeQuestoes.Infra.Data;
-using BancoDeQuestoes.Infra.Data.Context;
 using BancoDeQuestoes.Infra.Data.Repository;
-using BancoDeQuestoes.Infra.Data.UoW;
 using SimpleInjector;
-using SimpleInjector.Diagnostics;
 
 
 namespace BancoDeQuestoes.CrossCutting.IoC
@@ -18,9 +14,9 @@ namespace BancoDeQuestoes.CrossCutting.IoC
 	{
 		public static void RegisterServices(Container container)
 		{
-            container.Register<Db>(Lifestyle.Scoped);
-            //App
-            container.Register<IAreaAppService, AreaAppService>(Lifestyle.Scoped);
+
+			//App
+			container.Register<IAreaAppService, AreaAppService>(Lifestyle.Scoped);
 			container.Register<IBancaAppService, BancaAppService>(Lifestyle.Scoped);
 			container.Register<IDisciplinaAppService, DisciplinaAppService>(Lifestyle.Scoped);
 			container.Register<IFormacaoRevisorAppService, FormacaoRevisorAppService>(Lifestyle.Scoped);
@@ -33,9 +29,9 @@ namespace BancoDeQuestoes.CrossCutting.IoC
 			container.Register<IRevisorAppService, RevisorAppService>(Lifestyle.Scoped);
 			container.Register<IStatusAppService, StatusAppService>(Lifestyle.Scoped);
 			container.Register<ITopicoAtribuidoAppService, TopicoAtribuidoAppService>(Lifestyle.Scoped);
-          
-            //Domain
-            container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
+
+			//Domain
+			container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
 			container.Register<IAreaService, AreaService>(Lifestyle.Scoped);
 			container.Register<IBancaService, BancaService>(Lifestyle.Scoped);
 			container.Register<IDisciplinaService, DisciplinaService>(Lifestyle.Scoped);
@@ -49,10 +45,9 @@ namespace BancoDeQuestoes.CrossCutting.IoC
 			container.Register<IRevisorService, RevisorService>(Lifestyle.Scoped);
 			container.Register<IStatusService, StatusService>(Lifestyle.Scoped);
 			container.Register<ITopicoAtribuidoService, TopicoAtribuidoService>(Lifestyle.Scoped);
-            container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
 
-            //Infra Dados
-            container.Register(typeof(IRepository<>),typeof(RepositoryBase<>));
+			//Infra Dados
+			container.Register(typeof(IRepository<>),typeof(RepositoryBase<>));
 			container.Register<IAreaRepository, AreaRepositoryBase>(Lifestyle.Scoped);
 			container.Register<IBancaRepository, BancaRepositoryBase>(Lifestyle.Scoped);
 			container.Register<IDisciplinaRepository, DisciplinaRepositoryBase>(Lifestyle.Scoped);
@@ -66,7 +61,7 @@ namespace BancoDeQuestoes.CrossCutting.IoC
 			container.Register<IRevisorRepository, RevisorRepositoryBase>(Lifestyle.Scoped);
 			container.Register<IStatusRepository, StatusRepositoryBase>(Lifestyle.Scoped);
 			container.Register<ITopicoAtribuidoRepository, TopicoAtribuidoRepositoryBase>(Lifestyle.Scoped);
-			
+			//container.Register<IItemPesquisaTopico, ItensPesquisaTopico>(Lifestyle.Scoped);
 
 		}
 	}

@@ -5,16 +5,15 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
-using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Application.Interface
 {
-	public class MestreAppService : ApplicationService, IMestreAppService
+	public class MestreAppService :  IMestreAppService
 	{
 		private readonly IMestreService _mestreService;
 
-		public MestreAppService(IMestreService mestreService, IUnitOfWork uow):base(uow)
+		public MestreAppService(IMestreService mestreService)
 		{
 			_mestreService = mestreService;
 		}
@@ -27,9 +26,7 @@ namespace BancoDeQuestoes.Application.Interface
 	    public MestreViewModel Add(MestreViewModel obj)
 	    {
 	        var mestre = Mapper.Map<MestreViewModel, Mestre>(obj);
-            BeginTransaction();
 			_mestreService.Add(mestre);
-            Commit();
 	        return obj;
 	    }
 
@@ -45,17 +42,13 @@ namespace BancoDeQuestoes.Application.Interface
 
 	    public MestreViewModel Update(MestreViewModel obj)
 	    {
-            BeginTransaction();
 			_mestreService.Update(Mapper.Map<MestreViewModel, Mestre>(obj));
-            Commit();
 	        return obj;
         }
 
 	    public void Remove(Guid id)
 	    {
-            BeginTransaction();
 			_mestreService.Remove(id);
-            Commit();
 	    }
 
 	    public IEnumerable<MestreViewModel> Search(Expression<Func<MestreViewModel, bool>> predicate)
