@@ -4,15 +4,16 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Application.Interface
 {
-	public class DisciplinaAppService : IDisciplinaAppService
+	public class DisciplinaAppService :ApplicationService, IDisciplinaAppService
 	{
 		private readonly IDisciplinaService _disciplinaService;
 
-		public DisciplinaAppService(IDisciplinaService disciplinaService)
+		public DisciplinaAppService(IDisciplinaService disciplinaService, IUnitOfWork uow): base(uow)
 		{
 			_disciplinaService = disciplinaService;
 		}
@@ -20,7 +21,9 @@ namespace BancoDeQuestoes.Application.Interface
 		public DisciplinaViewModel Add(DisciplinaViewModel obj)
 		{
 			var disciplina = Mapper.Map<DisciplinaViewModel, Disciplina>(obj);
+            BeginTransaction();
 			_disciplinaService.Add(disciplina);
+            Commit();
 			return obj;
 		}
 
@@ -36,13 +39,17 @@ namespace BancoDeQuestoes.Application.Interface
 
 		public DisciplinaViewModel Update(DisciplinaViewModel obj)
 		{
+            BeginTransaction();
 			_disciplinaService.Update(Mapper.Map<DisciplinaViewModel, Disciplina>(obj));
+            Commit();
 			return obj;
 		}
 
 		public void Remove(Guid id)
 		{
+            BeginTransaction();
 			_disciplinaService.Remove(id);
+            Commit();
 		}
 
 		public void Dispose()

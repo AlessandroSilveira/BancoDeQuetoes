@@ -4,7 +4,7 @@ using BancoDeQuestoes.Infra.Data.Context;
 
 namespace BancoDeQuestoes.Infra.Data.UoW
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly Db _db;
         private bool _disposed;

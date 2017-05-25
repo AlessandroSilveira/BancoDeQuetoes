@@ -5,16 +5,17 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Application.Interface
 {
 
-	public class BancaAppService : IBancaAppService
+	public class BancaAppService :ApplicationService, IBancaAppService
     {
         private readonly IBancaService _bancaService;
 
-	    public BancaAppService(IBancaService bancaService)
+	    public BancaAppService(IBancaService bancaService, IUnitOfWork uow) : base(uow)
 	    {
 		    _bancaService = bancaService;
 	    }
@@ -22,7 +23,9 @@ namespace BancoDeQuestoes.Application.Interface
 	    public BancaViewModel Add(BancaViewModel obj)
         {
             var banca = Mapper.Map<BancaViewModel, Banca>(obj);
+            BeginTransaction();
 			_bancaService.Add(banca);
+            Commit();
             return obj;
         }
 
@@ -38,7 +41,9 @@ namespace BancoDeQuestoes.Application.Interface
 
         public void Remove(Guid id)
         {
+            BeginTransaction();
 			_bancaService.Remove(id);
+            Commit();
         }
       
         public IEnumerable<BancaViewModel> Search(Expression<Func<BancaViewModel, bool>> predicate)
@@ -48,7 +53,9 @@ namespace BancoDeQuestoes.Application.Interface
 
         public BancaViewModel Update(BancaViewModel obj)
         {
+            BeginTransaction();
 			_bancaService.Update(Mapper.Map<BancaViewModel, Banca>(obj));
+            Commit();
             return obj;
         }
          

@@ -5,15 +5,16 @@ using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
 using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Application.Interface
 {
-	public class QuestaoAppService : IQuestaoAppService
+	public class QuestaoAppService : ApplicationService, IQuestaoAppService
 	{
 		private readonly IQuestaoService _questaoService;
 
-		public QuestaoAppService(IQuestaoService questaoService)
+		public QuestaoAppService(IQuestaoService questaoService, IUnitOfWork uow) : base(uow)
 		{
 			_questaoService = questaoService;
 		}
@@ -26,7 +27,9 @@ namespace BancoDeQuestoes.Application.Interface
 	    public QuestaoViewModel Add(QuestaoViewModel obj)
 	    {
 	        var questao = Mapper.Map<QuestaoViewModel, Questao>(obj);
+            BeginTransaction();
 			_questaoService.Add(questao);
+            Commit();
 	        return obj;
         }
 
@@ -42,13 +45,17 @@ namespace BancoDeQuestoes.Application.Interface
 
 	    public QuestaoViewModel Update(QuestaoViewModel obj)
 	    {
+            BeginTransaction();
 			_questaoService.Update(Mapper.Map<QuestaoViewModel, Questao>(obj));
+            Commit();
 	        return obj;
         }
 
 	    public void Remove(Guid id)
 	    {
+            BeginTransaction();
 			_questaoService.Remove(id);
+            Commit();
         }
 
 	    public IEnumerable<QuestaoViewModel> Search(Expression<Func<QuestaoViewModel, bool>> predicate)

@@ -1,25 +1,29 @@
-﻿using BancoDeQuestoes.Infra.Data.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 
 namespace BancoDeQuestoes.Application
 {
-	public class ApplicationService
-	{
-		private readonly IUnitOfWork _unitOfWork;
+    public class ApplicationService
+    {
+        private readonly IUnitOfWork _uow;
 
-		public ApplicationService(IUnitOfWork unitOfWork)
-		{
-			_unitOfWork = unitOfWork;
-		}
+        public ApplicationService(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
 
+        public void BeginTransaction()
+        {
+            _uow.BeginTransaction();
+        }
 
-		public void BeginTransaction()
-		{
-			_unitOfWork.BeginTransaction();
-		}
-
-		public void Commit()
-		{
-			_unitOfWork.Commit();
-		}
-	}
+        public void Commit()
+        {
+            _uow.Commit();
+        }
+    }
 }
