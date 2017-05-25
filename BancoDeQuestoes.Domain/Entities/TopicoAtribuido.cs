@@ -25,5 +25,9 @@ namespace BancoDeQuestoes.Domain.Entities
 		public virtual Guid AreaId { get; set; }
 		public virtual Guid MestreId { get; set; }
 		public virtual Guid DisciplinaId { get; set; }
-	}
+        public virtual Projeto Projeto { get; set; }
+        public virtual Area Area { get; set; }
+        public virtual Mestre Mestre { get; set; }
+        public virtual Disciplina Disciplina { get; set; }
+    }
 }

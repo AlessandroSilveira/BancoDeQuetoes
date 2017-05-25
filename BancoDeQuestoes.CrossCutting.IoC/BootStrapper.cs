@@ -65,8 +65,8 @@ namespace BancoDeQuestoes.CrossCutting.IoC
 			container.Register<IStatusRepository, StatusRepositoryBase>(Lifestyle.Scoped);
 			container.Register<ITopicoAtribuidoRepository, TopicoAtribuidoRepositoryBase>(Lifestyle.Scoped);
 			container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
-            
-		    container.Register(typeof(Db));
+
+		    container.Register<Db>(Lifestyle.Scoped);
 		}
 	}
 }

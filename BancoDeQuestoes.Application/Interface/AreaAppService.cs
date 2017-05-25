@@ -22,7 +22,9 @@ namespace BancoDeQuestoes.Application.Interface
         public AreaViewModel Add(AreaViewModel obj)
         {
             var area = Mapper.Map<AreaViewModel, Area>(obj);
+            BeginTransaction();
             _areaService.Add(area);
+            Commit();
             return obj;
         }
 
@@ -38,19 +40,20 @@ namespace BancoDeQuestoes.Application.Interface
 
         public AreaViewModel Update(AreaViewModel obj)
         {
+            BeginTransaction();
             _areaService.Update(Mapper.Map<AreaViewModel, Area>(obj));
+            Commit();
             return obj;
         }
 
         public void Remove(Guid id)
         {
+            BeginTransaction();
             _areaService.Remove(id);
+            Commit();
         }
 
-        public IEnumerable<AreaViewModel> Search(Expression<Func<AreaViewModel, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void Dispose()
         {

@@ -12,6 +12,6 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 		IEnumerable<AreaViewModel> GetAll();
 		AreaViewModel Update(AreaViewModel obj);
 		void Remove(Guid id);
-		IEnumerable<AreaViewModel> Search(Expression<Func<AreaViewModel, bool>> predicate);
+	
 	}
 }
