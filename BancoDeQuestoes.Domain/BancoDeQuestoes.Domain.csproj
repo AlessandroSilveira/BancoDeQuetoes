@@ -44,7 +44,6 @@
     <Compile Include="Entities\Disciplina.cs" />
     <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\TopicoAtribuido.cs" />
-    <Compile Include="Interfaces\Repository\IUnitOfWork.cs" />
     <Compile Include="Interfaces\Repository\IAreaRepository.cs" />
     <Compile Include="Interfaces\Repository\IBancaRepository.cs" />
     <Compile Include="Interfaces\Repository\IItemPesquisaTopico.cs" />
@@ -63,6 +62,7 @@
     <Compile Include="Interfaces\Repository\IRevisorRepository.cs" />
     <Compile Include="Interfaces\Repository\IStatusRepository.cs" />
     <Compile Include="Interfaces\Repository\ITopicoAtribuidoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IUnitOfWork.cs" />
     <Compile Include="Interfaces\Services\IAreaService.cs" />
     <Compile Include="Interfaces\Services\IBancaService.cs" />
     <Compile Include="Interfaces\Services\IDisciplinaService.cs" />

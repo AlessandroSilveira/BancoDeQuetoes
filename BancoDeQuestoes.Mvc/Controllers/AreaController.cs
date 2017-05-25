@@ -34,6 +34,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         public ActionResult Create(AreaViewModel areaViewModel)
         {
             if (!ModelState.IsValid) return View(areaViewModel);
+            
             _areaAppService.Add(areaViewModel);
             return RedirectToAction("Index");
         }

@@ -12,6 +12,5 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 		IEnumerable<QuestaoViewModel> GetAll();
 		QuestaoViewModel Update(QuestaoViewModel obj);
 		void Remove(Guid id);
-		IEnumerable<QuestaoViewModel> Search(Expression<Func<QuestaoViewModel, bool>> predicate);
 	}
 }

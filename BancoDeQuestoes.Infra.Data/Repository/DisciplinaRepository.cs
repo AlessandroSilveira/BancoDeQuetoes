@@ -2,6 +2,7 @@
 using System.Linq;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
+using BancoDeQuestoes.Infra.Data.Context;
 using BancoDeQuestoes.Infra.Data.Repository.PesquisaDisciplina;
 using BancoDeQuestoes.Infra.Data.Repository.PesquisaTopico;
 
@@ -9,7 +10,11 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 {
 	public class DisciplinaRepositoryBase : RepositoryBase<Disciplina>,IDisciplinaRepository
 	{
-		public IEnumerable<Disciplina> ExecutadorDePesquisa(Disciplina form)
+	    public DisciplinaRepositoryBase(Db context) : base(context)
+	    {
+	    }
+
+	    public IEnumerable<Disciplina> ExecutadorDePesquisa(Disciplina form)
 		{
 			var sql = GetAll().ToList();
 

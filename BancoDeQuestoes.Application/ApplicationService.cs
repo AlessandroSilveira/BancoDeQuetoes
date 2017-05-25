@@ -1,4 +1,5 @@
-﻿using BancoDeQuestoes.Infra.Data.Interfaces;
+﻿using BancoDeQuestoes.Domain.Interfaces.Repository;
+
 
 namespace BancoDeQuestoes.Application
 {

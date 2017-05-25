@@ -18,15 +18,15 @@ namespace BancoDeQuestoes.Mvc.App_Start
         {
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
-            
+
             InitializeContainer(container);
 
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
-            
+
             container.Verify();
-            
+
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
-          
+
         }
      
         private static void InitializeContainer(Container container)
