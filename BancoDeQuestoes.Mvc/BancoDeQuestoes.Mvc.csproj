@@ -135,8 +135,24 @@
       <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -256,6 +272,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
@@ -272,15 +289,19 @@
     <Compile Include="Controllers\MestreFormacaoController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\RevisorController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TopicoAtribuidoController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -442,6 +463,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Microsoft\AspNet\Identity\EntityFramework\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -452,13 +474,13 @@
       <Project>{4489d34b-b534-4892-b4a2-a58775e4a2f2}</Project>
       <Name>BancoDeQuestoes.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BancoDeQuestoes.CrossCutting.IoC\BancoDeQuestoes.Infra.CrossCutting.IoC.csproj">
-      <Project>{6e6cbf3d-8a65-426f-a4cc-f8ffef683d09}</Project>
-      <Name>BancoDeQuestoes.Infra.CrossCutting.IoC</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
       <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
       <Name>BancoDeQuestoes.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BancoDeQuestoes.Infra.Data\BancoDeQuestoes.Infra.Data.csproj">
+      <Project>{39C11A26-2105-40D4-B0FD-210F799D7A0B}</Project>
+      <Name>BancoDeQuestoes.Infra.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
