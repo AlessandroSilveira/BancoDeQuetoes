@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
-using BancoDeQuestoes.Mvc.Models;
+
+using IdentitySample.Models;
 using Microsoft.AspNet.Identity;
 
 namespace BancoDeQuestoes.Mvc
