@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
@@ -56,7 +55,6 @@ namespace BancoDeQuestoes.Application.Interface
             BeginTransaction();
             _mestreService.Remove(id);
             Commit();
-
         }
     }
 }
