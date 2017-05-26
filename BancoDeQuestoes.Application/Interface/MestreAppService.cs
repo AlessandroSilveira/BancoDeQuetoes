@@ -56,6 +56,7 @@ namespace BancoDeQuestoes.Application.Interface
             BeginTransaction();
             _mestreService.Remove(id);
             Commit();
+
         }
     }
 }
