@@ -29,10 +29,10 @@ namespace BancoDeQuestoes.Mvc.Models
 
             var claims = new List<Claim>();
 
-            if (!string.IsNullOrEmpty(CurrentClientId))
-            {
-                claims.Add(new Claim("AspNet.Identity.ClientId", CurrentClientId));
-            }
+            //if (!string.IsNullOrEmpty(CurrentClientId))
+            //{
+            //    claims.Add(new Claim("AspNet.Identity.ClientId", CurrentClientId));
+            //}
 
             //  Adicione novos Claims aqui //
 
