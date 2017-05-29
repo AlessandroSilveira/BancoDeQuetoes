@@ -39,6 +39,13 @@ C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\ob
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.pdb
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._280420171.resources
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.csproj.GenerateResource.Cache
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._02052017.resources
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._020520172.resources
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._05052017.resources
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._22052017.resources
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._220520171.resources
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._29052017.resources
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.csproj.GenerateResource.Cache
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\BancoDeQuestoes.Infra.Data.dll.config
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\BancoDeQuestoes.Infra.Data.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\BancoDeQuestoes.Infra.Data.pdb
@@ -52,11 +59,6 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\bin\Debug\Microsoft.Owin.xml
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.csprojResolveAssemblyReference.cache
-C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._02052017.resources
-C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._020520172.resources
-C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._05052017.resources
-C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._22052017.resources
-C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._220520171.resources
-C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.csproj.GenerateResource.Cache
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.pdb
+C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Infra.Data\obj\Debug\BancoDeQuestoes.Infra.Data.Migrations._290520172.resources

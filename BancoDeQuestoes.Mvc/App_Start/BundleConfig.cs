@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace IdentitySample
+namespace BancoDeQuestoes.Mvc.App_Start
 {
     public class BundleConfig
     {

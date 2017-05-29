@@ -1,5 +1,4 @@
-﻿using IdentitySample.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Linq;
@@ -8,8 +7,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Collections.Generic;
+using BancoDeQuestoes.Mvc.Models;
+using BancoDeQuestoes.Mvc.Identity;
 
-namespace IdentitySample.Controllers
+namespace BancoDeQuestoes.Mvc.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class RolesAdminController : Controller

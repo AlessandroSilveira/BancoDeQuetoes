@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace IdentitySample
+namespace BancoDeQuestoes.Mvc.App_Start
 {
     public class FilterConfig
     {

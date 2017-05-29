@@ -33,6 +33,8 @@
     <Compile Include="Context\Db.cs" />
     <Compile Include="EntityConfig\AreaConfiguration.cs" />
     <Compile Include="EntityConfig\BancaConfiguration.cs" />
+    <Compile Include="EntityConfig\ClaimsConfiguration.cs" />
+    <Compile Include="EntityConfig\ClientConfiguration.cs" />
     <Compile Include="EntityConfig\DisciplinaConfiguration.cs" />
     <Compile Include="EntityConfig\FormacaoRevisorConfiguration.cs" />
     <Compile Include="EntityConfig\MestreAreaConfiguration.cs" />
@@ -64,6 +66,14 @@
     <Compile Include="Migrations\201705231942447_22052017-1.cs" />
     <Compile Include="Migrations\201705231942447_22052017-1.Designer.cs">
       <DependentUpon>201705231942447_22052017-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705292005470_29052017.cs" />
+    <Compile Include="Migrations\201705292005470_29052017.Designer.cs">
+      <DependentUpon>201705292005470_29052017.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705292015408_29052017-2.cs" />
+    <Compile Include="Migrations\201705292015408_29052017-2.Designer.cs">
+      <DependentUpon>201705292015408_29052017-2.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\AreaId_Disciplina.cs" />
     <Compile Include="Repository\PesquisaTopico\Descricao.cs" />
@@ -147,6 +157,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705231942447_22052017-1.resx">
       <DependentUpon>201705231942447_22052017-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705292005470_29052017.resx">
+      <DependentUpon>201705292005470_29052017.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705292015408_29052017-2.resx">
+      <DependentUpon>201705292015408_29052017-2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

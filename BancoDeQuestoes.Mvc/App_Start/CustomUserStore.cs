@@ -1,15 +1,15 @@
 ﻿using System.Threading.Tasks;
-
-using IdentitySample.Models;
+using BancoDeQuestoes.Infra.Data.Context;
+using BancoDeQuestoes.Mvc.Models;
 using Microsoft.AspNet.Identity;
 
 namespace BancoDeQuestoes.Mvc
 {
 	internal class CustomUserStore : IUserStore<ApplicationUser, string>
 	{
-		private ApplicationDbContext _applicationDbContext;
+		private Db _applicationDbContext;
 
-		public CustomUserStore(ApplicationDbContext applicationDbContext)
+		public CustomUserStore(Db applicationDbContext)
 		{
 			_applicationDbContext = applicationDbContext;
 		}

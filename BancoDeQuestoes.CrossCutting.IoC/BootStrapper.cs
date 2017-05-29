@@ -6,9 +6,6 @@ using BancoDeQuestoes.Domain.Services;
 using BancoDeQuestoes.Infra.Data.Context;
 using BancoDeQuestoes.Infra.Data.Repository;
 using BancoDeQuestoes.Infra.Data.UoW;
-using IdentitySample.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using SimpleInjector;
 
 
@@ -68,7 +65,7 @@ namespace BancoDeQuestoes.CrossCutting.IoC
 			container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
 
 		    container.Register<Db>(Lifestyle.Scoped);
-            container.Register<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
+            //container.Register<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
 
         }
 	}

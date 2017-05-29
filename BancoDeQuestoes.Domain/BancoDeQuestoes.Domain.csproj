@@ -31,6 +31,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Area.cs" />
+    <Compile Include="Entities\Claims.cs" />
+    <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\MestreArea.cs" />
     <Compile Include="Entities\Banca.cs" />
     <Compile Include="Entities\C__MigrationHistory.cs" />
