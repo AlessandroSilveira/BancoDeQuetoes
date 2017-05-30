@@ -88,10 +88,6 @@
       <Project>{39C11A26-2105-40D4-B0FD-210F799D7A0B}</Project>
       <Name>BancoDeQuestoes.Infra.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BancoDeQuestoes.Mvc\BancoDeQuestoes.Mvc.csproj">
-      <Project>{8B8A1D50-13E6-41B1-B399-3745A8739498}</Project>
-      <Name>BancoDeQuestoes.Mvc</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

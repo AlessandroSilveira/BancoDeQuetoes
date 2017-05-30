@@ -1,30 +1,28 @@
+using System.Reflection;
+using System.Web;
+using System.Web.Mvc;
+using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Mvc;
+using BancoDeQuestoes.Mvc.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+using SimpleInjector;
+using SimpleInjector.Integration.Web;
+using SimpleInjector.Integration.Web.Mvc;
+using Container = SimpleInjector.Container;
+using BancoDeQuestoes.Domain.Interfaces.Services;
+using BancoDeQuestoes.Domain.Services;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
+using BancoDeQuestoes.Infra.Data.Repository;
+using BancoDeQuestoes.Infra.Data.UoW;
+using BancoDeQuestoes.Infra.Data.Context;
 
+[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(SimpleInjectorInitializer), "Initialize")]
 
-[assembly: WebActivator.PostApplicationStartMethod(typeof(BancoDeQuestoes.Mvc.App_Start.SimpleInjectorInitializer), "Initialize")]
-
-namespace BancoDeQuestoes.Mvc.App_Start
+namespace BancoDeQuestoes.Mvc
 {
-    using System.Reflection;
-    using System.Web.Mvc;
-    using SimpleInjector;
-    using SimpleInjector.Integration.Web;
-    using SimpleInjector.Integration.Web.Mvc;
-    using Domain.Interfaces.Services;
-    using Domain.Services;
-    using Application.Interface.Repositories;
-    using Infra.Data.Repository;
-    using Domain.Interfaces.Repository;
-    using Infra.Data.UoW;
-    using Infra.Data.Context;
-    using Application.Interface;
-    using global::Microsoft.AspNet.Identity;
-    using global::Microsoft.AspNet.Identity.EntityFramework;
-    using global::Microsoft.Owin.Security;
-    using Models;
-
-    using System.Web;
-    using BancoDeQuestoes.Models;
-
     public static class SimpleInjectorInitializer
     {
         /// <summary>Initialize the container and register it as MVC3 Dependency Resolver.</summary>

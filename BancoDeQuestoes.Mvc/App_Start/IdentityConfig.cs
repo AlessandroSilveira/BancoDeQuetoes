@@ -6,9 +6,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using BancoDeQuestoes.Models;
+using BancoDeQuestoes.Mvc.Models;
 
-namespace BancoDeQuestoes
+namespace BancoDeQuestoes.Mvc
 {
     public class EmailService : IIdentityMessageService
     {

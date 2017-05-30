@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using BancoDeQuestoes.Models;
+using BancoDeQuestoes.Mvc.Models;
 
-namespace BancoDeQuestoes.Controllers
+namespace BancoDeQuestoes.Mvc.Controllers
 {
     [Authorize]
     public class ManageController : Controller

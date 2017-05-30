@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace BancoDeQuestoes
+namespace BancoDeQuestoes.Mvc
 {
     public class BundleConfig
     {

@@ -63,8 +63,8 @@
       <HintPath>..\packages\Moq.4.7.10\lib\net45\Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.7.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.7.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -114,7 +114,7 @@
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Mvc\BancoDeQuestoes.Mvc.csproj">
-      <Project>{8B8A1D50-13E6-41B1-B399-3745A8739498}</Project>
+      <Project>{FB80D426-543A-438C-A7A4-5D66A0EEAAF0}</Project>
       <Name>BancoDeQuestoes.Mvc</Name>
     </ProjectReference>
   </ItemGroup>
