@@ -1,28 +1,43 @@
-﻿using BancoDeQuestoes.Mvc.Identity;
-using BancoDeQuestoes.Mvc.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using BancoDeQuestoes.Models;
 
-namespace BancoDeQuestoes.Mvc.Controllers
+namespace BancoDeQuestoes.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
-        //public ManageController()
-        //{
-        //}
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
 
-        public ManageController(ApplicationUserManager userManager)
+        public ManageController()
         {
-            UserManager = userManager;
         }
 
-        private ApplicationUserManager _userManager;
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set 
+            { 
+                _signInManager = value; 
+            }
+        }
+
         public ApplicationUserManager UserManager
         {
             get
@@ -36,36 +51,28 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
 
         //
-        // GET: /Account/Index
+        // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two factor provider has been set."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "The phone number was added."
+                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
 
+            var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
-                PhoneNumber = await UserManager.GetPhoneNumberAsync(User.Identity.GetUserId()),
-                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(User.Identity.GetUserId()),
-                Logins = await UserManager.GetLoginsAsync(User.Identity.GetUserId()),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(User.Identity.GetUserId())
+                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
+                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
+                Logins = await UserManager.GetLoginsAsync(userId),
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return View(model);
-        }
-
-        //
-        // GET: /Account/RemoveLogin
-        public ActionResult RemoveLogin()
-        {
-            var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
-            ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
-            return View(linkedAccounts);
         }
 
         //
@@ -81,7 +88,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 if (user != null)
                 {
-                    await SignInAsync(user, isPersistent: false);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
                 message = ManageMessageId.RemoveLoginSuccess;
             }
@@ -93,14 +100,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
 
         //
-        // GET: /Account/AddPhoneNumber
+        // GET: /Manage/AddPhoneNumber
         public ActionResult AddPhoneNumber()
         {
             return View();
         }
 
         //
-        // POST: /Account/AddPhoneNumber
+        // POST: /Manage/AddPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
@@ -124,65 +131,46 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
 
         //
-        // POST: /Manage/RememberBrowser
+        // POST: /Manage/EnableTwoFactorAuthentication
         [HttpPost]
-        public ActionResult RememberBrowser()
-        {
-            var rememberBrowserIdentity = AuthenticationManager.CreateTwoFactorRememberBrowserIdentity(User.Identity.GetUserId());
-            AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, rememberBrowserIdentity);
-            return RedirectToAction("Index", "Manage");
-        }
-
-        //
-        // POST: /Manage/ForgetBrowser
-        [HttpPost]
-        public ActionResult ForgetBrowser()
-        {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
-            return RedirectToAction("Index", "Manage");
-        }
-
-        //
-        // POST: /Manage/EnableTFA
-        [HttpPost]
-        public async Task<ActionResult> EnableTFA()
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EnableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
             {
-                await SignInAsync(user, isPersistent: false);
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
             return RedirectToAction("Index", "Manage");
         }
 
         //
-        // POST: /Manage/DisableTFA
+        // POST: /Manage/DisableTwoFactorAuthentication
         [HttpPost]
-        public async Task<ActionResult> DisableTFA()
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DisableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
             {
-                await SignInAsync(user, isPersistent: false);
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
             return RedirectToAction("Index", "Manage");
         }
 
         //
-        // GET: /Account/VerifyPhoneNumber
+        // GET: /Manage/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
-            // This code allows you exercise the flow without actually sending codes
-            // For production use please register a SMS provider in IdentityConfig and generate a code here.
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
-            ViewBag.Status = "For DEMO purposes only, the current code is " + code;
+            // Send an SMS through the SMS provider to verify the phone number
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }
 
         //
-        // POST: /Account/VerifyPhoneNumber
+        // POST: /Manage/VerifyPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
@@ -197,7 +185,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 if (user != null)
                 {
-                    await SignInAsync(user, isPersistent: false);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
@@ -207,7 +195,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
 
         //
-        // GET: /Account/RemovePhoneNumber
+        // POST: /Manage/RemovePhoneNumber
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemovePhoneNumber()
         {
             var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
@@ -218,7 +208,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
             {
-                await SignInAsync(user, isPersistent: false);
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
@@ -231,7 +221,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
 
         //
-        // POST: /Account/Manage
+        // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -246,7 +236,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 if (user != null)
                 {
-                    await SignInAsync(user, isPersistent: false);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
@@ -275,7 +265,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
                     var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                     if (user != null)
                     {
-                        await SignInAsync(user, isPersistent: false);
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     }
                     return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordSuccess });
                 }
@@ -287,7 +277,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
 
         //
-        // GET: /Account/Manage
+        // GET: /Manage/ManageLogins
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -332,7 +322,18 @@ namespace BancoDeQuestoes.Mvc.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
-        #region Helpers
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && _userManager != null)
+            {
+                _userManager.Dispose();
+                _userManager = null;
+            }
+
+            base.Dispose(disposing);
+        }
+
+#region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -342,12 +343,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
             {
                 return HttpContext.GetOwinContext().Authentication;
             }
-        }
-
-        private async Task SignInAsync(ApplicationUser user, bool isPersistent)
-        {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.TwoFactorCookie);
-            AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, await user.GenerateUserIdentityAsync(UserManager));
         }
 
         private void AddErrors(IdentityResult result)
@@ -389,6 +384,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
             Error
         }
 
-        #endregion
+#endregion
     }
 }

@@ -271,14 +271,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\CustomUserStore.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\Identity\ApplicationCookieIdentityValidator.cs" />
-    <Compile Include="App_Start\Identity\ApplicationRoleManager.cs" />
-    <Compile Include="App_Start\Identity\ApplicationSignInManager.cs" />
-    <Compile Include="App_Start\Identity\EmailService.cs" />
-    <Compile Include="App_Start\Identity\IdentityConfig.cs" />
-    <Compile Include="App_Start\Identity\SmsService.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -286,7 +280,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\BancaController.cs" />
-    <Compile Include="Controllers\ClaimsAdminController.cs" />
     <Compile Include="Controllers\DisciplinaController.cs" />
     <Compile Include="Controllers\FormacaoRevisorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -299,10 +292,8 @@
     <Compile Include="Controllers\MestreFormacaoController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\RevisorController.cs" />
-    <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TopicoAtribuidoController.cs" />
-    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Filters\ClaimsAuthorize.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

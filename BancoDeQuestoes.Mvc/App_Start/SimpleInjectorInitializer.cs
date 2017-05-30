@@ -6,7 +6,6 @@ namespace BancoDeQuestoes.Mvc.App_Start
 {
     using System.Reflection;
     using System.Web.Mvc;
-
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
     using SimpleInjector.Integration.Web.Mvc;
@@ -22,8 +21,9 @@ namespace BancoDeQuestoes.Mvc.App_Start
     using global::Microsoft.AspNet.Identity.EntityFramework;
     using global::Microsoft.Owin.Security;
     using Models;
-    using Identity;
+
     using System.Web;
+    using BancoDeQuestoes.Models;
 
     public static class SimpleInjectorInitializer
     {
@@ -96,7 +96,7 @@ namespace BancoDeQuestoes.Mvc.App_Start
            //container.Register<IAuthenticationManager>(() => HttpContext.Current.GetOwinContext().Authentication);
           
             container.Register<RoleStore<IdentityRole>>(() => new RoleStore<IdentityRole>());
-            container.Register<ApplicationRoleManager>(Lifestyle.Scoped);
+            //container.Register<ApplicationRoleManager>(Lifestyle.Scoped);
             container.Register<IRoleStore<IdentityRole, string>>(() => new RoleStore<IdentityRole>(container.GetInstance<Db>()));
             //container.Register<IAuthenticationManager>(Lifestyle.Scoped);
             container.Register<IAuthenticationManager>(() => HttpContext.Current.GetOwinContext().Authentication);

@@ -1,6 +1,7 @@
-﻿using System.Web.Optimization;
+﻿using System.Web;
+using System.Web.Optimization;
 
-namespace BancoDeQuestoes.Mvc.App_Start
+namespace BancoDeQuestoes
 {
     public class BundleConfig
     {

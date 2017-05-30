@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using BancoDeQuestoes.Domain.Entities;
+using BancoDeQuestoes.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BancoDeQuestoes.Mvc.Models
