@@ -17,7 +17,7 @@ namespace BancoDeQuestoes.Application.ViewModels
 		[Required(ErrorMessage = "O campo Nome deve ser preenchido"), StringLength(150), DisplayName("Nome")]
 		public string Nome { get; set; }
 
-		[Required(ErrorMessage = "O campo Ativo deve ser preenchido"), StringLength(150), DisplayName("Ativo")]
+		public int NumeroStatus { get; set; }
 		public bool Ativo { get; set; }
 	}
 }

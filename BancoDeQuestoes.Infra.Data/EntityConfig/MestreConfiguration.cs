@@ -11,6 +11,9 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
 		{
 			HasKey(p => p.MestreId);
 
+			Property(p => p.BancaId)
+				.IsRequired();
+
 			Property(p => p.Nome)
 				.IsRequired()
 				.HasMaxLength(150);

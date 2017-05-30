@@ -1,40 +1,42 @@
 ﻿using System;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Infra.Data.Context;
-using BancoDeQuestoes.Infra.Data.Interfaces;
 
 namespace BancoDeQuestoes.Infra.Data.UoW
 {
-	public class UnitOfWork : IUnitOfWork
-	{
-		private readonly Db _context;
-		private bool _disposed;
+    public class UnitOfWork : IUnitOfWork
+    {
+        private readonly Db _db;
+        private bool _disposed;
 
-		public UnitOfWork(Db context)
-		{
-			_context = context;
-		}
 
-		public void BeginTransaction()
-		{
-			_disposed = false;
-		}
+        public UnitOfWork(Db db)
+        {
+            _db = db;
+        }
 
-		public void Commit()
-		{
-			_context.SaveChanges();
-		}
+        public void BeginTransaction()
+        {
+            _disposed = false;
+        }
 
-		protected virtual void Dispose(bool disposing)
-		{
-			if (!_disposed && disposing)
-				_context.Dispose();
-			_disposed = true;
-		}
+        public void Commit()
+        {
+            _db.SaveChanges();
+        }
 
-		public void Dispose()
-		{
-			Dispose(true);
-			GC.SuppressFinalize(this);
-		}
-	}
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+                if (disposing)
+                    _db.Dispose();
+            _disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+    }
 }

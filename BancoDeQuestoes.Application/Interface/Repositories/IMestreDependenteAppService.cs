@@ -12,6 +12,6 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 		IEnumerable<MestreDependenteViewModel> GetAll();
 		MestreDependenteViewModel Update(MestreDependenteViewModel obj);
 		void Remove(Guid id);
-		IEnumerable<MestreDependenteViewModel> Search(Expression<Func<MestreDependenteViewModel, bool>> predicate);
+		
 	}
 }

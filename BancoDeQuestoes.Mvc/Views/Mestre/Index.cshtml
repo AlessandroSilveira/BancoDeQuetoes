@@ -62,7 +62,8 @@
 	    <td>
 		    @Html.ActionLink("Add Formação", "Index","MestreFormacao", new { id = item.MestreId },null) |
 		    @Html.ActionLink("Add Dependente", "Index", "MestreDependente", new { id = item.MestreId },null) |
-			@Html.ActionLink("Add Área", "Index","MestreArea", new { id = item.MestreId },null)|
+	        @Html.ActionLink("Add Área", "Index","MestreArea", new { id = item.MestreId },null)|
+            @Html.ActionLink("Editar", "Edit", new { id = item.MestreId }) |
 		    @Html.ActionLink("Detalhes", "Details", new {id = item.MestreId}) |
 		    @Html.ActionLink("Excluir", "Delete", new {id = item.MestreId})
 	    </td>

@@ -11,6 +11,7 @@ namespace BancoDeQuestoes.Domain.Entities
 
 		public Guid StatusId { get; set; }
 		public string Nome { get; set; }
+        public int NumeroStatus { get; set; }
 		public bool Ativo { get; set; }
 	}
 }

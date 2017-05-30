@@ -25,7 +25,7 @@ namespace BancoDeQuestoes.Domain.Entities
 		public string EmailSecundario { get; set; }
 		public string Telefone { get; set; }
 		public string Celular { get; set; }
-		public Banca Banca { get; set; }
+		public Guid BancaId { get; set; }
 		public string Filhos { get; set; }
 		public string Pis { get; set; }
 		public string Minicurriculo { get; set; }
@@ -34,6 +34,8 @@ namespace BancoDeQuestoes.Domain.Entities
 		public string TipoConta { get; set; }
 		public string Conta { get; set; }
 		public bool Ativo { get; set; }
+
+		public virtual Banca Banca { get; set; }
 
 		public virtual ICollection<MestreArea> MestreAreas { get; set; } = new List<MestreArea>();
 		public virtual ICollection<MestreFormacao> MestreFormacaos { get; set; } = new List<MestreFormacao>();

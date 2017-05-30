@@ -3,11 +3,9 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Infra.Data.EntityConfig;
-
-
 namespace BancoDeQuestoes.Infra.Data.Context
 {
-	public  class Db : DbContext
+    public  class Db : DbContext
     {
         public Db()
             : base("db")
@@ -28,8 +26,10 @@ namespace BancoDeQuestoes.Infra.Data.Context
 		public virtual DbSet<Questao> Questao { get; set; }
 		public virtual DbSet<TopicoAtribuido> TopicoAtribuido { get; set; }
 		public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Claims> Claims { get; set; }
 
-		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

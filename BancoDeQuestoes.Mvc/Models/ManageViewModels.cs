@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BancoDeQuestoes.Mvc.Models
 {
@@ -26,62 +27,62 @@ namespace BancoDeQuestoes.Mvc.Models
 
     public class SetPasswordViewModel
     {
-        //[Required]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        //[DataType(DataType.Password)]
-        //[Display(Name = "New password")]
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Nova Senha")]
         public string NewPassword { get; set; }
 
-        //[DataType(DataType.Password)]
-        //[Display(Name = "Confirm new password")]
-        //[Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Repita Nova Senha")]
+        [Compare("NewPassword", ErrorMessage = "As senhas não se coincidem.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class ChangePasswordViewModel
     {
-        //[Required]
-        //[DataType(DataType.Password)]
-        //[Display(Name = "Current password")]
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Senha Atual")]
         public string OldPassword { get; set; }
 
-        //[Required]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        //[DataType(DataType.Password)]
-        //[Display(Name = "New password")]
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Nova Senha")]
         public string NewPassword { get; set; }
 
-        //[DataType(DataType.Password)]
-        //[Display(Name = "Confirm new password")]
-        //[Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Repita Nova Senha")]
+        [Compare("NewPassword", ErrorMessage = "As senhas não se coincidem.")]
         public string ConfirmPassword { get; set; }
     }
 
 
     public class AddPhoneNumberViewModel
     {
-        //[Required]
-        //[Phone]
-        //[Display(Name = "Phone Number")]
+        [Required]
+        [Phone]
+        [Display(Name = "Número do Telefone")]
         public string Number { get; set; }
     }
 
     public class VerifyPhoneNumberViewModel
     {
-        //[Required]
-        //[Display(Name = "Code")]
+        [Required]
+        [Display(Name = "Código")]
         public string Code { get; set; }
 
-        //[Required]
-        //[Phone]
-        //[Display(Name = "Phone Number")]
+        [Required]
+        [Phone]
+        [Display(Name = "Número do Telefone")]
         public string PhoneNumber { get; set; }
     }
 
     public class ConfigureTwoFactorViewModel
     {
         public string SelectedProvider { get; set; }
-        //public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
 
 }

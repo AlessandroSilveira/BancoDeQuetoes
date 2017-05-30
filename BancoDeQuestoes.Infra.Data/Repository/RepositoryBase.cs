@@ -13,16 +13,15 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	    protected Db Context;
 	    protected DbSet<TEntity> DbSet;
 
-	    public RepositoryBase()
+	    public RepositoryBase(Db context)
 	    {
-	        Context = new Db();
-	        DbSet = Context.Set<TEntity>();
+	        Context = context;
+	        DbSet = context.Set<TEntity>();
 	    }
 
 	    public TEntity Add(TEntity obj)
 	    {
 	        var objreturn = DbSet.Add(obj);
-	        SaveChanges();
 	        return objreturn;
 	    }
 
@@ -41,14 +40,13 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	        var entry = Context.Entry(obj);
 	        DbSet.Attach(obj);
             entry.State = EntityState.Modified;
-	        SaveChanges();
 	        return obj;
 	    }
 
 	    public virtual void Remove(Guid id)
 	    {
 	        DbSet.Remove(GetById(id));
-		    Context.SaveChanges();
+		   
 	    }
 
 	    public IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> predicate)
@@ -65,6 +63,11 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	    {
 	        Context.Dispose();
             GC.SuppressFinalize(this); 
+	    }
+
+	    public IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
+	    {
+	        return DbSet.Where(predicate);
 	    }
 	}
 }

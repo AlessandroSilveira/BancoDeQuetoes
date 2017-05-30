@@ -54,7 +54,7 @@ namespace BancoDeQuestoes.Application.ViewModels
 		[Required(ErrorMessage = "O campo Celular deve ser preenchido"), StringLength(15), DisplayName("Celular")]
 		public string Celular { get; set; }
 
-		[Required(ErrorMessage = "O campo Banca deve ser preenchido"), StringLength(150), DisplayName("Banca")]
+		[Required(ErrorMessage = "O campo Banca deve ser preenchido"),  DisplayName("Banca")]
 		public Guid  BancaId { get; set; }
 
 		[Required(ErrorMessage = "O campo Filhos deve ser preenchido"), StringLength(2), DisplayName("Filhos")]

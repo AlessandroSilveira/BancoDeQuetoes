@@ -15,7 +15,10 @@ namespace BancoDeQuestoes.Application.ViewModels
 		[Key]
 		[DisplayName("Id Discipliina")]
 		public Guid DisciplinaId { get; set; }
-        
+
+		[Required]
+		public Guid AreaId { get; set; }
+
         [StringLength(150)]
 		[Required(ErrorMessage = "Informe um Título da Disciplina.")]
 		[DisplayName("Titulo da Disciplina")]

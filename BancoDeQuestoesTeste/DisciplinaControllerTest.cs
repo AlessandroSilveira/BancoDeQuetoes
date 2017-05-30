@@ -16,7 +16,8 @@ namespace BancoDeQuestoesTeste
 		private MockRepository _repository;
 		private Mock<IDisciplinaAppService> _disciplinaAppServiceMock;
 		private Mock<IAreaAppService> _areaAppServiceMock;
-	
+	    private Mock<IProjetoAppService> _projetoAppMock;
+	    private Mock<IMestreAppService> _mestreAppService;
 
 		[SetUp]
 		public void Setup()
@@ -24,14 +25,29 @@ namespace BancoDeQuestoesTeste
 			_repository = new MockRepository(MockBehavior.Strict);
 			_disciplinaAppServiceMock = _repository.Create<IDisciplinaAppService>();
 			_areaAppServiceMock = _repository.Create<IAreaAppService>();
-			_disciplina = new DisciplinaController(_disciplinaAppServiceMock.Object, _areaAppServiceMock.Object);
+            _projetoAppMock = new Mock<IProjetoAppService>();
+            _mestreAppService = new Mock<IMestreAppService>();
+            _disciplina = new DisciplinaController(_disciplinaAppServiceMock.Object, _areaAppServiceMock.Object,_projetoAppMock.Object, _mestreAppService.Object);
 		}
 
 		[Test]
 		public void TestIndex()
 		{
-			//Arrange
-			_disciplinaAppServiceMock.Setup(a => a.GetAll()).Returns(It.IsAny<ICollection<DisciplinaViewModel>>()).Verifiable();
+            //Arrange
+            var dadosViewModel = new DisciplinaViewModel()
+            {
+                Ativo = true,
+                Nome = "Teste",
+                Area = new Area(),
+                AreaId = new Guid(),
+                Bibliografia = "teste",
+                Descricao = "teste",
+                DisciplinaId = new Guid(),
+                Nivel = "Alta Compexidade"
+            };
+
+            _disciplinaAppServiceMock.Setup(a => a.GetAll()).Returns(It.IsAny<ICollection<DisciplinaViewModel>>()).Verifiable();
+            _areaAppServiceMock.Setup(a=>a.GetAll()).Returns(It.IsAny<IEnumerable<AreaViewModel>>()).Verifiable();
 
 			//Act
 			_disciplina.Index();
@@ -43,9 +59,22 @@ namespace BancoDeQuestoesTeste
 		[Test]
 		public void TesteDetails()
 		{
-			//Arrange
-			Guid id = new Guid();
-			_disciplinaAppServiceMock.Setup(a => a.GetById(id)).Returns(It.IsAny<DisciplinaViewModel>()).Verifiable();
+            //Arrange
+            var dadosViewModel = new DisciplinaViewModel()
+            {
+                Ativo = true,
+                Nome = "Teste",
+                Area = new Area(),
+                AreaId = new Guid(),
+                Bibliografia = "teste",
+                Descricao = "teste",
+                DisciplinaId = new Guid(),
+                Nivel = "Alta Compexidade"
+            };
+
+            //Arrange
+            Guid id = new Guid();
+			_disciplinaAppServiceMock.Setup(a => a.GetById(dadosViewModel.DisciplinaId)).Returns(dadosViewModel).Verifiable();
 
 			//Act
 			_disciplina.Details(id);
@@ -83,7 +112,7 @@ namespace BancoDeQuestoesTeste
 				DisciplinaId = new Guid(),
 				Nivel = "Alta Compexidade"
 			};
-			_disciplinaAppServiceMock.Setup(a => a.Add(dadosViewModel)).Returns(It.IsAny<DisciplinaViewModel>()).Verifiable();
+			_disciplinaAppServiceMock.Setup(a => a.Add(dadosViewModel)).Returns(dadosViewModel).Verifiable();
 
 			//Act
 			_disciplina.Create(dadosViewModel);
@@ -108,7 +137,7 @@ namespace BancoDeQuestoesTeste
 				Nivel = ""
 			};
 
-			_disciplinaAppServiceMock.Setup(a => a.Add(dadosViewModel)).Returns(It.IsAny<DisciplinaViewModel>()).Verifiable();
+			_disciplinaAppServiceMock.Setup(a => a.Add(dadosViewModel)).Returns(dadosViewModel).Verifiable();
 
 			//Act
 			_disciplina.Create(dadosViewModel);

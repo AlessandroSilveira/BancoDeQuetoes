@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BancoDeQuestoes.Application.ViewModels.StatusViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Status</h2>
+
+<p>
+    @Html.ActionLink("Novo Status", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.StatusId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.StatusId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.StatusId })
+        </td>
+    </tr>
+}
+
+</table>

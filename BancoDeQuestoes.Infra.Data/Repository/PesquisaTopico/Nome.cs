@@ -10,7 +10,7 @@ namespace BancoDeQuestoes.Infra.Data.Repository.PesquisaTopico
 		public List<Disciplina> Pesquisa(Disciplina form, List<Disciplina> sql)
 		{
 		    if (string.IsNullOrEmpty(form.Nome)) return Proximo.Pesquisa(form, sql);
-            sql =   sql.Where(c => c.Nome == form.Nome).ToList();
+            sql =   sql.Where(c => c.Nome.Contains(form.Nome)).ToList();
 			return Proximo.Pesquisa(form, sql);
 		}
 

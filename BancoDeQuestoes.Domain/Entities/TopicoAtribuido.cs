@@ -4,7 +4,6 @@ namespace BancoDeQuestoes.Domain.Entities
 {
 	public class TopicoAtribuido
 	{
-
 		public TopicoAtribuido()
 		{
 			TopicoAtribuidoId = Guid.NewGuid();
@@ -22,11 +21,13 @@ namespace BancoDeQuestoes.Domain.Entities
 		public string Observacao { get; set; }
 		public DateTime DataAtribuicao { get; set; }
 		public bool ConviteAceito { get; set; }
-
-		public virtual Projeto Projeto { get; set; }
-		public virtual Area Area { get; set; }
-		public virtual Mestre Mestre { get; set; }
-		public virtual Disciplina Disciplina { get; set; }
-
-	}
+		public virtual Guid ProjetoId { get; set; }
+		public virtual Guid AreaId { get; set; }
+		public virtual Guid MestreId { get; set; }
+		public virtual Guid DisciplinaId { get; set; }
+        public virtual Projeto Projeto { get; set; }
+        public virtual Area Area { get; set; }
+        public virtual Mestre Mestre { get; set; }
+        public virtual Disciplina Disciplina { get; set; }
+    }
 }

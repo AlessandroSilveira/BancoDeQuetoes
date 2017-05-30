@@ -122,10 +122,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Banca, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Banca.BancaId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Banca, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Banca, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.BancaId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Banca.BancaId, "", new { @class = "text-danger" })
             </div>
         </div>
 
