@@ -158,6 +158,7 @@ C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Banco
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.Mvc.pdb
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Antlr3.Runtime.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.Application.dll
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.CrossCutting.IoC.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\EntityFramework.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\EntityFramework.SqlServer.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Microsoft.AI.Agent.Intercept.dll
@@ -207,6 +208,8 @@ C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Banco
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.Infra.Data.dll
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.Application.pdb
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.Application.dll.config
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.CrossCutting.IoC.pdb
+C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\BancoDeQuestoes.CrossCutting.IoC.dll.config
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Antlr3.Runtime.pdb
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\EntityFramework.xml
 C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\EntityFramework.SqlServer.xml
@@ -409,13 +412,3 @@ C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoe
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.csprojResolveAssemblyReference.cache
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.dll
 C:\Users\Alessandro Silveira\Documents\Visual Studio 2015\Projects\BancoDeQuetoes\BancoDeQuestoes.Mvc\obj\Debug\BancoDeQuestoes.Mvc.pdb
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Microsoft.Owin.Security.Facebook.dll
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Microsoft.Owin.Security.Google.dll
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Microsoft.Owin.Security.Twitter.dll
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.WebApi.dll
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Microsoft.Owin.Security.Facebook.xml
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Microsoft.Owin.Security.Google.xml
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\Microsoft.Owin.Security.Twitter.xml
-C:\Users\ckm serviços\Source\Repos\BancoDeQuetoes\BancoDeQuestoes.Mvc\bin\SimpleInjector.Integration.WebApi.xml
