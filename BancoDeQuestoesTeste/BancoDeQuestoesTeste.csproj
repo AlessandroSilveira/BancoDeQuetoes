@@ -114,7 +114,7 @@
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Mvc\BancoDeQuestoes.Mvc.csproj">
-      <Project>{FB80D426-543A-438C-A7A4-5D66A0EEAAF0}</Project>
+      <Project>{5A120A84-E89C-464E-BAC1-B5ECAE2B9F4A}</Project>
       <Name>BancoDeQuestoes.Mvc</Name>
     </ProjectReference>
   </ItemGroup>

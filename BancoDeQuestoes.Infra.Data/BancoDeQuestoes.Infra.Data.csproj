@@ -33,8 +33,6 @@
     <Compile Include="Context\Db.cs" />
     <Compile Include="EntityConfig\AreaConfiguration.cs" />
     <Compile Include="EntityConfig\BancaConfiguration.cs" />
-    <Compile Include="EntityConfig\ClaimsConfiguration.cs" />
-    <Compile Include="EntityConfig\ClientConfiguration.cs" />
     <Compile Include="EntityConfig\DisciplinaConfiguration.cs" />
     <Compile Include="EntityConfig\FormacaoRevisorConfiguration.cs" />
     <Compile Include="EntityConfig\MestreAreaConfiguration.cs" />

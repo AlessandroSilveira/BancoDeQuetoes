@@ -1,10 +1,10 @@
 ﻿using System;
+using BancoDeQuestoes.Mvc.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using BancoDeQuestoes.Mvc.Models;
 
 namespace BancoDeQuestoes.Mvc
 {

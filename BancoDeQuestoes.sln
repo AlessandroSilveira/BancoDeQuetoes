@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoDeQuestoes.Infra.Cross
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancodeQuestoes.Infra.CrossCutting.MvcFilters", "BancodeQuestoes.CrossCutting.Filters\BancodeQuestoes.Infra.CrossCutting.MvcFilters.csproj", "{D5BDEF4A-954B-4B40-884E-8054B54B1CC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoDeQuestoes.Mvc", "BancoDeQuestoes.Mvc\BancoDeQuestoes.Mvc.csproj", "{FB80D426-543A-438C-A7A4-5D66A0EEAAF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoDeQuestoes.Mvc", "BancoDeQuestoes.Mvc\BancoDeQuestoes.Mvc.csproj", "{5A120A84-E89C-464E-BAC1-B5ECAE2B9F4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +61,10 @@ Global
 		{D5BDEF4A-954B-4B40-884E-8054B54B1CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5BDEF4A-954B-4B40-884E-8054B54B1CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5BDEF4A-954B-4B40-884E-8054B54B1CC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB80D426-543A-438C-A7A4-5D66A0EEAAF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB80D426-543A-438C-A7A4-5D66A0EEAAF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB80D426-543A-438C-A7A4-5D66A0EEAAF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB80D426-543A-438C-A7A4-5D66A0EEAAF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A120A84-E89C-464E-BAC1-B5ECAE2B9F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A120A84-E89C-464E-BAC1-B5ECAE2B9F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A120A84-E89C-464E-BAC1-B5ECAE2B9F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A120A84-E89C-464E-BAC1-B5ECAE2B9F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +77,6 @@ Global
 		{4489D34B-B534-4892-B4A2-A58775E4A2F2} = {02B303CB-FD94-45B4-AB16-F57B364B701B}
 		{6E6CBF3D-8A65-426F-A4CC-F8FFEF683D09} = {EED7EEAF-9260-47C9-BF0F-DE697B0B86AE}
 		{D5BDEF4A-954B-4B40-884E-8054B54B1CC0} = {EED7EEAF-9260-47C9-BF0F-DE697B0B86AE}
-		{FB80D426-543A-438C-A7A4-5D66A0EEAAF0} = {A789E889-E2DB-47A4-B3A2-C88739A5899C}
+		{5A120A84-E89C-464E-BAC1-B5ECAE2B9F4A} = {A789E889-E2DB-47A4-B3A2-C88739A5899C}
 	EndGlobalSection
 EndGlobal
