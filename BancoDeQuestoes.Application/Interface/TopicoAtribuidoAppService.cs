@@ -68,5 +68,12 @@ namespace BancoDeQuestoes.Application.Interface
             var projeto = _projetoAppService.GetById(projetoId);
             return projeto.CodigoProjeto;
         }
+
+        public IEnumerable<TopicoAtribuidoViewModel> Search(Expression<Func<TopicoAtribuido, bool>> func)
+        {
+            return
+                Mapper.Map<IEnumerable<TopicoAtribuido>, IEnumerable<TopicoAtribuidoViewModel>>(
+                    _topicoAtribuido.Search(func));
+        }
     }
 }

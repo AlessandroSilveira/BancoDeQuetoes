@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -45,5 +46,13 @@ namespace BancoDeQuestoes.Domain.Services
 			_topicoAtribuidoRepository.Dispose();
 			GC.SuppressFinalize(this);
 		}
+
+
+        public IEnumerable<TopicoAtribuido> Search(Expression<Func<TopicoAtribuido, bool>> func)
+        {
+          return  _topicoAtribuidoRepository.Search(func);
+        }
+
+	 
 	}
 }

@@ -238,11 +238,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListaFormacao.cs" />
     <Compile Include="Controllers\ListaNiveis.cs" />
+    <Compile Include="Controllers\ListaQuestoesMestreController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MestreAreaController.cs" />
     <Compile Include="Controllers\MestreController.cs" />
     <Compile Include="Controllers\MestreDependenteController.cs" />
     <Compile Include="Controllers\MestreFormacaoController.cs" />
+    <Compile Include="Controllers\PainelQuestaoController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\RevisorController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
@@ -396,9 +398,11 @@
     <Content Include="Views\TopicoAtribuido\Edit.cshtml" />
     <Content Include="Views\TopicoAtribuido\Index.cshtml" />
     <Content Include="Views\TopicoAtribuido\SalvarTopicoAtribuido.cshtml" />
+    <Content Include="Views\ListaQuestoesMestre\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PainelQuestao\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

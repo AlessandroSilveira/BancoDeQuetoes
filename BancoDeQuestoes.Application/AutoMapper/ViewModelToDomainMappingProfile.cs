@@ -24,6 +24,7 @@ namespace BancoDeQuestoes.Application.AutoMapper
             //Mapper.Initialize(cfg => cfg.CreateMap<TopicoAtribuido, TopicoAtribuidoViewModel>());
             //Mapper.Initialize(cfg => cfg.CreateMap<Status, StatusViewModel>());
 
+            Mapper.CreateMap<Area, AreaViewModel>();
             Mapper.CreateMap<Projeto, ProjetoViewModel>();
             Mapper.CreateMap<Disciplina, DisciplinaViewModel>();
             Mapper.CreateMap<Banca, BancaViewModel>();
