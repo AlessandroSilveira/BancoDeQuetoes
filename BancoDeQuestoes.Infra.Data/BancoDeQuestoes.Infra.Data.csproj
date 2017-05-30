@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201705292015408_29052017-2.Designer.cs">
       <DependentUpon>201705292015408_29052017-2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705302029468_30052017.cs" />
+    <Compile Include="Migrations\201705302029468_30052017.Designer.cs">
+      <DependentUpon>201705302029468_30052017.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\AreaId_Disciplina.cs" />
     <Compile Include="Repository\PesquisaTopico\Descricao.cs" />
     <Compile Include="Repository\PesquisaTopico\Nome.cs" />
@@ -161,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705292015408_29052017-2.resx">
       <DependentUpon>201705292015408_29052017-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705302029468_30052017.resx">
+      <DependentUpon>201705302029468_30052017.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
