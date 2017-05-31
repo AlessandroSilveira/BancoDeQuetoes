@@ -16,6 +16,8 @@ using BancoDeQuestoes.Domain.Services;
 using BancoDeQuestoes.Infra.Data.Context;
 using BancoDeQuestoes.Infra.Data.Repository;
 using BancoDeQuestoes.Infra.Data.UoW;
+using BancoDeQuestoes.Infra.Identity.Configuration;
+using BancoDeQuestoes.Infra.Identity.Context;
 using BancoDeQuestoes.Infra.Identity.Model;
 
 
@@ -89,15 +91,22 @@ namespace BancoDeQuestoes.Mvc
             container.Register<IStatusRepository, StatusRepositoryBase>(Lifestyle.Scoped);
             container.Register<ITopicoAtribuidoRepository, TopicoAtribuidoRepositoryBase>(Lifestyle.Scoped);
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
+
             container.Register<Db>(Lifestyle.Scoped);
+
+            container.Register<ApplicationDbContext>();
+            //container.Register<IUserStore<ApplicationUser>>();
+
+           // container.Register<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(Lifestyle.Scoped);
            // container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>());
-           //container.Register<IAuthenticationManager>(() => HttpContext.Current.GetOwinContext().Authentication);
-          
-            container.Register<RoleStore<IdentityRole>>(() => new RoleStore<IdentityRole>());
-            //container.Register<ApplicationRoleManager>(Lifestyle.Scoped);
-            container.Register<IRoleStore<IdentityRole, string>>(() => new RoleStore<IdentityRole>(container.GetInstance<Db>()));
-            //container.Register<IAuthenticationManager>(Lifestyle.Scoped);
+            container.Register<IUserStore<ApplicationUser>>(
+                () => new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            container.Register<IRoleStore<IdentityRole, string>>(() => new RoleStore<IdentityRole>());
+            container.Register<ApplicationRoleManager>();
+            container.Register<ApplicationUserManager>();
+            container.Register<ApplicationSignInManager>();
             container.Register<IAuthenticationManager>(() => HttpContext.Current.GetOwinContext().Authentication);
+            container.Register<IUsuarioRepository, UsuarioRepository>();
 
         }
     }

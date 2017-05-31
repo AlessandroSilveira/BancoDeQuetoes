@@ -4,7 +4,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security.DataProtection;
 
-
 namespace BancoDeQuestoes.Infra.Identity.Configuration
 {
     public class ApplicationUserManager : UserManager<ApplicationUser>
