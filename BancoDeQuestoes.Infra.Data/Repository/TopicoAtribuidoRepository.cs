@@ -11,7 +11,5 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	    public TopicoAtribuidoRepositoryBase(Db context) : base(context)
 	    {
 	    }
-
-       
     }
 }

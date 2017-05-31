@@ -109,12 +109,24 @@
       <Project>{4489D34B-B534-4892-B4A2-A58775E4A2F2}</Project>
       <Name>BancoDeQuestoes.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BancodeQuestoes.CrossCutting.Filters\BancodeQuestoes.Infra.CrossCutting.MvcFilters.csproj">
+      <Project>{d5bdef4a-954b-4b40-884e-8054b54b1cc0}</Project>
+      <Name>BancodeQuestoes.Infra.CrossCutting.MvcFilters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BancoDeQuestoes.CrossCutting.IoC\BancoDeQuestoes.Infra.CrossCutting.IoC.csproj">
+      <Project>{6e6cbf3d-8a65-426f-a4cc-f8ffef683d09}</Project>
+      <Name>BancoDeQuestoes.Infra.CrossCutting.IoC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
       <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BancoDeQuestoes.Infra.Data\BancoDeQuestoes.Infra.Data.csproj">
+      <Project>{39c11a26-2105-40d4-b0fd-210f799d7a0b}</Project>
+      <Name>BancoDeQuestoes.Infra.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Mvc\BancoDeQuestoes.Mvc.csproj">
-      <Project>{5A120A84-E89C-464E-BAC1-B5ECAE2B9F4A}</Project>
+      <Project>{241144AE-5681-4FE9-9BD7-9C77ECEC3AB9}</Project>
       <Name>BancoDeQuestoes.Mvc</Name>
     </ProjectReference>
   </ItemGroup>

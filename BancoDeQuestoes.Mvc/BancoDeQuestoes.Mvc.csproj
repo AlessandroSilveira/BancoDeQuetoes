@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5A120A84-E89C-464E-BAC1-B5ECAE2B9F4A}</ProjectGuid>
+    <ProjectGuid>{241144AE-5681-4FE9-9BD7-9C77ECEC3AB9}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -226,7 +226,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -245,16 +244,15 @@
     <Compile Include="Controllers\MestreFormacaoController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\RevisorController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TopicoAtribuidoController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
+    <Compile Include="App_Start\Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -328,6 +326,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Area\Create.cshtml" />
     <Content Include="Views\Area\Delete.cshtml" />
     <Content Include="Views\Area\Details.cshtml" />
@@ -381,18 +390,25 @@
     <Content Include="Views\Revisor\Details.cshtml" />
     <Content Include="Views\Revisor\Edit.cshtml" />
     <Content Include="Views\Revisor\Index.cshtml" />
-    <Content Include="Views\RolesAdmin\Create.cshtml" />
-    <Content Include="Views\RolesAdmin\Delete.cshtml" />
-    <Content Include="Views\RolesAdmin\Details.cshtml" />
-    <Content Include="Views\RolesAdmin\Edit.cshtml" />
-    <Content Include="Views\RolesAdmin\Index.cshtml" />
     <Content Include="Views\Shared\PesquisaDisciplina.cshtml" />
     <Content Include="Views\Shared\PesquisaMestres.cshtml" />
     <Content Include="Views\Shared\PesquisaQuestao.cshtml" />
     <Content Include="Views\Shared\PesquisaTopicos.cshtml" />
+    <Content Include="Views\Status\Create.cshtml" />
+    <Content Include="Views\Status\Delete.cshtml" />
+    <Content Include="Views\Status\Details.cshtml" />
+    <Content Include="Views\Status\Edit.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Create.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Delete.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Details.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Edit.cshtml" />
+    <Content Include="Views\TopicoAtribuido\Index.cshtml" />
+    <Content Include="Views\TopicoAtribuido\SalvarTopicoAtribuido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -413,6 +429,10 @@
       <Project>{39C11A26-2105-40D4-B0FD-210F799D7A0B}</Project>
       <Name>BancoDeQuestoes.Infra.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BancoDeQuestoes.Infra.Identity\BancoDeQuestoes.Infra.Identity.csproj">
+      <Project>{A04DAE13-925D-4425-9BFE-B668C8C5AA8F}</Project>
+      <Name>BancoDeQuestoes.Infra.Identity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -430,7 +450,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50117</DevelopmentServerPort>
+          <DevelopmentServerPort>50876</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:5459/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

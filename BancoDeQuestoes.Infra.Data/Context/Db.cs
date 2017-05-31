@@ -8,7 +8,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
     public  class Db : DbContext
     {
         public Db()
-            : base("db")
+            : base("DefaultConnection")
         {
         }
 

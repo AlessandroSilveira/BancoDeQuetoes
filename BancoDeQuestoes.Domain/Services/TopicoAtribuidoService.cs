@@ -47,12 +47,9 @@ namespace BancoDeQuestoes.Domain.Services
 			GC.SuppressFinalize(this);
 		}
 
-
         public IEnumerable<TopicoAtribuido> Search(Expression<Func<TopicoAtribuido, bool>> func)
         {
           return  _topicoAtribuidoRepository.Search(func);
         }
-
-	 
 	}
 }

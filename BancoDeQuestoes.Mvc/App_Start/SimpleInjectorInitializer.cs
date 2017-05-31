@@ -1,9 +1,14 @@
-
-
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+using SimpleInjector;
+using SimpleInjector.Integration.Web;
+using SimpleInjector.Integration.Web.Mvc;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -11,14 +16,8 @@ using BancoDeQuestoes.Domain.Services;
 using BancoDeQuestoes.Infra.Data.Context;
 using BancoDeQuestoes.Infra.Data.Repository;
 using BancoDeQuestoes.Infra.Data.UoW;
-using BancoDeQuestoes.Mvc;
-using BancoDeQuestoes.Mvc.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin.Security;
-using SimpleInjector;
-using SimpleInjector.Integration.Web;
-using SimpleInjector.Integration.Web.Mvc;
+using BancoDeQuestoes.Infra.Identity.Model;
+
 
 [assembly: WebActivatorEx.PostApplicationStartMethod(typeof(SimpleInjectorInitializer), "Initialize")]
 
@@ -91,7 +90,7 @@ namespace BancoDeQuestoes.Mvc
             container.Register<ITopicoAtribuidoRepository, TopicoAtribuidoRepositoryBase>(Lifestyle.Scoped);
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
             container.Register<Db>(Lifestyle.Scoped);
-            container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>());
+           // container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>());
            //container.Register<IAuthenticationManager>(() => HttpContext.Current.GetOwinContext().Authentication);
           
             container.Register<RoleStore<IdentityRole>>(() => new RoleStore<IdentityRole>());
