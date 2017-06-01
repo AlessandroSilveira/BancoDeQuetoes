@@ -10,8 +10,7 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
             HasKey(u => u.Id);
 
             Property(u => u.Id)
-                .IsRequired()
-                .HasMaxLength(128);
+                .IsRequired();
 
             Property(u => u.Email)
                 .IsRequired()

@@ -1,37 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using EP.IdentityIsolation.Domain.Interface.Repository;
+using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
 
-namespace EP.IdentityIsolation.MVC.Controllers
+namespace BancoDeQuestoes.Mvc.Controllers
 {
     [Authorize]
     public class UsuariosController : Controller
     {
-        private readonly IUsuarioRepository _usuarioRepository;
 
-        public UsuariosController(IUsuarioRepository usuarioRepository)
+        private readonly IUsuarioAppService _usuarioAppService;
+
+        public UsuariosController(IUsuarioAppService usuarioAppService)
         {
-            _usuarioRepository = usuarioRepository;
+            _usuarioAppService = usuarioAppService;
         }
 
         // GET: Usuarios
         public ActionResult Index()
         {
-            return View(_usuarioRepository.ObterTodos());
+            return View(_usuarioAppService.GetAll());
         }
 
         // GET: Usuarios/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(Guid id)
         {
-            return View(_usuarioRepository.ObterPorId(id));
+            return View(_usuarioAppService.GetById(id));
         }
 
-        public ActionResult DesativarLock(string id)
+        public ActionResult DesativarLock(Guid id)
         {
-            _usuarioRepository.DesativarLock(id);
+            _usuarioAppService.DesativarLock(id);
             return RedirectToAction("Index");
         }
     }

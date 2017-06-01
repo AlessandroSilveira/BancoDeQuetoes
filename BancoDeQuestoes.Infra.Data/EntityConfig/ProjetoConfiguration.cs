@@ -10,9 +10,6 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
         {
             HasKey(p => p.ProjetoId);
 
-	      
-			
-
             Property(p => p.CodigoProjeto)
                 .IsRequired();
 

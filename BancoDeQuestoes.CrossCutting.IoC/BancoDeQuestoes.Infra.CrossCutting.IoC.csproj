@@ -117,13 +117,13 @@
       <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BancoDeQuestoes.Infra.CrossCutting.Identity\BancoDeQuestoes.Infra.CrossCutting.Identity.csproj">
+      <Project>{DFF8BC41-5C98-4F23-A94C-846017D47F28}</Project>
+      <Name>BancoDeQuestoes.Infra.CrossCutting.Identity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Infra.Data\BancoDeQuestoes.Infra.Data.csproj">
       <Project>{39C11A26-2105-40D4-B0FD-210F799D7A0B}</Project>
       <Name>BancoDeQuestoes.Infra.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BancoDeQuestoes.Infra.Identity\BancoDeQuestoes.Infra.Identity.csproj">
-      <Project>{A04DAE13-925D-4425-9BFE-B668C8C5AA8F}</Project>
-      <Name>BancoDeQuestoes.Infra.Identity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

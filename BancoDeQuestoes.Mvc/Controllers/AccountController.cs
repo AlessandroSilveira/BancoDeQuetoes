@@ -5,23 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using BancoDeQuestoes.Infra.Identity.Model;
-using BancoDeQuestoes.Infra.Identity.Configuration;
+using BancoDeQuestoes.Infra.CrossCutting.Identity.Configuration;
+using BancoDeQuestoes.Infra.CrossCutting.Identity.Model;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private  ApplicationSignInManager _signInManager;
-        private  ApplicationUserManager _userManager;
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
 
         //
         // GET: /Account/Login
@@ -93,7 +92,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
                 return View(model);
             }
 
-            var result = await _signInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await _signInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -128,7 +127,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);

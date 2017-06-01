@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Infra.Data.Context;
@@ -11,9 +10,12 @@ namespace BancoDeQuestoes.Infra.Data.Repository
         public UsuarioRepository(Db context) : base(context)
         {
         }
-        public void DesativarLock(string id)
+
+
+        public void DesativarLock(Guid id)
         {
-            throw new NotImplementedException();
+            GetById(id).LockoutEnabled = false;
+            SaveChanges();
         }
     }
 }

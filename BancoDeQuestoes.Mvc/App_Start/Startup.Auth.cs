@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Web.Mvc;
+using BancoDeQuestoes.Infra.CrossCutting.Identity.Configuration;
+using BancoDeQuestoes.Infra.CrossCutting.Identity.Model;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
-using BancoDeQuestoes.Infra.Identity.Configuration;
-using BancoDeQuestoes.Infra.Identity.Model;
 
 namespace BancoDeQuestoes.Mvc
 {
