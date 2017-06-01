@@ -31,8 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Area.cs" />
-    <Compile Include="Entities\Claims.cs" />
-    <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\MestreArea.cs" />
     <Compile Include="Entities\Banca.cs" />
     <Compile Include="Entities\C__MigrationHistory.cs" />
@@ -46,6 +44,7 @@
     <Compile Include="Entities\Disciplina.cs" />
     <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\TopicoAtribuido.cs" />
+    <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Interfaces\Repository\IAreaRepository.cs" />
     <Compile Include="Interfaces\Repository\IBancaRepository.cs" />
     <Compile Include="Interfaces\Repository\IItemPesquisaTopico.cs" />
@@ -65,6 +64,7 @@
     <Compile Include="Interfaces\Repository\IStatusRepository.cs" />
     <Compile Include="Interfaces\Repository\ITopicoAtribuidoRepository.cs" />
     <Compile Include="Interfaces\Repository\IUnitOfWork.cs" />
+    <Compile Include="Interfaces\Repository\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\Services\IAreaService.cs" />
     <Compile Include="Interfaces\Services\IBancaService.cs" />
     <Compile Include="Interfaces\Services\IDisciplinaService.cs" />
@@ -79,6 +79,7 @@
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Interfaces\Services\IStatusService.cs" />
     <Compile Include="Interfaces\Services\ITopicoAtribuidoService.cs" />
+    <Compile Include="Interfaces\Services\IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AreaService.cs" />
     <Compile Include="Services\BancaService.cs" />
@@ -94,8 +95,13 @@
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\StatusService.cs" />
     <Compile Include="Services\TopicoAtribuidoService.cs" />
+    <Compile Include="Services\UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>

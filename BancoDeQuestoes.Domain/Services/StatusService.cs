@@ -33,7 +33,7 @@ namespace BancoDeQuestoes.Domain.Services
 
         public IEnumerable<Status> ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador)
         {
-            return _statusRepository.Buscar(a => a.Nome.Equals(itemSemConfirmaçãoDeAceitePeloElaborador));
+            return _statusRepository.Search(a => a.Nome.Equals(itemSemConfirmaçãoDeAceitePeloElaborador));
         }
     }
 }

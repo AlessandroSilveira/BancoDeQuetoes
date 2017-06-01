@@ -9,10 +9,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
             return View();
         }
 
-        [Authorize]
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }

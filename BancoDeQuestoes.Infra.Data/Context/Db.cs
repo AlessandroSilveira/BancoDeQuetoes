@@ -8,7 +8,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
     public  class Db : DbContext
     {
         public Db()
-            : base("db")
+            : base("DefaultConnection")
         {
         }
 
@@ -26,8 +26,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
 		public virtual DbSet<Questao> Questao { get; set; }
 		public virtual DbSet<TopicoAtribuido> TopicoAtribuido { get; set; }
 		public virtual DbSet<Status> Status { get; set; }
-        public virtual DbSet<Client> Client { get; set; }
-        public virtual DbSet<Claims> Claims { get; set; }
+     
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -56,6 +55,6 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			base.OnModelCreating(modelBuilder);
 		}
 
-		
-	}
+     
+    }
 }

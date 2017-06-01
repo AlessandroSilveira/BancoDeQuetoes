@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace BancoDeQuestoes.Mvc.App_Start
+namespace BancoDeQuestoes.Mvc
 {
     public class FilterConfig
     {

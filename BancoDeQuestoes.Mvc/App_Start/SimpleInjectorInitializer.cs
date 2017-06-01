@@ -1,30 +1,30 @@
+using System.Reflection;
+using System.Web;
+using System.Web.Mvc;
+using BancoDeQuestoes.Application.Interface;
+using BancoDeQuestoes.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+using SimpleInjector;
+using SimpleInjector.Integration.Web;
+using SimpleInjector.Integration.Web.Mvc;
+using BancoDeQuestoes.Application.Interface.Repositories;
+using BancoDeQuestoes.Domain.Interfaces.Repository;
+using BancoDeQuestoes.Domain.Interfaces.Services;
+using BancoDeQuestoes.Domain.Services;
+using BancoDeQuestoes.Infra.Data.Context;
+using BancoDeQuestoes.Infra.Data.Repository;
+using BancoDeQuestoes.Infra.Data.UoW;
+using BancoDeQuestoes.Infra.Identity.Configuration;
+using BancoDeQuestoes.Infra.Identity.Context;
+using BancoDeQuestoes.Infra.Identity.Model;
 
 
-[assembly: WebActivator.PostApplicationStartMethod(typeof(BancoDeQuestoes.Mvc.App_Start.SimpleInjectorInitializer), "Initialize")]
+[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(SimpleInjectorInitializer), "Initialize")]
 
-namespace BancoDeQuestoes.Mvc.App_Start
+namespace BancoDeQuestoes.Mvc
 {
-    using System.Reflection;
-    using System.Web.Mvc;
-
-    using SimpleInjector;
-    using SimpleInjector.Integration.Web;
-    using SimpleInjector.Integration.Web.Mvc;
-    using Domain.Interfaces.Services;
-    using Domain.Services;
-    using Application.Interface.Repositories;
-    using Infra.Data.Repository;
-    using Domain.Interfaces.Repository;
-    using Infra.Data.UoW;
-    using Infra.Data.Context;
-    using Application.Interface;
-    using global::Microsoft.AspNet.Identity;
-    using global::Microsoft.AspNet.Identity.EntityFramework;
-    using global::Microsoft.Owin.Security;
-    using Models;
-    using Identity;
-    using System.Web;
-
     public static class SimpleInjectorInitializer
     {
         /// <summary>Initialize the container and register it as MVC3 Dependency Resolver.</summary>
@@ -91,15 +91,22 @@ namespace BancoDeQuestoes.Mvc.App_Start
             container.Register<IStatusRepository, StatusRepositoryBase>(Lifestyle.Scoped);
             container.Register<ITopicoAtribuidoRepository, TopicoAtribuidoRepositoryBase>(Lifestyle.Scoped);
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
+
             container.Register<Db>(Lifestyle.Scoped);
-            container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>());
-           //container.Register<IAuthenticationManager>(() => HttpContext.Current.GetOwinContext().Authentication);
-          
-            container.Register<RoleStore<IdentityRole>>(() => new RoleStore<IdentityRole>());
-            container.Register<ApplicationRoleManager>(Lifestyle.Scoped);
-            container.Register<IRoleStore<IdentityRole, string>>(() => new RoleStore<IdentityRole>(container.GetInstance<Db>()));
-            //container.Register<IAuthenticationManager>(Lifestyle.Scoped);
+
+            container.Register<ApplicationDbContext>();
+            //container.Register<IUserStore<ApplicationUser>>();
+
+           // container.Register<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(Lifestyle.Scoped);
+           // container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>());
+            container.Register<IUserStore<ApplicationUser>>(
+                () => new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            container.Register<IRoleStore<IdentityRole, string>>(() => new RoleStore<IdentityRole>());
+            container.Register<ApplicationRoleManager>();
+            container.Register<ApplicationUserManager>();
+            container.Register<ApplicationSignInManager>();
             container.Register<IAuthenticationManager>(() => HttpContext.Current.GetOwinContext().Authentication);
+            container.Register<IUsuarioRepository, UsuarioRepository>();
 
         }
     }

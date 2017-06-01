@@ -49,9 +49,6 @@ namespace BancoDeQuestoes.Domain.Services
 			_repositoryBase.Dispose();
 		}
 
-		public TEntity GetById(int id)
-		{
-			throw new NotImplementedException();
-		}
+	
 	}
 }

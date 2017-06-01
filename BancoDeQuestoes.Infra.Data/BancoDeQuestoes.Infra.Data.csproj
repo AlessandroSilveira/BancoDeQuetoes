@@ -33,8 +33,6 @@
     <Compile Include="Context\Db.cs" />
     <Compile Include="EntityConfig\AreaConfiguration.cs" />
     <Compile Include="EntityConfig\BancaConfiguration.cs" />
-    <Compile Include="EntityConfig\ClaimsConfiguration.cs" />
-    <Compile Include="EntityConfig\ClientConfiguration.cs" />
     <Compile Include="EntityConfig\DisciplinaConfiguration.cs" />
     <Compile Include="EntityConfig\FormacaoRevisorConfiguration.cs" />
     <Compile Include="EntityConfig\MestreAreaConfiguration.cs" />
@@ -46,6 +44,7 @@
     <Compile Include="EntityConfig\QuestoesConfiguration.cs" />
     <Compile Include="EntityConfig\RevisorConfigurations.cs" />
     <Compile Include="EntityConfig\StatusConfiguration.cs" />
+    <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
     <Compile Include="ItensPesquisaTopico.cs" />
     <Compile Include="Migrations\201705021847420_02052017.cs" />
     <Compile Include="Migrations\201705021847420_02052017.Designer.cs">
@@ -74,6 +73,14 @@
     <Compile Include="Migrations\201705292015408_29052017-2.cs" />
     <Compile Include="Migrations\201705292015408_29052017-2.Designer.cs">
       <DependentUpon>201705292015408_29052017-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705302029468_30052017.cs" />
+    <Compile Include="Migrations\201705302029468_30052017.Designer.cs">
+      <DependentUpon>201705302029468_30052017.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705311519127_31052017.cs" />
+    <Compile Include="Migrations\201705311519127_31052017.Designer.cs">
+      <DependentUpon>201705311519127_31052017.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\AreaId_Disciplina.cs" />
     <Compile Include="Repository\PesquisaTopico\Descricao.cs" />
@@ -110,6 +117,7 @@
     <Compile Include="Repository\RevisorRepository.cs" />
     <Compile Include="Repository\StatusMestre.cs" />
     <Compile Include="Repository\TopicoAtribuidoRepository.cs" />
+    <Compile Include="Repository\UsuarioRepository.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,8 +129,36 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -131,6 +167,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -163,6 +201,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705292015408_29052017-2.resx">
       <DependentUpon>201705292015408_29052017-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705302029468_30052017.resx">
+      <DependentUpon>201705302029468_30052017.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311519127_31052017.resx">
+      <DependentUpon>201705311519127_31052017.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

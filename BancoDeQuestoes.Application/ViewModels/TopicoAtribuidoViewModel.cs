@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Application.ViewModels
 {
-	public class TopicoAtribuidoViewModel
+    public class TopicoAtribuidoViewModel
 	{
 		public TopicoAtribuidoViewModel()
 		{

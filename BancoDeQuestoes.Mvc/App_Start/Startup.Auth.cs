@@ -1,27 +1,25 @@
 ﻿using System;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.DataProtection;
 using Owin;
-using Microsoft.Owin.Security.Facebook;
-using System.Threading.Tasks;
-using BancoDeQuestoes.Mvc.Models;
-using BancoDeQuestoes.Mvc.Identity;
+using BancoDeQuestoes.Infra.Identity.Configuration;
+using BancoDeQuestoes.Infra.Identity.Model;
 
 namespace BancoDeQuestoes.Mvc
 {
     public partial class Startup
     {
-        private const string XmlSchemaString = "http://www.w3.org/2001/XMLSchema#string";
+        public static IDataProtectionProvider DataProtectionProvider { get; set; }
 
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-            // Configure the db context, user manager and role manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
-            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            // Configure the db context, user manager and signin manager to use a single instance per request
+            //app.CreatePerOwinContext(() => DependencyResolver.Current.GetService<ApplicationUserManager>());
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -34,16 +32,11 @@ namespace BancoDeQuestoes.Mvc
                 {
                     // Enables the application to validate the security stamp when the user logs in.
                     // This is a security feature which is used when you change a password or add an external login to your account.  
-
-                    //OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
-                    //    validateInterval: TimeSpan.FromMinutes(30),
-                    //    regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
-
-                    OnValidateIdentity = ApplicationCookieIdentityValidator.OnValidateIdentity(
-                       validateInterval: TimeSpan.FromMinutes(0),
-                       regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
+                        validateInterval: TimeSpan.FromMinutes(30),
+                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });
+            });            
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -55,51 +48,23 @@ namespace BancoDeQuestoes.Mvc
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
+            //app.UseMicrosoftAccountAuthentication(
+            //    clientId: "",
+            //    clientSecret: "");
 
-            app.UseMicrosoftAccountAuthentication(
-                clientId: "SEU ID",
-                clientSecret: "SEU TOKEN");
+            //app.UseTwitterAuthentication(
+            //   consumerKey: "",
+            //   consumerSecret: "");
 
-            app.UseTwitterAuthentication(
-               consumerKey: "SEU ID",
-               consumerSecret: "SEU TOKEN");
+            //app.UseFacebookAuthentication(
+            //   appId: "",
+            //   appSecret: "");
 
-
-            app.UseGoogleAuthentication(
-                clientId: "SEU ID",
-                clientSecret: "SEU TOKEN");
-
-
-            var fao = new FacebookAuthenticationOptions
-            {
-                AppId = "SEU ID",
-                AppSecret = "SEU TOKEN"
-            };
-
-            fao.Scope.Add("email");
-            fao.Scope.Add("publish_actions");
-            fao.Scope.Add("basic_info");
-
-            fao.Provider = new FacebookAuthenticationProvider()
-            {
-
-                OnAuthenticated = (context) =>
-                {
-                    context.Identity.AddClaim(new System.Security.Claims.Claim("urn:facebook:access_token", context.AccessToken, XmlSchemaString, "Facebook"));
-                    foreach (var x in context.User)
-                    {
-                        var claimType = string.Format("urn:facebook:{0}", x.Key);
-                        string claimValue = x.Value.ToString();
-                        if (!context.Identity.HasClaim(claimType, claimValue))
-                            context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, XmlSchemaString, "Facebook"));
-
-                    }
-                    return Task.FromResult(0);
-                }
-            };
-
-            fao.SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie;
-            app.UseFacebookAuthentication(fao);
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "",
+            //    ClientSecret = ""
+            //});
         }
     }
 }
