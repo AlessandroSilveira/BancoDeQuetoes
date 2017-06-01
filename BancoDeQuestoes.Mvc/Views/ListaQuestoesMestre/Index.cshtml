@@ -1,0 +1,117 @@
+﻿@model IEnumerable<BancoDeQuestoes.Application.ViewModels.TopicoAtribuidoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Area.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disciplina.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mestre.Cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Projeto.NomeProjeto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoProjeto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroQuestao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataEntrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nivel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestoesRealizadas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aceito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataAtribuicao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConviteAceito)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disciplina.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mestre.Cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Projeto.NomeProjeto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoProjeto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroQuestao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEntrega)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nivel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestoesRealizadas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aceito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataAtribuicao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConviteAceito)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TopicoAtribuidoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TopicoAtribuidoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TopicoAtribuidoId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,9 +1,8 @@
 ﻿using System;
 using BancoDeQuestoes.Infra.CrossCutting.Identity.Model;
-using BancoDeQuestoes.Infra.Identity.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace BancoDeQuestoes.Infra.Identity.Context
+namespace BancoDeQuestoes.Infra.CrossCutting.Identity.Context
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IDisposable
     {

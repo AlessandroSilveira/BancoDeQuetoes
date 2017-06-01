@@ -31,6 +31,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Area.cs" />
+    <Compile Include="Entities\AspNetRoles.cs" />
+    <Compile Include="Entities\AspNetUserClaims.cs" />
+    <Compile Include="Entities\AspNetUserLogins.cs" />
+    <Compile Include="Entities\AspNetUserLoginsConfiguration.cs" />
+    <Compile Include="Entities\AspNetUserRoles.cs" />
+    <Compile Include="Entities\AspNetUserRolesConfiguration.cs" />
+    <Compile Include="Entities\AspNetUsers.cs" />
+    <Compile Include="Entities\AspNetUsersConfiguration.cs" />
     <Compile Include="Entities\MestreArea.cs" />
     <Compile Include="Entities\Banca.cs" />
     <Compile Include="Entities\C__MigrationHistory.cs" />
@@ -98,11 +106,20 @@
     <Compile Include="Services\UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -9,10 +9,10 @@ namespace BancoDeQuestoes.Domain.Entities
     {
         public Usuario()
         {
-            Id = Guid.NewGuid();
+            UsuarioId = Guid.NewGuid();
         }
 
-        public Guid Id { get; set; }
+        public Guid UsuarioId { get; set; }
 
         public virtual string Email { get; set; }
 

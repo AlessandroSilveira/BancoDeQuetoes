@@ -7,9 +7,9 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
     {
         public UsuarioConfiguration()
         {
-            HasKey(u => u.Id);
+            HasKey(u => u.UsuarioId);
 
-            Property(u => u.Id)
+            Property(u => u.UsuarioId)
                 .IsRequired();
 
             Property(u => u.Email)

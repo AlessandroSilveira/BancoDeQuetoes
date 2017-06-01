@@ -3,6 +3,8 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Infra.Data.EntityConfig;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 namespace BancoDeQuestoes.Infra.Data.Context
 {
     public  class Db : DbContext
@@ -26,6 +28,12 @@ namespace BancoDeQuestoes.Infra.Data.Context
 		public virtual DbSet<Questao> Questao { get; set; }
 		public virtual DbSet<TopicoAtribuido> TopicoAtribuido { get; set; }
 		public virtual DbSet<Status> Status { get; set; }
+
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
      
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -50,11 +58,23 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Configurations.Add(new QuestoesConfiguration());
 			modelBuilder.Configurations.Add(new TopicoAtribuidoConfiguration());
 			modelBuilder.Configurations.Add(new StatusConfiguration());
+            modelBuilder.Configurations.Add(new UsuarioConfiguration());
 			modelBuilder.Configurations.Add(new C__MigrationHistoryConfiguration());
+            modelBuilder.Configurations.Add(new AspNetRolesConfiguration());
+            modelBuilder.Configurations.Add(new AspNetUserClaimsConfiguration());
+            modelBuilder.Configurations.Add(new AspNetUserLoginsConfiguration());
+            modelBuilder.Configurations.Add(new AspNetUserRolesConfiguration());
+            modelBuilder.Configurations.Add(new AspNetUsersConfiguration());
 
-			base.OnModelCreating(modelBuilder);
+
+
+
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+
+
+            base.OnModelCreating(modelBuilder);
 		}
-
-     
     }
 }

@@ -1,4 +1,4 @@
-﻿using BancoDeQuestoes.Infra.Identity.Context;
+﻿using BancoDeQuestoes.Infra.CrossCutting.Identity.Context;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -11,7 +11,6 @@ namespace BancoDeQuestoes.Infra.CrossCutting.Identity.Configuration
         public ApplicationRoleManager(IRoleStore<IdentityRole, string> roleStore)
             :base(roleStore)
         {
-            
         }
 
         public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options,IOwinContext context)
