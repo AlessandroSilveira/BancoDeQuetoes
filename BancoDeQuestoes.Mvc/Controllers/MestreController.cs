@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
@@ -9,11 +10,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
     {
         private readonly IMestreAppService _mestreAppService;
         private readonly IBancaAppService _bancaAppService;
+        private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
 
-        public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService)
+        public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService, ITopicoAtribuidoAppService topicoAtribuidoAppService)
         {
             _mestreAppService = mestreAppService;
             _bancaAppService = bancaAppService;
+            _topicoAtribuidoAppService = topicoAtribuidoAppService;
         }
 
         public ActionResult Index()
@@ -76,5 +79,20 @@ namespace BancoDeQuestoes.Mvc.Controllers
             _mestreAppService.Remove(id);
             return RedirectToAction("Index");
         }
+
+        public ActionResult ListaQuestoesAtribuidas()
+        {
+           
+            var dadosMestre = _mestreAppService.Search(a => a.Email.Equals(User.Identity.Name)).FirstOrDefault();
+
+            if (dadosMestre==null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var listaQuestoesAtribuidasMestre = _topicoAtribuidoAppService.Search(a => a.MestreId.Equals(dadosMestre.MestreId));
+            return View(listaQuestoesAtribuidasMestre);
+        }
+
     }
 }

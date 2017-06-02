@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Domain.Interfaces.Services
@@ -11,5 +12,6 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
 		IEnumerable<Mestre> GetAll();
 		Mestre Update(Mestre obj);
 		void Remove(Guid id);
+	    IEnumerable<Mestre> Search(Expression<Func<Mestre, bool>> func);
 	}
 }

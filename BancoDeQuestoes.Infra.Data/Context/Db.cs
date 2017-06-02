@@ -65,5 +65,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
 
             base.OnModelCreating(modelBuilder);
 		}
+
+       
     }
 }
