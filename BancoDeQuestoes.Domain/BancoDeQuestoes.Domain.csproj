@@ -31,14 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Area.cs" />
-    <Compile Include="Entities\AspNetRoles.cs" />
-    <Compile Include="Entities\AspNetUserClaims.cs" />
-    <Compile Include="Entities\AspNetUserLogins.cs" />
-    <Compile Include="Entities\AspNetUserLoginsConfiguration.cs" />
-    <Compile Include="Entities\AspNetUserRoles.cs" />
-    <Compile Include="Entities\AspNetUserRolesConfiguration.cs" />
-    <Compile Include="Entities\AspNetUsers.cs" />
-    <Compile Include="Entities\AspNetUsersConfiguration.cs" />
     <Compile Include="Entities\MestreArea.cs" />
     <Compile Include="Entities\Banca.cs" />
     <Compile Include="Entities\C__MigrationHistory.cs" />

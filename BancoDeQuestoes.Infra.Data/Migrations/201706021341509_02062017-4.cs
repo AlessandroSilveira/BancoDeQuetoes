@@ -3,7 +3,7 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _02052017 : DbMigration
+    public partial class _020620174 : DbMigration
     {
         public override void Up()
         {
@@ -17,6 +17,22 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
                         Ativo = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.AreaId);
+            
+            CreateTable(
+                "dbo.Disciplina",
+                c => new
+                    {
+                        DisciplinaId = c.Guid(nullable: false, identity: true),
+                        AreaId = c.Guid(nullable: false),
+                        Descricao = c.String(nullable: false, maxLength: 150, unicode: false),
+                        Nome = c.String(nullable: false, maxLength: 150, unicode: false),
+                        Bibliografia = c.String(nullable: false, maxLength: 150, unicode: false),
+                        Ativo = c.Boolean(nullable: false),
+                        Nivel = c.String(nullable: false, maxLength: 150, unicode: false),
+                    })
+                .PrimaryKey(t => t.DisciplinaId)
+                .ForeignKey("dbo.Area", t => t.AreaId)
+                .Index(t => t.AreaId);
             
             CreateTable(
                 "dbo.TopicoAtribuido",
@@ -34,36 +50,20 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
                         Observacao = c.String(nullable: false, maxLength: 150, unicode: false),
                         DataAtribuicao = c.DateTime(nullable: false),
                         ConviteAceito = c.Boolean(nullable: false),
-                        Area_AreaId = c.Guid(),
-                        Disciplina_DisciplinaId = c.Guid(),
-                        Mestre_MestreId = c.Guid(),
-                        Projeto_ProjetoId = c.Guid(),
+                        ProjetoId = c.Guid(nullable: false),
+                        AreaId = c.Guid(nullable: false),
+                        MestreId = c.Guid(nullable: false),
+                        DisciplinaId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.TopicoAtribuidoId)
-                .ForeignKey("dbo.Area", t => t.Area_AreaId)
-                .ForeignKey("dbo.Disciplina", t => t.Disciplina_DisciplinaId)
-                .ForeignKey("dbo.Mestre", t => t.Mestre_MestreId)
-                .ForeignKey("dbo.Projeto", t => t.Projeto_ProjetoId)
-                .Index(t => t.Area_AreaId)
-                .Index(t => t.Disciplina_DisciplinaId)
-                .Index(t => t.Mestre_MestreId)
-                .Index(t => t.Projeto_ProjetoId);
-            
-            CreateTable(
-                "dbo.Disciplina",
-                c => new
-                    {
-                        DisciplinaId = c.Guid(nullable: false, identity: true),
-                        AreaId = c.Guid(nullable: false),
-                        Descricao = c.String(nullable: false, maxLength: 150, unicode: false),
-                        Nome = c.String(nullable: false, maxLength: 150, unicode: false),
-                        Bibliografia = c.String(nullable: false, maxLength: 150, unicode: false),
-                        Ativo = c.Boolean(nullable: false),
-                        Nivel = c.String(nullable: false, maxLength: 150, unicode: false),
-                    })
-                .PrimaryKey(t => t.DisciplinaId)
                 .ForeignKey("dbo.Area", t => t.AreaId)
-                .Index(t => t.AreaId);
+                .ForeignKey("dbo.Disciplina", t => t.DisciplinaId)
+                .ForeignKey("dbo.Mestre", t => t.MestreId)
+                .ForeignKey("dbo.Projeto", t => t.ProjetoId)
+                .Index(t => t.ProjetoId)
+                .Index(t => t.AreaId)
+                .Index(t => t.MestreId)
+                .Index(t => t.DisciplinaId);
             
             CreateTable(
                 "dbo.Mestre",
@@ -83,6 +83,7 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
                         EmailSecundario = c.String(nullable: false, maxLength: 150, unicode: false),
                         Telefone = c.String(nullable: false, maxLength: 15, unicode: false),
                         Celular = c.String(nullable: false, maxLength: 15, unicode: false),
+                        BancaId = c.Guid(nullable: false),
                         Filhos = c.String(maxLength: 2, unicode: false),
                         Pis = c.String(nullable: false, maxLength: 20, unicode: false),
                         Minicurriculo = c.String(maxLength: 8000, unicode: false),
@@ -91,12 +92,11 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
                         TipoConta = c.String(nullable: false, maxLength: 150, unicode: false),
                         Conta = c.String(nullable: false, maxLength: 150, unicode: false),
                         Ativo = c.Boolean(nullable: false),
-                        Banca_BancaId = c.Guid(),
                     })
                 .PrimaryKey(t => t.MestreId)
-                .ForeignKey("dbo.Banca", t => t.Banca_BancaId)
+                .ForeignKey("dbo.Banca", t => t.BancaId)
                 .Index(t => t.Cpf, unique: true)
-                .Index(t => t.Banca_BancaId);
+                .Index(t => t.BancaId);
             
             CreateTable(
                 "dbo.Banca",
@@ -253,29 +253,109 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
                     {
                         StatusId = c.Guid(nullable: false, identity: true),
                         Nome = c.String(nullable: false, maxLength: 150, unicode: false),
+                        NumeroStatus = c.Int(nullable: false),
                         Ativo = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.StatusId);
+            
+            CreateTable(
+                "dbo.AspNetUsers",
+                c => new
+                    {
+                        UsuarioId = c.Guid(nullable: false, identity: true),
+                        Email = c.String(nullable: false, maxLength: 256, unicode: false),
+                        EmailConfirmed = c.Boolean(nullable: false),
+                        PasswordHash = c.String(maxLength: 8000, unicode: false),
+                        SecurityStamp = c.String(maxLength: 8000, unicode: false),
+                        PhoneNumber = c.String(maxLength: 8000, unicode: false),
+                        PhoneNumberConfirmed = c.Boolean(nullable: false),
+                        TwoFactorEnabled = c.Boolean(nullable: false),
+                        LockoutEndDateUtc = c.DateTime(),
+                        LockoutEnabled = c.Boolean(nullable: false),
+                        AccessFailedCount = c.Int(nullable: false),
+                        UserName = c.String(nullable: false, maxLength: 256, unicode: false),
+                        Id = c.String(maxLength: 8000, unicode: false),
+                    })
+                .PrimaryKey(t => t.UsuarioId);
+            
+            CreateTable(
+                "dbo.IdentityUserClaim",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(maxLength: 8000, unicode: false),
+                        ClaimType = c.String(maxLength: 8000, unicode: false),
+                        ClaimValue = c.String(maxLength: 8000, unicode: false),
+                        Usuario_UsuarioId = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.Usuario_UsuarioId)
+                .Index(t => t.Usuario_UsuarioId);
+            
+            CreateTable(
+                "dbo.IdentityUserLogin",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128, unicode: false),
+                        LoginProvider = c.String(maxLength: 8000, unicode: false),
+                        ProviderKey = c.String(maxLength: 8000, unicode: false),
+                        Usuario_UsuarioId = c.Guid(),
+                    })
+                .PrimaryKey(t => t.UserId)
+                .ForeignKey("dbo.AspNetUsers", t => t.Usuario_UsuarioId)
+                .Index(t => t.Usuario_UsuarioId);
+            
+            CreateTable(
+                "dbo.IdentityUserRole",
+                c => new
+                    {
+                        RoleId = c.String(nullable: false, maxLength: 128, unicode: false),
+                        UserId = c.String(nullable: false, maxLength: 128, unicode: false),
+                        Usuario_UsuarioId = c.Guid(),
+                        IdentityRole_Id = c.String(maxLength: 128, unicode: false),
+                    })
+                .PrimaryKey(t => new { t.RoleId, t.UserId })
+                .ForeignKey("dbo.AspNetUsers", t => t.Usuario_UsuarioId)
+                .ForeignKey("dbo.IdentityRole", t => t.IdentityRole_Id)
+                .Index(t => t.Usuario_UsuarioId)
+                .Index(t => t.IdentityRole_Id);
+            
+            CreateTable(
+                "dbo.IdentityRole",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128, unicode: false),
+                        Name = c.String(maxLength: 8000, unicode: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.IdentityUserRole", "Usuario_UsuarioId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.IdentityUserLogin", "Usuario_UsuarioId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.IdentityUserClaim", "Usuario_UsuarioId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Questao", "TopicoAtribuidoId", "dbo.TopicoAtribuido");
             DropForeignKey("dbo.FormacaoRevisor", "RevisorId", "dbo.Revisor");
             DropForeignKey("dbo.Revisor", "Area_AreaId", "dbo.Area");
-            DropForeignKey("dbo.TopicoAtribuido", "Projeto_ProjetoId", "dbo.Projeto");
-            DropForeignKey("dbo.TopicoAtribuido", "Mestre_MestreId", "dbo.Mestre");
+            DropForeignKey("dbo.TopicoAtribuido", "ProjetoId", "dbo.Projeto");
+            DropForeignKey("dbo.TopicoAtribuido", "MestreId", "dbo.Mestre");
             DropForeignKey("dbo.MestreFormacao", "Mestre_MestreId", "dbo.Mestre");
             DropForeignKey("dbo.MestreFormacao", "MestreId", "dbo.Mestre");
             DropForeignKey("dbo.MestreDependente", "Mestre_MestreId", "dbo.Mestre");
             DropForeignKey("dbo.MestreDependente", "MestreId", "dbo.Mestre");
             DropForeignKey("dbo.MestreArea", "MestreId", "dbo.Mestre");
             DropForeignKey("dbo.MestreArea", "AreaId", "dbo.Area");
-            DropForeignKey("dbo.Mestre", "Banca_BancaId", "dbo.Banca");
-            DropForeignKey("dbo.TopicoAtribuido", "Disciplina_DisciplinaId", "dbo.Disciplina");
+            DropForeignKey("dbo.Mestre", "BancaId", "dbo.Banca");
+            DropForeignKey("dbo.TopicoAtribuido", "DisciplinaId", "dbo.Disciplina");
+            DropForeignKey("dbo.TopicoAtribuido", "AreaId", "dbo.Area");
             DropForeignKey("dbo.Disciplina", "AreaId", "dbo.Area");
-            DropForeignKey("dbo.TopicoAtribuido", "Area_AreaId", "dbo.Area");
+            DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.IdentityUserRole", new[] { "Usuario_UsuarioId" });
+            DropIndex("dbo.IdentityUserLogin", new[] { "Usuario_UsuarioId" });
+            DropIndex("dbo.IdentityUserClaim", new[] { "Usuario_UsuarioId" });
             DropIndex("dbo.Questao", new[] { "TopicoAtribuidoId" });
             DropIndex("dbo.Revisor", new[] { "Area_AreaId" });
             DropIndex("dbo.Revisor", new[] { "Cpf" });
@@ -286,13 +366,18 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
             DropIndex("dbo.MestreDependente", new[] { "MestreId" });
             DropIndex("dbo.MestreArea", new[] { "AreaId" });
             DropIndex("dbo.MestreArea", new[] { "MestreId" });
-            DropIndex("dbo.Mestre", new[] { "Banca_BancaId" });
+            DropIndex("dbo.Mestre", new[] { "BancaId" });
             DropIndex("dbo.Mestre", new[] { "Cpf" });
+            DropIndex("dbo.TopicoAtribuido", new[] { "DisciplinaId" });
+            DropIndex("dbo.TopicoAtribuido", new[] { "MestreId" });
+            DropIndex("dbo.TopicoAtribuido", new[] { "AreaId" });
+            DropIndex("dbo.TopicoAtribuido", new[] { "ProjetoId" });
             DropIndex("dbo.Disciplina", new[] { "AreaId" });
-            DropIndex("dbo.TopicoAtribuido", new[] { "Projeto_ProjetoId" });
-            DropIndex("dbo.TopicoAtribuido", new[] { "Mestre_MestreId" });
-            DropIndex("dbo.TopicoAtribuido", new[] { "Disciplina_DisciplinaId" });
-            DropIndex("dbo.TopicoAtribuido", new[] { "Area_AreaId" });
+            DropTable("dbo.IdentityRole");
+            DropTable("dbo.IdentityUserRole");
+            DropTable("dbo.IdentityUserLogin");
+            DropTable("dbo.IdentityUserClaim");
+            DropTable("dbo.AspNetUsers");
             DropTable("dbo.Status");
             DropTable("dbo.Questao");
             DropTable("dbo.Revisor");
@@ -304,8 +389,8 @@ namespace BancoDeQuestoes.Infra.Data.Migrations
             DropTable("dbo.MestreArea");
             DropTable("dbo.Banca");
             DropTable("dbo.Mestre");
-            DropTable("dbo.Disciplina");
             DropTable("dbo.TopicoAtribuido");
+            DropTable("dbo.Disciplina");
             DropTable("dbo.Area");
         }
     }

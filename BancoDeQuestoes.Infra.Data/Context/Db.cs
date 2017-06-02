@@ -28,14 +28,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
 		public virtual DbSet<Questao> Questao { get; set; }
 		public virtual DbSet<TopicoAtribuido> TopicoAtribuido { get; set; }
 		public virtual DbSet<Status> Status { get; set; }
-
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-     
-
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
@@ -60,11 +53,7 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Configurations.Add(new StatusConfiguration());
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
 			modelBuilder.Configurations.Add(new C__MigrationHistoryConfiguration());
-            modelBuilder.Configurations.Add(new AspNetRolesConfiguration());
-            modelBuilder.Configurations.Add(new AspNetUserClaimsConfiguration());
-            modelBuilder.Configurations.Add(new AspNetUserLoginsConfiguration());
-            modelBuilder.Configurations.Add(new AspNetUserRolesConfiguration());
-            modelBuilder.Configurations.Add(new AspNetUsersConfiguration());
+          
 
 
 

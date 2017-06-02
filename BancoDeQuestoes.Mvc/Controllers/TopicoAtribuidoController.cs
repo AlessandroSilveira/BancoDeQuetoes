@@ -11,7 +11,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
         private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
         private readonly IStatusAppService _statusAppService;
         private readonly IQuestaoAppService _questaoAppService;
-       
 
         public TopicoAtribuidoController(ITopicoAtribuidoAppService topicoAtribuidoAppService,
             IStatusAppService statusAppService, IQuestaoAppService questaoAppService)
@@ -19,7 +18,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
             _topicoAtribuidoAppService = topicoAtribuidoAppService;
             _statusAppService = statusAppService;
             _questaoAppService = questaoAppService;
-            
         }
 
         public ActionResult Index()

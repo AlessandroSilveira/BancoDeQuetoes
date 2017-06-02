@@ -31,9 +31,9 @@ namespace BancoDeQuestoes.Application.Interface
         {
             var topico = Mapper.Map<TopicoAtribuidoViewModel, TopicoAtribuido>(obj);
             BeginTransaction();
-            _topicoAtribuido.Add(topico);
+            var returnObj = _topicoAtribuido.Add(topico);
             Commit();
-            return obj;
+            return Mapper.Map< TopicoAtribuido, TopicoAtribuidoViewModel>(returnObj);
         }
 
         public TopicoAtribuidoViewModel GetById(Guid id)
