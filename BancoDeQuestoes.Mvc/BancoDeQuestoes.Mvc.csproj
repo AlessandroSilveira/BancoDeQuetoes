@@ -237,6 +237,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListaFormacao.cs" />
     <Compile Include="Controllers\ListaNiveis.cs" />
+    <Compile Include="Controllers\ListaQuestoesMestreController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MestreAreaController.cs" />
     <Compile Include="Controllers\MestreController.cs" />
@@ -248,6 +249,7 @@
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TopicoAtribuidoController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -403,6 +405,7 @@
     <Content Include="Views\TopicoAtribuido\SalvarTopicoAtribuido.cshtml" />
     <Content Include="Views\Usuarios\Details.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\ListaQuestoesMestre\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -419,17 +422,21 @@
       <Project>{4489D34B-B534-4892-B4A2-A58775E4A2F2}</Project>
       <Name>BancoDeQuestoes.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BancoDeQuestoes.CrossCutting.IoC\BancoDeQuestoes.Infra.CrossCutting.IoC.csproj">
+      <Project>{6e6cbf3d-8a65-426f-a4cc-f8ffef683d09}</Project>
+      <Name>BancoDeQuestoes.Infra.CrossCutting.IoC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Domain\BancoDeQuestoes.Domain.csproj">
       <Project>{03C008DB-45E7-45E7-9C3E-B02992609C9A}</Project>
       <Name>BancoDeQuestoes.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BancoDeQuestoes.Infra.CrossCutting.Identity\BancoDeQuestoes.Infra.CrossCutting.Identity.csproj">
+      <Project>{DFF8BC41-5C98-4F23-A94C-846017D47F28}</Project>
+      <Name>BancoDeQuestoes.Infra.CrossCutting.Identity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BancoDeQuestoes.Infra.Data\BancoDeQuestoes.Infra.Data.csproj">
       <Project>{39C11A26-2105-40D4-B0FD-210F799D7A0B}</Project>
       <Name>BancoDeQuestoes.Infra.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BancoDeQuestoes.Infra.Identity\BancoDeQuestoes.Infra.Identity.csproj">
-      <Project>{A04DAE13-925D-4425-9BFE-B668C8C5AA8F}</Project>
-      <Name>BancoDeQuestoes.Infra.Identity</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

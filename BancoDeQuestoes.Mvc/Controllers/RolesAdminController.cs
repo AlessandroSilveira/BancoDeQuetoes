@@ -3,12 +3,12 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using BancoDeQuestoes.Infra.CrossCutting.Identity.Configuration;
+using BancoDeQuestoes.Infra.CrossCutting.Identity.Model;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using BancoDeQuestoes.Infra.Identity.Configuration;
-using BancoDeQuestoes.Infra.Identity.Model;
 
-namespace EP.IdentityIsolation.MVC.Controllers
+namespace BancoDeQuestoes.Mvc.Controllers
 {
     public class RolesAdminController : Controller
     {
@@ -65,7 +65,7 @@ namespace EP.IdentityIsolation.MVC.Controllers
         //
         // POST: /Roles/Create
         [HttpPost]
-        public async Task<ActionResult> Create(BancoDeQuestoes.Infra.Identity.Model.RoleViewModel roleViewModel)
+        public async Task<ActionResult> Create(RoleViewModel roleViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace EP.IdentityIsolation.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            var roleModel = new BancoDeQuestoes.Infra.Identity.Model.RoleViewModel { Id = role.Id, Name = role.Name };
+            var roleModel = new RoleViewModel { Id = role.Id, Name = role.Name };
             return View(roleModel);
         }
 
@@ -103,7 +103,7 @@ namespace EP.IdentityIsolation.MVC.Controllers
         [HttpPost]
 
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Name,Id")] BancoDeQuestoes.Infra.Identity.Model.RoleViewModel roleModel)
+        public async Task<ActionResult> Edit([Bind(Include = "Name,Id")] RoleViewModel roleModel)
         {
             if (ModelState.IsValid)
             {

@@ -58,9 +58,11 @@
     <Compile Include="Interface\Repositories\IRevisorAppService.cs" />
     <Compile Include="Interface\Repositories\IStatusAppService.cs" />
     <Compile Include="Interface\Repositories\ITopicoAtribuidoAppService.cs" />
+    <Compile Include="Interface\Repositories\IUsuarioAppService.cs" />
     <Compile Include="Interface\RevisorAppService.cs" />
     <Compile Include="Interface\StatusAppService.cs" />
     <Compile Include="Interface\TopicoAtribuidoAppService.cs" />
+    <Compile Include="Interface\UsuarioAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\AreaViewModel.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="ViewModels\RevisorViewModel.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\TopicoAtribuidoViewModel.cs" />
+    <Compile Include="ViewModels\UsuarioViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

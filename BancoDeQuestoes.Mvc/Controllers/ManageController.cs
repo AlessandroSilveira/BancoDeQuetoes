@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BancoDeQuestoes.Infra.CrossCutting.Identity.Configuration;
+using BancoDeQuestoes.Infra.CrossCutting.Identity.Model;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using BancoDeQuestoes.Infra.Identity.Model;
-using BancoDeQuestoes.Infra.Identity.Configuration;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {

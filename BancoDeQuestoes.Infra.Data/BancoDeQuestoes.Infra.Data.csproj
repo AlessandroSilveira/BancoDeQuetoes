@@ -32,6 +32,8 @@
   <ItemGroup>
     <Compile Include="Context\Db.cs" />
     <Compile Include="EntityConfig\AreaConfiguration.cs" />
+    <Compile Include="EntityConfig\AspNetRolesConfiguration.cs" />
+    <Compile Include="EntityConfig\AspNetUserClaimsConfiguration.cs" />
     <Compile Include="EntityConfig\BancaConfiguration.cs" />
     <Compile Include="EntityConfig\DisciplinaConfiguration.cs" />
     <Compile Include="EntityConfig\FormacaoRevisorConfiguration.cs" />

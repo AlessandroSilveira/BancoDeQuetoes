@@ -13,5 +13,6 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
         Usuario Update(Usuario obj);
         void Remove(Guid id);
         IEnumerable<Usuario> Search(Expression<Func<Usuario, bool>> func);
+        void DesativarLock(Guid id);
     }
 }

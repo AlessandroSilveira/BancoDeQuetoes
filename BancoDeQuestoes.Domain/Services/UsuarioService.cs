@@ -51,5 +51,10 @@ namespace BancoDeQuestoes.Domain.Services
         {
             return _usuarioRepository.Search(func);
         }
+
+        public void DesativarLock(Guid id)
+        {
+            _usuarioRepository.DesativarLock(id);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+
 using System;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -8,10 +9,10 @@ namespace BancoDeQuestoes.Domain.Entities
     {
         public Usuario()
         {
-            Id = Guid.NewGuid().ToString();
+            UsuarioId = Guid.NewGuid();
         }
 
-        public string Id { get; set; }
+        public Guid UsuarioId { get; set; }
 
         public virtual string Email { get; set; }
 
