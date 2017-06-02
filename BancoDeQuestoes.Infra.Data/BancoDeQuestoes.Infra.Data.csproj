@@ -33,6 +33,7 @@
     <Compile Include="Context\Db.cs" />
     <Compile Include="EntityConfig\AreaConfiguration.cs" />
     <Compile Include="EntityConfig\BancaConfiguration.cs" />
+    <Compile Include="EntityConfig\ConviteMestreConfiguration.cs" />
     <Compile Include="EntityConfig\DisciplinaConfiguration.cs" />
     <Compile Include="EntityConfig\FormacaoRevisorConfiguration.cs" />
     <Compile Include="EntityConfig\MestreAreaConfiguration.cs" />
@@ -46,11 +47,12 @@
     <Compile Include="EntityConfig\StatusConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
     <Compile Include="ItensPesquisaTopico.cs" />
-    <Compile Include="Migrations\201706021341509_02062017-4.cs" />
-    <Compile Include="Migrations\201706021341509_02062017-4.Designer.cs">
-      <DependentUpon>201706021341509_02062017-4.cs</DependentUpon>
+    <Compile Include="Migrations\201706022019248_02062017-5.cs" />
+    <Compile Include="Migrations\201706022019248_02062017-5.Designer.cs">
+      <DependentUpon>201706022019248_02062017-5.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\AreaId_Disciplina.cs" />
+    <Compile Include="Repository\ConviteMestreRepository.cs" />
     <Compile Include="Repository\PesquisaTopico\Descricao.cs" />
     <Compile Include="Repository\PesquisaTopico\Nome.cs" />
     <Compile Include="Repository\PesquisaTopico\AreaId.cs" />
@@ -149,8 +151,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706021341509_02062017-4.resx">
-      <DependentUpon>201706021341509_02062017-4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706022019248_02062017-5.resx">
+      <DependentUpon>201706022019248_02062017-5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

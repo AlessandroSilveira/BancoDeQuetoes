@@ -36,6 +36,7 @@
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Interface\AreaAppService.cs" />
     <Compile Include="Interface\BancaAppService.cs" />
+    <Compile Include="Interface\ConviteMestreAppService.cs" />
     <Compile Include="Interface\DisciplinaAppService.cs" />
     <Compile Include="Interface\FormacaoRevisorAppService.cs" />
     <Compile Include="Interface\MestreAppService.cs" />
@@ -47,6 +48,7 @@
     <Compile Include="Interface\Repositories\IAppServiceBase.cs" />
     <Compile Include="Interface\Repositories\IAreaAppService.cs" />
     <Compile Include="Interface\Repositories\IBancaAppService.cs" />
+    <Compile Include="Interface\Repositories\IConviteMestreAppService.cs" />
     <Compile Include="Interface\Repositories\IDisciplinaAppService.cs" />
     <Compile Include="Interface\Repositories\IFormacaoRevisorAppService.cs" />
     <Compile Include="Interface\Repositories\IMestreAppService.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\AreaViewModel.cs" />
     <Compile Include="ViewModels\BancaViewModel.cs" />
+    <Compile Include="ViewModels\ConviteMestreViewModel.cs" />
     <Compile Include="ViewModels\DisciplinaViewModel.cs" />
     <Compile Include="ViewModels\RevisorFormacaoViewModel.cs" />
     <Compile Include="ViewModels\GerenciamentoDeQuestoesViewModel.cs" />

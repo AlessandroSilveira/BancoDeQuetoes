@@ -5,6 +5,7 @@ using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class MestreDependenteController : Controller
     {
         private readonly IMestreDependenteAppService _mestreDependenteAppService;

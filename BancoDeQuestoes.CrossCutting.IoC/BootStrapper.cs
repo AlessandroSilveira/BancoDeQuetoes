@@ -34,6 +34,7 @@ namespace BancoDeQuestoes.CrossCutting.IoC
             container.Register<IStatusAppService, StatusAppService>(Lifestyle.Scoped);
             container.Register<ITopicoAtribuidoAppService, TopicoAtribuidoAppService>(Lifestyle.Scoped);
             container.Register<IUsuarioAppService, UsuarioAppService>(Lifestyle.Scoped);
+            container.Register<IConviteMestreAppService,ConviteMestreAppService>(Lifestyle.Scoped);
 
             //Domain
             container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
@@ -51,6 +52,7 @@ namespace BancoDeQuestoes.CrossCutting.IoC
             container.Register<IStatusService, StatusService>(Lifestyle.Scoped);
             container.Register<ITopicoAtribuidoService, TopicoAtribuidoService>(Lifestyle.Scoped);
             container.Register<IUsuarioService, UsuarioService>(Lifestyle.Scoped);
+            container.Register<IConviteMestreService, ConviteMestreService>(Lifestyle.Scoped);
 
             //Infra Dados
             container.Register(typeof(IRepository<>), typeof(RepositoryBase<>));
@@ -69,6 +71,7 @@ namespace BancoDeQuestoes.CrossCutting.IoC
             container.Register<ITopicoAtribuidoRepository, TopicoAtribuidoRepositoryBase>(Lifestyle.Scoped);
             container.Register<IUsuarioRepository, UsuarioRepository>(Lifestyle.Scoped);
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
+            container.Register<IConviteMestreRepository, ConviteMestreRepository>(Lifestyle.Scoped);
 
             //Context
             container.Register<Db>(Lifestyle.Scoped);

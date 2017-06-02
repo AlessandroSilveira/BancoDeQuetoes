@@ -5,6 +5,7 @@ using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BancaController : Controller
     {
         private readonly IBancaAppService _bancaAppService;

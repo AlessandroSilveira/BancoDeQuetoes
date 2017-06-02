@@ -12,6 +12,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         private readonly IBancaAppService _bancaAppService;
         private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
 
+      
         public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService, ITopicoAtribuidoAppService topicoAtribuidoAppService)
         {
             _mestreAppService = mestreAppService;
@@ -19,17 +20,20 @@ namespace BancoDeQuestoes.Mvc.Controllers
             _topicoAtribuidoAppService = topicoAtribuidoAppService;
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(_mestreAppService.GetAll());
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(Guid id)
         {
             var mestre = _mestreAppService.GetById(id);
             return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.BancaId = new SelectList(_bancaAppService.GetAll(), "BancaId", "Nome");
@@ -38,6 +42,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(MestreViewModel mestreViewModel)
         {
             if (!ModelState.IsValid)
@@ -50,12 +55,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Guid id)
         {
             var mestre = _mestreAppService.GetById(id);
             return mestre == null ? (ActionResult) HttpNotFound() : View(mestre);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(MestreViewModel mestreViewModel)
@@ -65,6 +72,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(Guid id)
         {
             var mestre = _mestreAppService.GetById(id);
@@ -74,12 +82,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(Guid id)
         {
             _mestreAppService.Remove(id);
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Mestre")]
         public ActionResult ListaQuestoesAtribuidas()
         {
            

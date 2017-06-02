@@ -6,18 +6,20 @@ using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TopicoAtribuidoController : Controller
     {
         private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
         private readonly IStatusAppService _statusAppService;
-        private readonly IQuestaoAppService _questaoAppService;
+        private readonly IConviteMestreAppService _conviteMestreAppService;
+       
 
         public TopicoAtribuidoController(ITopicoAtribuidoAppService topicoAtribuidoAppService,
-            IStatusAppService statusAppService, IQuestaoAppService questaoAppService)
+            IStatusAppService statusAppService, IConviteMestreAppService conviteMestreAppService)
         {
             _topicoAtribuidoAppService = topicoAtribuidoAppService;
             _statusAppService = statusAppService;
-            _questaoAppService = questaoAppService;
+            _conviteMestreAppService = conviteMestreAppService;
         }
 
         public ActionResult Index()
@@ -102,22 +104,38 @@ namespace BancoDeQuestoes.Mvc.Controllers
                     Status = status.FirstOrDefault()?.Nome
                     
                 };
-               var dadosTopico =_topicoAtribuidoAppService.Add(form);
 
-                var questao = new QuestaoViewModel()
+                var dadosTopico = _topicoAtribuidoAppService.Add(form);
+
+
+                var convite = new ConviteMestreViewModel()
                 {
                     TopicoAtribuidoId = dadosTopico.TopicoAtribuidoId,
+                    MestreId = dadosTopico.MestreId,
                     NumeroQuestao = inputNumQuestao,
-                    Status = status.FirstOrDefault()?.Nome,
-                    Arquivo = "",
-                    ConviteAceito = false,
-                    Descricao = "",
-                    Finalizar = 0,
-                    Imagem = "",
-                    Nivel = Nivel,
-                    NumeroDeRevisoes = 0
+                    Aceito = false,
+                    TipoPagamento = "",
+                    Valor = inputValor
                 };
-                _questaoAppService.Add(questao);
+
+                _conviteMestreAppService.Add(convite);
+
+                //
+
+                // var questao = new QuestaoViewModel()
+                // {
+                //     TopicoAtribuidoId = dadosTopico.TopicoAtribuidoId,
+                //     NumeroQuestao = inputNumQuestao,
+                //     Status = status.FirstOrDefault()?.Nome,
+                //     Arquivo = "",
+                //     ConviteAceito = false,
+                //     Descricao = "",
+                //     Finalizar = 0,
+                //     Imagem = "",
+                //     Nivel = Nivel,
+                //     NumeroDeRevisoes = 0
+                // };
+                // _questaoAppService.Add(questao);
             }
 
             return View();

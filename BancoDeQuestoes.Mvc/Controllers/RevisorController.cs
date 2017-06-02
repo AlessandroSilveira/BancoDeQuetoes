@@ -5,7 +5,8 @@ using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-	public class RevisorController : Controller
+    [Authorize(Roles = "Admin")]
+    public class RevisorController : Controller
 	{
 		private readonly IRevisorAppService _revisorAppService;
 		private readonly IAreaAppService _areaAppService;

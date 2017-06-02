@@ -28,7 +28,8 @@ namespace BancoDeQuestoes.Infra.Data.Context
 		public virtual DbSet<Questao> Questao { get; set; }
 		public virtual DbSet<TopicoAtribuido> TopicoAtribuido { get; set; }
 		public virtual DbSet<Status> Status { get; set; }
-        
+        public virtual DbSet<ConviteMestre> ConviteMestre { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
@@ -53,19 +54,13 @@ namespace BancoDeQuestoes.Infra.Data.Context
 			modelBuilder.Configurations.Add(new StatusConfiguration());
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
 			modelBuilder.Configurations.Add(new C__MigrationHistoryConfiguration());
-          
-
-
-
+            modelBuilder.Configurations.Add(new ConviteMestreConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
 
-
             base.OnModelCreating(modelBuilder);
 		}
-
-       
     }
 }
