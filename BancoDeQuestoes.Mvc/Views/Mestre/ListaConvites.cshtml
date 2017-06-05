@@ -4,66 +4,135 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista de Convites</h2>
+<h2>Banco de Questões - Convite para Elaboração de Itens</h2>
 
 <p>
    
 </p>
 <table class="table">
+    <input type="hidden" id="id_convite" name="id_convite" value="<%=ViewBag.DadosConviteRevisao.id_convite %>" />
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Mestre.Cpf)
-        </th>
+        <td colspan="11"><b>CONVITE PARA REVISÃO QUESTÕES N° <%=ViewBag.DadosConviteRevisao.id_convite %> </b></td>
+    </tr>
+    <tr>
+
+        <td >Prezado(a) <b></b> gostariamos de convida-la para a execução dos serviços descritos abaixo:</td>
+    </tr>
+    <tr>
         <th>
             @Html.DisplayNameFor(model => model.TopicoAtribuido.CodigoProjeto)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NumeroQuestao)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aceito)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoPagamento)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Valor)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataAceito)
-        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TopicoAtribuido.CodigoProjeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroQuestao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    }
+
+</table>
+<table class="table">
+   
+
+    @*<tr>
+
+      
+
+        <td colspan="11">Prezado(a)  <b></b> gostariamos de convida-la para a revisão dos serviços descritos abaixo:</td>
+    </tr>
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mestre.Cpf)
+        <td colspan="11">
+            <br>
         </td>
+    </tr>*@
+
+    @*<tr>
+        <th>Disciplina</th>
+        <th>N° da Questão</th>
+        <th>Data de Entrega</th>
+
+        <th>Aceitar</th>
+    </tr>*@
+  
+    @*<tr class="aceite">
+        <td>@*<%=ViewBag.DadosConviteRevisao.id_topico_atribuido %></td>
+        <td>@*<%=ViewBag.DadosConviteRevisao.num_questao%></td>
         <td>
-            @Html.DisplayFor(modelItem => item.TopicoAtribuido.CodigoProjeto)
+            @*<%var dados_topico = _mestreRepository.ObterListaTopicosAtribuidosPorIdTopicoAtribuido(ViewBag.DadosConviteRevisao.id_topico_atribuido);%>
+            <%=dados_topico.DATA_ENTREGA %>*
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.NumeroQuestao)
+            <input type="radio" id="<%=ViewBag.DadosConviteRevisao.id_questao %>" name="<%=ViewBag.DadosConviteRevisao.id_questao %>" value="1" class="aceitar" /><b>Sim</b>
+            <input type="radio" id="<%=ViewBag.DadosConviteRevisao.id_questao %>" name="<%=ViewBag.DadosConviteRevisao.id_questao %>" value="0" class="aceitar" /><b>Não</b>
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Aceito)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoPagamento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataAceito)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ConviteMestreId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ConviteMestreId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ConviteMestreId })
+    </tr>*@
+  
+    <tr>
+        <td colspan="11">
+            <br />
+            <br />
         </td>
     </tr>
-}
-
+    <tr>
+        <td colspan="11">Este aceite implica em responsabilidade pela revisão dos itens de acordo com as exigências descrita em contrato firmado entre a Contratada e Contratante.</td>
+    </tr>
+    <%--
+    <tr>
+        <td colspan="11"><span style="color: red"><u>Atenção:</u></span>Itens não INÉDITOS (constantes da rede de Internet, apostilas de cursos, e cursinhos pré-vestibulares e livros publicados) implicarão em recisão automática do contrato de prestação de serviço e em medidas legais para ressarcimento de danos causados ao contratante. </td>
+    </tr>--%>
+    <tr>
+        <td colspan="11">
+            <br>
+        </td>
+    </tr>
+   
+    <tr>
+        <td colspan="11"><b><u>Data de Pagamento: 20° Dia útil do mês subsequente e validação do revisor.</u></b></td>
+    </tr>
+    <tr>
+        <td colspan="11"><b></b></td>
+    </tr>
+  
+    <tr>
+        <td colspan="11">
+            <b>
+                O pagamento será realizado mediante:
+                <input type="radio" value="Emissão de Nota" id="tipo_nota" name="tipo_nota" />Emissão de Nota
+                <input type="radio" value="R.P.A" id="tipo_nota" name="tipo_nota" />R.P.A.
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="11">
+            <b>
+                <input type="hidden" value="" id="decisao" name="decisao" />
+                <input type="hidden" value="" id="lista_ids" name="lista_ids" />
+                <input type="hidden" value="" id="lista_aceite" name="lista_aceite" />
+                <input type="button" id="enviar" value="ACEITO A PROPOSTA DE PRESTAÇÃO DE SERVIÇO NAS CONDIÇÕES DESCRITAS NESTE CONVITE." />
+                <input type="button" id="nao_aceito" value="NÂO ACEITO A PROPOSTA DE PRESTAÇÃO DE SERVIÇO NAS CONDIÇÕES DESCRITAS NESTE CONVITE." />
+            </b>
+        </td>
+    </tr>
 </table>
