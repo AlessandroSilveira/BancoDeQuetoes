@@ -23,6 +23,7 @@ namespace BancoDeQuestoes.Application.AutoMapper
             Mapper.CreateMap<QuestaoViewModel, Questao>();
             Mapper.CreateMap<TopicoAtribuidoViewModel, TopicoAtribuido>();
             Mapper.CreateMap<StatusViewModel, Status>();
+            Mapper.CreateMap<ConviteMestreViewModel, ConviteMestre>();
         }
     }
 }

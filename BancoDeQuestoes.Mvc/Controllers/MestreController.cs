@@ -11,13 +11,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         private readonly IMestreAppService _mestreAppService;
         private readonly IBancaAppService _bancaAppService;
         private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
-
+        private readonly IConviteMestreAppService _conviteMestreAppService;
       
-        public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService, ITopicoAtribuidoAppService topicoAtribuidoAppService)
+        public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService, ITopicoAtribuidoAppService topicoAtribuidoAppService, IConviteMestreAppService conviteMestreAppService)
         {
             _mestreAppService = mestreAppService;
             _bancaAppService = bancaAppService;
             _topicoAtribuidoAppService = topicoAtribuidoAppService;
+            _conviteMestreAppService = conviteMestreAppService;
         }
 
         [Authorize(Roles = "Admin")]
@@ -102,6 +103,21 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
             var listaQuestoesAtribuidasMestre = _topicoAtribuidoAppService.Search(a => a.MestreId.Equals(dadosMestre.MestreId));
             return View(listaQuestoesAtribuidasMestre);
+        }
+
+        [Authorize(Roles = "Mestre")]
+        public ActionResult ListaConvites()
+        {
+            var dadosMestre = _mestreAppService.Search(a => a.Email.Equals(User.Identity.Name)).FirstOrDefault();
+
+            if (dadosMestre == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var listaConvites = _conviteMestreAppService.Search(a => a.MestreId.Equals(dadosMestre.MestreId));
+
+            return View(listaConvites);
         }
 
     }

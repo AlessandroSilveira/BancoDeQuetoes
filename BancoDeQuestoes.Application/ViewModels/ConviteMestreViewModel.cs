@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Application.ViewModels
@@ -10,6 +11,7 @@ namespace BancoDeQuestoes.Application.ViewModels
             ConviteMestreId = new Guid();
         }
 
+        [Key]
         public Guid ConviteMestreId { get; set; }
 
         public virtual Guid MestreId { get; set; }
@@ -24,7 +26,7 @@ namespace BancoDeQuestoes.Application.ViewModels
 
         public decimal Valor { get; set; }
 
-        public DateTime DataAceito { get; set; }
+        public DateTime? DataAceito { get; set; }
 
         public virtual Mestre Mestre { get; set; }
 

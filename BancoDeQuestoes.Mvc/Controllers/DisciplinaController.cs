@@ -132,9 +132,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult ObterNomeDisciplina(string Id)
+        public ActionResult ObterNomeDisciplina(string id)
         {
-            var result = _disciplinaAppService.GetById(new Guid(Id));
+            var result = _disciplinaAppService.GetById(new Guid(id));
 
             return Json(result.Nome, JsonRequestBehavior.AllowGet);
         }

@@ -51,6 +51,14 @@
     <Compile Include="Migrations\201706022019248_02062017-5.Designer.cs">
       <DependentUpon>201706022019248_02062017-5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706051426281_05062017-1.cs" />
+    <Compile Include="Migrations\201706051426281_05062017-1.Designer.cs">
+      <DependentUpon>201706051426281_05062017-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706051452033_05062017-2.cs" />
+    <Compile Include="Migrations\201706051452033_05062017-2.Designer.cs">
+      <DependentUpon>201706051452033_05062017-2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\AreaId_Disciplina.cs" />
     <Compile Include="Repository\ConviteMestreRepository.cs" />
     <Compile Include="Repository\PesquisaTopico\Descricao.cs" />
@@ -153,6 +161,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706022019248_02062017-5.resx">
       <DependentUpon>201706022019248_02062017-5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706051426281_05062017-1.resx">
+      <DependentUpon>201706051426281_05062017-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706051452033_05062017-2.resx">
+      <DependentUpon>201706051452033_05062017-2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

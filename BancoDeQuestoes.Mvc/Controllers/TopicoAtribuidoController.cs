@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface.Repositories;
@@ -88,57 +89,52 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
             foreach (var dados in idDiscipliina)
             {
-                var form = new TopicoAtribuidoViewModel
-                {
-                    ProjetoId = ProjetoId,
-                    AreaId = AreaId,
-                    MestreId = MestreId,
-                    Valor = inputValor,
-                    DataEntrega = inputData,
-                    NumeroQuestao = inputNumQuestao,
-                    Nivel = Nivel,
-                    Observacao = inputObservacoes,
-                    CodigoProjeto = _topicoAtribuidoAppService.ObterCodigoProjeto(ProjetoId).ToString(),
-                    DataAtribuicao = DateTime.Now,
-                    DisciplinaId = new Guid(dados),
-                    Status = status.FirstOrDefault()?.Nome
-                    
-                };
+                var dadosTopico = CriarTopicoAtribuido(ProjetoId, AreaId, MestreId, inputValor, inputData, inputNumQuestao, Nivel, inputObservacoes, dados, status);
 
-                var dadosTopico = _topicoAtribuidoAppService.Add(form);
+                CriarConviteDoMestre(inputValor, inputNumQuestao, dadosTopico);
 
-
-                var convite = new ConviteMestreViewModel()
-                {
-                    TopicoAtribuidoId = dadosTopico.TopicoAtribuidoId,
-                    MestreId = dadosTopico.MestreId,
-                    NumeroQuestao = inputNumQuestao,
-                    Aceito = false,
-                    TipoPagamento = "",
-                    Valor = inputValor
-                };
-
-                _conviteMestreAppService.Add(convite);
-
-                //
-
-                // var questao = new QuestaoViewModel()
-                // {
-                //     TopicoAtribuidoId = dadosTopico.TopicoAtribuidoId,
-                //     NumeroQuestao = inputNumQuestao,
-                //     Status = status.FirstOrDefault()?.Nome,
-                //     Arquivo = "",
-                //     ConviteAceito = false,
-                //     Descricao = "",
-                //     Finalizar = 0,
-                //     Imagem = "",
-                //     Nivel = Nivel,
-                //     NumeroDeRevisoes = 0
-                // };
-                // _questaoAppService.Add(questao);
-            }
+             }
 
             return View();
+        }
+
+        private void CriarConviteDoMestre(decimal inputValor, int inputNumQuestao, TopicoAtribuidoViewModel dadosTopico)
+        {
+            var convite = new ConviteMestreViewModel()
+            {
+                TopicoAtribuidoId = dadosTopico.TopicoAtribuidoId,
+                MestreId = dadosTopico.MestreId,
+                NumeroQuestao = inputNumQuestao,
+                Aceito = false,
+                TipoPagamento = "",
+                Valor = inputValor
+               
+            };
+
+            _conviteMestreAppService.Add(convite);
+        }
+
+        private TopicoAtribuidoViewModel CriarTopicoAtribuido(Guid ProjetoId, Guid AreaId, Guid MestreId, decimal inputValor,
+            DateTime inputData, int inputNumQuestao, string Nivel, string inputObservacoes, string dados, IEnumerable<StatusViewModel> status)
+        {
+            var form = new TopicoAtribuidoViewModel
+            {
+                ProjetoId = ProjetoId,
+                AreaId = AreaId,
+                MestreId = MestreId,
+                Valor = inputValor,
+                DataEntrega = inputData,
+                NumeroQuestao = inputNumQuestao,
+                Nivel = Nivel,
+                Observacao = inputObservacoes,
+                CodigoProjeto = _topicoAtribuidoAppService.ObterCodigoProjeto(ProjetoId).ToString(),
+                DataAtribuicao = DateTime.Now,
+                DisciplinaId = new Guid(dados),
+                Status = status.FirstOrDefault()?.Nome
+            };
+
+            var dadosTopico = _topicoAtribuidoAppService.Add(form);
+            return dadosTopico;
         }
     }
 }

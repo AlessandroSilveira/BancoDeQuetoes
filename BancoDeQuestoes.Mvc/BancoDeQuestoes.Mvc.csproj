@@ -412,6 +412,7 @@
     <Content Include="Views\UsersAdmin\Edit.cshtml" />
     <Content Include="Views\UsersAdmin\Index.cshtml" />
     <Content Include="Views\Mestre\ListaQuestoesAtribuidas.cshtml" />
+    <Content Include="Views\Mestre\ListaConvites.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

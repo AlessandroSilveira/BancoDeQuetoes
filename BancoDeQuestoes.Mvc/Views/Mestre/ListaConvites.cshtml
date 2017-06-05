@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BancoDeQuestoes.Application.ViewModels.ConviteMestreViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Convites</h2>
+
+<p>
+   
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mestre.Cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TopicoAtribuido.CodigoProjeto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroQuestao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aceito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoPagamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataAceito)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mestre.Cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopicoAtribuido.CodigoProjeto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroQuestao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aceito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoPagamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataAceito)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ConviteMestreId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ConviteMestreId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ConviteMestreId })
+        </td>
+    </tr>
+}
+
+</table>

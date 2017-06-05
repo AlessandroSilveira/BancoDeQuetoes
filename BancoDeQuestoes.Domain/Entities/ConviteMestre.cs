@@ -24,7 +24,7 @@ namespace BancoDeQuestoes.Domain.Entities
 
         public decimal Valor { get; set; }
 
-        public DateTime DataAceito { get; set; }
+        public DateTime? DataAceito { get; set; }
 
         public virtual Mestre Mestre { get; set; }
 
