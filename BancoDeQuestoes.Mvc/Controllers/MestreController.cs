@@ -12,13 +12,17 @@ namespace BancoDeQuestoes.Mvc.Controllers
         private readonly IBancaAppService _bancaAppService;
         private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
         private readonly IConviteMestreAppService _conviteMestreAppService;
-      
-        public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService, ITopicoAtribuidoAppService topicoAtribuidoAppService, IConviteMestreAppService conviteMestreAppService)
+        private readonly IQuestaoAppService _questaoAppService;
+
+        public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService,
+            ITopicoAtribuidoAppService topicoAtribuidoAppService, IConviteMestreAppService conviteMestreAppService,
+            IQuestaoAppService questaoAppService)
         {
             _mestreAppService = mestreAppService;
             _bancaAppService = bancaAppService;
             _topicoAtribuidoAppService = topicoAtribuidoAppService;
             _conviteMestreAppService = conviteMestreAppService;
+            _questaoAppService = questaoAppService;
         }
 
         [Authorize(Roles = "Admin")]
@@ -93,15 +97,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [Authorize(Roles = "Mestre")]
         public ActionResult ListaQuestoesAtribuidas()
         {
-           
             var dadosMestre = _mestreAppService.Search(a => a.Email.Equals(User.Identity.Name)).FirstOrDefault();
 
-            if (dadosMestre==null)
-            {
+            if (dadosMestre == null)
                 return RedirectToAction("Login", "Account");
-            }
 
-            var listaQuestoesAtribuidasMestre = _topicoAtribuidoAppService.Search(a => a.MestreId.Equals(dadosMestre.MestreId));
+            var listaQuestoesAtribuidasMestre =
+                _topicoAtribuidoAppService.Search(a => a.MestreId.Equals(dadosMestre.MestreId));
             return View(listaQuestoesAtribuidasMestre);
         }
 
@@ -111,14 +113,59 @@ namespace BancoDeQuestoes.Mvc.Controllers
             var dadosMestre = _mestreAppService.Search(a => a.Email.Equals(User.Identity.Name)).FirstOrDefault();
 
             if (dadosMestre == null)
-            {
                 return RedirectToAction("Login", "Account");
-            }
 
             var listaConvites = _conviteMestreAppService.Search(a => a.MestreId.Equals(dadosMestre.MestreId));
 
             return View(listaConvites);
         }
 
+
+        [Authorize(Roles = "Mestre")]
+        public ActionResult DetalhesConvite(Guid id)
+        {
+            var dadosMestre = _mestreAppService.Search(a => a.Email.Equals(User.Identity.Name)).FirstOrDefault();
+
+            if (dadosMestre == null)
+                return RedirectToAction("Login", "Account");
+
+            ViewBag.Convite = _conviteMestreAppService.GetById(id);
+            ViewBag.ListaQuestoes = _questaoAppService.Search(a => a.TopicoAtribuido.MestreId.Equals(dadosMestre.MestreId));
+            return View();
+        }
+
+        [Authorize(Roles = "Mestre")]
+        public ActionResult SalvarConvitesAceitos(Guid idConvite, string tipoNota, string listaIds, string listaAceite, bool decisaoConvite)
+        {
+
+            var dadosConvite = _conviteMestreAppService.GetById(idConvite);
+            if (decisaoConvite)
+            {
+                dadosConvite.Aceito = true;
+                dadosConvite.TipoPagamento = tipoNota;
+                _conviteMestreAppService.Detach(dadosConvite);
+                _conviteMestreAppService.Update(dadosConvite);
+
+                var questoesId = listaIds.Split(',');
+                var questoesAceitas = listaAceite.Split(',');
+
+                for (var i=0;i<questoesId.Length;i++)
+                {
+                    var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
+                    dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
+
+                }
+            }
+            else
+            {
+                dadosConvite.Aceito = false;
+                return RedirectToAction("Index", "Home");
+            }
+           
+
+
+
+            return View();
+        }
     }
 }

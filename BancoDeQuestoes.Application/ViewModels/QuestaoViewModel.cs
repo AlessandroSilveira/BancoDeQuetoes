@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Application.ViewModels
 {
@@ -42,5 +43,7 @@ namespace BancoDeQuestoes.Application.ViewModels
 
 		[DisplayName("Convite Aceito")]
 		public bool ConviteAceito { get; set; }
-	}
+
+        public virtual TopicoAtribuido TopicoAtribuido { get; set; }
+    }
 }

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<BancoDeQuestoes.Application.ViewModels.ConviteMestreViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Banco de Questões - Convite para Elaboração de Itens</h2>
+@using (Html.BeginForm("SalvarConvitesAceitos", "Mestre",FormMethod.Post,new {@id="form"}))
+{
+    <input type="hidden" name="idConvite" id="idConvite" value="@ViewBag.Convite.ConviteMestreId"/>
+    <table class="table">
+        <tr>
+            <td>Prezado(a) <b></b> gostariamos de convida-la para a execução dos serviços descritos abaixo:</td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TopicoAtribuido.CodigoProjeto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroQuestao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TopicoAtribuido.DataEntrega)
+            </th>
+            <th>Aceitar Convite?</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.ListaQuestoes)
+        {
+            <tr class="aceite">
+                <td>
+                    @item.TopicoAtribuido.CodigoProjeto
+                </td>
+                <td>
+                    @(item.NumeroQuestao)
+                </td>
+                <td>
+                    @(item.TopicoAtribuido.Valor)
+                </td>
+                <td>
+                    @item.TopicoAtribuido.DataEntrega
+                </td>
+                <td>
+                    <input type="radio" id="@item.QuestaoId" name="@item.QuestaoId" value="1" class="aceitar"/><b>Sim</b>
+                    <input type="radio" id="@item.QuestaoId" name="@item.QuestaoId" value="0" class="aceitar"/><b>Não</b>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    <table class="table">
+        <tr>
+            <td >Este aceite implica em responsabilidade pela revisão dos itens de acordo com as exigências descrita em contrato firmado entre a Contratada e Contratante.</td>
+        </tr>
+        <tr>
+            <td >
+                <span style="color: red">
+                    Atenção:
+                </span>Itens não INÉDITOS (constantes da rede de Internet, apostilas de cursos, e cursinhos pré-vestibulares e livros publicados) implicarão em recisão automática do contrato de prestação de serviço e em medidas legais para ressarcimento de danos causados ao contratante.
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <b>
+                    Data de Pagamento: 20° Dia útil do mês subsequente e validação do revisor.
+                </b>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <b>
+                    O pagamento será realizado mediante:
+                    <input type="radio" value="Emissão de Nota" id="tipoNota" name="tipoNota"/>Emissão de Nota
+                    <input type="radio" value="R.P.A" id="tipoNota" name="tipoNota"/>R.P.A.
+                </b>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <b>
+                    <input type="hidden" value="" id="decisao" name="decisao"/>
+                    <input type="hidden" value="" id="listaIds" name="listaIds"/>
+                    <input type="hidden" value="" id="listaAceite" name="listaAceite"/>
+                    <input type="radio" id="aceito" name="decisaoConvite" value="true"/>ACEITO A PROPOSTA DE PRESTAÇÃO DE SERVIÇO NAS CONDIÇÕES DESCRITAS NESTE CONVITE.<br/>
+                    <input type="radio" id="nao_aceito" name="decisaoConvite" value="false"/>NÂO ACEITO A PROPOSTA DE PRESTAÇÃO DE SERVIÇO NAS CONDIÇÕES DESCRITAS NESTE CONVITE.<br/>
+                </b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" id="enviar" value="Enviar"/>
+            </td>
+        </tr>
+    </table>
+}
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/Mestre/MestreScript.js"></script>

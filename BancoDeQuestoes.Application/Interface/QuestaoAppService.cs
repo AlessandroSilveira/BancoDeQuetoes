@@ -57,5 +57,12 @@ namespace BancoDeQuestoes.Application.Interface
             _questaoService.Remove(id);
             Commit();
         }
+
+        public IEnumerable<QuestaoViewModel> Search(Expression<Func<Questao, bool>> func)
+        {
+            return
+                Mapper.Map<IEnumerable<Questao>, IEnumerable<QuestaoViewModel>>(
+                    _questaoService.Search(func));
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using BancoDeQuestoes.Application.ViewModels;
+using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Application.Interface.Repositories
 {
@@ -12,5 +13,6 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
 		IEnumerable<QuestaoViewModel> GetAll();
 		QuestaoViewModel Update(QuestaoViewModel obj);
 		void Remove(Guid id);
-	}
+        IEnumerable<QuestaoViewModel> Search(Expression<Func<Questao, bool>> func);
+    }
 }

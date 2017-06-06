@@ -68,5 +68,10 @@ namespace BancoDeQuestoes.Application.Interface
                 Mapper.Map<IEnumerable<ConviteMestre>, IEnumerable<ConviteMestreViewModel>>(
                     _conviteMestreService.Search(func));
         }
+
+        public void Detach(ConviteMestreViewModel dadosConvite)
+        {
+            _conviteMestreService.Detach(Mapper.Map<ConviteMestreViewModel, ConviteMestre>(dadosConvite));
+        }
     }
 }

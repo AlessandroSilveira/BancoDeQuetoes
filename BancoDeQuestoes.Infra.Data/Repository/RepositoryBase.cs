@@ -38,8 +38,9 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	    public virtual  TEntity Update(TEntity obj)
 	    {
 	        var entry = Context.Entry(obj);
-	        DbSet.Attach(obj);
+            entry.State = EntityState.Detached;
             entry.State = EntityState.Modified;
+            DbSet.Attach(obj);
 	        return obj;
 	    }
 
@@ -63,6 +64,13 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	    {
 	        Context.Dispose();
             GC.SuppressFinalize(this); 
+	    }
+
+	    public void Detach(TEntity obj)
+	    {
+            
+            var entry = Context.Entry(obj);
+            entry.State = EntityState.Detached;
 	    }
 	}
 }
