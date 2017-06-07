@@ -128,44 +128,48 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
             if (dadosMestre == null)
                 return RedirectToAction("Login", "Account");
+            var dadosConvite = _conviteMestreAppService.GetById(id);
 
-            ViewBag.Convite = _conviteMestreAppService.GetById(id);
-            ViewBag.ListaQuestoes = _questaoAppService.Search(a => a.TopicoAtribuido.MestreId.Equals(dadosMestre.MestreId));
-            return View();
+            ViewBag.Convite = _conviteMestreAppService.GetById(dadosConvite.ConviteMestreId);
+            ViewBag.ListaQuestoes =
+                _questaoAppService.Search(a => a.TopicoAtribuidoId.Equals(dadosConvite.TopicoAtribuidoId));
+
+            ViewBag.TipoPagamento = new SelectList(ListaTipoPagamento.TipoPagamento(), "Key", "Value");
+
+            return View(dadosConvite);
         }
 
         [Authorize(Roles = "Mestre")]
-        public ActionResult SalvarConvitesAceitos(Guid idConvite, string tipoNota, string listaIds, string listaAceite, bool decisaoConvite)
+        public ActionResult SalvarConvitesAceitos(ConviteMestreViewModel convite, Guid idConvite, string tipoNota,
+            string listaIds, string listaAceite)
         {
-
-            var dadosConvite = _conviteMestreAppService.GetById(idConvite);
-            if (decisaoConvite)
+            if (convite.Aceito)
             {
-                dadosConvite.Aceito = true;
-                dadosConvite.TipoPagamento = tipoNota;
-                _conviteMestreAppService.Detach(dadosConvite);
-                _conviteMestreAppService.Update(dadosConvite);
-
-                var questoesId = listaIds.Split(',');
-                var questoesAceitas = listaAceite.Split(',');
-
-                for (var i=0;i<questoesId.Length;i++)
-                {
-                    var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
-                    dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
-
-                }
+                convite.DataAceito = DateTime.Now;
+                //if (!ModelState.IsValid)
+                //    return RedirectToAction("Index");
+                _conviteMestreAppService.Update(convite);
+                AtualizarQuestaoConviteAceito(listaIds, listaAceite);
             }
             else
             {
-                dadosConvite.Aceito = false;
-                return RedirectToAction("Index", "Home");
+                _conviteMestreAppService.Update(convite);
             }
-           
-
-
 
             return View();
+        }
+
+        private void AtualizarQuestaoConviteAceito(string listaIds, string listaAceite)
+        {
+            var questoesId = listaIds.Split(',');
+            var questoesAceitas = listaAceite.Split(',');
+
+            for (var i = 0; i < questoesId.Length; i++)
+            {
+                var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
+                dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
+                _questaoAppService.Update(dadosQuestoes);
+            }
         }
     }
 }

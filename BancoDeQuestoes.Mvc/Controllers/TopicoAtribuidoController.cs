@@ -160,5 +160,51 @@ namespace BancoDeQuestoes.Mvc.Controllers
             var dadosTopico = _topicoAtribuidoAppService.Add(form);
             return dadosTopico;
         }
+
+
+        public ActionResult ExcluirTopicoAtribuido(Guid id)
+        {
+            ActionResult redirectToAction;
+            if (RemoverQuestaoPorTopicoAtribuidoId(id, out redirectToAction)) return redirectToAction;
+
+            RemoverConviteMestrePorTopicoAtribuidoId(id);
+
+            _topicoAtribuidoAppService.Remove(id);
+
+            return RedirectToAction("Index", "TopicoAtribuido");
+
+        }
+
+        private void RemoverConviteMestrePorTopicoAtribuidoId(Guid id)
+        {
+            var dadosConvite = _conviteMestreAppService.Search(a => a.TopicoAtribuidoId.Equals(id));
+
+            foreach (var itens in dadosConvite)
+            {
+                _conviteMestreAppService.Remove(itens.ConviteMestreId);
+            }
+        }
+
+        private bool RemoverQuestaoPorTopicoAtribuidoId(Guid id, out ActionResult redirectToAction)
+        {
+            var dadosQuestoes =
+                _questaoAppService.Search(a => a.TopicoAtribuidoId.Equals(id) &&
+                                               a.Status.Equals("Item sem confirmação de aceite pelo Elaborador"));
+
+            if (dadosQuestoes == null)
+            {
+                {
+                    redirectToAction = RedirectToAction("Index", "TopicoAtribuido");
+                    return true;
+                }
+            }
+
+            foreach (var itens in dadosQuestoes)
+            {
+                _questaoAppService.Remove(itens.QuestaoId);
+            }
+            redirectToAction = null;
+            return false;
+        }
     }
 }
