@@ -14,6 +14,5 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
         ConviteMestreViewModel Update(ConviteMestreViewModel obj);
         void Remove(Guid id);
         IEnumerable<ConviteMestreViewModel> Search(Expression<Func<ConviteMestre, bool>> func);
-        void Detach(ConviteMestreViewModel dadosConvite);
     }
 }

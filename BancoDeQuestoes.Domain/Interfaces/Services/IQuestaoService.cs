@@ -13,5 +13,5 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
 		Questao Update(Questao obj);
 		void Remove(Guid id);
 	    IEnumerable<Questao> Search(Expression<Func<Questao, bool>> func);
-	}
+	    }
 }

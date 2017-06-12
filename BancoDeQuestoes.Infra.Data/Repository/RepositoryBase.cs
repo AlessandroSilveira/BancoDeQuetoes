@@ -35,16 +35,15 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	        return DbSet.ToList();
 	    }
 
-	    public virtual  TEntity Update(TEntity obj)
+	    public virtual TEntity Update(TEntity obj)
 	    {
 	        var entry = Context.Entry(obj);
+	        DbSet.Attach(obj);
 	        entry.State = EntityState.Modified;
-            DbSet.Attach(obj);
-           
 	        return obj;
 	    }
 
-	    public virtual void Remove(Guid id)
+        public virtual void Remove(Guid id)
 	    {
 	        DbSet.Remove(GetById(id));
 		   
@@ -65,12 +64,5 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	        Context.Dispose();
             GC.SuppressFinalize(this); 
 	    }
-
-	    public void Detach(TEntity obj)
-	    {
-            
-            var entry = Context.Entry(obj);
-            entry.State = EntityState.Detached;
-	    }
-	}
+        }
 }

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BancoDeQuestoes.Application.ViewModels.QuestaoViewModel>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TopicoAtribuido.CodigoProjeto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroQuestao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Finalizar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nivel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConviteAceito)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopicoAtribuido.CodigoProjeto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroQuestao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Finalizar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nivel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConviteAceito)
+        </td>
+        <td>
+            @Html.ActionLink("Acessar Questões", "PainelQuestao","Questao", new { id=item.QuestaoId }) 
+        </td>
+    </tr>
+}
+</table>

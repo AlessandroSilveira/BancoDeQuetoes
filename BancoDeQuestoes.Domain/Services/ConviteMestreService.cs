@@ -58,10 +58,5 @@ namespace BancoDeQuestoes.Domain.Services
         {
             return _conviteMestreRepository.Update(obj);
         }
-
-        public void Detach(ConviteMestre dadosConvite)
-        {
-            _conviteMestreRepository.Detach(dadosConvite);
-        }
     }
 }

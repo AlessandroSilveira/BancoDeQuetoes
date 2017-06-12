@@ -14,7 +14,5 @@ namespace BancoDeQuestoes.Domain.Interfaces.Repository
         IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> predicate);
         int SaveChanges();
         void Dispose();
-
-	    void Detach(TEntity obj);
 	}
 }

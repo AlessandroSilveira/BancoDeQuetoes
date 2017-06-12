@@ -13,6 +13,5 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
         ConviteMestre Update(ConviteMestre obj);
         void Remove(Guid id);
         IEnumerable<ConviteMestre> Search(Expression<Func<ConviteMestre, bool>> func);
-        void Detach(ConviteMestre dadosConvite);
     }
 }

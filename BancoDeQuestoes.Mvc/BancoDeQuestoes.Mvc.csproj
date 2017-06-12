@@ -417,6 +417,7 @@
     <Content Include="Views\Mestre\DetalhesConvite.cshtml" />
     <Content Include="Views\Mestre\ListaConvites.cshtml" />
     <Content Include="Views\Mestre\SalvarConvitesAceitos.cshtml" />
+    <Content Include="Views\Mestre\ListaQuestoes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

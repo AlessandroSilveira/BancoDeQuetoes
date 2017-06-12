@@ -146,8 +146,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
             if (convite.Aceito)
             {
                 convite.DataAceito = DateTime.Now;
-                //if (!ModelState.IsValid)
-                //    return RedirectToAction("Index");
                 _conviteMestreAppService.Update(convite);
                 AtualizarQuestaoConviteAceito(listaIds, listaAceite);
             }
@@ -156,7 +154,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
                 _conviteMestreAppService.Update(convite);
             }
 
-            return View();
+            return RedirectToAction("ListaConvites", "Mestre");
         }
 
         private void AtualizarQuestaoConviteAceito(string listaIds, string listaAceite)
@@ -168,9 +166,24 @@ namespace BancoDeQuestoes.Mvc.Controllers
             {
                 var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
                 dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
-                var dadosQuestaoViewModel = _questaoAppService.GetById(dadosQuestoes.QuestaoId);
-                _questaoAppService.Update(dadosQuestaoViewModel);
+                _questaoAppService.Update(dadosQuestoes);
             }
+        }
+
+        [Authorize(Roles = "Mestre")]
+        public ActionResult ListaQuestoes()
+        {
+            var dadosMestre = _mestreAppService.Search(a => a.Email.Equals(User.Identity.Name)).FirstOrDefault();
+
+            //var dadosConvite = _conviteMestreAppService.Search()
+
+            //var dadosTopico = _topicoAtribuidoAppService.Search(a => a.MestreId.Equals(dadosMestre.MestreId));
+
+            var listaQuestoes =
+                _questaoAppService.Search(a => a.TopicoAtribuido.MestreId.Equals(dadosMestre.MestreId) );
+
+
+            return View(listaQuestoes);
         }
     }
 }
