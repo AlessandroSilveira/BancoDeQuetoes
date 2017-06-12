@@ -18,7 +18,6 @@ namespace BancoDeQuestoes.Application.ViewModels
         public virtual Guid MestreId { get; set; }
 
         public virtual Guid TopicoAtribuidoId { get; set; }
-
       
         [DisplayName("Titulo da Disciplina")]
         public int NumeroQuestao { get; set; }

@@ -45,9 +45,9 @@ namespace BancoDeQuestoes.Application.Interface
 
         public QuestaoViewModel Update(QuestaoViewModel obj)
         {
-            BeginTransaction();
+           BeginTransaction();
             _questaoService.Update(Mapper.Map<QuestaoViewModel, Questao>(obj));
-            Commit();
+           Commit();
             return obj;
         }
 

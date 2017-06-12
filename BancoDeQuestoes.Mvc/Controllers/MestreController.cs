@@ -168,7 +168,8 @@ namespace BancoDeQuestoes.Mvc.Controllers
             {
                 var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
                 dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
-                _questaoAppService.Update(dadosQuestoes);
+                var dadosQuestaoViewModel = _questaoAppService.GetById(dadosQuestoes.QuestaoId);
+                _questaoAppService.Update(dadosQuestaoViewModel);
             }
         }
     }

@@ -38,8 +38,9 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 	    public virtual  TEntity Update(TEntity obj)
 	    {
 	        var entry = Context.Entry(obj);
-	        DbSet.Attach(obj);
-            entry.State = System.Data.Entity.EntityState.Modified;
+	        entry.State = EntityState.Modified;
+            DbSet.Attach(obj);
+           
 	        return obj;
 	    }
 
