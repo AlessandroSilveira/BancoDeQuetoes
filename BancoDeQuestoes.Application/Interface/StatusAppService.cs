@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
@@ -57,9 +58,14 @@ namespace BancoDeQuestoes.Application.Interface
             Commit();
 	    }
 
-	    public IEnumerable<StatusViewModel> ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador)
+	    public StatusViewModel ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador)
 	    {
-            return Mapper.Map<IEnumerable<Status>, IEnumerable<StatusViewModel>>(_statusService.ObterDescricaoStatus(itemSemConfirmaçãoDeAceitePeloElaborador));
+            return Mapper.Map<Status, StatusViewModel>(_statusService.ObterDescricaoStatus(itemSemConfirmaçãoDeAceitePeloElaborador));
 	    }
+
+	    public IEnumerable<StatusViewModel> Search(Expression<Func<Status, bool>> func)
+	    {
+	        return Mapper.Map<IEnumerable<Status>, IEnumerable<StatusViewModel>>(_statusService.Search(func));
+        }
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
@@ -37,16 +38,18 @@ namespace BancoDeQuestoes.Infra.Data.Repository
 
 	    public virtual TEntity Update(TEntity obj)
 	    {
-	        var entry = Context.Entry(obj);
-	        DbSet.Attach(obj);
-	        entry.State = EntityState.Modified;
+           // var entry = Context.Entry(obj);
+            //DbSet.Attach(obj);
+           // entry.State = EntityState;
+            //return obj;
+	       Context.Set<TEntity>().AddOrUpdate(obj);
+	      
 	        return obj;
 	    }
 
         public virtual void Remove(Guid id)
 	    {
 	        DbSet.Remove(GetById(id));
-		   
 	    }
 
 	    public IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> predicate)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 using BancoDeQuestoes.Domain.Interfaces.Repository;
 using BancoDeQuestoes.Domain.Interfaces.Services;
@@ -31,9 +32,14 @@ namespace BancoDeQuestoes.Domain.Services
             GC.SuppressFinalize(this);
         }
 
-        public IEnumerable<Status> ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador)
+        public Status ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador)
         {
-            return _statusRepository.Search(a => a.Nome.Equals(itemSemConfirmaçãoDeAceitePeloElaborador));
+            return _statusRepository.ObterDescricaoStatus(a => a.Nome.Equals(itemSemConfirmaçãoDeAceitePeloElaborador));
+        }
+
+        public IEnumerable<Status> Search(Expression<Func<Status, bool>> func)
+        {
+            return _statusRepository.Search(func);
         }
     }
 }

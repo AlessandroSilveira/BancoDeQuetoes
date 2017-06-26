@@ -147,7 +147,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
             {
                 convite.DataAceito = DateTime.Now;
                 _conviteMestreAppService.Update(convite);
-                AtualizarQuestaoConviteAceito(listaIds, listaAceite);
+                // AtualizarQuestaoConviteAceito(listaIds, listaAceite);
+                return RedirectToAction("AtualizarQuestaoConviteAceito", "Questao", new { @listaIds = listaIds, @listaAceite = listaAceite });
+
             }
             else
             {
@@ -157,33 +159,32 @@ namespace BancoDeQuestoes.Mvc.Controllers
             return RedirectToAction("ListaConvites", "Mestre");
         }
 
-        private void AtualizarQuestaoConviteAceito(string listaIds, string listaAceite)
-        {
-            var questoesId = listaIds.Split(',');
-            var questoesAceitas = listaAceite.Split(',');
+        //private ActionResult AtualizarQuestaoConviteAceito(string listaIds, string listaAceite)
+        //{
+        //    var questoesId = listaIds.Split(',');
+        //    var questoesAceitas = listaAceite.Split(',');
 
-            for (var i = 0; i < questoesId.Length; i++)
-            {
-                var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
-                dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
-                _questaoAppService.Update(dadosQuestoes);
-            }
-        }
+           
+        //    //for (var i = 0; i < questoesId.Length; i++)
+        //    //{
+        //    //TODO : ver um jeito de salvar isso sem dar um erro chato que tá rolando, vou deixar isso aqui para que o deselvolvido mais tarde
+
+        //    //var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
+        //    //dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
+        //    //_questaoAppService.Update(dadosQuestoes);
+        //    //}
+        //}
 
         [Authorize(Roles = "Mestre")]
         public ActionResult ListaQuestoes()
         {
             var dadosMestre = _mestreAppService.Search(a => a.Email.Equals(User.Identity.Name)).FirstOrDefault();
 
-            //var dadosConvite = _conviteMestreAppService.Search()
-
-            //var dadosTopico = _topicoAtribuidoAppService.Search(a => a.MestreId.Equals(dadosMestre.MestreId));
-
             var listaQuestoes =
-                _questaoAppService.Search(a => a.TopicoAtribuido.MestreId.Equals(dadosMestre.MestreId) );
-
+                _questaoAppService.Search(a => a.TopicoAtribuido.MestreId.Equals(dadosMestre.MestreId));
 
             return View(listaQuestoes);
+            return View();
         }
     }
 }

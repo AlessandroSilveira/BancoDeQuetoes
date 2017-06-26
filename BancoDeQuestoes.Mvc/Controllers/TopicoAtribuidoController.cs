@@ -87,7 +87,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
             if (!ModelState.IsValid) return View();
 
             var idDiscipliina = Disciplinas_selecionadas.Split(',');
-            var status = _statusAppService.ObterDescricaoStatus("Item sem confirmação de aceite pelo Elaborador");
+            var status = _statusAppService.ObterDescricaoStatus("Item sem confirmação de aceite pelo Elaborador").ToString();
 
             foreach (var dados in idDiscipliina)
             {
@@ -103,13 +103,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
 
         private void AdicionarQuestoes(int inputNumQuestao, string Nivel, TopicoAtribuidoViewModel dadosTopico,
-            IEnumerable<StatusViewModel> status)
+            string status)
         {
             var questao = new QuestaoViewModel
             {
                 TopicoAtribuidoId = dadosTopico.TopicoAtribuidoId,
                 NumeroQuestao = inputNumQuestao,
-                Status = status.FirstOrDefault()?.Nome,
+                Status = status,
                 Arquivo = "",
                 ConviteAceito = false,
                 Descricao = "",
@@ -139,7 +139,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
         private TopicoAtribuidoViewModel CriarTopicoAtribuido(Guid ProjetoId, Guid AreaId, Guid MestreId,
             decimal inputValor,
             DateTime inputData, int inputNumQuestao, string Nivel, string inputObservacoes, string dados,
-            IEnumerable<StatusViewModel> status)
+           string status)
         {
             var form = new TopicoAtribuidoViewModel
             {
@@ -154,7 +154,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
                 CodigoProjeto = _topicoAtribuidoAppService.ObterCodigoProjeto(ProjetoId).ToString(),
                 DataAtribuicao = DateTime.Now,
                 DisciplinaId = new Guid(dados),
-                Status = status.FirstOrDefault()?.Nome
+                Status = status
             };
 
             var dadosTopico = _topicoAtribuidoAppService.Add(form);

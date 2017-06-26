@@ -245,6 +245,7 @@
     <Compile Include="Controllers\MestreDependenteController.cs" />
     <Compile Include="Controllers\MestreFormacaoController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
+    <Compile Include="Controllers\QuestaoController.cs" />
     <Compile Include="Controllers\RevisorController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
@@ -418,6 +419,11 @@
     <Content Include="Views\Mestre\ListaConvites.cshtml" />
     <Content Include="Views\Mestre\SalvarConvitesAceitos.cshtml" />
     <Content Include="Views\Mestre\ListaQuestoes.cshtml" />
+    <Content Include="Views\Questao\Create.cshtml" />
+    <Content Include="Views\Questao\Delete.cshtml" />
+    <Content Include="Views\Questao\Details.cshtml" />
+    <Content Include="Views\Questao\Edit.cshtml" />
+    <Content Include="Views\Questao\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

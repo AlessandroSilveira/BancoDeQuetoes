@@ -13,6 +13,7 @@ namespace BancoDeQuestoes.Application.Interface.Repositories
         IEnumerable<StatusViewModel> GetAll();
         StatusViewModel Update(StatusViewModel obj);
         void Remove(Guid id);
-        IEnumerable<StatusViewModel> ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador);
+        StatusViewModel ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador);
+        IEnumerable<StatusViewModel> Search(Expression<Func<Status, bool>> func);
     }
 }

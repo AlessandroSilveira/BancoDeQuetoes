@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using BancoDeQuestoes.Domain.Entities;
 
 namespace BancoDeQuestoes.Domain.Interfaces.Services
@@ -11,6 +12,7 @@ namespace BancoDeQuestoes.Domain.Interfaces.Services
 		IEnumerable<Status> GetAll();
 		Status Update(Status obj);
 		void Remove(Guid id);
-	    IEnumerable<Status> ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador);
+	    Status ObterDescricaoStatus(string itemSemConfirmaçãoDeAceitePeloElaborador);
+	    IEnumerable<Status> Search(Expression<Func<Status, bool>> func);
 	}
 }
