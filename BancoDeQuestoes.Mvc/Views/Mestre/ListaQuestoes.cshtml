@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<BancoDeQuestoes.Application.ViewModels.QuestaoViewModel>
 
-
+<h2>Lista de Questões a ser Desenvolvida</h2>
+<p><br/></p>
 <table class="table">
     <tr>
         <th>
@@ -45,7 +46,7 @@
             @Html.DisplayFor(modelItem => item.ConviteAceito)
         </td>
         <td>
-            @Html.ActionLink("Acessar Questões", "PainelQuestao","Questao", new { id=item.QuestaoId }) 
+            @Html.ActionLink("Acessar Questões", "PainelQuestao","Questao", new { id=item.QuestaoId },null) 
         </td>
     </tr>
 }

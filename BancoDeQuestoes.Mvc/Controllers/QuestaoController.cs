@@ -23,26 +23,22 @@ namespace BancoDeQuestoes.Mvc.Controllers
         {
             var questaoViewModels = _questaoAppService.GetAll();
             return View(questaoViewModels.ToList());
-           
         }
 
         // GET: Questao/Details/5
         public ActionResult Details(Guid id)
         {
-          
             var questaoViewModel = _statusAppService.GetById(id);
             if (questaoViewModel == null)
             {
                 return HttpNotFound();
             }
             return View(questaoViewModel);
-            
         }
 
         // GET: Questao/Create
         public ActionResult Create()
         {
-            //ViewBag.TopicoAtribuidoId = new SelectList(db.TopicoAtribuidoes, "TopicoAtribuidoId", "CodigoProjeto");
             return View();
         }
 
@@ -51,37 +47,18 @@ namespace BancoDeQuestoes.Mvc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "QuestaoId,TopicoAtribuidoId,NumeroQuestao,Descricao,Arquivo,Status,NumeroDeRevisoes,Finalizar,Nivel,Imagem,ConviteAceito")] QuestaoViewModel questaoViewModel)
+        public ActionResult Create(QuestaoViewModel questaoViewModel)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    questaoViewModel.QuestaoId = Guid.NewGuid();
-            //    db.QuestaoViewModels.Add(questaoViewModel);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //ViewBag.TopicoAtribuidoId = new SelectList(db.TopicoAtribuidoes, "TopicoAtribuidoId", "CodigoProjeto", questaoViewModel.TopicoAtribuidoId);
-            //return View(questaoViewModel);
-            return View();
+            if (!ModelState.IsValid) return View(questaoViewModel);
+            _questaoAppService.Add(questaoViewModel);
+            return RedirectToAction("Index");
         }
 
         // GET: Questao/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
-            //    if (id == null)
-            //    {
-            //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //    }
-            //    QuestaoViewModel questaoViewModel = db.QuestaoViewModels.Find(id);
-            //    if (questaoViewModel == null)
-            //    {
-            //        return HttpNotFound();
-            //    }
-            //    ViewBag.TopicoAtribuidoId = new SelectList(db.TopicoAtribuidoes, "TopicoAtribuidoId", "CodigoProjeto", questaoViewModel.TopicoAtribuidoId);
-
-            return View();
-            //return View(questaoViewModel);
+            var projeto = _questaoAppService.GetById(id);
+            return View(projeto);
         }
 
         // POST: Questao/Edit/5
@@ -89,35 +66,18 @@ namespace BancoDeQuestoes.Mvc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "QuestaoId,TopicoAtribuidoId,NumeroQuestao,Descricao,Arquivo,Status,NumeroDeRevisoes,Finalizar,Nivel,Imagem,ConviteAceito")] QuestaoViewModel questaoViewModel)
+        public ActionResult Edit(QuestaoViewModel questaoViewModel)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    db.Entry(questaoViewModel).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-            //ViewBag.TopicoAtribuidoId = new SelectList(db.TopicoAtribuidoes, "TopicoAtribuidoId", "CodigoProjeto", questaoViewModel.TopicoAtribuidoId);
-            //return View(questaoViewModel);
-            return View();
+            if (!ModelState.IsValid) return View(questaoViewModel);
+            _questaoAppService.Update(questaoViewModel);
+            return RedirectToAction("Index");
         }
 
         // GET: Questao/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(Guid id)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //QuestaoViewModel questaoViewModel = db.QuestaoViewModels.Find(id);
-            //if (questaoViewModel == null)
-            //{
-            //    return HttpNotFound();
-            //}
-
-            //return View(questaoViewModel);
-
-            return View();
+            var projeto = _questaoAppService.GetById(id);
+            return View(projeto);
         }
 
         // POST: Questao/Delete/5
@@ -125,19 +85,8 @@ namespace BancoDeQuestoes.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            //QuestaoViewModel questaoViewModel = db.QuestaoViewModels.Find(id);
-            //db.QuestaoViewModels.Remove(questaoViewModel);
-            //db.SaveChanges();
+            _questaoAppService.Remove(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            //if (disposing)
-            //{
-            //    db.Dispose();
-            //}
-            //base.Dispose(disposing);
         }
 
         public ActionResult AtualizarQuestaoConviteAceito(string listaIds, string listaAceite)
@@ -148,13 +97,17 @@ namespace BancoDeQuestoes.Mvc.Controllers
            var status = _statusAppService.ObterDescricaoStatus("Convite Aceito");
             for (var i = 0; i < questoesId.Length; i++)
             {
-               
                 var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
                 dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
                 dadosQuestoes.Status = status.Nome;
                 _questaoAppService.Update(dadosQuestoes);
             }
-            return RedirectToAction("ListaConvites", "Mestre");
+            return RedirectToAction("ListaQuestoes", "Mestre");
+        }
+
+        public ActionResult PainelQuestao(Guid id)
+        {
+            return View(_questaoAppService.GetById(id));
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Painel de Questão</h2>
+
+<p>
+    @Html.ActionLink("Novo Mestre", "Create")
+</p>
+<table class="table">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.Nome)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Cep)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Email)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Celular)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </td>
+        <th></th>
+    </tr>
+</table>
