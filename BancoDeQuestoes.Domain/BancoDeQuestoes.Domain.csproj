@@ -38,6 +38,7 @@
     <Compile Include="Entities\MestreDependente.cs" />
     <Compile Include="Entities\MestreFormacao.cs" />
     <Compile Include="Entities\Questao.cs" />
+    <Compile Include="Entities\Resposta.cs" />
     <Compile Include="Entities\RevisorFormacao.cs" />
     <Compile Include="Entities\Mestre.cs" />
     <Compile Include="Entities\Projeto.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Interfaces\Repository\IProjetoRepository.cs" />
     <Compile Include="Interfaces\Repository\IQuestaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repository\IRespostaRepository.cs" />
     <Compile Include="Interfaces\Repository\IRevisorRepository.cs" />
     <Compile Include="Interfaces\Repository\IStatusRepository.cs" />
     <Compile Include="Interfaces\Repository\ITopicoAtribuidoRepository.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Interfaces\Services\IMestreService.cs" />
     <Compile Include="Interfaces\Services\IProjetoService.cs" />
     <Compile Include="Interfaces\Services\IQuestaoService.cs" />
+    <Compile Include="Interfaces\Services\IRespostaService.cs" />
     <Compile Include="Interfaces\Services\IRevisorService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Interfaces\Services\IStatusService.cs" />
@@ -95,6 +98,7 @@
     <Compile Include="Services\MestreService.cs" />
     <Compile Include="Services\ProjetoService.cs" />
     <Compile Include="Services\QuestaoService.cs" />
+    <Compile Include="Services\RespostaService.cs" />
     <Compile Include="Services\RevisorService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\StatusService.cs" />

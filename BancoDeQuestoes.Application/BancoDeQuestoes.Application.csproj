@@ -57,10 +57,12 @@
     <Compile Include="Interface\Repositories\IMestreFormacaoAppService.cs" />
     <Compile Include="Interface\Repositories\IProjetoAppService.cs" />
     <Compile Include="Interface\Repositories\IQuestaoAppService.cs" />
+    <Compile Include="Interface\Repositories\IRespostaAppService.cs" />
     <Compile Include="Interface\Repositories\IRevisorAppService.cs" />
     <Compile Include="Interface\Repositories\IStatusAppService.cs" />
     <Compile Include="Interface\Repositories\ITopicoAtribuidoAppService.cs" />
     <Compile Include="Interface\Repositories\IUsuarioAppService.cs" />
+    <Compile Include="Interface\RespostaAppService.cs" />
     <Compile Include="Interface\RevisorAppService.cs" />
     <Compile Include="Interface\StatusAppService.cs" />
     <Compile Include="Interface\TopicoAtribuidoAppService.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="ViewModels\BancaViewModel.cs" />
     <Compile Include="ViewModels\ConviteMestreViewModel.cs" />
     <Compile Include="ViewModels\DisciplinaViewModel.cs" />
+    <Compile Include="ViewModels\RespostaViewModel.cs" />
     <Compile Include="ViewModels\RevisorFormacaoViewModel.cs" />
     <Compile Include="ViewModels\GerenciamentoDeQuestoesViewModel.cs" />
     <Compile Include="ViewModels\MestreAreaViewModel.cs" />

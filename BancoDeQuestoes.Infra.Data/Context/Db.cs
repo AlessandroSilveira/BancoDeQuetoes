@@ -57,8 +57,9 @@ namespace BancoDeQuestoes.Infra.Data.Context
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
             modelBuilder.Configurations.Add(new C__MigrationHistoryConfiguration());
             modelBuilder.Configurations.Add(new ConviteMestreConfiguration());
+	        modelBuilder.Configurations.Add(new RespostaConfiguration());
 
-            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+			modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new {r.RoleId, r.UserId});
 

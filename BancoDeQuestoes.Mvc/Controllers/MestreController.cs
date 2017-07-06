@@ -13,16 +13,18 @@ namespace BancoDeQuestoes.Mvc.Controllers
         private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
         private readonly IConviteMestreAppService _conviteMestreAppService;
         private readonly IQuestaoAppService _questaoAppService;
+	    private readonly IRespostaAppService _respostaAppService;
 
         public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService,
             ITopicoAtribuidoAppService topicoAtribuidoAppService, IConviteMestreAppService conviteMestreAppService,
-            IQuestaoAppService questaoAppService)
+            IQuestaoAppService questaoAppService, IRespostaAppService respostaAppService)
         {
             _mestreAppService = mestreAppService;
             _bancaAppService = bancaAppService;
             _topicoAtribuidoAppService = topicoAtribuidoAppService;
             _conviteMestreAppService = conviteMestreAppService;
             _questaoAppService = questaoAppService;
+	        _respostaAppService = respostaAppService;
         }
 
         [Authorize(Roles = "Admin")]
@@ -151,30 +153,11 @@ namespace BancoDeQuestoes.Mvc.Controllers
                 return RedirectToAction("AtualizarQuestaoConviteAceito", "Questao", new { @listaIds = listaIds, @listaAceite = listaAceite });
 
             }
-            else
-            {
-                _conviteMestreAppService.Update(convite);
-            }
+	        _conviteMestreAppService.Update(convite);
 
-            return RedirectToAction("ListaConvites", "Mestre");
+	        return RedirectToAction("ListaConvites", "Mestre");
         }
-
-        //private ActionResult AtualizarQuestaoConviteAceito(string listaIds, string listaAceite)
-        //{
-        //    var questoesId = listaIds.Split(',');
-        //    var questoesAceitas = listaAceite.Split(',');
-
-           
-        //    //for (var i = 0; i < questoesId.Length; i++)
-        //    //{
-        //    //TODO : ver um jeito de salvar isso sem dar um erro chato que tá rolando, vou deixar isso aqui para que o deselvolvido mais tarde
-
-        //    //var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
-        //    //dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
-        //    //_questaoAppService.Update(dadosQuestoes);
-        //    //}
-        //}
-
+       
         [Authorize(Roles = "Mestre")]
         public ActionResult ListaQuestoes()
         {
@@ -183,8 +166,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
             var listaQuestoes =
                 _questaoAppService.Search(a => a.TopicoAtribuido.MestreId.Equals(dadosMestre.MestreId));
 
-            return View(listaQuestoes);
-            return View();
+            return View(listaQuestoes);           
         }
-    }
+
+		
+	}
 }

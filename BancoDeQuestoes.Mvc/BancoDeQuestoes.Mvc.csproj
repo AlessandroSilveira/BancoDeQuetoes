@@ -425,6 +425,7 @@
     <Content Include="Views\Questao\Edit.cshtml" />
     <Content Include="Views\Questao\Index.cshtml" />
     <Content Include="Views\Questao\PainelQuestao.cshtml" />
+    <Content Include="Views\Mestre\PainelQuestao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

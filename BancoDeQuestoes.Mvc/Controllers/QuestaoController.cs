@@ -7,107 +7,115 @@ using BancoDeQuestoes.Application.ViewModels;
 
 namespace BancoDeQuestoes.Mvc.Controllers
 {
-    public class QuestaoController : Controller
-    {
-        private readonly IQuestaoAppService _questaoAppService;
-        private readonly IStatusAppService _statusAppService;
+	public class QuestaoController : Controller
+	{
+		private readonly IQuestaoAppService _questaoAppService;
+		private readonly IStatusAppService _statusAppService;
+		private readonly IMestreAppService _mestreAppService;
+		private readonly IRespostaAppService _respostaAppService;
 
-        public QuestaoController(IQuestaoAppService questaoAppService, IStatusAppService statusAppService)
-        {
-            _questaoAppService = questaoAppService;
-            _statusAppService = statusAppService;
-        }
+		public QuestaoController(IQuestaoAppService questaoAppService, IStatusAppService statusAppService, IMestreAppService mestreAppService, IRespostaAppService respostaAppService)
+		{
+			_questaoAppService = questaoAppService;
+			_statusAppService = statusAppService;
+			_mestreAppService = mestreAppService;
+			_respostaAppService = respostaAppService;
+		}
 
-        // GET: Questao
-        public ActionResult Index()
-        {
-            var questaoViewModels = _questaoAppService.GetAll();
-            return View(questaoViewModels.ToList());
-        }
+		// GET: Questao
+		public ActionResult Index()
+		{
+			var questaoViewModels = _questaoAppService.GetAll();
+			return View(questaoViewModels.ToList());
+		}
 
-        // GET: Questao/Details/5
-        public ActionResult Details(Guid id)
-        {
-            var questaoViewModel = _statusAppService.GetById(id);
-            if (questaoViewModel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(questaoViewModel);
-        }
+		// GET: Questao/Details/5
+		public ActionResult Details(Guid id)
+		{
+			var questaoViewModel = _statusAppService.GetById(id);
+			if (questaoViewModel == null)
+			{
+				return HttpNotFound();
+			}
+			return View(questaoViewModel);
+		}
 
-        // GET: Questao/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+		// GET: Questao/Create
+		public ActionResult Create()
+		{
+			return View();
+		}
 
-        // POST: Questao/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(QuestaoViewModel questaoViewModel)
-        {
-            if (!ModelState.IsValid) return View(questaoViewModel);
-            _questaoAppService.Add(questaoViewModel);
-            return RedirectToAction("Index");
-        }
+		// POST: Questao/Create
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Create(QuestaoViewModel questaoViewModel)
+		{
+			if (!ModelState.IsValid) return View(questaoViewModel);
+			_questaoAppService.Add(questaoViewModel);
+			return RedirectToAction("Index");
+		}
 
-        // GET: Questao/Edit/5
-        public ActionResult Edit(Guid id)
-        {
-            var projeto = _questaoAppService.GetById(id);
-            return View(projeto);
-        }
+		// GET: Questao/Edit/5
+		public ActionResult Edit(Guid id)
+		{
+			var projeto = _questaoAppService.GetById(id);
+			return View(projeto);
+		}
 
-        // POST: Questao/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(QuestaoViewModel questaoViewModel)
-        {
-            if (!ModelState.IsValid) return View(questaoViewModel);
-            _questaoAppService.Update(questaoViewModel);
-            return RedirectToAction("Index");
-        }
+		// POST: Questao/Edit/5
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Edit(QuestaoViewModel questaoViewModel)
+		{
+			if (!ModelState.IsValid) return View(questaoViewModel);
+			_questaoAppService.Update(questaoViewModel);
+			return RedirectToAction("Index");
+		}
 
-        // GET: Questao/Delete/5
-        public ActionResult Delete(Guid id)
-        {
-            var projeto = _questaoAppService.GetById(id);
-            return View(projeto);
-        }
+		// GET: Questao/Delete/5
+		public ActionResult Delete(Guid id)
+		{
+			var projeto = _questaoAppService.GetById(id);
+			return View(projeto);
+		}
 
-        // POST: Questao/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
-        {
-            _questaoAppService.Remove(id);
-            return RedirectToAction("Index");
-        }
+		// POST: Questao/Delete/5
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public ActionResult DeleteConfirmed(Guid id)
+		{
+			_questaoAppService.Remove(id);
+			return RedirectToAction("Index");
+		}
 
-        public ActionResult AtualizarQuestaoConviteAceito(string listaIds, string listaAceite)
-        {
-            var questoesId = listaIds.Split(',');
-            var questoesAceitas = listaAceite.Split(',');
-           // var status = _statusAppService.Search(a=>a.NumeroStatus.Equals("2"));
-           var status = _statusAppService.ObterDescricaoStatus("Convite Aceito");
-            for (var i = 0; i < questoesId.Length; i++)
-            {
-                var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
-                dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
-                dadosQuestoes.Status = status.Nome;
-                _questaoAppService.Update(dadosQuestoes);
-            }
-            return RedirectToAction("ListaQuestoes", "Mestre");
-        }
+		public ActionResult AtualizarQuestaoConviteAceito(string listaIds, string listaAceite)
+		{
+			var questoesId = listaIds.Split(',');
+			var questoesAceitas = listaAceite.Split(',');
+			// var status = _statusAppService.Search(a=>a.NumeroStatus.Equals("2"));
+			var status = _statusAppService.ObterDescricaoStatus("Convite Aceito");
+			for (var i = 0; i < questoesId.Length; i++)
+			{
+				var dadosQuestoes = _questaoAppService.GetById(new Guid(questoesId[i]));
+				dadosQuestoes.ConviteAceito = questoesAceitas[i] == "1";
+				dadosQuestoes.Status = status.Nome;
+				_questaoAppService.Update(dadosQuestoes);
+			}
+			return RedirectToAction("ListaQuestoes", "Mestre");
+		}
 
-        public ActionResult PainelQuestao(Guid id)
-        {
-            return View(_questaoAppService.GetById(id));
-        }
-    }
+		[Authorize(Roles = "Mestre")]
+		public ActionResult PainelQuestao(Guid id)
+		{
+			ViewBag.DadoaQuestao = _questaoAppService.GetById(id);
+			ViewBag.DadosMestre = _mestreAppService.Search(a => a.Email.Equals(User.Identity.Name)).FirstOrDefault();
+			ViewBag.DadosRespostas = _respostaAppService.Search(a => a.QuestaoId.Equals(id));
+			return View();
+		}
+	}
 }

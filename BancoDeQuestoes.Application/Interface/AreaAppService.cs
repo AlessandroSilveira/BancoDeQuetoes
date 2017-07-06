@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using AutoMapper;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
@@ -10,7 +9,7 @@ using BancoDeQuestoes.Domain.Interfaces.Services;
 
 namespace BancoDeQuestoes.Application.Interface
 {
-    public class AreaAppService : ApplicationService, IAreaAppService
+	public class AreaAppService : ApplicationService, IAreaAppService
     {
         private readonly IAreaService _areaService;
 

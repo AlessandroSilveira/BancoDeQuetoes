@@ -35,9 +35,10 @@ namespace BancoDeQuestoes.CrossCutting.IoC
             container.Register<ITopicoAtribuidoAppService, TopicoAtribuidoAppService>(Lifestyle.Scoped);
             container.Register<IUsuarioAppService, UsuarioAppService>(Lifestyle.Scoped);
             container.Register<IConviteMestreAppService,ConviteMestreAppService>(Lifestyle.Scoped);
+	        container.Register<IRespostaAppService, RespostaAppService>(Lifestyle.Scoped);
 
-            //Domain
-            container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
+			//Domain
+			container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
             container.Register<IAreaService, AreaService>(Lifestyle.Scoped);
             container.Register<IBancaService, BancaService>(Lifestyle.Scoped);
             container.Register<IDisciplinaService, DisciplinaService>(Lifestyle.Scoped);
@@ -53,9 +54,10 @@ namespace BancoDeQuestoes.CrossCutting.IoC
             container.Register<ITopicoAtribuidoService, TopicoAtribuidoService>(Lifestyle.Scoped);
             container.Register<IUsuarioService, UsuarioService>(Lifestyle.Scoped);
             container.Register<IConviteMestreService, ConviteMestreService>(Lifestyle.Scoped);
+	        container.Register<IRespostaService, RespostaService>(Lifestyle.Scoped);
 
-            //Infra Dados
-            container.Register(typeof(IRepository<>), typeof(RepositoryBase<>));
+			//Infra Dados
+			container.Register(typeof(IRepository<>), typeof(RepositoryBase<>));
             container.Register<IAreaRepository, AreaRepositoryBase>(Lifestyle.Scoped);
             container.Register<IBancaRepository, BancaRepositoryBase>(Lifestyle.Scoped);
             container.Register<IDisciplinaRepository, DisciplinaRepositoryBase>(Lifestyle.Scoped);
@@ -72,9 +74,10 @@ namespace BancoDeQuestoes.CrossCutting.IoC
             container.Register<IUsuarioRepository, UsuarioRepository>(Lifestyle.Scoped);
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
             container.Register<IConviteMestreRepository, ConviteMestreRepository>(Lifestyle.Scoped);
+	        container.Register<IRespostaRepository, RespostaRespository>(Lifestyle.Scoped);
 
-            //Context
-            container.Register<Db>(Lifestyle.Scoped);
+			//Context
+			container.Register<Db>(Lifestyle.Scoped);
             container.Register<ApplicationDbContext>(Lifestyle.Scoped);
 
            //Identity
