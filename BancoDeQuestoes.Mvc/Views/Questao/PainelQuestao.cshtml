@@ -1,11 +1,10 @@
-﻿@using BancoDeQuestoes.Domain.Entities
+﻿@using BancoDeQuestoes.Application.ViewModels
 
 <h2>
 	Painel de Questões
 </h2>
 @{
-	
-	var dadosQuestao = TempData["DadoaQuestao"] as Questao;   
+	var dadosQuestao = TempData["DadoaQuestao"] as QuestaoViewModel;
 }
 <table class="table">
 	<tr>
@@ -13,9 +12,10 @@
 			<b>Código do Projeto:</b>
 		</td>
 		<td>
-			<input type="hidden" id="id_projeto" name="id_projeto" value="" />
-			<input type="hidden" id="id_topico_atribuido" name="id_topico_atribuido" value="" />
-			<input type="hidden" id="mestre" name="mestre" value="" />
+			@dadosQuestao.TopicoAtribuido.CodigoProjeto
+			<input type="hidden" id="id_projeto" name="id_projeto" value="@dadosQuestao.TopicoAtribuido.ProjetoId" />
+			<input type="hidden" id="id_topico_atribuido" name="id_topico_atribuido" value="@dadosQuestao.TopicoAtribuido.TopicoAtribuidoId" />
+			<input type="hidden" id="mestre" name="mestre" value="@dadosQuestao.TopicoAtribuido.MestreId" />
 		</td>
 	</tr>
 	<tr>
@@ -23,20 +23,16 @@
 			<b>Titulo do Conteúdo:</b>
 		</td>
 		<td>
-
-
-			@dadosQuestao.TopicoAtribuido.CodigoProjeto
-			
-			<input type="hidden" id="id_topico" name="id_topico" value="" />
+			@dadosQuestao.TopicoAtribuido.Disciplina.Descricao
+			<input type="hidden" id="id_topico" name="id_topico" value="@dadosQuestao.TopicoAtribuido.Area.AreaId" />
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<b>Conteúdo Programátco:</b>
+			<b>Área:</b>
 		</td>
 		<td>
-			@*<%=ViewBag.DadosQuestao.desc_topico %>*@
-
+			@dadosQuestao.TopicoAtribuido.Area.Descricao
 		</td>
 	</tr>
 	<tr>
@@ -44,8 +40,8 @@
 			<b>Disciplina:</b>
 		</td>
 		<td>
-			@*<%=ViewBag.DadosQuestao.desc_disciplina %>*@
-			<input type="hidden" id="id_disciplina" name="id_disciplina" value="" />
+			@dadosQuestao.TopicoAtribuido.Disciplina.Descricao
+			<input type="hidden" id="id_disciplina" name="id_disciplina" value="@dadosQuestao.TopicoAtribuido.DisciplinaId" />
 		</td>
 	</tr>
 	<tr>
@@ -53,16 +49,7 @@
 			<b>Bibliografia:</b>
 		</td>
 		<td>
-			@*<%=ViewBag.DadosQuestao.desc_bibliografia==null?"":ViewBag.DadosQuestao.desc_bibliografia %>*@
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<b>Cargo:</b>
-		</td>
-		<td>
-			@*<%=ViewBag.DadosCargo.DESC_CARGO %>*@
-			<input type="hidden" id="id_cargo" name="id_cargo" value="" />
+			@dadosQuestao.TopicoAtribuido.Disciplina.Bibliografia
 		</td>
 	</tr>
 	<tr>
@@ -70,60 +57,47 @@
 			<b>Número da Questão:</b>
 		</td>
 		<td>
-			@*<%=ViewBag.Questao.NUM_QUESTAO %>*@
-			<input type="hidden" id="numero_da_questao" name="numero_da_questao" value="" />
-			<input type="hidden" id="id_questao" name="id_questao" value="" />
+			@dadosQuestao.TopicoAtribuido.NumeroQuestao
+			<input type="hidden" id="numero_da_questao" name="numero_da_questao" value="@dadosQuestao.TopicoAtribuido.NumeroQuestao" />
+			<input type="hidden" id="id_questao" name="id_questao" value="@dadosQuestao.QuestaoId" />
 		</td>
 	</tr>
 	<tr>
 		<td>
 			<b>Data de Entrega:</b>
 		</td>
-		<td>@*<%=ViewBag.DadosQuestao.data_entrega %><*@</td>
+		<td>
+			@dadosQuestao.TopicoAtribuido.DataEntrega
+		</td>
 	</tr>
 	<tr>
 		<td>
 			<b>Nível da Questão:</b>
 		</td>
 		<td>
-			@*<%=ViewBag.Questao.DESC_NIVEL%>*@
+			@dadosQuestao.TopicoAtribuido.Nivel
 		</td>
 	</tr>
 	<tr>
 		<td>
 			<b>Observação:</b>
 		</td>
-		<td>@*<%=ViewBag.DadosQuestao.observacao %>*@</td>
+		<td>
+			@dadosQuestao.TopicoAtribuido.Observacao
+		</td>
 	</tr>
 </table>
 
-
 <form class="form-horizontal">
 	<fieldset>
-		@*<tr name="">
-				<td colspan="3">
-					<b>Questão @*<%//=i %>:</b><br>
-					<br>
-					<textarea name="questao" id="descricao" style="margin: 0; width: 1000px; height: 400px;" class="questao">@*<%=string.IsNullOrEmpty(ViewBag.Questao.DESC_QUESTAO)?"":ViewBag.Questao.DESC_QUESTAO %></textarea>
-				</td>
-			</tr>*@
-
 
 		<div class="form-group">
 			<label for="Questao" class="col-lg-2 control-label">Questão</label>
 			<div class="col-lg-10">
 				<textarea class="form-control" rows="3" name="questao" id="descricao"></textarea>
-
 			</div>
 		</div>
 
-
-
-		@*<tr>
-				<td>
-					<b> Anexar Imagem:</b> <input type="file" name="arquivo_questao" />
-				</td>
-			</tr>*@
 		<div class="form-group">
 			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Questão:</label>
 			<div class="col-lg-10">
@@ -131,17 +105,12 @@
 			</div>
 		</div>
 
-
-
 		<div class="form-group">
 			<label for="AlternativaA" class="col-lg-2 control-label">Alternativa A:</label>
 			<div class="col-lg-10">
 				<textarea class="form-control" rows="3" name="resposta" id="respostaA"></textarea>
-
 			</div>
 		</div>
-
-
 
 		<div class="form-group">
 			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Resposta:</label>
@@ -150,13 +119,10 @@
 			</div>
 		</div>
 
-
-
 		<div class="form-group">
 			<label for="justificativaA" class="col-lg-2 control-label">Justificativa A:</label>
 			<div class="col-lg-10">
 				<textarea class="form-control" rows="3" name="justificativa" id="justificativaA"></textarea>
-
 			</div>
 		</div>
 
@@ -164,11 +130,8 @@
 			<label for="AlternativaB" class="col-lg-2 control-label">Alternativa B:</label>
 			<div class="col-lg-10">
 				<textarea class="form-control" rows="3" name="resposta" id="respostaB"></textarea>
-
 			</div>
 		</div>
-
-
 
 		<div class="form-group">
 			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Resposta:</label>
@@ -177,13 +140,10 @@
 			</div>
 		</div>
 
-
-
 		<div class="form-group">
 			<label for="justificativaB" class="col-lg-2 control-label">Justificativa B:</label>
 			<div class="col-lg-10">
 				<textarea class="form-control" rows="3" name="justificativa" id="justificativaB"></textarea>
-
 			</div>
 		</div>
 
@@ -191,11 +151,8 @@
 			<label for="AlternativaC" class="col-lg-2 control-label">Alternativa C:</label>
 			<div class="col-lg-10">
 				<textarea class="form-control" rows="3" name="respostaC" id="respostaC"></textarea>
-
 			</div>
 		</div>
-
-
 
 		<div class="form-group">
 			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Resposta:</label>
@@ -204,16 +161,12 @@
 			</div>
 		</div>
 
-
-
 		<div class="form-group">
 			<label for="justificativaC" class="col-lg-2 control-label">Justificativa C:</label>
 			<div class="col-lg-10">
 				<textarea class="form-control" rows="3" name="justificativaC" id="justificativaC"></textarea>
-
 			</div>
 		</div>
-
 
 		<div class="form-group">
 			<label for="AlternativaD" class="col-lg-2 control-label">Alternativa D:</label>
@@ -223,8 +176,6 @@
 			</div>
 		</div>
 
-
-
 		<div class="form-group">
 			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Resposta:</label>
 			<div class="col-lg-10">
@@ -232,13 +183,10 @@
 			</div>
 		</div>
 
-
-
 		<div class="form-group">
 			<label for="justificativaD" class="col-lg-2 control-label">Justificativa D:</label>
 			<div class="col-lg-10">
 				<textarea class="form-control" rows="3" name="justificativaD" id="justificativaD"></textarea>
-
 			</div>
 		</div>
 
@@ -246,11 +194,8 @@
 			<label for="AlternativaE" class="col-lg-2 control-label">Alternativa E:</label>
 			<div class="col-lg-10">
 				<textarea class="form-control" rows="3" name="respostaE" id="respostaE"></textarea>
-
 			</div>
 		</div>
-
-
 
 		<div class="form-group">
 			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Resposta:</label>
@@ -259,17 +204,12 @@
 			</div>
 		</div>
 
-
-
 		<div class="form-group">
 			<label for="justificativaE" class="col-lg-2 control-label">Justificativa E:</label>
 			<div class="col-lg-10">
 				<textarea class="form-control" rows="3" name="justificativaE" id="justificativaE"></textarea>
-
 			</div>
 		</div>
-
-
 
 		<div class="form-group">
 			<label for="Bibliografia" class="col-lg-2 control-label">Anexar Bibliografia:</label>
@@ -282,7 +222,7 @@
 			{%>*@
 
 		<input type="hidden" name="id_topico_atribuido_arquivo" id="id_topico_atribuido_arquivo" value="" />
-		<input type="hidden" name="id_questao" id="id_questao_" value="" />
+		<input type="hidden" name="id_questao" id="id_questao_" value="@dadosQuestao.QuestaoId" />
 		@*<%} %>*@
 		<input type="hidden" id="todas_respostas_" value="" />
 
@@ -295,8 +235,9 @@
 	<div class="col-lg-10 col-lg-offset-2">
 		<button type="submit" class="btn btn-default">Salvar</button>
 		<button type="submit" class="btn btn-default" id="enviar_finalizar" name="enviar_finalizar">Salvar e Finalizar</button>
-		<button type="button" class="btn btn-default">Salvar e Finalizar</button>
+		<button type="button" class="btn btn-default">Voltar</button>
 		<input type="hidden" id="todas_questoes" value="" />
 	</div>
 </div>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script src="~/Scripts/Questoes/PainelQuestaoScript.js"></script>
