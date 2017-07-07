@@ -1,0 +1,207 @@
+﻿type = "text/javascript" >
+	tinymce.init({
+		selector: "textarea",
+		theme: "modern",
+		plugins: [
+			"advlist autolink lists  charmap print preview anchor searchreplace visualblocks code ",
+			"",
+			"textcolor insertdatetime  table contextmenu paste moxiemanager"
+		],
+		toolbar1:
+			"insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+		toolbar2: "print preview media | forecolor backcolor emoticons",
+		image_advtab: true,
+		templates: [
+			{ title: 'Test template 1', content: 'Test 1' },
+			{ title: 'Test template 2', content: 'Test 2' }
+		]
+	});
+
+function AtualizarSessao() {
+	$.ajax({
+		async: false,
+		url: "../ReviverSessao",
+		success: function () {
+			console.log("foi");
+		},
+		error: function () {
+		}
+	});
+}
+
+function retira_acentos(palavra) {
+
+	var comAcento = "áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ";
+	var semAcento = "aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC";
+	var nova = "";
+	for (var i = 0; i < palavra.length; i++) {
+		if (comAcento.search(palavra.substr(i, 1)) >= 0) {
+			nova += semAcento.substr(comAcento.search(palavra.substr(i, 1)), 1);
+		} else {
+			nova += palavra.substr(i, 1);
+		}
+	}
+	return nova;
+}
+
+
+function replace_all(string, encontrar, substituir) {
+	while (string.indexOf(encontrar) >= 0)
+		string = string.replace(encontrar, substituir);
+	return string;
+}
+
+$(document).ready(function () {
+	setInterval(AtualizarSessao, 900000);
+
+	$("#data_entrega").datepicker({
+		dateFormat: 'dd/mm/yy',
+		dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+		dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+		dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+		monthNames: [
+			'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro',
+			'Dezembro'
+		],
+		monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+		nextText: 'Próximo',
+		prevText: 'Anterior'
+
+	});
+
+	$("#enviar_finalizar").click(function () {
+
+		$("#finalizar").val(1);
+		var extensao;
+		var arquivo;
+		if ($("input[name*='arquivo_questao']").val() !== "") {
+			arquivo = $("input[name*='arquivo_questao']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+
+		if ($("input[name*='arquivo_respostaA']").val() !== "") {
+			arquivo = $("input[name*='arquivo_respostaA']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+
+		if ($("input[name*='arquivo_respostaB']").val() !== "") {
+			arquivo = $("input[name*='arquivo_respostaB']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+		if ($("input[name*='arquivo_respostaC']").val() !== "") {
+			arquivo = $("input[name*='arquivo_respostaC']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+		if ($("input[name*='arquivo_respostaD']").val() !== "") {
+			arquivo = $("input[name*='arquivo_respostaD']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+		if ($("input[name*='arquivo_respostaE']").val() !== "") {
+			arquivo = $("input[name*='arquivo_respostaE']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+
+		$("#form").submit();
+		return false;
+	});
+	$("#enviar_aprovar").click(function () {
+
+		$("#finalizar").val(5);
+		var extensao;
+		var arquivo;
+		if ($("input[name*='arquivo_questao']").val() !== "") {
+			arquivo = $("input[name*='arquivo_questao']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+		if ($("input[name*='arquivo_respostaA']").val() !== "") {
+			arquivo = $("input[name*='arquivo_respostaA']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+		if ($("input[name*='arquivo_respostaB']").val() !== "") {
+			arquivo = $("input[name*='arquivo_respostaB']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+		if ($("input[name*='arquivo_respostaC']").val() !== "") {
+			arquivo = $("input[name*='arquivo_respostaC']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+		if ($("input[name*='arquivo_respostaD']").val() !== "") {
+			arquivo = $("input[name*='arquivo_respostaD']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+		if ($("input[name*='arquivo_respostaE']").val() !== "") {
+			arquivo = $("input[name*='arquivo_respostaE']").val();
+			extensao = arquivo.split('.');
+			if (extensao[1] !== "jpg") {
+
+				alert("Arquivo inválido");
+				return false;
+			}
+		}
+
+		$("#form").submit();
+		return false;
+	});
+});

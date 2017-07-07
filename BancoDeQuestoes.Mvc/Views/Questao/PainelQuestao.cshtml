@@ -1,243 +1,20 @@
-﻿
-<script type="text/javascript" src="../Scripts/tinymce/tinymce.min.js" %>
+﻿@using BancoDeQuestoes.Domain.Entities
 
-	type = "text/javascript" >
-		tinymce.init({
-			selector: "textarea",
-			theme: "modern",
-			plugins: [
-				"advlist autolink lists  charmap print preview anchor searchreplace visualblocks code ",
-				"",
-				"textcolor insertdatetime  table contextmenu paste moxiemanager"
-			],
-			toolbar1:
-				"insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-			toolbar2: "print preview media | forecolor backcolor emoticons",
-			image_advtab: true,
-			templates: [
-				{ title: 'Test template 1', content: 'Test 1' },
-				{ title: 'Test template 2', content: 'Test 2' }
-			]
-		});
-</script>
-<script type="text/javascript">
-	function AtualizarSessao() {
-		$.ajax({
-			async: false,
-			url: "../ReviverSessao",
-			success: function(resposta) {
-				console.log("foi");
-			},
-			error: function(XMLHttpRequest, textStatus, errorThrown) {
-			}
-		});
-	}
-
-	function retira_acentos(palavra) {
-
-		com_acento = "áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ";
-		sem_acento = "aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC";
-		nova = "";
-		for (i = 0; i < palavra.length; i++) {
-			if (com_acento.search(palavra.substr(i, 1)) >= 0) {
-				nova += sem_acento.substr(com_acento.search(palavra.substr(i, 1)), 1);
-			} else {
-				nova += palavra.substr(i, 1);
-			}
-		}
-		return nova;
-	}
-
-
-	function replace_all(string, encontrar, substituir) {
-		while (string.indexOf(encontrar) >= 0)
-			string = string.replace(encontrar, substituir);
-		return string;
-	}
-
-	$(document).ready(function() {
-		setInterval(AtualizarSessao, 900000);
-
-		$("#data_entrega").datepicker({
-			dateFormat: 'dd/mm/yy',
-			dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-			dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
-			dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-			monthNames: [
-				'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro',
-				'Dezembro'
-			],
-			monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-			nextText: 'Próximo',
-			prevText: 'Anterior'
-
-		});
-
-		$("#enviar_finalizar").click(function() {
-			
-			$("#finalizar").val(1);
-			var extensao;
-			var arquivo;
-			if ($("input[name*='arquivo_questao']").val() !== "") {
-				arquivo = $("input[name*='arquivo_questao']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-
-			if ($("input[name*='arquivo_respostaA']").val() !== "") {
-				arquivo = $("input[name*='arquivo_respostaA']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-
-			if ($("input[name*='arquivo_respostaB']").val() !== "") {
-				arquivo = $("input[name*='arquivo_respostaB']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-			if ($("input[name*='arquivo_respostaC']").val() !== "") {
-				arquivo = $("input[name*='arquivo_respostaC']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-			if ($("input[name*='arquivo_respostaD']").val() !== "") {
-				arquivo = $("input[name*='arquivo_respostaD']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-			if ($("input[name*='arquivo_respostaE']").val() !== "") {
-				arquivo = $("input[name*='arquivo_respostaE']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-
-			$("#form").submit();
-			return false;
-		});
-		$("#enviar_aprovar").click(function() {
-
-			$("#finalizar").val(5);
-			var extensao;
-			var arquivo;
-			if ($("input[name*='arquivo_questao']").val() !== "") {
-				arquivo = $("input[name*='arquivo_questao']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-			if ($("input[name*='arquivo_respostaA']").val() !== "") {
-				arquivo = $("input[name*='arquivo_respostaA']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-			if ($("input[name*='arquivo_respostaB']").val() !== "") {
-				arquivo = $("input[name*='arquivo_respostaB']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-			if ($("input[name*='arquivo_respostaC']").val() !== "") {
-				arquivo = $("input[name*='arquivo_respostaC']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-			if ($("input[name*='arquivo_respostaD']").val() !== "") {
-				arquivo = $("input[name*='arquivo_respostaD']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-			if ($("input[name*='arquivo_respostaE']").val() !== "") {
-				arquivo = $("input[name*='arquivo_respostaE']").val();
-				extensao = arquivo.split('.');
-				if (extensao[1] !== "jpg") {
-
-					alert("Arquivo inválido");
-					return false;
-				}
-			}
-
-			$("#form").submit();
-			return false;
-		});
-	});
-</script>
-
-
-<div class="boxConteudo">
-
-<div id="divConteudoGeral">
-
-<div class="boxConteudoPrincipal">
-<div class="boxDestaques">
-<div class="itemDest">
-
-<h2 class="TitNoticias">
-	<strong>Banco de Questões - Painel de Questões</strong>
+<h2>
+	Painel de Questões
 </h2>
-
-<br>
-<br>
-@*<%using (Html.BeginForm("SalvarQuestoes_2", "BancoQuestoesMestre", FormMethod.Post, new { id = "form", enctype = "multipart/form-data" }))
-{ %>*@
-<table style="margin-top: 20PX;">
-
+@{
+	
+	var dadosQuestao = TempData["DadoaQuestao"] as Questao;   
+}
+<table class="table">
 	<tr>
 		<td>
 			<b>Código do Projeto:</b>
 		</td>
 		<td>
-			@*<%=ViewBag.DadosQuestao.cod_projeto %>*@
-			<input type="hidden" id="id_projeto" name="id_projeto" value=""/>
-			<input type="hidden" id="id_topico_atribuido" name="id_topico_atribuido" value=""/>
+			<input type="hidden" id="id_projeto" name="id_projeto" value="" />
+			<input type="hidden" id="id_topico_atribuido" name="id_topico_atribuido" value="" />
 			<input type="hidden" id="mestre" name="mestre" value="" />
 		</td>
 	</tr>
@@ -246,8 +23,11 @@
 			<b>Titulo do Conteúdo:</b>
 		</td>
 		<td>
-			@*<%=ViewBag.DadosQuestao.desc_titulo_topico %>*@
-			<input type="hidden" id="id_topico" name="id_topico" value=""/>
+
+
+			@dadosQuestao.TopicoAtribuido.CodigoProjeto
+			
+			<input type="hidden" id="id_topico" name="id_topico" value="" />
 		</td>
 	</tr>
 	<tr>
@@ -265,7 +45,7 @@
 		</td>
 		<td>
 			@*<%=ViewBag.DadosQuestao.desc_disciplina %>*@
-			<input type="hidden" id="id_disciplina" name="id_disciplina" value=""/>
+			<input type="hidden" id="id_disciplina" name="id_disciplina" value="" />
 		</td>
 	</tr>
 	<tr>
@@ -274,59 +54,33 @@
 		</td>
 		<td>
 			@*<%=ViewBag.DadosQuestao.desc_bibliografia==null?"":ViewBag.DadosQuestao.desc_bibliografia %>*@
-
 		</td>
 	</tr>
-	@*<%if (ViewBag.DadosQuestao.id_cargo != null)
-	{ %>
-
-	<%
-	BANCOQUESTOES.Repositories.BancoQuestoesRepository _bancoQuestoesRepository = new BANCOQUESTOES.Repositories.BancoQuestoesRepository();
-	ViewBag.DadosCargo = _bancoQuestoesRepository.ObterDadosCargoPorIdCargo(ViewBag.DadosQuestao.id_cargo);
-
-	%>*@
-
-
 	<tr>
 		<td>
 			<b>Cargo:</b>
 		</td>
 		<td>
 			@*<%=ViewBag.DadosCargo.DESC_CARGO %>*@
-			<input type="hidden" id="id_cargo" name="id_cargo" value=""/>
+			<input type="hidden" id="id_cargo" name="id_cargo" value="" />
 		</td>
 	</tr>
-	<%} %>
 	<tr>
 		<td>
 			<b>Número da Questão:</b>
 		</td>
 		<td>
 			@*<%=ViewBag.Questao.NUM_QUESTAO %>*@
-			<input type="hidden" id="numero_da_questao" name="numero_da_questao" value=""/>
-			<input type="hidden" id="id_questao" name="id_questao" value=""/>
+			<input type="hidden" id="numero_da_questao" name="numero_da_questao" value="" />
+			<input type="hidden" id="id_questao" name="id_questao" value="" />
 		</td>
 	</tr>
-
-
 	<tr>
 		<td>
 			<b>Data de Entrega:</b>
 		</td>
 		<td>@*<%=ViewBag.DadosQuestao.data_entrega %><*@</td>
 	</tr>
-
-	@*<%if (string.IsNullOrEmpty(ViewBag.Questao.DESC_NIVEL)) {%>*@
-
-	<tr>
-		<td>
-			<b>Nível da Questão:</b>
-		</td>
-		<td>
-			@*<%=ViewBag.DadosQuestao.nivel==null?"":ViewBag.DadosQuestao.nivel%>*@
-		</td>
-	</tr>
-	@*<%}else{ %>*@
 	<tr>
 		<td>
 			<b>Nível da Questão:</b>
@@ -335,238 +89,214 @@
 			@*<%=ViewBag.Questao.DESC_NIVEL%>*@
 		</td>
 	</tr>
-	@*<%} %>*@
-
-
-	@*<%if (!string.IsNullOrEmpty(ViewBag.DadosQuestao.observacao))
-	{ %>*@
 	<tr>
 		<td>
 			<b>Observação:</b>
 		</td>
 		<td>@*<%=ViewBag.DadosQuestao.observacao %>*@</td>
 	</tr>
-	<%} %>
 </table>
 
-<table>
-	@*<%//int i = 1;
-	//while (i <= ViewBag.DadosQuestao.num_questoes)
-	//{
-	%>*@
-	<tr name="">
-		<td colspan="3">
-			<b>Questão @*<%//=i %>*@:</b><br>
-			<br>
-			<textarea name="questao" id="descricao" style="margin: 0; width: 1000px; height: 400px;" class="questao">@*<%=string.IsNullOrEmpty(ViewBag.Questao.DESC_QUESTAO)?"":ViewBag.Questao.DESC_QUESTAO %>*@</textarea>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="3">
-			<b> Anexar Imagem:</b> <input type="file" name="arquivo_questao"/>
-		</td>
-	</tr>
 
-	@*<%
-
-	int i = 1;
-	string letra = "";
-	%>
-	<%foreach (var itens in ViewBag.DadosRespostas)
-	{%>*@
+<form class="form-horizontal">
+	<fieldset>
+		@*<tr name="">
+				<td colspan="3">
+					<b>Questão @*<%//=i %>:</b><br>
+					<br>
+					<textarea name="questao" id="descricao" style="margin: 0; width: 1000px; height: 400px;" class="questao">@*<%=string.IsNullOrEmpty(ViewBag.Questao.DESC_QUESTAO)?"":ViewBag.Questao.DESC_QUESTAO %></textarea>
+				</td>
+			</tr>*@
 
 
-	@*<%
+		<div class="form-group">
+			<label for="Questao" class="col-lg-2 control-label">Questão</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="questao" id="descricao"></textarea>
 
-	if (i == 1)
-	{
-	letra = "A";
-	}
-
-	if (i == 2)
-	{
-	letra = "B";
-	}
-	if (i == 3)
-	{
-	letra = "C";
-	}
-	if (i == 4)
-	{
-	letra = "D";
-	}
-	if (i == 5)
-	{
-	letra = "E";
-	}
-	if (i == 6)
-	{
-
-	letra = "F";
-	}
-	if (i == 7)
-	{
-	letra = "G";
-	}
-	if (i == 8)
-	{
-	letra = "H";
-	}
-
-	%>*@
-
-	<tr>
-		<td id="A">
-			<b>Alternativa <%=letra %> - <%=itens.DESC_CORRECAO %>:</b><br>
-			<textarea name="resposta" id="resposta" class="respostas" style="margin: 0px; width: 1000px; height: 400px;">@*<%=itens.DESC_RESPOSTA %>*@</textarea>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<b> Anexar Imagem:</b><input type="file" name="arquivo_resposta"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<b>Justificativa:</b><br>
-			<textarea name="justificativa" id="justificativa" class="justificativa" style="margin: 0px; width: 1000px; height: 400px;">@*<%=itens.DESC_JUSTIFICATIVA %>*@</textarea>
-		</td>
-	</tr>
-	@*<%--
-	<tr>
-		<td>
-			<b> Anexar Imagem:</b> <input type="file" name="arquivo_justificativa"/>
-		</td>
-	</tr>--%>*@
-
-	@*<% i++;
-	} %>*@
+			</div>
+		</div>
 
 
-	<%--
-	<tr>
-		<td id="B">
-			<b>Alternativa B - Correta:</b>
-			<textarea name="respostaB" id="respostaB" class="respostas" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<b>Justificativa:</b>
-			<textarea name="justificativaB" id="justificativaB" class="justificativa" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td id="C">
-			<b>Alternativa C - Correta:</b>
-			<textarea name="respostaC" id="respostaC" class="respostas" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<b>Justificativa:</b>
-			<textarea name="justificativaC" id="justificativaC" class="justificativa" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td id="D">
-			<b>Alternativa D - Incorreta:</b>
-			<textarea name="respostaD" id="respostaD" class="respostas" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<b>Justificativa:</b>
-			<textarea name="justificativaD" id="justificativaD" class="justificativa" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td id="Td4">
-			<b>Alternativa E - Incorreta:</b>
-			<textarea name="respostaE" id="respostaE" class="respostas" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<b>Justificativa:</b>
-			<textarea name="justificativaE" id="justificativaE" class="justificativa" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td id="Td5">
-			<b>Alternativa F - Incorreta:</b>
-			<textarea name="respostaF" id="respostaF" class="respostas" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<b>Justificativa:</b>
-			<textarea name="justificativaF" id="justificativaF" class="justificativa" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td id="Td6">
-			<b>Alternativa G - Incorreta:</b>
-			<textarea name="respostaG" id="respostaG" class="respostas" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<b>Justificativa:</b>
-			<textarea name="justificativaG" id="justificativaG" class="justificativa" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td id="Td7">
-			<b>Alternativa H - Incorreta:</b>
-			<textarea name="respostaH" id="respostaH" class="respostas" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<b>Justificativa:</b>
-			<textarea name="justificativaH" id="justificativaH" class="justificativa" style="margin: 0px; width: 926px; height: 50px;"></textarea>
-		</td>
-	</tr>--%>
-	<tr>
-		<td colspan="3">
-			<b>Anexar Bibliografia:</b>
-			@*<%using (Html.BeginForm("SalvarArquivoDaQuestao", "BancoQuestoesMestre", FormMethod.Post, new { id = "form_arquivo_"/*+i*/, @enctype = "multipart/form-data" }))
+
+		@*<tr>
+				<td>
+					<b> Anexar Imagem:</b> <input type="file" name="arquivo_questao" />
+				</td>
+			</tr>*@
+		<div class="form-group">
+			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Questão:</label>
+			<div class="col-lg-10">
+				<input type="file" class="form-control" id="arquivo_questao" placeholder="Anexar Imagem" name="arquivo_questao">
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="AlternativaA" class="col-lg-2 control-label">Alternativa A:</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="resposta" id="respostaA"></textarea>
+
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Resposta:</label>
+			<div class="col-lg-10">
+				<input type="file" class="form-control" id="arquivo_resposta" placeholder="Anexar Imagem" name="arquivo_resposta">
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="justificativaA" class="col-lg-2 control-label">Justificativa A:</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="justificativa" id="justificativaA"></textarea>
+
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="AlternativaB" class="col-lg-2 control-label">Alternativa B:</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="resposta" id="respostaB"></textarea>
+
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Resposta:</label>
+			<div class="col-lg-10">
+				<input type="file" class="form-control" id="arquivo_respostaB" placeholder="Anexar Imagem" name="arquivo_respostaB">
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="justificativaB" class="col-lg-2 control-label">Justificativa B:</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="justificativa" id="justificativaB"></textarea>
+
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="AlternativaC" class="col-lg-2 control-label">Alternativa C:</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="respostaC" id="respostaC"></textarea>
+
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Resposta:</label>
+			<div class="col-lg-10">
+				<input type="file" class="form-control" id="arquivo_respostaC" placeholder="Anexar Imagem" name="arquivo_respostaC">
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="justificativaC" class="col-lg-2 control-label">Justificativa C:</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="justificativaC" id="justificativaC"></textarea>
+
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			<label for="AlternativaD" class="col-lg-2 control-label">Alternativa D:</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="respostaD" id="respostaD"></textarea>
+
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Resposta:</label>
+			<div class="col-lg-10">
+				<input type="file" class="form-control" id="arquivo_respostaD" placeholder="Anexar Imagem" name="arquivo_respostaD">
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="justificativaD" class="col-lg-2 control-label">Justificativa D:</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="justificativaD" id="justificativaD"></textarea>
+
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="AlternativaE" class="col-lg-2 control-label">Alternativa E:</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="respostaE" id="respostaE"></textarea>
+
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="arquivo_questao" class="col-lg-2 control-label">Anexar Imagem da Resposta:</label>
+			<div class="col-lg-10">
+				<input type="file" class="form-control" id="arquivo_respostaE" placeholder="Anexar Imagem" name="arquivo_respostaE">
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="justificativaE" class="col-lg-2 control-label">Justificativa E:</label>
+			<div class="col-lg-10">
+				<textarea class="form-control" rows="3" name="justificativaE" id="justificativaE"></textarea>
+
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="Bibliografia" class="col-lg-2 control-label">Anexar Bibliografia:</label>
+			<div class="col-lg-10">
+				<input type="file" class="form-control" id="bibliografia" placeholder="Bibliografia" name="bibliografia">
+
+			</div>
+		</div>
+		@*<%using (Html.BeginForm("SalvarArquivoDaQuestao", "BancoQuestoesMestre", FormMethod.Post, new { id = "form_arquivo_"/*+i*/, @enctype = "multipart/form-data" }))
 			{%>*@
-			<input type="file" name="arquivo" id="arquivo"/>
-			<input type="hidden" name="id_topico_atribuido_arquivo" id="id_topico_atribuido_arquivo" value=""/>
-			<input type="hidden" name="id_questao" id="id_questao_" value=""/>
-			@*<%} %>*@
-			<input type="hidden" id="todas_respostas_" value=""/>
-			<input type="hidden" id="todas_justificativas_" value=""/>
-		</td>
-	</tr>
 
-	@*<%//i++; %>
-	<%//} %>*@
-	<input type="hidden" value="" name="id_questoes" id="id_questoes"/>
-	<input type="hidden" value="0" name="finalizar" id="finalizar"/>
+		<input type="hidden" name="id_topico_atribuido_arquivo" id="id_topico_atribuido_arquivo" value="" />
+		<input type="hidden" name="id_questao" id="id_questao_" value="" />
+		@*<%} %>*@
+		<input type="hidden" id="todas_respostas_" value="" />
 
-</table>
-<table>
-	<tr>
-		<td align="center">
-			<%--<input type="button" id="enviar" value="Salvar Dados"/>--%>
-			<input type="submit" id="enviar" name="enviar" value="Salvar"/>
-			<input type="button" id="enviar_finalizar" name="enviar_finalizar" value="Salvar e Finalizar"/>
+		<input type="hidden" value="" name="id_questoes" id="id_questoes" />
+		<input type="hidden" value="0" name="finalizar" id="finalizar" />
+	</fieldset>
+</form>
 
-			<input type="button" value="Voltar" onclick="location.href = '<%=Url.Content(" ~/BancoQuestoesMestre/Index")%> '" />
-		</td>
-	</tr>
-</table>
-
-<input type="hidden" id="todas_questoes" value=""/>
-
+<div class="form-group">
+	<div class="col-lg-10 col-lg-offset-2">
+		<button type="submit" class="btn btn-default">Salvar</button>
+		<button type="submit" class="btn btn-default" id="enviar_finalizar" name="enviar_finalizar">Salvar e Finalizar</button>
+		<button type="button" class="btn btn-default">Salvar e Finalizar</button>
+		<input type="hidden" id="todas_questoes" value="" />
+	</div>
 </div>
-</div>
-</div>
-
-</div>
-</div>
-
-
+<script src="~/Scripts/Questoes/PainelQuestaoScript.js"></script>

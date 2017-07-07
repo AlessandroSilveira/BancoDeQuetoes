@@ -112,7 +112,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		[Authorize(Roles = "Mestre")]
 		public ActionResult PainelQuestao(Guid id)
 		{
-			ViewBag.DadoaQuestao = _questaoAppService.GetById(id);
+			TempData["DadoaQuestao"] = _questaoAppService.GetById(id);
 			ViewBag.DadosMestre = _mestreAppService.Search(a => a.Email.Equals(User.Identity.Name)).FirstOrDefault();
 			ViewBag.DadosRespostas = _respostaAppService.Search(a => a.QuestaoId.Equals(id));
 			return View();
