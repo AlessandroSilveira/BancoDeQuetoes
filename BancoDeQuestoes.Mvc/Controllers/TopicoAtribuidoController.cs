@@ -80,7 +80,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		[HttpPost]
 		public ActionResult SalvarTopicoAtribuido(Guid ProjetoId, Guid AreaId, Guid MestreId, decimal inputValor,
 			DateTime inputData,
-			int inputNumQuestao, string Nivel, string inputObservacoes, string Disciplinas_selecionadas)
+			int inputNumQuestao, string Nivel, string inputObservacoes, string Disciplinas_selecionadas, int inputNumRespostas)
 		{
 			if (!ModelState.IsValid) return View();
 
@@ -90,7 +90,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			foreach (var dados in idDiscipliina)
 			{
 				var dadosTopico = CriarTopicoAtribuido(ProjetoId, AreaId, MestreId, inputValor, inputData,
-					inputNumQuestao, Nivel, inputObservacoes, dados, status);
+					inputNumQuestao, Nivel, inputObservacoes, dados, status, inputNumRespostas);
 				CriarConviteDoMestre(inputValor, inputNumQuestao, dadosTopico);
 
 				for (var i = 1; i <= inputNumQuestao; i++)
@@ -137,7 +137,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		private TopicoAtribuidoViewModel CriarTopicoAtribuido(Guid ProjetoId, Guid AreaId, Guid MestreId,
 			decimal inputValor,
 			DateTime inputData, int inputNumQuestao, string Nivel, string inputObservacoes, string dados,
-			string status)
+			string status,int  inputNumRespostas )
 		{
 			var form = new TopicoAtribuidoViewModel
 			{
@@ -152,7 +152,8 @@ namespace BancoDeQuestoes.Mvc.Controllers
 				CodigoProjeto = _topicoAtribuidoAppService.ObterCodigoProjeto(ProjetoId).ToString(),
 				DataAtribuicao = DateTime.Now,
 				DisciplinaId = new Guid(dados),
-				Status = status
+				Status = status,
+				NumeroRespostas = inputNumRespostas
 			};
 
 			var dadosTopico = _topicoAtribuidoAppService.Add(form);

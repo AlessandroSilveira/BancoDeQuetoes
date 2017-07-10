@@ -21,6 +21,7 @@ namespace BancoDeQuestoes.Domain.Entities
 		public string Observacao { get; set; }
 		public DateTime DataAtribuicao { get; set; }
 		public bool ConviteAceito { get; set; }
+		public int NumeroRespostas { get; set; }
 		public virtual Guid ProjetoId { get; set; }
 		public virtual Guid AreaId { get; set; }
 		public virtual Guid MestreId { get; set; }

@@ -1,33 +1,22 @@
-﻿type = "text/javascript" >
+﻿
 	tinymce.init({
-		selector: "textarea",
-		theme: "modern",
-		plugins: [
-			"advlist autolink lists  charmap print preview anchor searchreplace visualblocks code ",
-			"",
-			"textcolor insertdatetime  table contextmenu paste moxiemanager"
-		],
-		toolbar1:
-			"insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-		toolbar2: "print preview media | forecolor backcolor emoticons",
-		image_advtab: true,
-		templates: [
-			{ title: 'Test template 1', content: 'Test 1' },
-			{ title: 'Test template 2', content: 'Test 2' }
-		]
+        selector: "textarea",
+        themes: "modern"
+		//theme: "modern",
+		//plugins: [
+		//	"advlist autolink lists  charmap print preview anchor searchreplace visualblocks code ",
+		//	"",
+		//	"textcolor insertdatetime  table contextmenu paste moxiemanager"
+		//],
+		//toolbar1:
+		//	"insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+		//toolbar2: "print preview media | forecolor backcolor emoticons",
+		//image_advtab: true,
+		//templates: [
+		//	{ title: 'Test template 1', content: 'Test 1' },
+		//	{ title: 'Test template 2', content: 'Test 2' }
+		//]
 	});
-
-function AtualizarSessao() {
-	$.ajax({
-		async: false,
-		url: "../ReviverSessao",
-		success: function () {
-			console.log("foi");
-		},
-		error: function () {
-		}
-	});
-}
 
 function retira_acentos(palavra) {
 
@@ -52,22 +41,22 @@ function replace_all(string, encontrar, substituir) {
 }
 
 $(document).ready(function () {
-	setInterval(AtualizarSessao, 900000);
+	
 
-	$("#data_entrega").datepicker({
-		dateFormat: 'dd/mm/yy',
-		dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-		dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
-		dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-		monthNames: [
-			'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro',
-			'Dezembro'
-		],
-		monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-		nextText: 'Próximo',
-		prevText: 'Anterior'
+	//$("#data_entrega").datepicker({
+	//	dateFormat: 'dd/mm/yy',
+	//	dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+	//	dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+	//	dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+	//	monthNames: [
+	//		'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro',
+	//		'Dezembro'
+	//	],
+	//	monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+	//	nextText: 'Próximo',
+	//	prevText: 'Anterior'
 
-	});
+	//});
 
 	$("#enviar_finalizar").click(function () {
 

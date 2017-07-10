@@ -169,6 +169,9 @@ namespace BancoDeQuestoes.Mvc.Controllers
             return View(listaQuestoes);           
         }
 
-		
+	    public ActionResult SalvarQuestaoElaborada()
+	    {
+		    
+	    }
 	}
 }

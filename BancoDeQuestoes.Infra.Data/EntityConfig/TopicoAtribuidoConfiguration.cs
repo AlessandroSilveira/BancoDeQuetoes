@@ -28,7 +28,10 @@ namespace BancoDeQuestoes.Infra.Data.EntityConfig
             Property(p => p.NumeroQuestao)
                 .IsRequired();
 
-            Property(p => p.DataEntrega)
+	        Property(p => p.NumeroRespostas)
+		        .IsRequired();
+
+			Property(p => p.DataEntrega)
                 .IsRequired();
 
             Property(p => p.Status)

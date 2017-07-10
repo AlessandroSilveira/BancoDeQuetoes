@@ -66,5 +66,8 @@ namespace BancoDeQuestoes.Application.ViewModels
 	    public Guid AreaId { get; set; }
 
         public Guid DisciplinaId { get; set; }
-    }
+
+		[Required(ErrorMessage = "O campo Número de Respostas deve ser preenchido"), DisplayName("Número de Respostas")]
+		public int NumeroRespostas { get; set; }
+	}
 }
