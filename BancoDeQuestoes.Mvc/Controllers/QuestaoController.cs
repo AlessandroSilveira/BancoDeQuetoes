@@ -117,5 +117,13 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			ViewBag.DadosRespostas = _respostaAppService.Search(a => a.QuestaoId.Equals(id));
 			return View();
 		}
+
+		[Authorize(Roles = "Mestre")]
+		public ActionResult SalvarQuestaoElaborada(QuestaoViewModel questaoViewModel)
+		{
+
+
+			return View();
+		}
 	}
 }

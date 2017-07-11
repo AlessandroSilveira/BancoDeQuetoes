@@ -1,25 +1,24 @@
 ﻿
-	tinymce.init({
-        selector: "textarea",
-        themes: "modern"
-		//theme: "modern",
-		//plugins: [
-		//	"advlist autolink lists  charmap print preview anchor searchreplace visualblocks code ",
-		//	"",
-		//	"textcolor insertdatetime  table contextmenu paste moxiemanager"
-		//],
-		//toolbar1:
-		//	"insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-		//toolbar2: "print preview media | forecolor backcolor emoticons",
-		//image_advtab: true,
-		//templates: [
-		//	{ title: 'Test template 1', content: 'Test 1' },
-		//	{ title: 'Test template 2', content: 'Test 2' }
-		//]
-	});
+	//tinymce.init({
+ //       selector: "textarea",
+ //       themes: "modern"
+	//	//theme: "modern",
+	//	//plugins: [
+	//	//	"advlist autolink lists  charmap print preview anchor searchreplace visualblocks code ",
+	//	//	"",
+	//	//	"textcolor insertdatetime  table contextmenu paste moxiemanager"
+	//	//],
+	//	//toolbar1:
+	//	//	"insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+	//	//toolbar2: "print preview media | forecolor backcolor emoticons",
+	//	//image_advtab: true,
+	//	//templates: [
+	//	//	{ title: 'Test template 1', content: 'Test 1' },
+	//	//	{ title: 'Test template 2', content: 'Test 2' }
+	//	//]
+	//});
 
 function retira_acentos(palavra) {
-
 	var comAcento = "áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ";
 	var semAcento = "aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC";
 	var nova = "";
@@ -58,71 +57,54 @@ $(document).ready(function () {
 
 	//});
 
-	$("#enviar_finalizar").click(function () {
+    $("#enviarFinalizar").click(function () {
 
 		$("#finalizar").val(1);
 		var extensao;
 		var arquivo;
-		if ($("input[name*='arquivo_questao']").val() !== "") {
-			arquivo = $("input[name*='arquivo_questao']").val();
-			extensao = arquivo.split('.');
-			if (extensao[1] !== "jpg") {
-				alert("Arquivo inválido");
-				return false;
-			}
-		}
+		//if ($("input[name*='arquivoQuestao']").val() !== "") {
+  //          arquivo = $("input[name*='arquivoQuestao']").val();
+		//	extensao = arquivo.split(".");
+		//	if (extensao[1] !== "jpg") {
+		//		alert("Arquivo inválido");
+		//		return false;
+		//	}
+		//}
+
+        var respostas = [];
+	    var justificativas = [];
+
+        $(".justificativa").each(function () {
+	        if ($(this).val() !== "") {
+		        justificativas.push($(this).val());
+            }
+            else {
+                alert("Preencha o campo Justificativa");
+	            return false;
+            }
+        });
 
 
-		if ($("input[name*='arquivo_respostaA']").val() !== "") {
-			arquivo = $("input[name*='arquivo_respostaA']").val();
-			extensao = arquivo.split('.');
-			if (extensao[1] !== "jpg") {
-				alert("Arquivo inválido");
-				return false;
-			}
-		}
+        $(".resposta").each(function () {
+		    if ($(this).val() !== "") {
+			    respostas.push($(this).val());
+		    }
+		    else {
+			    alert("Preencha o campo Resposta");
+			    return false;
+		    }
+	    });
 
-
-		if ($("input[name*='arquivo_respostaB']").val() !== "") {
-			arquivo = $("input[name*='arquivo_respostaB']").val();
-			extensao = arquivo.split('.');
-			if (extensao[1] !== "jpg") {
-				alert("Arquivo inválido");
-				return false;
-			}
-		}
-
-		if ($("input[name*='arquivo_respostaC']").val() !== "") {
-			arquivo = $("input[name*='arquivo_respostaC']").val();
-			extensao = arquivo.split('.');
-			if (extensao[1] !== "jpg") {
-				alert("Arquivo inválido");
-				return false;
-			}
-		}
-
-		if ($("input[name*='arquivo_respostaD']").val() !== "") {
-			arquivo = $("input[name*='arquivo_respostaD']").val();
-			extensao = arquivo.split('.');
-			if (extensao[1] !== "jpg") {
-
-				alert("Arquivo inválido");
-				return false;
-			}
-		}
-
-		if ($("input[name*='arquivo_respostaE']").val() !== "") {
-			arquivo = $("input[name*='arquivo_respostaE']").val();
-			extensao = arquivo.split('.');
-			if (extensao[1] !== "jpg") {
-
-				alert("Arquivo inválido");
-				return false;
-			}
-		}
-
-
-		$("#form").submit();
+		//if ($("input[name*='arquivo_respostaA']").val() !== "") {
+		//	arquivo = $("input[name*='arquivo_respostaA']").val();
+		//	extensao = arquivo.split('.');
+		//	if (extensao[1] !== "jpg") {
+		//		alert("Arquivo inválido");
+		//		return false;
+		//	}
+		//}
+        
+		//$("#form").submit();
 		return false;
 	});
 	$("#enviar_aprovar").click(function () {

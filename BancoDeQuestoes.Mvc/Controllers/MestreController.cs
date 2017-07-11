@@ -150,7 +150,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
                 convite.DataAceito = DateTime.Now;
                 _conviteMestreAppService.Update(convite);
                 // AtualizarQuestaoConviteAceito(listaIds, listaAceite);
-                return RedirectToAction("AtualizarQuestaoConviteAceito", "Questao", new { @listaIds = listaIds, @listaAceite = listaAceite });
+                return RedirectToAction("AtualizarQuestaoConviteAceito", "Questao", new {listaIds, listaAceite });
 
             }
 	        _conviteMestreAppService.Update(convite);
@@ -169,9 +169,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
             return View(listaQuestoes);           
         }
 
-	    public ActionResult SalvarQuestaoElaborada()
-	    {
-		    
-	    }
+	   
 	}
 }
