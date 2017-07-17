@@ -57,11 +57,23 @@ $(document).ready(function () {
 
 	//});
 
-    $("#enviarFinalizar").click(function () {
+	$("#enviarFinalizar").click(function() {
 
-		$("#finalizar").val(1);
-		var extensao;
-		var arquivo;
+		var questaoId = $("#QuestaoId").val();
+		var questao = $("#descricao").val();
+		$.ajax({
+			type: "post",
+			contentType: "application/json",
+			url: "../SalvarQuestaoElaborada?QuestaoId=" + questaoId + "&Questao=" + questao + ""
+		});
+
+
+			
+
+
+		//$("#finalizar").val(1);
+		//var extensao;
+		//var arquivo;
 		//if ($("input[name*='arquivoQuestao']").val() !== "") {
   //          arquivo = $("input[name*='arquivoQuestao']").val();
 		//	extensao = arquivo.split(".");
@@ -71,29 +83,32 @@ $(document).ready(function () {
 		//	}
 		//}
 
-        var respostas = [];
-	    var justificativas = [];
+     //   var respostas = [];
+	    //var justificativas = [];
 
-        $(".justificativa").each(function () {
-	        if ($(this).val() !== "") {
-		        justificativas.push($(this).val());
-            }
-            else {
-                alert("Preencha o campo Justificativa");
-	            return false;
-            }
-        });
+     //   $(".justificativa").each(function () {
+	    //    if ($(this).val() !== "") {
+     //           justificativas.push($(this).val());
+     //       }
+     //       else {
+     //           alert("Preencha o campo Justificativa");
+	    //        return false;
+     //       }
+     //   });
 
 
-        $(".resposta").each(function () {
-		    if ($(this).val() !== "") {
-			    respostas.push($(this).val());
-		    }
-		    else {
-			    alert("Preencha o campo Resposta");
-			    return false;
-		    }
-	    });
+     //   $(".resposta").each(function () {
+		   // if ($(this).val() !== "") {
+     //           respostas.push($(this).val());
+		   // }
+		   // else {
+			  //  alert("Preencha o campo Resposta");
+			  //  return false;
+		   // }
+	    //});
+
+     //   $("#todas_respostas").val(respostas);
+     //   $("#todas_justificativas").val(justificativas);
 
 		//if ($("input[name*='arquivo_respostaA']").val() !== "") {
 		//	arquivo = $("input[name*='arquivo_respostaA']").val();

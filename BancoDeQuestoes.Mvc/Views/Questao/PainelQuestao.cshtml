@@ -12,7 +12,7 @@
 			<b>Código do Projeto:</b>
 		</td>
 		<td>
-			@dadosQuestao?.TopicoAtribuido.CodigoProjeto
+			@dadosQuestao.TopicoAtribuido.CodigoProjeto
 			<input type="hidden" id="ProjetoId" name="ProjetoId" value="@dadosQuestao.TopicoAtribuido.ProjetoId" />
 			<input type="hidden" id="TopicoAtribuidoId" name="TopicoAtribuidoId" value="@dadosQuestao.TopicoAtribuido.TopicoAtribuidoId" />
 			<input type="hidden" id="MestreId" name="MestreId" value="@dadosQuestao.TopicoAtribuido.MestreId" />
@@ -120,7 +120,7 @@
 				<div class="form-group">
 					<div class="col-lg-10">
 						<h4>Alternativa @i</h4>
-						<textarea class="form-control resposta" rows="3" name="resposta" id="resposta@i"></textarea>
+						<textarea class="resposta" rows="3" name="resposta" id="resposta_@i"></textarea>
 					</div>
 				</div>
 
@@ -128,21 +128,21 @@
 					<div class="col-lg-10">
 						<label class="col-lg-3 ">Anexar Imagem da Resposta:</label>
 						<input type="file" class="form-control" id="arquivoResposta" placeholder="Anexar Imagem" name="arquivoResposta">
-
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="col-lg-10">
 						<h4>Justificativa @i</h4>
-						<textarea class="form-control justificativa" rows="3" name="justificativa" id="justificativa@i"></textarea>
+						<textarea class="justificativa" rows="3" name="justificativa" id="justificativa_@i"></textarea>
 						<hr />
 					</div>
 				</div>
 
 			}
 
-			<input type="hidden" id="todas_respostas_" value="" />
+			<input type="hidden" id="todas_respostas" name="todas_respostas" value="" />
+			<input type="hidden" id="todas_justificativas" name="todas_justificativas" value="" />
 			<input type="hidden" value="" name="QuestaoId" id="QuestaoId" />
 			<input type="hidden" value="0" name="finalizar" id="finalizar" />
 		</fieldset>
@@ -157,5 +157,5 @@
 		</div>
 	</div>
 }
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+@*<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>*@
 <script src="~/Scripts/Questoes/PainelQuestaoScript.js"></script>

@@ -119,11 +119,16 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		}
 
 		[Authorize(Roles = "Mestre")]
-		public ActionResult SalvarQuestaoElaborada(QuestaoViewModel questaoViewModel)
+		[HttpPost]
+		public JsonResult SalvarQuestaoElaborada(Guid QuestaoId, string Questao)
 		{
 
+			var dadosQuestao = _questaoAppService.GetById(QuestaoId);
+			dadosQuestao.Descricao = Questao;
 
-			return View();
+			var result = _questaoAppService.Update(dadosQuestao);
+
+			return Json(result, JsonRequestBehavior.AllowGet);
 		}
 	}
 }
