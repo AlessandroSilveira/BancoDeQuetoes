@@ -122,7 +122,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		[HttpPost]
 		public JsonResult SalvarQuestaoElaborada(Guid QuestaoId, string Questao)
 		{
-
 			var dadosQuestao = _questaoAppService.GetById(QuestaoId);
 			dadosQuestao.Descricao = Questao;
 
@@ -130,5 +129,25 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
 			return Json(result, JsonRequestBehavior.AllowGet);
 		}
+
+		[Authorize(Roles = "Mestre")]
+		[HttpPost]
+		public JsonResult SalvarRespostasEJustificativasElaboradas(Guid QuestaoId, string resposta, string justificativa)
+		{
+			var dadosQuestao = _questaoAppService.GetById(QuestaoId);
+
+			RespostaViewModel dadosResposta = new RespostaViewModel()
+			{
+				TopicoAtribuidoId = dadosQuestao.TopicoAtribuidoId,
+				QuestaoId = dadosQuestao.QuestaoId,
+				Descricao = resposta,
+				Justificativa = justificativa
+			};
+
+			var result = _respostaAppService.Add(dadosResposta);
+
+			return Json(result, JsonRequestBehavior.AllowGet);
+		}
+
 	}
 }

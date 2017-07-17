@@ -67,6 +67,25 @@ $(document).ready(function () {
 			url: "../SalvarQuestaoElaborada?QuestaoId=" + questaoId + "&Questao=" + questao + ""
 		});
 
+		$("#resposta").each(function() {
+            var i = 1;
+
+            var resposta = $("#resposta_" + i + "").val();
+            var justificativa = $("#justificativa_" + i + "").val();
+
+			$.ajax({
+				type: "post",
+				contentType: "application/json",
+				url: "../SalvarRespostasEJustificativasElaboradas?QuestaoId=" +
+					questaoId +
+					"&Resposta=" +
+					resposta +
+					"&Justificativa=" +
+					justificativa+""
+		    });
+
+		});
+
 
 			
 

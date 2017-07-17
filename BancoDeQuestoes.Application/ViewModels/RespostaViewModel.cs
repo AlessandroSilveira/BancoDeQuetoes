@@ -20,5 +20,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 		public string ObservacaoRevisor2 { get; set; }
 		public string Imagem { get; set; }
 		public string ImagemJustificativa { get; set; }
+		public string Justificativa { get; set; }
 	}
 }
