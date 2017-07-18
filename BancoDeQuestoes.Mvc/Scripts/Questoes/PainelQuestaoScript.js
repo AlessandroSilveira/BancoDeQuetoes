@@ -60,31 +60,46 @@ $(document).ready(function () {
 	$("#enviarFinalizar").click(function() {
 
 		var questaoId = $("#QuestaoId").val();
-		var questao = $("#descricao").val();
+        var questao = $("#descricao").val();
+
+        var obj = {
+            QuestaoId: questaoId,
+            Questao: questao
+        }
+
 		$.ajax({
 			type: "post",
-			contentType: "application/json",
-			url: "../SalvarQuestaoElaborada?QuestaoId=" + questaoId + "&Questao=" + questao + ""
-		});
+            contentType: "application/json",
+            data: JSON.stringify(obj),
+			dataType: "json",
+			url: "../SalvarQuestaoElaborada"
+        })
+            .done(function (result) {
+                if (result === "ok") {
+	                $(".resposta").each(function () {
+		                var i = 1;
 
-		$("#resposta").each(function() {
-            var i = 1;
+		                var resposta = $("#resposta_" + i + "").val();
+		                var justificativa = $("#justificativa_" + i + "").val();
 
-            var resposta = $("#resposta_" + i + "").val();
-            var justificativa = $("#justificativa_" + i + "").val();
+		                var obj = {
+			                QuestaoId: questaoId,
+			                Resposta: resposta,
+			                Justificativa: justificativa
+		                }
+		                $.ajax({
+			                type: "post",
+			                contentType: "application/json",
+			                data: JSON.stringify(obj),
+			                dataType: "json",
+                            url: "../SalvarRespostasEJustificativasElaboradas"
+		                });
 
-			$.ajax({
-				type: "post",
-				contentType: "application/json",
-				url: "../SalvarRespostasEJustificativasElaboradas?QuestaoId=" +
-					questaoId +
-					"&Resposta=" +
-					resposta +
-					"&Justificativa=" +
-					justificativa+""
-		    });
+	                });
+                }
+			});
 
-		});
+		
 
 
 			

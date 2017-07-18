@@ -14,7 +14,6 @@ namespace BancoDeQuestoes.Application.ViewModels
 		public Guid QuestaoId { get; set; }
 		public string Descricao { get; set; }
 		public string Correcao { get; set; }
-		public string Jistificativa { get; set; }
 		public string Status { get; set; }
 		public string ObservacaoRevisor { get; set; }
 		public string ObservacaoRevisor2 { get; set; }

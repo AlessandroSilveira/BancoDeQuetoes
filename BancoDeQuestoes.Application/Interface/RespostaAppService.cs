@@ -20,9 +20,9 @@ namespace BancoDeQuestoes.Application.Interface
 
 		public RespostaViewModel Add(RespostaViewModel obj)
 		{
-			var area = Mapper.Map<RespostaViewModel, Resposta>(obj);
+			var resposta = Mapper.Map<RespostaViewModel, Resposta>(obj);
 			BeginTransaction();
-			_respostaService.Add(area);
+			_respostaService.Add(resposta);
 			Commit();
 			return obj;
 		}

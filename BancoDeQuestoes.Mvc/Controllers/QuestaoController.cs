@@ -120,31 +120,39 @@ namespace BancoDeQuestoes.Mvc.Controllers
 
 		[Authorize(Roles = "Mestre")]
 		[HttpPost]
-		public JsonResult SalvarQuestaoElaborada(Guid QuestaoId, string Questao)
+		public ActionResult SalvarQuestaoElaborada(Guid QuestaoId, string Questao)
 		{
 			var dadosQuestao = _questaoAppService.GetById(QuestaoId);
 			dadosQuestao.Descricao = Questao;
 
-			var result = _questaoAppService.Update(dadosQuestao);
-
+			//var result = _questaoAppService.Update(dadosQuestao);
+			var result = "ok";
 			return Json(result, JsonRequestBehavior.AllowGet);
 		}
 
 		[Authorize(Roles = "Mestre")]
 		[HttpPost]
-		public JsonResult SalvarRespostasEJustificativasElaboradas(Guid QuestaoId, string resposta, string justificativa)
+		public ActionResult SalvarRespostasEJustificativasElaboradas(Guid QuestaoId, string resposta, string justificativa)
 		{
 			var dadosQuestao = _questaoAppService.GetById(QuestaoId);
 
-			RespostaViewModel dadosResposta = new RespostaViewModel()
+			var dadosResposta = new RespostaViewModel()
 			{
 				TopicoAtribuidoId = dadosQuestao.TopicoAtribuidoId,
 				QuestaoId = dadosQuestao.QuestaoId,
 				Descricao = resposta,
-				Justificativa = justificativa
+				Justificativa = justificativa,
+				Correcao = "",
+				Status="",
+				ObservacaoRevisor="",
+				ObservacaoRevisor2="",
+				Imagem="",
+				ImagemJustificativa=""
 			};
 
-			var result = _respostaAppService.Add(dadosResposta);
+			_respostaAppService.Add(dadosResposta);
+
+			var result = "ok";
 
 			return Json(result, JsonRequestBehavior.AllowGet);
 		}
