@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using BancoDeQuestoes.Application.ViewModels;
@@ -122,40 +121,52 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		[HttpPost]
 		public ActionResult SalvarQuestaoElaborada(Guid QuestaoId, string Questao)
 		{
-			var dadosQuestao = _questaoAppService.GetById(QuestaoId);
-			dadosQuestao.Descricao = Questao;
+			try
+			{
+				var dadosQuestao = _questaoAppService.GetById(QuestaoId);
+				dadosQuestao.Descricao = Questao;
 
-			//var result = _questaoAppService.Update(dadosQuestao);
-			var result = "ok";
-			return Json(result, JsonRequestBehavior.AllowGet);
+				//var result = _questaoAppService.Update(dadosQuestao);
+				
+				return Json(true, JsonRequestBehavior.AllowGet);
+			}
+			catch (Exception )
+			{
+				return Json(false, JsonRequestBehavior.AllowGet);
+			}
+			
 		}
 
 		[Authorize(Roles = "Mestre")]
 		[HttpPost]
 		public ActionResult SalvarRespostasEJustificativasElaboradas(Guid QuestaoId, string resposta, string justificativa)
 		{
-			var dadosQuestao = _questaoAppService.GetById(QuestaoId);
-
-			var dadosResposta = new RespostaViewModel()
+			try
 			{
-				TopicoAtribuidoId = dadosQuestao.TopicoAtribuidoId,
-				QuestaoId = dadosQuestao.QuestaoId,
-				Descricao = resposta,
-				Justificativa = justificativa,
-				Correcao = "",
-				Status="",
-				ObservacaoRevisor="",
-				ObservacaoRevisor2="",
-				Imagem="",
-				ImagemJustificativa=""
-			};
+				var dadosQuestao = _questaoAppService.GetById(QuestaoId);
 
-			_respostaAppService.Add(dadosResposta);
+				var dadosResposta = new RespostaViewModel()
+				{
+					TopicoAtribuidoId = dadosQuestao.TopicoAtribuidoId,
+					QuestaoId = dadosQuestao.QuestaoId,
+					Descricao = resposta,
+					Justificativa = justificativa,
+					Correcao = "",
+					Status = "",
+					ObservacaoRevisor = "",
+					ObservacaoRevisor2 = "",
+					Imagem = "",
+					ImagemJustificativa = ""
+				};
 
-			var result = "ok";
-
-			return Json(result, JsonRequestBehavior.AllowGet);
+				_respostaAppService.Add(dadosResposta);
+				
+				return Json(true, JsonRequestBehavior.AllowGet);
+			}
+			catch (Exception)
+			{
+				return Json(false, JsonRequestBehavior.AllowGet);
+			}
 		}
-
 	}
 }

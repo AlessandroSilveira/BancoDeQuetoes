@@ -75,8 +75,8 @@ $(document).ready(function () {
 			url: "../SalvarQuestaoElaborada"
         })
             .done(function (result) {
-                if (result === "ok") {
-	                $(".resposta").each(function () {
+                if (result) {
+	                $(".resposta").each(function() {
 		                var i = 1;
 
 		                var resposta = $("#resposta_" + i + "").val();
@@ -92,10 +92,16 @@ $(document).ready(function () {
 			                contentType: "application/json",
 			                data: JSON.stringify(obj),
 			                dataType: "json",
-                            url: "../SalvarRespostasEJustificativasElaboradas"
+			                url: "../SalvarRespostasEJustificativasElaboradas"
 		                });
 
-	                });
+                    });
+	                alert("Dados salvos com sucesso.");
+	                return false;
+                }
+                else {
+                    alert("Erro ao salvar dados");
+	                return false;
                 }
 			});
 
