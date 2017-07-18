@@ -96,7 +96,8 @@ $(document).ready(function () {
 		                });
 
                     });
-	                alert("Dados salvos com sucesso.");
+                    alert("Dados salvos com sucesso.");
+	                window.location.href = "../../Mestre/ListaQuestoes";
 	                return false;
                 }
                 else {

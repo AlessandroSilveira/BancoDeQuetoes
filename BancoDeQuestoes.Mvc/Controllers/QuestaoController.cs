@@ -12,13 +12,16 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		private readonly IStatusAppService _statusAppService;
 		private readonly IMestreAppService _mestreAppService;
 		private readonly IRespostaAppService _respostaAppService;
+		private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
 
-		public QuestaoController(IQuestaoAppService questaoAppService, IStatusAppService statusAppService, IMestreAppService mestreAppService, IRespostaAppService respostaAppService)
+		public QuestaoController(IQuestaoAppService questaoAppService, IStatusAppService statusAppService,
+			IMestreAppService mestreAppService, IRespostaAppService respostaAppService, ITopicoAtribuidoAppService topicoAtribuidoAppService)
 		{
 			_questaoAppService = questaoAppService;
 			_statusAppService = statusAppService;
 			_mestreAppService = mestreAppService;
 			_respostaAppService = respostaAppService;
+			_topicoAtribuidoAppService = topicoAtribuidoAppService;
 		}
 
 		// GET: Questao
@@ -33,9 +36,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		{
 			var questaoViewModel = _statusAppService.GetById(id);
 			if (questaoViewModel == null)
-			{
 				return HttpNotFound();
-			}
 			return View(questaoViewModel);
 		}
 
@@ -84,7 +85,8 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		}
 
 		// POST: Questao/Delete/5
-		[HttpPost, ActionName("Delete")]
+		[HttpPost]
+		[ActionName("Delete")]
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(Guid id)
 		{
@@ -96,7 +98,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
 		{
 			var questoesId = listaIds.Split(',');
 			var questoesAceitas = listaAceite.Split(',');
-			// var status = _statusAppService.Search(a=>a.NumeroStatus.Equals("2"));
 			var status = _statusAppService.ObterDescricaoStatus("Convite Aceito");
 			for (var i = 0; i < questoesId.Length; i++)
 			{
@@ -125,16 +126,24 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			{
 				var dadosQuestao = _questaoAppService.GetById(QuestaoId);
 				dadosQuestao.Descricao = Questao;
+				dadosQuestao.Status = "Item Elaborado aguardando ser enviado para Revisão da banca";
+				_questaoAppService.Update(dadosQuestao);
 
-				//var result = _questaoAppService.Update(dadosQuestao);
-				
+				AtualizarStatusTopicoAtribuido(dadosQuestao);
+
 				return Json(true, JsonRequestBehavior.AllowGet);
 			}
-			catch (Exception )
+			catch (Exception)
 			{
 				return Json(false, JsonRequestBehavior.AllowGet);
 			}
-			
+		}
+
+		private void AtualizarStatusTopicoAtribuido(QuestaoViewModel dadosQuestao)
+		{
+			var dadosTipoco = _topicoAtribuidoAppService.GetById(dadosQuestao.TopicoAtribuidoId);
+			dadosTipoco.Status = dadosQuestao.Status;
+			_topicoAtribuidoAppService.Update(dadosTipoco);
 		}
 
 		[Authorize(Roles = "Mestre")]
@@ -145,7 +154,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			{
 				var dadosQuestao = _questaoAppService.GetById(QuestaoId);
 
-				var dadosResposta = new RespostaViewModel()
+				var dadosResposta = new RespostaViewModel
 				{
 					TopicoAtribuidoId = dadosQuestao.TopicoAtribuidoId,
 					QuestaoId = dadosQuestao.QuestaoId,
@@ -160,7 +169,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 				};
 
 				_respostaAppService.Add(dadosResposta);
-				
+
 				return Json(true, JsonRequestBehavior.AllowGet);
 			}
 			catch (Exception)

@@ -85,7 +85,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
 			if (!ModelState.IsValid) return View();
 
 			var idDiscipliina = Disciplinas_selecionadas.Split(',');
-			var status = _statusAppService.ObterDescricaoStatus("Item sem confirmação de aceite pelo Elaborador").ToString();
+			var status ="Item sem confirmação de aceite pelo Elaborador";
 
 			foreach (var dados in idDiscipliina)
 			{

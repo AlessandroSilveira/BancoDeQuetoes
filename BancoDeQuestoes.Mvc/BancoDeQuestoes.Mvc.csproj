@@ -247,6 +247,7 @@
     <Compile Include="Controllers\MestreFormacaoController.cs" />
     <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\QuestaoController.cs" />
+    <Compile Include="Controllers\RevisoesController.cs" />
     <Compile Include="Controllers\RevisorController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
@@ -428,6 +429,7 @@
     <Content Include="Views\Questao\Index.cshtml" />
     <Content Include="Views\Questao\PainelQuestao.cshtml" />
     <Content Include="Views\Mestre\PainelQuestao.cshtml" />
+    <Content Include="Views\Revisoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

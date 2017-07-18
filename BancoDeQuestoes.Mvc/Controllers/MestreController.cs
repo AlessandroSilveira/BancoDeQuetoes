@@ -13,9 +13,8 @@ namespace BancoDeQuestoes.Mvc.Controllers
         private readonly ITopicoAtribuidoAppService _topicoAtribuidoAppService;
         private readonly IConviteMestreAppService _conviteMestreAppService;
         private readonly IQuestaoAppService _questaoAppService;
-	    private readonly IRespostaAppService _respostaAppService;
 
-        public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService,
+	    public MestreController(IMestreAppService mestreAppService, IBancaAppService bancaAppService,
             ITopicoAtribuidoAppService topicoAtribuidoAppService, IConviteMestreAppService conviteMestreAppService,
             IQuestaoAppService questaoAppService, IRespostaAppService respostaAppService)
         {
@@ -24,7 +23,6 @@ namespace BancoDeQuestoes.Mvc.Controllers
             _topicoAtribuidoAppService = topicoAtribuidoAppService;
             _conviteMestreAppService = conviteMestreAppService;
             _questaoAppService = questaoAppService;
-	        _respostaAppService = respostaAppService;
         }
 
         [Authorize(Roles = "Admin")]
@@ -164,7 +162,7 @@ namespace BancoDeQuestoes.Mvc.Controllers
             var dadosMestre = _mestreAppService.Search(a => a.Email.Equals(User.Identity.Name)).FirstOrDefault();
 
             var listaQuestoes =
-                _questaoAppService.Search(a => a.TopicoAtribuido.MestreId.Equals(dadosMestre.MestreId));
+                _questaoAppService.Search(a => a.TopicoAtribuido.MestreId.Equals(dadosMestre.MestreId) && a.Status.Equals("Convite Aceito"));
 
             return View(listaQuestoes);           
         }
