@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using BancoDeQuestoes.Application.Interface.Repositories;
 using System.Web.Mvc;
 
@@ -8,10 +9,12 @@ namespace BancoDeQuestoes.Mvc.Controllers
     {
 
 	    private readonly IQuestaoAppService _questaoAppService;
+	    private readonly IRevisorAppService _revisorAppService;
 
-	    public RevisoesController(IQuestaoAppService questaoAppService)
+	    public RevisoesController(IQuestaoAppService questaoAppService, IRevisorAppService revisorAppService)
 	    {
 		    _questaoAppService = questaoAppService;
+		    _revisorAppService = revisorAppService;
 	    }
 
 
@@ -24,12 +27,14 @@ namespace BancoDeQuestoes.Mvc.Controllers
         }
 
 
-	    public ActionResult AtribuirQuestaoParaRevisao(Guid questaoId)
+	    public ActionResult AtribuirQuestaoParaRevisao(Guid id)
 	    {
 
+		    ViewBag.dadosQuestao = _questaoAppService.GetById(id);
+		    ViewBag.ListaRevisores = _revisorAppService.GetAll().ToList();
 
 
-		    return View();
+			return View();
 
 	    }
 	}

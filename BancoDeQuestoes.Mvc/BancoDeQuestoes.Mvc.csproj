@@ -430,6 +430,7 @@
     <Content Include="Views\Questao\PainelQuestao.cshtml" />
     <Content Include="Views\Mestre\PainelQuestao.cshtml" />
     <Content Include="Views\Revisoes\Index.cshtml" />
+    <Content Include="Views\Revisoes\AtribuirQuestaoParaRevisao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

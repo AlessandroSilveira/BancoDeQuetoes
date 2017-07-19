@@ -1,0 +1,32 @@
+﻿
+@model IEnumerable<BancoDeQuestoes.Application.ViewModels.QuestaoViewModel>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Atribuir Questão para Revisão</h2>
+
+<p>
+
+</p>
+<table class="table">
+	<tr>
+		<th>
+			Questão
+		</th>
+		<th>
+			Revisor
+		</th>
+		
+		<th></th>
+	</tr>
+		<tr>
+			<td>
+				@ViewBag.dadosQuestao.Descricao
+			</td>
+			<td>
+				@Html.DropDownList("RevisorId", (IEnumerable<SelectListItem>) ViewBag.ListaRevisores, "Selecione", new {@class = "form-control"})
+			</td>
+		</tr>
+</table>
